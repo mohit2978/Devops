@@ -96,8 +96,15 @@ Ex :   Raja installed Java 11 v  in Dev Env
 4) Docker Container : It is a runtime process which runs our application
 
 
-Note: Once Docker image is created then we can pull that image and we can run that image in any machine.
+> Note: Once Docker image is created then we can pull that image and we can run that image in any machine.
 
+All the dependencies we tell in dockerfile!
+
+![alt text](image-4.png)
+
+With app code and dependency in docker file we build docker image which we can store in docker hub!! from docker hub we can pull that image in different Environment!!
+
+In real time we have private docker image so that only company members can access it!!
 
 
  
