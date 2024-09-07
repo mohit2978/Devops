@@ -37,4 +37,67 @@ In Realtime, our application will be deployed into Multiple Environments for Tes
  Production env means live environment.
 
 End users will access application from Production env!!
+
+From one environment to other we need to install the same version of software in all environment!! thats headache!!if java11 in dev than java 11 is needed in SIT!! so these dependency needs too be installed on all environment with same version!!Different version may cause code not working !!
+
+
+
+
+## Life without Docker
+
+- We need to install all the required softwares in all environments to run our application.
+
+- We need to make sure we are using same versions of softwares in all machines.
+
+-  If any software version is not matched then application execution may fail
+
+
+Ex :   Raja installed Java 11 v  in Dev Env
+    , Sunil installed Java 8 v in SIT Env
+
+-  If we want to run our application in multiple machines then we have to install required softwares in all those machines with same version which is hectic task.
+
+## Life with Docker
+
+
+-  Docker is a containerization platform
+
+-  Docker is used to build and deploy our application into any machine without bothering about dependencies.
+
+-  Dependencies means the softwares which are required to run our application.
+
+	Dependencies = OS / Angular / React / Java / DB / Tomcat etc...
+
+- Docker will reduce the gap between Development and Deployment
+
+- Allows Easy Scaling Up
+    1. In this lesson, you will learn how Docker containers help in scaling when a single server isn't enough to handle a single application.
+
+    2. When a server application needs to handle a higher usage than what a single server can handle, the solution is well-known, place a reverse proxy in front of it, and duplicate the server as many times as needed. In our previous Wordpress application example, this meant duplicating the server together with all of its dependencies:
+
+  
+![alt text](image-2.png)
+
+3. That is only going to make things worse when upgrading: we’ll need to upgrade each server’s dependencies together with all of the conflicts that may induce.Again, containers have a solution for this   
+
+4. Better yet: when using an orchestrator, you merely need to state how many containers you want and the image name and the orchestrator creates that many containers on all of your Docker servers. We’ll see this in the orchestrators part of this course. This is how it looks:
+
+![alt text](image-3.png)
+
+## Docker Architecture
+
+
+1) Dockerfile   : It contains instructions to build docker image
+
+2) Docker Image  : It is a package which contains code + dependencies
+
+3) Docker Registry : It is  a repository to store docker images
+
+4) Docker Container : It is a runtime process which runs our application
+
+
+Note: Once Docker image is created then we can pull that image and we can run that image in any machine.
+
+
+
  
