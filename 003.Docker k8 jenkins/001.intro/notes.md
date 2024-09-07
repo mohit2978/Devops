@@ -11,3 +11,30 @@ Then jenkins is integrated with sonarcube to do code review!! then jenkins is in
 then jenkins push image to docker registry! then jenkins deploy on k8 cluster!!
 
 ![alt text](image.png)
+
+Every tool will be integrated with jenkins!!
+
+To work with k8 docker image is mandatory!!Docker image has application + application dependency!! Without docker you cannot learn k8!!k8 is used to manage docker containers!!
+
+with k8 we will learn following:
+
+![alt text](image-1.png)
+
+## Application Environments
+
+In Realtime, our application will be deployed into Multiple Environments for Testing Purpose
+
+1. DEV Env  --> Developers Testing
+
+2. SIT Env   ---> Testing Team (QA) - System Integration
+		
+3. UAT Env   ---> Client Side Testing - User Acceptance Testing
+
+4. PILOT Env (Pre-Production)  ---> Testing with Live Data
+
+ Once testing completed in all above environments then it will be deployed into PRODUCTION Env.
+
+ Production env means live environment.
+
+End users will access application from Production env!!
+ 
