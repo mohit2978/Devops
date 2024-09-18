@@ -1,110 +1,79 @@
-# Introduction
-We do containerization by docker and orchestration by kubernetes!! we will define both (containerization,orchestration) later !  
+# Jenkins
 
-We use git repo to store code and build using maven to generate war/jar  and then reviewed  by sonarcube!!Sonarcube is code review software!! and then artifact is deployed on Nexus server!!
+jenkins is CI/CD tool as definition but in reality jenkins is only CI tool!!
 
-Then docker comes into picture!! we create docker image which stored in docker registry! then we deploy image in k8 cluster!!
+CI means continuous integration : continuous build + continuous test (old code with new code)
 
-we take latest code from github ,we build and deploy by Jenkins!! Jenkins is heart of Devops!! Jenkins take out code from github repo and using maven jenkins will build and deploy automatically!!
+why needed?
 
-Then jenkins is integrated with sonarcube to do code review!! then jenkins is integrated with nexus to upload artifact!! Then jenkins integrated with docker to make image!!
-then jenkins push image to docker registry! then jenkins deploy on k8 cluster!!
+- developer d1 gives code on day1 ,developer d2 gives code on day 2, developer 3 gives code on day3, now day4 we do integration and on day 5 we test and we found bug and give reply to d1 that you code is buggy ,this would be helpful if d1 got reply on day1 only!!
+
+- also here everything is manual , we need everything to be automatic!!
+
+ci : continuous integration : continuous build + continuous test  old code with new code
+- before ci we have time waste and every thing is manual work.
+- after ci everything is automated.
+
+cd : continuous delivery : deployment manually to prod env
+cd : continuous deployment : deployment automatically to prod env
+
+### PIPELINE:
+STEP BY STEP EXECUTION OF A PARTICULAR PROCESS.
+SERIES OF EVENTS INTERLINKED WITH EACH OTHER.
+
+CODE -- > BUILD -- > TEST -- >  DEPLOY
+
+to build pipeline ww can use jenkins!!
+
+### ENV:
+- DEV	: DEVELOPERS
+- QA	: TESTERS
+- UAT	: CLIENT
+
+THE ABOVE ENVS ARE CALLED AS PRE-PROD OR NON-PROD
+
+- PROD	: USER
+
+PROD ENV IS ALSO CALLED AS LIVE ENV
+
+### JENKINS:
+- its a free and open source tool.
+- its platform independent.
+- it is built on java-11/17.
+- koshuke kawaguchui invented jenkins in sun micro systems 2004.
+- initial name was hudson -- > paid -- > oracle -- > free 
+- it consist lot of plugins.
+- port number for jenkins is 8080.
+- default path - /var/lib/jenkins
 
 ![alt text](image.png)
 
-Every tool will be integrated with jenkins!!
-
-To work with k8 docker image is mandatory!!Docker image has application + application dependency!! Without docker you cannot learn k8!!k8 is used to manage docker containers!!
-
-with k8 we will learn following:
-
-![alt text](image-1.png)
-
-## Application Environments
-
-In Realtime, our application will be deployed into Multiple Environments for Testing Purpose
-
-1. DEV Env  --> Developers Testing
-
-2. SIT Env   ---> Testing Team (QA) - System Integration
-		
-3. UAT Env   ---> Client Side Testing - User Acceptance Testing
-
-4. PILOT Env (Pre-Production)  ---> Testing with Live Data
-
- Once testing completed in all above environments then it will be deployed into PRODUCTION Env.
-
- Production env means live environment.
-
-End users will access application from Production env!!
-
-From one environment to other we need to install the same version of software in all environment!! thats headache!!if java11 in dev than java 11 is needed in SIT!! so these dependency needs too be installed on all environment with same version!!Different version may cause code not working !!
 
 
+### SETUP: CREATE EC2 WITH ALL TRAFFIC (8080)
 
+#STEP-1: INSTALLING GIT JAVA-1.8.0 MAVEN 
+yum install git java-1.8.0-openjdk maven -y
 
-## Life without Docker
+#STEP-2: GETTING THE REPO (jenkins.io --> download -- > redhat)
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 
-- We need to install all the required softwares in all environments to run our application.
+#STEP-3: DOWNLOAD JAVA11 AND JENKINS
+amazon-linux-extras install java-openjdk11 -y
+yum install jenkins -y
+update-alternatives --config java
 
-- We need to make sure we are using same versions of softwares in all machines.
+#STEP-4: RESTARTING JENKINS (when we download service it will on stopped state)
+systemctl start jenkins.service
+systemctl status jenkins.service
 
--  If any software version is not matched then application execution may fail
+copy public ip and paste on browser like this
+public-ip:8080
+cat /var/lib/jenkins/secrets/initialAdminPassword
+install plugins and create user for login.
 
-
-Ex :   Raja installed Java 11 v  in Dev Env
-    , Sunil installed Java 8 v in SIT Env
-
--  If we want to run our application in multiple machines then we have to install required softwares in all those machines with same version which is hectic task.
-
-## Life with Docker
-
-
--  Docker is a containerization platform
-
--  Docker is used to build and deploy our application into any machine without bothering about dependencies.
-
--  Dependencies means the softwares which are required to run our application.
-
-	Dependencies = OS / Angular / React / Java / DB / Tomcat etc...
-
-- Docker will reduce the gap between Development and Deployment
-
-- Allows Easy Scaling Up
-    1. In this lesson, you will learn how Docker containers help in scaling when a single server isn't enough to handle a single application.
-
-    2. When a server application needs to handle a higher usage than what a single server can handle, the solution is well-known, place a reverse proxy in front of it, and duplicate the server as many times as needed. In our previous Wordpress application example, this meant duplicating the server together with all of its dependencies:
-
-  
-![alt text](image-2.png)
-
-3. That is only going to make things worse when upgrading: we’ll need to upgrade each server’s dependencies together with all of the conflicts that may induce.Again, containers have a solution for this   
-
-4. Better yet: when using an orchestrator, you merely need to state how many containers you want and the image name and the orchestrator creates that many containers on all of your Docker servers. We’ll see this in the orchestrators part of this course. This is how it looks:
-
-![alt text](image-3.png)
-
-## Docker Architecture
-
-
-1) Dockerfile   : It contains instructions to build docker image
-
-2) Docker Image  : It is a package which contains code + dependencies
-
-3) Docker Registry : It is  a repository to store docker images
-
-4) Docker Container : It is a runtime process which runs our application
-
-
-> Note: Once Docker image is created then we can pull that image and we can run that image in any machine.
-
-All the dependencies we tell in dockerfile!
-
-![alt text](image-4.png)
-
-With app code and dependency in docker file we build docker image which we can store in docker hub!! from docker hub we can pull that image in different Environment!!
-
-In real time we have private docker image so that only company members can access it!!
-
-
- 
+INTEGRATION OF GIT AND MAVEN WITH JENKINS:
+NEW ITEM -- > NAME: NETFLIX JOB -- > FREE STYLE -- > OK 
+Source Code Management -- > GIT -- > https://github.com/devopsbyraham/jenkins-java-project.git
+Build Steps -- > add setp -- > Execute shell -- > save
