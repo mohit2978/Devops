@@ -151,7 +151,7 @@ ls : list content
 
 - $ ls    (display files in present working directory)
 
-- $ ls -l (display files in alphabetical order)
+- $ ls -l (display files in alphabetical order and displays in long format)(long listing)
         
 - $ ls -lr (display files in reverse of alphabetical order)
 
@@ -159,11 +159,13 @@ ls : list content
 
 - $ ls -ltr (display old files on top)
 
-- $ ls -la (display hidden files)
+- $ls -a (displays hidden file)
+
+- $ ls -la (display hidden files in long fromat)
 
 ---
 
-mkdir (amke directory): To create directory (folder)
+mkdir (make directory): To create directory (folder)
 
 ---
 rmdir (remove empty directory): To delete empty directory
