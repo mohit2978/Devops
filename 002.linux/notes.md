@@ -59,23 +59,4 @@ Ex: Play Games, Watch Movies, Internet Browsing, Store data, Online Classes...
 
 > Note: We have 200+ linux distributions
 
-![alt text](<03  Linux Material_240920_093853_1.png>)
-
-![alt text](<03  Linux Material_240920_093853_2.png>)
-
-![alt text](<03  Linux Material_240920_093853_3.png>)
-
-
-![alt text](<03  Linux Material_240920_093853_4.png>)
-
-![alt text](<03  Linux Material_240920_093853_5.png>)
-
-![alt text](<03  Linux Material_240920_093853_6.png>)
-
-![alt text](<03  Linux Material_240920_093853_7.png>)
-
-![alt text](<03  Linux Material_240920_093853_8.png>)
-
 till now we have seen how to connect to a linux machine using aws!!
-
-![alt text](<03  Linux Material_240920_093853_9.png>)
