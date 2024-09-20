@@ -165,10 +165,10 @@ ls : list content
 
 ---
 
-mkdir (make directory): To create directory (folder)
+mkdir {dir-name} (make directory): To create directory (folder)
 
 ---
-rmdir (remove empty directory): To delete empty directory
+rmdir {dir-name}: To delete empty directory cant be used if directory has files in it
 
 ---
 cd : change directory
@@ -220,7 +220,7 @@ touch create empty file and cat create files with data
 
 cp : To copy one file data into another file
 
-- $ cp f1.txt f2.txt
+- $ cp f1.txt f2.txt (if f2.txt not exist it will create)
 
 --- 
  > Note: To copy more than one file data into another file we will use cat command
@@ -228,10 +228,13 @@ cp : To copy one file data into another file
 - $ cat f1.txt f2.txt > f3.txt
 
 ---
-tac : To print file content from bottom to top
+tac : To print file content from bottom to top (opposite of cat in functionality  as well as name)
 
 - $ tac f1.txt
 
+![alt text](image-15.png)
+
+- see in reverse order it is printed
 ---
 
 rev : To reverse each line of data
@@ -257,6 +260,8 @@ tail : To display file data from bottom (default 10 lines)
 -  $ tail -n 20 f1.txt  (print last 20 lines of file)
 
 - $ tail -n 100 f1.txt (print last 100 lines of file)
+
+- $ tail -n +2 f1.txt (from 2nd line to last everything is printed)
 
 -  $ tail -f f1.txt (to get live data)
 
