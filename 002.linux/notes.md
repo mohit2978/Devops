@@ -173,7 +173,7 @@ rmdir (remove empty directory): To delete empty directory
 ---
 cd : change directory
 
-- cd <dir-name> : To go inside directory
+- cd {dir-name} : To go inside directory
 
 - cd .. : come out from directory
 
@@ -185,21 +185,21 @@ touch : To create empty files
 ---
 rm : To delete file & directories
 
-- $ rm <file-name>
+- $ rm {file-name}
 
 - $ rm *.txt : delete all .txt file
 
 - $ rm a*.txt : delete all .txt file starting with a
 
-- $ rm -rf <dir-name> : delete directory and files inside it
+- $ rm -rf {dir-name} : delete directory and files inside it
 
 ---
 
 mv : To rename & to move
 
-- $ mv  <present-name> <new-name> : to rename
+- $ mv  {present-name} {new-name} : to rename
 
-- $ mv  <present-location>  <new-location>
+- $ mv  {present-location}  {new-location}
 
 ----
 
