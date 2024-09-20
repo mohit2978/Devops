@@ -33,7 +33,7 @@ Ex: Play Games, Watch Movies, Internet Browsing, Store data, Online Classes...
 
 => Linux is CLI based OS (Command Line Interface)
 
-> Note: In real-time we will use Linux machines to setup our infrastructure such as server etc.
+> Note: In real-time we will use Linux machines to setup our infrastructure such as server like jenkins server ,nexus server ,k8 server etc.
 
 ### History
 
@@ -75,6 +75,7 @@ Connection with MobaXterm : https://youtu.be/uI2iDk8iTps?si=ZuZs0lQTxoRpbRMk
 
 Connection with putty : https://youtu.be/GXc_bxmP0AA?si=HgSydrP89mPxv23s
 
+---
 ### Linux File System
 
 
@@ -87,6 +88,8 @@ Connection with putty : https://youtu.be/GXc_bxmP0AA?si=HgSydrP89mPxv23s
 2) Directory file (Folder) (starts with d)
 
 3) Link File (starts with l)
+
+---
 
 ### Linux commands
 
@@ -104,21 +107,26 @@ ls : list content
 
 - $ ls -la (display hidden files)
 
+---
 
 mkdir : To create directory (folder)
 
+---
 rmdir : To delete empty directory
 
+---
 cd : change directory
 
 - cd <dir-name> : To go inside directory
 
 - cd .. : come out from directory
 
+---
 touch : To create empty files
 
 - $ touch f1.txt f2.txt f3.txt		
 
+---
 rm : To delete file & directories
 
 - $ rm <file-name>
@@ -129,11 +137,15 @@ rm : To delete file & directories
 
 - $ rm -rf <dir-name>
 
+---
+
 mv : To rename & to move
 
 - $ mv  <present-name> <new-name>
 
 - $ mv  <present-location>  <new-location>
+
+----
 
 cat : To create file with data + append data to existing file + view file data
 
@@ -144,3 +156,76 @@ cat : To create file with data + append data to existing file + view file data
 - $ cat f1.txt
 
 - $ cat -n f1.txt
+
+-----
+
+
+cp : To copy one file data into another file
+
+- $ cp f1.txt f2.txt
+
+--- 
+ > Note: To copy more than one file data into another file we will use cat command
+
+- $ cat f1.txt f2.txt > f3.txt
+
+---
+tac : To print file content from bottom to top
+
+- $ tac f1.txt
+
+---
+
+rev : To reverse each line of data
+
+- $ rev f1.txt
+
+---
+
+head : To display file data from top (default 10 lines)
+
+-  $ head f1.txt
+
+- $ head -n 5 f1.txt   (print first 5 lines only)
+
+- $ head -n 25 f1.txt (print first 25 lines only)
+
+---
+
+tail : To display file data from bottom (default 10 lines)
+
+- $ tail f1.txt
+
+-  $ tail -n 20 f1.txt  (print last 20 lines of file)
+
+- $ tail -n 100 f1.txt (print last 100 lines of file)
+
+-  $ tail -f f1.txt (to get live data)
+
+---
+
+grep : grep stands for global regular expression print
+
+- $ grep 'aws' f1.txt   (print lines having aws keyword)
+
+- $ grep -i 'AWS' f1.txt (ignore case sensitive)
+
+- $ grep -n 'aws' f1.txt (print lines having aws with line number)
+
+- $ grep -v 'aws' f1.txt (pring lines which doesn't have aws keyword)
+
+- $ grep 'java' * (search for java keyword in all the files of pwd)
+
+---
+
+wc : word count command
+
+-  $ wc f1.txt  (no.of lines, no.of words, no.of chars)
+
+---
+
+diff : To see difference between 2 files
+
+- $ diff f1.txt f2.txt    
+
+---

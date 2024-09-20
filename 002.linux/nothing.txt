@@ -1,67 +1,8 @@
 
 
 
-================================================
 
-
-cp : To copy one file data into another file
-
-    $ cp f1.txt f2.txt
-
-
-Note: To copy more than one file data into another file we will use cat command
-
-    $ cat f1.txt f2.txt > f3.txt
-
-
-tac : To print file content from bottom to top
-
-    $ tac f1.txt
-
-rev : To reverse each line of data
-
-    $ rev f1.txt
-
-
-head : To display file data from top (default 10 lines)
-
-      $ head f1.txt
-
-      $ head -n 5 f1.txt   (print first 5 lines only)
-
-      $ head -n 25 f1.txt (print first 25 lines only)
-
-
-tail : To display file data from bottom (default 10 lines)
-
-      $ tail f1.txt
-
-      $ tail -n 20 f1.txt  (print last 20 lines of file)
-
-      $ tail -n 100 f1.txt (print last 100 lines of file)
-
-      $ tail -f f1.txt (to get live data)
-
-grep : grep stands for global regular expression print
-
-      $ grep 'aws' f1.txt   (print lines having aws keyword)
-
-      $ grep -i 'AWS' f1.txt (ignore case sensitive)
-
-      $ grep -n 'aws' f1.txt (print lines having aws with line number)
-
-      $ grep -v 'aws' f1.txt (pring lines which doesn't have aws keyword)
-
-      $ grep 'java' * (search for java keyword in all the files of pwd)
-
-
-wc : word count command
-
-      $ wc f1.txt  (no.of lines, no.of words, no.of chars)
-
-diff : To see difference between 2 files
-
-      $ diff f1.txt f2.txt      
+  
 
 
 
