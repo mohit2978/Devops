@@ -60,3 +60,87 @@ Ex: Play Games, Watch Movies, Internet Browsing, Store data, Online Classes...
 > Note: We have 200+ linux distributions
 
 till now we have seen how to connect to a linux machine using aws!!
+
+### Linux Machine Setup
+
+
+1) Login into AWS cloud account
+
+2) Create Linux Virtual Machine using AWS Ec2 service
+
+3) Connect with Linux VM using MobaXterm / Putty
+
+
+Connection with MobaXterm : https://youtu.be/uI2iDk8iTps?si=ZuZs0lQTxoRpbRMk
+
+Connection with putty : https://youtu.be/GXc_bxmP0AA?si=HgSydrP89mPxv23s
+
+### Linux File System
+
+
+=> Everything is represented as a file
+
+=> 3 types of files
+
+1) Ordinary file / Normal file (starts with -)
+
+2) Directory file (Folder) (starts with d)
+
+3) Link File (starts with l)
+
+### Linux commands
+
+ls : list content
+
+- $ ls    (display files in present working directory)
+
+- $ ls -l (display files in alphabetical order)
+        
+- $ ls -lr (display files in reverse of alphabetical order)
+
+- $ ls -lt (display latest files on top)
+
+- $ ls -ltr (display old files on top)
+
+- $ ls -la (display hidden files)
+
+
+mkdir : To create directory (folder)
+
+rmdir : To delete empty directory
+
+cd : change directory
+
+- cd <dir-name> : To go inside directory
+
+- cd .. : come out from directory
+
+touch : To create empty files
+
+- $ touch f1.txt f2.txt f3.txt		
+
+rm : To delete file & directories
+
+- $ rm <file-name>
+
+- $ rm *.txt
+
+- $ rm a*.txt
+
+- $ rm -rf <dir-name>
+
+mv : To rename & to move
+
+- $ mv  <present-name> <new-name>
+
+- $ mv  <present-location>  <new-location>
+
+cat : To create file with data + append data to existing file + view file data
+
+- $ cat > f1.txt 
+
+- $ cat >> f1.txt
+
+- $ cat f1.txt
+
+- $ cat -n f1.txt
