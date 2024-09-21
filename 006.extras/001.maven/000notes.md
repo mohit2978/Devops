@@ -166,28 +166,29 @@ Step-3: Verify maven version
 => Maven Repositories
 
 ----------
-=> Archetype represents type of the project
+=> __Archetype__ represents type of the project
 
-- quick-start : stand-alone app 
-- web-app : web application
+- Different archtype has different project structure
+	- quick-start : stand-alone app 
+	- web-app : web application
 
-=> groupId represents company name
+=> __groupId__ represents company name
 
 - Ex: com.tcs, com.ibm, in.ashokit etc..
 
-=> ArtifactId represents project name
+=> __ArtifactId__ represents project name
 
 - Ex : sbi-netbannking-app, axis-loans-app, flipkart-app	
 
-=> Version represents project version number
+=> __Version__ represents project version number
 
 - Ex: 0.0.1-SNAPSHOT, 1.0-RELEASE	
 
-	SNAPSHOT => Under development
+- SNAPSHOT => Under development
 
-	RELEASE => delivered to client
+- RELEASE => delivered to client
 
-=> Packaging type represents packaging format
+=> __Packaging__ type represents packaging format
 
 - Ex: jar, war
 
