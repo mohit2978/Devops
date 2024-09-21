@@ -203,4 +203,33 @@ Step-3: Verify maven version
 
 - Ex : Central Repo, Remote Repo, Local Repo...
 
+### Creating Maven Stand-alone application
+
+
+=> Execute below command to create maven stand-alone application
+
+```bash
+$ mvn archetype:generate -DgroupId=in.ashokit -DartifactId=sbi-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+```
+
+=> Check project directory structure using tree command
+
+	$ sudo yum install tree
+
+this command tells dir structure in tree structure
+
+	$ tree sbi-app
+
+=> Inside the project we can see 'src' folder and pom.xml file
+
+- src : It is used to store project source code (.java files)
+
+- main => java (business logics)
+
+- test => java (unit test logics)
+
+- pom.xml : Project Object Model (Maven configuration file)	
+
+
+> Note: Once project created, we can use maven goals to perform build process.
 
