@@ -32,7 +32,7 @@
 
     -  web-app will be packaged as war file (web archieve)
 
-4) If project is packaged as jar then we can execute jar file directley
+4) If project is packaged as jar then we can execute jar file directly
 
 5) If project is packaged as war then we need to deploy war file in server
 	 (Ex: tomcat)
@@ -67,6 +67,7 @@ as devops engineer , you must know various language execuetion flow!!
 => Using build tools, we can automate project build process.
 ### Maven is a build tool for java applications 
 
+ earlier this process was done manually, to avoid this manul process,build tools came !! using build tools like maven we automate the build process!!
 
 ### What is Maven ?
 
@@ -78,24 +79,61 @@ as devops engineer , you must know various language execuetion flow!!
 
 => Maven is used as java projects build tool
 
-=> It is used to automate java projects build process.
+=> It is used to automate java projects build process.(above mentioned build process is automated)
 
 #### What maven can do
 
-
-1) Create project folder structure
+1) Create project folder structure (stnadalone has different structure and web app has different structure)
 
 2) Download required dependencies/libraries
 
-3) Add libraries to build path
+3) Add libraries to build path (junit, spring all added by maven)
 
 4) Compile project source code
 
 5) Execute unit test cases
 
 6) Package project as jar/war
+---
+
+### Maven Setup in Windows
+
+@@@ Reference Video : https://www.youtube.com/watch?v=hV1OWzYpzxo
+
+1) Download and Install Java
+
+2) Set JAVA_HOME and Java Path
+
+- JAVA_HOME is set up by path where all folders are present 
+ ![alt text](image.png)
+
+- put here
+![alt text](image-1.png)
+
+- this adds to the system variable
+![alt text](image-2.png)
+
+- Java Path is path of bin folder
+![alt text](image-3.png)
+
+- in path click on edit
+![alt text](image-4.png)
+
+3) Verify Java Installation by chekcing java version by 
+java -version
+
+4) Download Maven Software
+
+5) Set MAVEN_HOME and Maven Path (same as of java above we have done)
+
+6) Verify Maven Setup by mvn -v
+
+![alt text](image-5.png)
+
+---
 
 ### Maven Setup in Linux
+(quite simple)
 
 Step-1: Create Amazon linux vm and connect with that using ssh client
 
@@ -108,7 +146,7 @@ Step-3: Verify maven version
 	$ mvn -version
 
 >Note: To use maven java is required. When we install maven using package manager then it will install java also.
-
+---
 ### Maven Terminology
 
 => Archetype
@@ -127,7 +165,7 @@ Step-3: Verify maven version
 
 => Maven Repositories
 
-
+----------
 => Archetype represents type of the project
 
 - quick-start : stand-alone app 
