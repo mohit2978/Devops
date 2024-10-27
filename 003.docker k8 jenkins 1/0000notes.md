@@ -84,68 +84,78 @@ Note: When we run docker image then Docker container will be created. Docker con
 
 just have docker software pull image have that image ,run container no need to install all dependency !!
 
-## Installation
+## Installation on Ec2 instance (linux)
 
 Step-1 : Create EC2 VM (amazon linux) & connect with that vm using ssh client
 
 Step-2 : Execute below commands
 
-### Install Docker
-sudo yum update -y
+-  Install Docker
 
-sudo yum install docker -y
+		sudo yum update -y
 
-sudo service docker start
+		sudo yum install docker -y
 
-### Add ec2-user user to docker group
-sudo usermod -aG docker ec2-user
+		sudo service docker start
 
-### Exit from terminal and Connect again
-exit
+- Add ec2-user user to docker group
 
-#### Verify Docker installation
-docker -v
+		sudo usermod -aG docker ec2-user
 
+- Exit from terminal and Connect again
+		
+		exit
+
+-  Verify Docker installation
+
+		docker -v
+
+![alt text](image-4.png)
 ## Commands
 
-docker images : To display docker images available in our system
+- docker images : To display docker images available in our system
 
-docker ps : To display running docker containers
+- docker ps : To display running docker containers
 
-docker logs \<container-id\> : To display container logs
+- docker logs \<container-id\> : To display container logs
 
-docker ps -a : To display running + stopped containers
+- docker ps -a : To display running + stopped containers
 
-docker pull <image-id/name> : To download docker image from docker hub
+- docker pull <image-id/name> : To download docker image from docker hub
 
-docker rmi <image-id/name> : To delete docker image
+- docker rmi <image-id/name> : To delete docker image, to delete to image delete container first and then
+delete image or can force delete!
 
-docker run <image-id/name> : To create/run docker container
+- docker run <image-id/name> : To create/run docker container
 
-docker stop \<container-id\> : To stop running docker container
+- docker stop \<container-id\> : To stop running docker container
 
-docker start \<container-id\> : To start docker container which is in stopped state
+- docker start \<container-id\> : To start docker container which is in stopped state
 
-docker rm \<container-id\> : To delete docker container
+- docker rm \<container-id\> : To delete docker container
 
 > delete stopped containers + unused images + build cache
 
     docker system prune -a
 
 ## Running real world application using docker image
-docker pull ashokit/spring-boot-rest-api
+![alt text](image-8.png)
 
-docker run -d ashokit/spring-boot-rest-api
+Here we see multiple containers on a machine!!
 
-docker run -d -p 9090:9090 ashokit/spring-boot-rest-api
+- docker pull ashokit/spring-boot-rest-api
+
+- docker run -d ashokit/spring-boot-rest-api
+
+- docker run -d -p 9090:9090 ashokit/spring-boot-rest-api
 
 URL : http://public-ip:host-port/welcome/{name}
 
-docker pull ashokit/python-flask-app
+- docker pull ashokit/python-flask-app
 
-docker run -d ashokit/python-flask-app
+- docker run -d ashokit/python-flask-app
 
-docker run -d -p 5000:5000 ashokit/python-flask-app
+- docker run -d -p 5000:5000 ashokit/python-flask-app
 
 >Note: Here -d represents detached mode.
 
@@ -160,6 +170,13 @@ docker run -d -p 5000:5000 ashokit/python-flask-app
 	URL : http://host-vm-public-ip:host-port/
 
 > Note: Host port number we need to enable in ec2-vm security group inbound rules to allow the traffic.
+![alt text](image-7.png)
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+you see even python and java is not available machine you still able to run the application!!Java ,python is installed on M created by docker!!
 
 ## DockerFile
 
@@ -179,3 +196,6 @@ Filename : Dockerfile
 	8) EXPOSE
 	9) ENTRYPOINT
 	10) USER
+
+> Create account in dockerHUb!!and run online where you can see a lot of images !!
+it's like play store !!
