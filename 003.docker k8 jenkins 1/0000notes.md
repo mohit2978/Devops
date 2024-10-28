@@ -186,16 +186,16 @@ Filename : Dockerfile
 
 => To write dockerfile we will use below keywords
 
-	1) FROM
-	2) MAINTAINER
-	3) RUN
-	4) CMD
-	5) COPY
-	6) ADD
-	7) WORKDIR
-	8) EXPOSE
-	9) ENTRYPOINT
-	10) USER
+1) FROM
+2) MAINTAINER
+3) RUN
+4) CMD
+5) COPY
+6) ADD
+7) WORKDIR
+8) EXPOSE
+9) ENTRYPOINT
+10) USER
 
 > Create account in dockerHUb!!and run online where you can see a lot of images !!
 it's like play store !!
