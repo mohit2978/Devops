@@ -28,9 +28,13 @@ Filename : Dockerfile
 Ex: 
 
 FROM openjdk:17
+
 FROM python:3.3
+
 FROM node:19.5
+
 FROM mysql:8.5
+
 FROM tomcat:9.0
 
 ---
@@ -53,10 +57,11 @@ MAINTAINER Ashok<ashok.b@oracle.com>
 
 Ex:
 
-RUN 'git clone <url>'
+RUN 'git clone \<url\>'
+
 RUN 'mvn clean package'
 
-Note: We can write multiple RUN instructions in single docker file and all those instructions will be processed in the order.
+>Note: We can write multiple RUN instructions in single docker file and all those instructions will be processed in the order.
 
 ---
 
@@ -150,3 +155,36 @@ EXPOSE 8080
 >Note: It is only to provide inforation. We can't change container port using EXPOSE.
 
 ---
+
+### Example Docker File
+
+FROM ubuntu
+
+MAINTAINER Ashok <ashok.b@oracle.com>
+
+RUN echo 'hello from run instruction-1'
+RUN echo 'hello from run instruction-2'
+
+CMD echo 'hi from cmd-1'
+CMD echo 'hi from cmd-2'
+
+
+
+- create docker image using dockerfile
+$ docker build -t img-1 .
+
+- Run docker image to create docker container
+$ docker run img-1
+
+
+## How to create Docker image
+
+Default name of dockerfile:DockerFile
+
+Syntax-1 : docker build -t \<image-name\> .
+
+. means current directory in which dockerfile is present -t means tag name
+
+Syntax-2 : docker build -t \<image-name\> -f \<docker-file-name> .
+
+syntax-2 is for if you have renamed your dockerFile to some other name!!-f means filename!!

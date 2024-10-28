@@ -157,7 +157,13 @@ URL : http://public-ip:host-port/welcome/{name}
 
 - docker run -d -p 5000:5000 ashokit/python-flask-app
 
->Note: Here -d represents detached mode.
+>Note: Here -d represents detached mode. so that we can run other commands to see logs of the container use docker logs command!!
+
+![alt text](image-9.png)
+ 
+ see we running application on docker container ,how how to access that !! to access that we need to map it to host machine port (on which docker container is running)and host machine we know is our ec2 instance whose ip we know here through which we can access the docker container!! so that why port mapping is used!! 4 digit port number we are going to use!! On Aws inbound rules security group open that port which you have mapped of host machine!!
+
+> Note: 2 container can have same port number as different VM but host machine port number should be unique!!
 
 >Note: Here -p represents port mapping. (host-port:container-port)
 
@@ -176,7 +182,9 @@ URL : http://public-ip:host-port/welcome/{name}
 
 ![alt text](image-6.png)
 
-you see even python and java is not available machine you still able to run the application!!Java ,python is installed on M created by docker!!
+> you see above we access by public-ip:port of the ec2 instance!!
+
+you see even python and java is not available machine you still able to run the application!!Java ,python is installed on VM created by docker!!
 
 ## DockerFile
 
