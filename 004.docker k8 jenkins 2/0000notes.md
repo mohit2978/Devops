@@ -207,11 +207,13 @@ CMD echo 'hi from cmd-1'
 CMD echo 'hi from cmd-2'
 
 
-
+----
 - create docker image using dockerfile
-$ docker build -t img-1 .
+
+    $ docker build -t img-1 .
 
 - Run docker image to create docker container
-$ docker run img-1
+
+    $ docker run img-1
 
 
