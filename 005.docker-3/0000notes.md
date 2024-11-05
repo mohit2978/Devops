@@ -99,6 +99,7 @@ Note: war file will be created inside target directory
 ![alt text](image-2.png)
 
 DockerFile
+
 ```text
 FROM tomcat:latest
 
@@ -107,7 +108,7 @@ MAINTAINER Ashok
 EXPOSE 8080
 
 COPY target/app.war /usr/local/tomcat/webapps/
-```
+``` 
 FROM tells the dependency !! from tomcat java will come automatically that can run that tomcat version!!
 
 > To get tomcat images with tags you can search on dockerHUb
@@ -117,9 +118,16 @@ from host machine to docker image!!
 
 > EXPOSE to tell tomcat uses port 8080
 
+> Here MAINTAINER and EXPOSE are optional
+
+>No need to specify ubuntu here as by default every container is linux machine only!!
+
+
 Java Web App Git Repo : https://github.com/ashokitschool/maven-web-app.git
 
 $ sudo yum install git 
+
+>After installing git install maven! maven installed then java is installed with it!!
 
 $ sudo yum install maven 
 
@@ -127,19 +135,42 @@ $ git clone https://github.com/ashokitschool/maven-web-app.git
 
 $ cd maven-web-app
 
+> now generate target
+
 $ mvn clean package
 
 $ ls -l target
 
-$ docker build -t <img-name> .
+> Write dockerFile we have discussed above in project directory only we create dockerFile
+
+> copying war from target to webapps is called deployment 4th line of dockerFile
+
+$ vi DockerFile  
+
+> build image
+
+$ docker build -t \<img-name\> .
 
 $ docker images
 
-$ docker run -d -p <host-port:container-port> <img-name>
+> To create container
+
+$ docker run -d -p \<host-port:container-port\> \<img-name\>
+
+$ docker run -d -p 9090:8080 \<img-name\>
+
+> tomcat running on port 8080 in container but on ec2 machine it is mapped to port 9090 ,just to see difference i have put this!! enable port 9090 in inbound rules in security group of ec2!!
 
 => Enable host port number in security group inbound rules and access our application
 
 		URL : http://public-ip:host-port/war-file-name/
+
+> This not used for springboot application!! just for normal java application!
+
+
+>Too see logs use docker logs command
+
+- docker logs \<container-id\> : To display container logs
 
 ---
 
@@ -231,7 +262,7 @@ $ git clone https://github.com/ashokitschool/python-flask-docker-app.git
 
 $ cd python-flask-docker-app
 
-$ docker build -t <img-name> .
+$ docker build -t \<img-name\> .
 
 $ docker run -d -p 5000:5000 <img-name>
 
@@ -276,3 +307,7 @@ Task-1: Run jenkins server using docker
 Task-2: setup mysql db using docker
 
 Task-3: Write docker file to execute reactjs app
+
+## Mostly used command
+
+docker system prune -a --> delete stopped containers + unused images + build cache
