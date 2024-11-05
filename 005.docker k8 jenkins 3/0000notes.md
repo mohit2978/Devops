@@ -43,7 +43,7 @@ while creating image you see RUN instruction being executed .
 
 now we create docker container by docker run!!
 
-docker run \<image-name\> or \<image id\>
+- docker run \<image-name\> or \<image id\>
 
 ![alt text](image-1.png)
 
@@ -75,7 +75,7 @@ Ex2 : docker tag img-1 ashokit/img-1:v1
 
 v1, latest tell versions 
 
->Note: tag name must have your user name
+>Note: tag name must have your user name , if not tell username then docker hub deny push!
 
 now when you do docker images you see your image with tag
 
@@ -96,6 +96,8 @@ Note: war file will be created inside target directory
 
 => Inside tomcat server webapps directory we need to place our war file to run the application.
 
+![alt text](image-2.png)
+
 DockerFile
 ```text
 FROM tomcat:latest
@@ -106,7 +108,14 @@ EXPOSE 8080
 
 COPY target/app.war /usr/local/tomcat/webapps/
 ```
+FROM tells the dependency !! from tomcat java will come automatically that can run that tomcat version!!
 
+> To get tomcat images with tags you can search on dockerHUb
+
+> From last copy instruction we copied war we put in target folder in below instruction to tomcat/webapps,
+from host machine to docker image!!
+
+> EXPOSE to tell tomcat uses port 8080
 
 Java Web App Git Repo : https://github.com/ashokitschool/maven-web-app.git
 
