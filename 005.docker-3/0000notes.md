@@ -177,18 +177,19 @@ $ docker run -d -p 9090:8080 \<img-name\>
 ### Dockerizing Java Spring Boot Application
 
 
-=> Every SpringBoot application will be packaged as jar file only
+=> Every SpringBoot application will be packaged as jar file only whether standalone or web application!! No war file concept in springboot!!
 
 => To run spring boot application we need to execute jar file.
 
 	Syntax : java -jar <jar-file-name>
 
->Note: When we run springboot application jar file then springboot will start tomcat server with 8080 port number (embedded tomcat server).
+>Note: When we run springboot application jar file then springboot will start tomcat server with 8080 port number (embedded tomcat server) so no need to install tomcat .
 
 Dockerfile for Spring Boot Application 
 ```text
-FROM openjdk:17
 
+FROM openjdk:17
+ 
 MAINTAINER Ashok
 
 COPY target/app.jar /usr/app/
@@ -199,6 +200,10 @@ EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
+the above dockerfile is quite understandable!!
+
+>jar needs to be pasted in /usr/app and to execute  first go to /usr/app by WORKDIR
+then to execute jar you can use CMD or ENTRYPOINT (both used to run command when container is created)
 
 Java Spring Boot App Git Repo : https://github.com/ashokitschool/spring-boot-docker-app.git
 
@@ -206,19 +211,29 @@ $ git clone https://github.com/ashokitschool/spring-boot-docker-app.git
 
 $ cd spring-boot-docker-app
 
+![alt text](image-3.png)
+
+> here you see src ,pom.xml and DockerFile but no target so we need to create that by using below command
+
 $ mvn clean package
 
 $ ls -l target
 
+> Now you will be able to see jar file in target
+
 $ docker build -t sb-app .
 
-$ docker run -d -p 8080:8080 sb-app
+$ docker run -d -p 9080:8080 sb-app
 
-Note: Once container created check logs of container
 
-$ docker logs <container-id>
+> on ec2 port 9080 it will run so in inbound rules open 9080 port !! in container running on port 8080
 
-Note: Access our application using host-vm public and host port
+
+>Note: Once container created check logs of container
+
+$ docker logs \<container-id\>
+
+> Note: Access our application using host-vm public and host port for us host port no is 9080
 
 		URL : http://localhost:host-port/
 
@@ -256,6 +271,14 @@ EXPOSE 5000
 
 ENTRYPOINT ["python", "app.py"]
 ```
+
+requirements.txt
+```text
+flask
+```
+
+![alt text](image-4.png)
+
 Python App Git Repo : https://github.com/ashokitschool/python-flask-docker-app.git
 
 $ git clone https://github.com/ashokitschool/python-flask-docker-app.git
