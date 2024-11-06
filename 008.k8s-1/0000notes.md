@@ -58,6 +58,11 @@ Kubernetes : Orchestration platform
 
 ### K8S Cluster Components
 
+A Kubernetes cluster consists of one or more machines that have Kubernetes installed on them. The machines can be physical servers, virtual machines (VM), cloud instances, your laptop, Raspberry Pis, and more. Installing Kubernetes on these machines and connecting them together creates a Kubernetes cluster. After creating a cluster, you can deploy applications to that cluster.
+
+Machines in a Kubernetes cluster are, normally, referred to as Nodes
+
+ Kubernetes cluster contains two types of Nodes:
 
 1) Control Node (Master Node)
 
@@ -78,6 +83,12 @@ Kubernetes : Orchestration platform
 	- Container
 
 >Control Node is like manager and Worker Node are employees under manager !! To give task to Control plane we use Kubectl Command line interface or can use User Interface !! we assign task to Control plane and it assign task to worker node!!
+
+![alt text](image-2.png)
+
+Masters host the control plane. That is a fancy way of referring to the brains of the cluster.
+
+With this in mind, it is good practice to have more than one Master in order to maintain high availability (HA). This way, if one of them fails, the cluster can remain operational. It is common to have 3 or 5 Masters in a production cluster and to spread them across failure domains. It is not wise to stick them all in the same room, under the same leaky air conditioning unit, functioning on the same glitchy electricity supply.
 
 ## How K8s works??
 
@@ -140,6 +151,9 @@ Kubernetes : Orchestration platform
 
 => PODs can be increased or decreased automatically based on the load (Scalability).
 
+=> One POD can communicate with other POD as they have IPs!!
+
+
 ---
 
 ### K8S Cluster Setup
@@ -150,9 +164,39 @@ Kubernetes : Orchestration platform
 
 3) Provider Managed Cluster => Ready Made Cluster => Provider will take care of everything
 
-	Ex : AWS EKS, Azure AKS, GCP GKE etc...
+	Most of the cloud providers have hosted Kubernetes Services. Some of the more popular ones include:
 
->Note: Provider Managed Clusters are billable.
+	- AWS: Elastic Kubernetes Service (EKS)
+
+	- Azure: Azure Kubernetes Service (AKS)
+
+	- DO: Digital Ocean Kubernetes Service (DOKS)
+
+	- GCP: Google Kubernetes Engine (GKE)
+
+	- Linode: Linode Kubernetes Engine (LKE)
+
+	>Note: Provider Managed Clusters are billable.
+
+	Hosted Kubernetes is where your cloud provider rents you a Kubernetes cluster. Sometimes, it is called Kubernetes as a Service.
+
+	In the hosted model, the cloud provider builds the Kubernetes cluster, owns the control plane, and is responsible for all of the following:
+
+	- Control plane performance
+
+	- Control plane availability
+
+	- Control plane updates
+
+	You, the user, are responsible for:
+
+	- Worker Nodes
+
+	- User applications
+
+	- Paying the bill
+
+	![alt text](image-3.png)
 
 >Most of companies use Provider Managed cluster only!! Companies not use self managed cluster if any issue came with it ,company has to handle it ,in provider managed cluster provider is responsible!!
 
@@ -162,84 +206,7 @@ Kubernetes : Orchestration platform
 
 ---
 
-### EKS Setup : https://github.com/ashokitschool/DevOps-Documents/blob/main/05-EKS-Setup.md
 
-just see below just pasted here everything!
-
-
--  Step - 1 : Create EKS Management Host in AWS #
-
-1) Launch new Ubuntu VM using AWS Ec2 ( t2.micro )	  
-2) Connect to machine and install kubectl using below commands  
-```
-curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin
-kubectl version --short --client
-```
-3) Install AWS CLI latest version using below commands 
-```
-sudo apt install unzip
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-aws --version
-```
-
-4) Install eksctl using below commands
-```
-curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-sudo mv /tmp/eksctl /usr/local/bin
-eksctl version
-```
--  Step - 2 : Create IAM role & attach to EKS Management Host #
-
-1) Create New Role using IAM service ( Select Usecase - ec2 ) 	
-2) Add below permissions for the role <br/>
-	- IAM - fullaccess <br/>
-	- VPC - fullaccess <br/>
-	- EC2 - fullaccess  <br/>
-	- CloudFomration - fullaccess  <br/>
-	- Administrator - acces <br/>
-		
-3) Enter Role Name (eksroleec2) 
-4) Attach created role to EKS Management Host (Select EC2 => Click on Security => Modify IAM Role => attach IAM role we have created) 
-
-- Step - 3 : Create EKS Cluster using eksctl # 
-**Syntax:** 
-
-eksctl create cluster --name cluster-name  \
---region region-name \
---node-type instance-type \
---nodes-min 2 \
---nodes-max 2 \ 
---zones <AZ-1>,<AZ-2>
-
-## N. Virgina: <br/>
-`
-eksctl create cluster --name ashokit-cluster4 --region us-east-1 --node-type t2.medium  --zones us-east-1a,us-east-1b
-`	
-## Mumbai: <br/>
-`
-eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium  --zones ap-south-1a,ap-south-1b
-`
-
-> Note: Cluster creation will take 5 to 10 mins of time (we have to wait). After cluster created we can check nodes using below command.
-
-`
- kubectl get nodes  
-`
-
-> Note: We should be able to see EKS cluster nodes here.**
-
- We are done with our Setup 
-	
-- Step - 4 : After your practice, delete Cluster and other resources we have used in AWS Cloud to avoid billing ##
-
-```
-eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
-```
----
 
 
 ## How EKS works
