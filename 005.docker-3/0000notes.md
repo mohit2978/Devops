@@ -253,7 +253,11 @@ $ docker logs \<container-id\>
 
 => To download flask library we will use 'python pip software'
 
-Note: We will configure dependencies in "requirements.txt"
+>Note: We will configure dependencies in "requirements.txt" like we have pom.xml in java in pom.xml
+we tell we need springboot likewise we tell flask is needed in requirements.txt
+
+> maven can build as well as download dependencies but as python is scripting language we no 
+need to build so pip just download dependencies!!
 
 Dockerfile for Python Flask App 
 ```text
@@ -276,6 +280,9 @@ requirements.txt
 ```text
 flask
 ```
+COPY . /usr/app/ Copy current directory entirely to /usr/app
+
+RUN pip install -r requirements.txt -r tells recursive
 
 ![alt text](image-4.png)
 
@@ -287,11 +294,13 @@ $ cd python-flask-docker-app
 
 $ docker build -t \<img-name\> .
 
+>Note : we can give any image-name in build command 
+
 $ docker run -d -p 5000:5000 <img-name>
 
 $ docker ps
 
-Note: Enable 5000 port in security group inbound rules.
+>Note: Enable 5000 port in security group inbound rules.
 
 => Access application with URL
 
@@ -320,7 +329,10 @@ Yes, using below commands
         
         $ exit
 
+![alt text](image-5.png)
 
+> Note : here we are using t2.micro so we need to delete previous image and containers 
+so that we can run!!In real time we use large systems!!
 ---
 
 ### Tasks
@@ -329,8 +341,20 @@ Task-1: Run jenkins server using docker
 
 Task-2: setup mysql db using docker
 
-Task-3: Write docker file to execute reactjs app
+Task-3: Write docker file to execute react js app
 
 ## Mostly used command
 
 docker system prune -a --> delete stopped containers + unused images + build cache
+
+Now not that much imp
+
+--> Docker network
+
+--> Docker Volumes
+
+--> Docker compose
+
+--> Docker swarm
+
+In realtime we use orchestration tools like k8s!!although we will see them in next classes!! In real time we never create containers manually we use k8s!!
