@@ -1,5 +1,17 @@
 # Kubernetes Lecture 2
 
+we need kubectl ,AWS CLI , EKS CLI all in one ec2 instance 
+
+- kubectl - to run k8s command
+
+- AWS CLI - to communicate with AWS using CLI
+
+- EKS CLI - to create cluster in AWS
+
+then we need AWS Role
+
+>Note: Once cluster is created it can not be stopped it will be terminated only!! and it will generate bill!!
+
 ### EKS Setup : https://github.com/ashokitschool/DevOps-Documents/blob/main/05-EKS-Setup.md
 
 just see below just pasted here everything!
@@ -77,3 +89,4 @@ eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2
 ```
 eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
 ```
+

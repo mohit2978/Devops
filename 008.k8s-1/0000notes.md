@@ -90,6 +90,10 @@ Masters host the control plane. That is a fancy way of referring to the brains o
 
 With this in mind, it is good practice to have more than one Master in order to maintain high availability (HA). This way, if one of them fails, the cluster can remain operational. It is common to have 3 or 5 Masters in a production cluster and to spread them across failure domains. It is not wise to stick them all in the same room, under the same leaky air conditioning unit, functioning on the same glitchy electricity supply.
 
+![alt text](image-5.png)
+
+![alt text](image-4.png)
+
 ## How K8s works??
 
 => To deploy our application using k8s we need to communicate with control node or control plane.
