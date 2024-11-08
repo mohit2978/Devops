@@ -149,11 +149,12 @@ you can see on ec2 the two worker nodes,these worker nodes are created in ASG so
 
  We are done with our Setup 
 	
-- Step - 4 : After your practice, delete Cluster and other resources we have used in AWS Cloud to avoid billing ##
+- Step - 4 : After your practice, delete Cluster and other resources we have used in AWS Cloud to avoid billing
 
 	```text
 	eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
 	```
+> here we are giving cluster name and then region name, even deletion is time taking process
 
 we using t2.medium 4GB ram in real time we use atleast 8GB RAM!!
 
@@ -168,4 +169,92 @@ kubectl get pod
 
 ![alt text](image-6.png)
 
-as newly created so cannot get pods!!
+as newly created so cannot get pods!! Here we get only one control plane in provider managed cluster!!
+
+## Kubernetes Resources
+
+1) PODS
+2) Services (Cluster IP, Node Port, Load Balancer)
+3) Namespaces
+4) ReplicationController (RS)
+5) ReplicaSet
+6) Deployment
+7) DeamonSet
+8) StatefulSet
+9) IngressController
+10) HPA (Horizontal POD autosacling)
+11) HelmCharts
+12) K8S Monitoring (Grafana & Promethues)
+13) EFK stack setup to monitor app logs
+
+PODS are created inside worker node ,but you cannot access PODS directly , you can access PODS by services (2nd point)
+
+Namespaces are packages ,used to group PODS logically!!
+
+RS is used to created PODS!! either create directlty or use RS!! advanced version of this is ReplicaSet!!
+
+## K8S Services
+
+customer cannot Access POD Directly , to expose POD to customer we use services
+
+=> Service is used to expose PODS.
+
+=> We have 3 types of services in k8s
+
+1) Cluster IP
+2) Node Port
+3) Load Balancer
+
+### What is Cluster IP ?
+
+![alt text](image-7.png)
+
+=> POD is a short lived object (can be deleted ,crashed).
+
+=> When pod is crashed/damaged k8s will replace that with new pod
+
+=> When POD is re-created IP will be changed.
+
+>Note: It is not recommended to access pods using POD IP.
+
+=> Cluster IP service is used to link all PODS to single ip.
+
+=> Cluster IP is a static ip to access pods 
+
+=> Using Cluster IP we can access pods only with in the cluster
+
+> Even worker node is damaged cluster IP is not chnaged ,using cluster ip ,we link all PODS indside a cluster!! Cluster IP work inside cluster only!! so it is an internal service!!
+
+Suppose we have  DB pods ,we do not want customer to access DB PODS so for that case we use Cluster IP !! for application PODS which we want to expose to customer we do not use Cluster IP as cluster IP can be used within Cluster
+
+### What is NodePort service ?
+
+
+=> NodePort service is used to expose our pods outside the cluster .
+
+=> Using NodePort we can access our application with Worker Node Public IP address.
+
+=> When we use Node Public IP to access our pod then all requests will go same worker node 
+  (burden will be increased on the node).
+
+>Note : To distribute load to multiple worker nodes we will use LBR service.
+
+=>Nodeport only works with one node
+### What is Load Balancer Service ?
+=> It is used to expose our pods outside cluster using AWS Load Balancer
+
+=> When we access load balancer url, requests will be distributed to all pods running in all worker nodes.
+
+## K8S Namespaces
+
+=> Namespaces are used to group the resources
+
+- frontend-app-pods ===> frontend-app-ns
+
+- backend-app-pods ===> backend-app-ns
+
+- database-pods ===> database-ns
+
+> in real time we use two clusters one prd and other one is non-prd!!
+
+Prior to each class we create cluster now!!
