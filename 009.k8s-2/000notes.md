@@ -72,25 +72,52 @@ Let's create a ubuntu ec2 instance!!
 4) Attach created role to EKS Management Host (Select EC2 => Actions=>Click on Security => Modify IAM Role => attach IAM role we have created) 
 
 - Step - 3 : Create EKS Cluster using eksctl 
-**Syntax:** 
 
-eksctl create cluster --name cluster-name  \
+**Syntax:** 
+```text
+eksctl 
+create cluster --name cluster-name  \
 --region region-name \
 --node-type instance-type \
 --nodes-min 2 \
 --nodes-max 2 \ 
 --zones <AZ-1>,<AZ-2>
+```
 
-## N. Virgina: <br/>
+1st we tell cluster name then region name then type of ec2 machines (worker nodes) then min and max nodes and then zones
+
+ex: N. Virgina: <br/>
+
 `
 eksctl create cluster --name ashokit-cluster4 --region us-east-1 --node-type t2.medium  --zones us-east-1a,us-east-1b
-`	
-## Mumbai: <br/>
+`
+
+ex: Mumbai: <br/>
+
 `
 eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium  --zones ap-south-1a,ap-south-1b
 `
 
+
+Here we have not given min and max ,so by default it will make 2 worker nodes
+
+we using mumbai region command 
+
+![alt text](image-1.png)
+
+on EKS-console you can see cluster is being created!!
+
 > Note: Cluster creation will take 5 to 10 mins of time (we have to wait). After cluster created we can check nodes using below command.
+
+Internally k8s uses all given services to create cluster
+
+- IAM - fullaccess 
+- VPC - fullaccess 
+- EC2 - fullaccess  
+- CloudFomration 
+- Administrator 
+
+so that's why we have given all these access!
 
 `
  kubectl get nodes  
@@ -102,7 +129,9 @@ eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2
 	
 - Step - 4 : After your practice, delete Cluster and other resources we have used in AWS Cloud to avoid billing ##
 
-```
-eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
-```
+	```text
+	eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
+	```
+
+we using t2.medium 4GB ram in real time we use atleast 8GB RAM!!
 
