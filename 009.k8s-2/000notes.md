@@ -119,11 +119,33 @@ Internally k8s uses all given services to create cluster
 
 so that's why we have given all these access!
 
+![alt text](image-2.png) 
+
+Once cluster in active state chcek if terminal is ready too !! if not that means only control plane is created till now not worker nodes!! once whole terminal is free that means cluster is completed fully!!
+
+once ready it will be shown as this
+
+![alt text](image-3.png)
+
+>A kubeconfig file will be created ,In kubeconfig we have all config and it is very important file!!used to connect to k8s cluster! Cluster kubecconfig file is in host machine on which our 3 softwares are installed!!
+
+If any other machine wants to communicate with the control plane ,it must have kube config file!!
+Like jenkins machine we want to communicate with control plane so that machine must have config file!!
+
 `
  kubectl get nodes  
 `
 
-> Note: We should be able to see EKS cluster nodes here.**
+![alt text](image-4.png)
+
+once worker node ready you can see it by this commands!!
+
+you can see on ec2 the two worker nodes,these worker nodes are created in ASG so there is self healing ,as if one node down other node will be started by ASG!!worker nodes are ec2 only!!
+
+
+![alt text](image-5.png)
+
+> Note: We should be able to see EKS cluster nodes here.
 
  We are done with our Setup 
 	
@@ -135,3 +157,15 @@ so that's why we have given all these access!
 
 we using t2.medium 4GB ram in real time we use atleast 8GB RAM!!
 
+Control plane and 2 t2.medium are chargable things in here!! You do not have any control over control plane !! it will be managed by AWS!!
+
+
+now let's see pod
+
+`
+kubectl get pod
+`
+
+![alt text](image-6.png)
+
+as newly created so cannot get pods!!
