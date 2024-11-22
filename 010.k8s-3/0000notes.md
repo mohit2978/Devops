@@ -225,4 +225,69 @@ we can see our service , kubernetes is not our service other one is , kubernetes
 
 > working!!
 
+you see on Load balancer DNS URL tomcat is running!! 
 
+get details of services running by
+`kubectl get svc`
+
+![alt text](image-12.png)
+
+- to delete all the resources(pods,services all) we have created
+        
+        $ kubectl delete all --all
+
+![alt text](image-13.png)
+
+you see load balancer also delted with service!!
+
+now we need to execute again both yml !! 1st pod and then create service!!
+but we want to be in single yml!!
+
+
+### Example K8S POD & Service Manifest in Single YML	
+
+```yml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: javawebapppod
+ labels:
+  app: javawebapp
+spec:
+ containers:
+ - name: javawebappcontainer
+   image: ashokit/javawebapp
+   ports:
+   - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: javawebappsvc
+spec:
+ type: LoadBalancer
+ selector:
+  app: javawebapp
+ ports:
+  - port: 80
+    targetPort: 8080
+...
+```
+>Note: just combined above 2 yml by 3 hyphens!! see pod label is same as service selector!!
+
+
+
+- execute manifest yml
+        
+        $ kubectl apply -f <manifest-yml>
+
+- Get pods
+        
+        $ kubectl get pods
+
+- Get service 
+    
+        $ kubectl get service
+
+> Load balancer is billable!! worker node is billable!!
