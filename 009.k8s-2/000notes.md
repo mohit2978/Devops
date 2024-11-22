@@ -246,6 +246,7 @@ Suppose we have  DB pods ,we do not want customer to access DB PODS so for that 
 => When we access load balancer url, requests will be distributed to all pods running in all worker nodes.
 
 ## K8S Namespaces
+There can be pods in multiple worker nodes , to identify which pods belong to which pods, so we group them into namespaces!!
 
 => Namespaces are used to group the resources
 
@@ -255,6 +256,14 @@ Suppose we have  DB pods ,we do not want customer to access DB PODS so for that 
 
 - database-pods ===> database-ns
 
+### Usecases
+
+used when we want to stop all pods of frontend
+
+terminate all database pods, delete namespace databse-pods , all database pods be terminated irrespective of which worker node are they in!
+
 > in real time we use two clusters one prd and other one is non-prd!!
+
+so as we do not have namespace when we do `kubectl get pod` we get no pods in default namepace!!
 
 Prior to each class we create cluster now!!
