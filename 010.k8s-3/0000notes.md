@@ -291,3 +291,5 @@ spec:
         $ kubectl get service
 
 > Load balancer is billable!! worker node is billable!!
+
+> here load balacer is classic load balancer
