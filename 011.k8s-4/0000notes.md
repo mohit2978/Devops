@@ -93,10 +93,12 @@ we see for now our port is 30441 so enable that ip--> anywhere!!
 
 we can access by public ip of worker node in which pod is running!!
 
+>Every time you delete nodePort service and create a new service, you get a new random port, we want to get a fixed port number
+
 ### What is Nodeport number ?
  => If we don't specify node-port in service manifest yml then k8s will assign random node port number for the service in the range of 30000 to 32767.
 
->Note: If We don't want random node port number, we can specify that port number in service manifest yml.
+>Note: If We don't want random node port number, we can specify that port number in service manifest yml in range only(30000 to 32767).
 
 ```yml
 ---
@@ -127,9 +129,11 @@ $ kubectl get service
 
   URL To Access Our app : http://node-public-ip:node-port/java-web-app
 
+>Note: In service load balancer you can use url of load balancer and port 80 fixed so no need to remember , here we need to search worker node in which pod is running , enable service port number in inbound rule and then we can access by public-ip of worker node!!  
+
 ## Example K8S ClusterIP Service
 
-=> When we use service type as ClusterIP then one static ip will be created to access our pods with in the cluster.
+=> When we use service type as ClusterIP then one static ip will be created to access our all pods with in the cluster.
 
 ```yml
 ---
@@ -147,6 +151,17 @@ spec:
 ...
 
 ```
+
+All pods mapped to cluster IP!!This is not for outside access ,only for internal access ,we want to deploy database pods ,than database pods must be accessed internally ,not by outside world!!
+
+> To change service type just edit yml file and then apply !! on applying you see pod is unchanged and see service is changed!!
+
+![alt text](image-3.png)
+
+cannot use cluster IP outside !! use case fixed ip for pods!! within cluster we will be able to access pods!!
+
+Used for DB pods deployment!!
+
 ## K8S Namespaces
 
 => Namespaces are used to group k8s resources
@@ -169,9 +184,19 @@ spec:
     
       $ kubectl get ns
 
+  ![alt text](image-4.png)
+
+  You see some namespace already available namespaces , except default there are namespaces used by k8s.
+
 - get the pods available in kube-system namespace
 
-      $ kubectl get pods -n kube-system
+      $ kubectl get pods -n <namespace-name>
+
+    ![alt text](image-6.png)
+
+    ![alt text](image-5.png)
+
+>kubectl get pods --> gives pod in default namespace as we do not mention the namespace
 
 >Note: If we don't give namespace then k8s will check under default namespace.
 
@@ -202,6 +227,11 @@ $ kubectl apply -f \<yml-file>
 - We can delete namespace using below command
 
       $ kubectl delete ns <namespace-name>
+
+### Pod and service under our namespace
+
+Previously pod and service was in default namepsace now we want them to be in our namespace!!
+
 
 ```yml
 ---
@@ -245,12 +275,21 @@ $ kubectl get ns
 
 $ kubectl get pods -n ashokit-ns
 
+![alt text](image-7.png)
+
 $ kubectl get service -n ashokit-ns
+
+![alt text](image-8.png)
 
 $ kubectl get all -n ashokit-ns
 
 $ kubectl delete ns ashokit-ns
 
+![alt text](image-9.png)
+
+>see deleted
+
+> Do not touch rename or anything else the namespaces already present !!
 
 ### Questions
 1) What is Orchestration
