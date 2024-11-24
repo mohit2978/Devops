@@ -25,7 +25,7 @@ eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2
 
 - to execute manifest yml
 
-        $ kubectl apply -f \<yml-file>
+        $ kubectl apply -f <yml-file>
 
 - get all namespace
 
