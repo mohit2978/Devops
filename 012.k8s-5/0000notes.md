@@ -19,6 +19,18 @@ eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2
         
         $ kubectl delete all --all
 
+ - to get everything in any namespace
+
+        $ kubectl get all  -n <namespace-name> 
+
+- to execute manifest yml
+
+        $ kubectl apply -f \<yml-file>
+
+- get all namespace
+
+        $ kubectl get ns   
+
 ---
 => As of now, we have created POD directly using POD Manifest YML.
     
@@ -38,8 +50,28 @@ Note: We need to use k8s resources to create pods.
 
 => We have below resources to create pods
 
-      1) ReplicationController (Outdated)
-      2) ReplicaSet
-      3) Deployment
-      4) DeamonSet
-      5) StatefulSet
+1) ReplicationController (Outdated)
+2) ReplicaSet
+3) Deployment
+4) DeamonSet
+5) StatefulSet
+
+
+
+## ReplicaSet
+
+
+=> It is one of the k8s resource which is used to create & manage pods.
+
+=> ReplicaSet will take care of POD life cycle.
+
+Note: When POD is damaged/crashed/deleted then ReplicaSet will create new POD.
+
+=> Always It will maintain given no.of pods count available for our application.
+
+Ex=> replicas: 2
+
+=> With this approach we can achieve high availability for our application.
+
+=> By using RS, we can scale up and scale down our PODS count.
+
