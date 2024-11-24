@@ -252,7 +252,7 @@ spec:
 ...
 
 ```
-
+>Note:quite understandable yml
 
 $ kubectl delete all --all
 
@@ -269,3 +269,41 @@ $ kubectl scale deployment javawebdeploy --replicas 4
 $ kubectl get pods
 
 $ kubectl scale deployment javawebdeploy --replicas 3
+
+
+
+### Autoscaling
+
+-> It is the process of increasing / decreasing infrastructure resources based on demand.
+
+-> Autoscaling can be done in 2 ways
+
+1) Horizontal Scaling
+
+2) Verticle Scaling
+
+-> Horizontal Scaling means increasing number of instances/servers/pods.
+
+-> Veriticle Scaling means increasing capacity of single system.
+
+    HPA : Horizontal POD Autoscaling
+
+    VPA : Vertical POD Autoscaling (we don't use this)
+
+HPA: It is used to scale up/down no.of pod replicas based on the observed metrics 
+    (CPU or memory utilization)
+
+-> HPA will interact with "Metric Server" to identify CPU/Memory utilization of POD.
+
+-> Metrics server is an application that collect metrics from objects such as pods, nodes according to the state of CPU, RAM and keeps them in time.
+
+- to get node metrics
+        
+        $ kubectl top nodes
+
+- to get pod metrics
+        
+        $ kubectl top pods
+
+>Note: By default metrics server is not available in our k8s cluster
+
