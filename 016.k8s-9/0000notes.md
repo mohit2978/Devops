@@ -46,28 +46,181 @@ what about their transaction??
 
 
 
- Step-0: Clone below git repo
+        Step-0: Clone below git repo
 
   URl : https://github.com/ashokitschool/kubernetes_manifest_yml_files.git
 
-Step-1 : Navigate into blue-green directory
+We have 4 yml as
+1. blue pod and live service  
+2. green pod and test service
 
-Step-2 : Create Blue Pods deployment (pod-label : v1)
+All this yml files are under folder k8s-yml-files
+        Step-1 : Navigate into blue-green directory
 
-Step-3 : Create Live Service to expose blue pods
+        Step-2 : Create Blue Pods deployment (pod-label : v1)
 
-Step-4 : Access App using Live Service LBR DNS Url
+        Step-3 : Create Live Service to expose blue pods
 
-   (blue pods response we should be able to see in browser)
+        Step-4 : Access App using Live Service LBR DNS Url
 
-Step-5: Create Green Pods deployment
+        (blue pods response we should be able to see in browser)
 
-Step-6: Check all pods running
+        Step-5: Create Green Pods deployment
 
-Step-7: Create Pre-Prod service
+        Step-6: Check all pods running
+### Blue deployment (Deployment yml)
 
-Step-8: Access Green Pods using pre-prod service
+```yml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javawebappbluedeployment
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: java-web-app
+      version: v1
+      color: blue
+  template:
+    metadata:
+      name: javawebapppod
+      labels:
+        app: java-web-app
+        version: v1
+        color: blue
+    spec:
+      containers:
+      - name: javawebappcontainer
+        image: ashokit/javawebapp
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+...
 
-Step-9: Make green pods live 
+```
+see 3 labels here!!
 
-Step-10 : Access Live Service (green pods response should come)          
+![alt text](image.png)
+
+see blue pods got created
+
+we cannot access outside cluster so now we need to create service!!So we create service
+
+### live service
+
+```yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: javawebappliveservice
+spec:
+  type: LoadBalancer
+  selector:
+    version: v1
+  ports:
+  - port: 80
+    targetPort: 8080
+...
+
+```
+![alt text](image-1.png)
+
+created load balancer service!! blue pods are accessed by this!!
+
+![alt text](image-2.png)
+
+blue pods or version v1 are accessible
+### Green deployment
+
+```yml
+---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: javawebappgreendeployment
+    spec:
+      replicas: 2
+      strategy:
+        type: RollingUpdate
+      selector:
+        matchLabels:
+          app: java-web-app
+          version: v2
+          color: green
+      template:
+        metadata:
+          name: javawebapppod
+          labels:
+            app: java-web-app
+            version: v2
+            color: green
+        spec:
+          containers:
+          - name: javawebappcontainer
+            image: ashokit/javawebapp:v2
+            imagePullPolicy: Always
+            ports:
+            - containerPort: 8080
+...
+
+```
+here we are using another docker image!!same code just version v2
+
+![alt text](image-3.png)
+
+see blue pods and green pods both running , green one running from 6 sec
+        
+        Step-7: Create Pre-Prod service
+### Pre-prd service
+
+```yml
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: javawebpreprodservice
+    spec:
+      type: NodePort
+      selector:
+        version: v2
+      ports:
+      - port: 80
+        targetPort: 8080
+        nodePort: 31785
+...
+```
+
+it is type of nodeport as for testing purpose!!
+
+![alt text](image-4.png)
+
+see 1st blue and green pod are on same worker node!!
+
+to check green one working enable port 31785 in green worker nodes!!
+
+after enabling access by node public ip
+
+![alt text](image-5.png)
+
+now we want load balancer to access v2 or green version
+
+        Step-8: Access Green Pods using pre-prod service
+
+to make latest code live or green pod live ,we have to change selector of live service!! so just edit live servie yml!!In live service change selector to v2
+
+![alt text](image-6.png)
+
+after applying see
+
+![alt text](image-7.png)
+
+accessing by load balancer URL
+
+        Step-9: Make green pods live 
+
+        Step-10 : Access Live Service (green pods response should come)          
