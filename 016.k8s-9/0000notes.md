@@ -223,4 +223,22 @@ accessing by load balancer URL
 
         Step-9: Make green pods live 
 
-        Step-10 : Access Live Service (green pods response should come)          
+        Step-10 : Access Live Service (green pods response should come)        
+
+
+>Note: to divert traffic to old application just change v2 to v1 in live service      
+
+Ques-->how to manage downtime while green one is going to be up and blue to be down??it is fraction of milisec but still how to manage that??
+
+Ans-->HA proxy server will be configuered for this!!
+
+For long-lived TCP connections, such as database connections or websockets, HAProxy can ensure that connections are not dropped during the switchover. Traffic from an ongoing transaction will continue to flow to the blue environment until it is completed.
+
+Instead of an abrupt switch, you can gradually shift new traffic to the green environment while keeping ongoing sessions on the blue environment. This minimizes the risk of disrupting active users.
+
+When switching from blue to green, you can configure HAProxy to stop sending new connections to the blue environment while allowing existing connections to complete. This is done using the drain mode for servers.
+
+### Transaction Routing Behavior:
+- Active Transactions: If a user is mid-transaction in the blue environment, HAProxy keeps routing their requests to blue (via sticky sessions or persistent connections). Their transaction will complete without interference.
+- New Transactions: New users or transactions are directed to the green environment based on the updated HAProxy configuration or rules.
+
