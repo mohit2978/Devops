@@ -2,7 +2,7 @@
 
 => Open source Software & free of cost
 
-=> Developed by using Java Language
+=> Developed by using Java Language,so to run jenkins we must have java!!
 
 => It is called as CI CD Server
 
@@ -42,13 +42,13 @@ These are build and deployment steps
 
 Git Repo : https://github.com/ashokitschool/DevOps-Documents/blob/main/01-Jenkins-Server-Setup.md
 
-- Step - 1 : Create Linux VM ##
+- Step - 1 : Create Linux VM 
 
 1) Create Ubuntu VM using AWS EC2 (t2.medium) <br/>
 2) Enable 8080 Port Number in Security Group Inbound Rules
 3) Connect to VM using MobaXterm
 
--  Step-2 : Instal Java ##
+-  Step-2 : Instal Java 
 
 ```
 sudo apt update
