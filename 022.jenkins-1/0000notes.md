@@ -216,15 +216,19 @@ after build 3
 
 ## Jenkins Job with with GIT Hub Repo + Maven - Integeration
 
+clone git and build code using maven!!
+
 Step-1 : Instal git client in jenkins server
 
 	 sudo apt install git -y
 
 Step-2 : Configure Maven as global tool
+>No need to install maven!!we tell jenkins to install maven!!
 
-  (Jenkins Dashboard -> Manage Jenkins --> Global Tools Configuration -> Add maven)
+  (Jenkins Dashboard -> Manage Jenkins --> Global Tools Configuration -> Add maven) Then click on apply and then save!!
 
-Note: With step-2 configuration, jenkins will download and install maven s/w  
+![alt text](image-13.png)
+>Note: With step-2 configuration, jenkins will download and install maven s/w  
 
 
 Step-3 : Take project git repo (https://github.com/ashokitschool/maven-web-app.git)
@@ -236,8 +240,9 @@ Step-4 : Create Jenkins job
 			-> Select 'Free Style Project' & Click OK
 			-> Enter some description
 			-> Go to "Source Code Management" Tab and Select "Git"
-			-> Enter Project "Git Repo URL"
+			-> Enter Project "Git Repo URL" As public repo no need to put password
 			-> Go to "Build tab"
+			-> Build Trigger and build environment we do not do now!!
 			-> Click on Add Build Step and Select 'Inovke Top Level Maven Targets'
 			-> Select Maven and enter goals 'clean package'
 			-> Click on Apply and Save
@@ -251,3 +256,30 @@ Step-6 : Click on 'Build Number' and then click on 'Console Ouput' to see job ex
 => Jenkins Home Directory in EC2 : /var/lib/jenkins/workspace/
 
 => Go to jenkins workspace and then go to job folder then go to target folder there we see war file created.
+
+![alt text](image-14.png)
+
+![alt text](image-15.png)
+
+![alt text](image-16.png)
+
+If code has any error then build will be failed!!
+
+### Console output
+
+![alt text](image-17.png)
+
+If code modified just another build !! it will take latest code and build latest war file!!
+
+## *Assignment* 
+Create Jenkins Job to perform below operation
+
+1) Take source code from git repo
+
+2) Build that code using maven
+
+3) Deploy war file into tomcat server (diff linux vm)
+
+![alt text](image-18.png)
+
+>In real time we do not use free style we use pipelines
