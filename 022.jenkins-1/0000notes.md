@@ -36,19 +36,27 @@ These are build and deployment steps
 
 => To automate project build and deployment process we will use JENKINS.
 
+![alt text](image.png)
+
+![alt text](image-1.png)
 
 ## Jenkins Server Setup in Linux VM 
 
 
 Git Repo : https://github.com/ashokitschool/DevOps-Documents/blob/main/01-Jenkins-Server-Setup.md
 
+
+can see documentation of installing jenkins in jenkins.io documentation!!
+
+here too ubuntu machine so username is ubuntu!!
+
 - Step - 1 : Create Linux VM 
 
-1) Create Ubuntu VM using AWS EC2 (t2.medium) <br/>
+1) Create Ubuntu VM using AWS EC2 (t2.medium) 
 2) Enable 8080 Port Number in Security Group Inbound Rules
 3) Connect to VM using MobaXterm
 
--  Step-2 : Instal Java 
+-  Step-2 : Install Java 
 
 ```
 sudo apt update
@@ -78,7 +86,8 @@ sudo systemctl start jenkins
 ```
 sudo systemctl status jenkins
 ```
-	
+![alt text](image-2.png)	
+
 - Step-6 : Open jenkins server in browser using VM public ip 
 
 ```
@@ -89,9 +98,45 @@ http://public-ip:8080/
 ```
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-	   
-- Step-8 : Create Admin Account & Install Required Plugins in Jenkins 
 
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+Paste password here!!
+	   
+- Step-8 : Create Admin Account & Install Required Plugins(Suggested) in Jenkins 
+
+![alt text](image-5.png)
+
+
+Then sign in and then logout and login !!
+
+ques--> vscode written in typescript we need not install typescript to run vscode but for jenkins we need to install java, why?
+
+Answer--> you don't need to install JavaScript for VS Code because it packages its runtime. For Jenkins, Java must be installed because it relies on an external Java runtime environment.
+
+1. VS Code and JavaScript Runtime:
+- Built-in Runtime:
+Visual Studio Code is built using Electron, which packages the necessary runtime components (like Node.js and Chromium) along with the application itself. This means the JavaScript runtime required to execute VS Code is bundled into the application, so users don't need to install anything extra.
+- Self-Contained:
+When you download and install VS Code, it already includes everything it needs to run, making it self-sufficient.
+
+2. Jenkins and Java Runtime:
+- External Dependency:
+Jenkins is written in Java, which requires a Java Virtual Machine (JVM) to run. However, unlike Electron-based apps, Jenkins does not bundle the JVM with its distribution to keep its package size smaller and allow users to choose the specific Java version they prefer.
+- Separation of Concerns:
+By requiring users to install Java separately, Jenkins delegates the responsibility of providing the runtime environment to the system. This makes Jenkins lightweight and flexible, especially in server or containerized environments where Java is often pre-installed or managed centrally.
+
+### Why They Differ:
+- Packaging Strategy:
+VS Code takes an all-in-one approach, while Jenkins relies on the host system to provide the runtime.
+
+- Use Case:
+Jenkins is often deployed on servers, where pre-installed Java is common, whereas VS Code is a desktop application meant to "just work" for individual users.
+
+- Ecosystem Flexibility:
+Jenkins users may already have Java installed for other applications. Allowing Java to be managed separately prevents redundancy and keeps Jenkins lightweight.
 ## what is job in jenkins ?
 
 => JOB means set of steps that we are giving to jenkins to perform the task
