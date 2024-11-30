@@ -161,27 +161,58 @@ Jenkins users may already have Java installed for other applications. Allowing J
 		-> Click on 'Build' tab
 		-> Click on 'Add Build Step' and select 'Execute Shell'
 
-3) Enter below shellscript
+FreeStyle means using GUI we create job!!
 
+Pipeline means we use some script to create job
+
+3) In build steps Enter below shellscript
+
+```bash
 echo "Hello Guys,"
 touch ashokit.txt
 echo "Hello Guys, Welcome to Jenkins Classes" >> ashokit.txt
 echo "Done..!!"		
+```
 
-4) Apply and Save
+![alt text](image-6.png)
 
-Note: With above steps we have created JENKINS Job
+In post-build you can have post build actions , once application build is done what to be done next!!
+
+4)  Save
+
+>Note: With above steps we have created JENKINS Job
+
+When from dashboard you go inside job
+
+![alt text](image-7.png)
 
 5) Click on 'Build Now' to start Job execution
 
+![alt text](image-8.png)
+
 6) Click on 'Build Number' and then click on 'Console Ouput' to see job execution details.
 
+![alt text](image-9.png)
 
 => Jenkins Home Directory in EC2 : /var/lib/jenkins/workspace/
 
 		$ cd /var/lib/jenkins/workspace/
 
 7) Go to Jenkins home directory and check for the job name --> check the file created inside the job
+
+![alt text](image-10.png)
+
+ whatever job you execute it will be done here!!
+
+![alt text](image-11.png)
+
+Output will be in this directory only!!Till now we have done 2 builds!!
+
+after build 3 
+
+![alt text](image-12.png)
+
+> Note: to see any error we see in logs!!
 
 ## Jenkins Job with with GIT Hub Repo + Maven - Integeration
 
