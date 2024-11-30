@@ -149,3 +149,42 @@ now we undeploy from tomcat server!!
 And redeploy!! we can see app on tomcat server!!
 
 now we want to deploy automatically!!
+
+when you change code and deploy in server!! you see redeploying as it uninstall existing war and then install new war!!
+
+Now we want this to happen automatically!!
+
+![alt text](image-13.png)
+
+every minute it will deploy!!
+
+![alt text](image-14.png)
+
+uninstalled and installed again !!
+
+![alt text](image-15.png)
+
+see build 10 and 11 started automatically!!
+
+---
+
+but we want deployment only when code change is there!!
+
+![alt text](image-16.png)
+
+for every 1 min jenkins check with github and see if there is any commit then it will redeploy!!
+
+
+>Note:Springboot  tomcat is not required!! it has embedded tomcat!!
+
+In real-time we run job manually, we do not use Poll SCM!!
+
+jenkins
+
+id-mohit
+
+pass-2978
+
+next day when we start ip will be changed so here ip needs to be changed in jenkins!
+
+![alt text](image-17.png)
