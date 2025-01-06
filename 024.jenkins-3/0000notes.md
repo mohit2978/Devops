@@ -1,6 +1,32 @@
 # Lecture-3 jenkins
 
+In real-time we build job manually , we do not build automatically whenever change happens automatic build is not done!!
+
+In tomcat directory bin folder we have startup.sh ,s o go to that directorya and run this
+
+    sh startup.sh
+
+To stop use shutdown.sh
+
+jenkins
+
+id-mohit
+
+pass-2978
+
+go to manage jenkins>system 
+
+in jenkins url change ip to new ip of ec2-machine!!
+
+>Note:Also chnage ip of tomcat in job!! where u want to deploy
+
 ## How to Create Jenkins Jobs with Build Parameters
+
+We need to take build from different branches!!
+
+master branch we have deployed and output is:
+
+![alt text](image.png)
 
 => Build Parameters are used to supply dynamic inputs to run the Job. 
 
@@ -10,18 +36,31 @@
 
 
 => Open Jenkins Job
-=> In General Section => Select "This Project is parameterized option"
+
+=> In General Section 
+
+=> Select "This Project is parameterized option"
+
 => Select choice parameter
+
 => Enter name as branch
+
 => Give choices like below
 
 		master
 		develop
 
+![alt text](image-1.png)
+
+click on apply and save!!
+
 => In source code management, give branch name to take dynamic value like below
 
 					*/${branch}
 
+![alt text](image-2.png)
+
+if every env we have different server , then we can pass server name as parameter too!!
 
 ## User & Roles Management In Jenkins
 
@@ -61,38 +100,38 @@ Note: By default admin role will be available and we can create custom role base
 ## Working with User Roles in Jenkins 
 
 
-## Step-1 : Install Required Plugins
+-  Step-1 : Install Required Plugins
 
-=> Install "Role-based Authorization Strategy" Plugin
+    => Install "Role-based Authorization Strategy" Plugin
 
-=> This plugin allows you to define roles and assign them to users or groups.
-
-
-## Step-2 : Configure Security
-
-=> Go to "Manage Jenkins" > "Configure Security."
-
-=> Select Authorization as "Role-Based Strategy"
-
-=> Click "Save" to apply the changes
-
-## Step-3 :  Create User Roles
-
-=> Go to "Manage Jenkins" > "Manage and Assign Roles."
-
-=> Click "Manage Roles" and define new roles based on your requirements (e.g., admin, developer, tester).
-
-=> Click "Add" to create a new role, and specify the permissions for that role.
+    => This plugin allows you to define roles and assign them to users or groups.
 
 
-## Step-4 : Assign Users to Roles
+-   Step-2 : Configure Security
 
-=> After creating roles, go to "Manage Jenkins" > "Manage Users & Roles."
+    => Go to "Manage Jenkins" > "Configure Security."
 
-=> Select a user and click "Assign Roles" to add them to one or more roles.
+    => Select Authorization as "Role-Based Strategy"
+
+    => Click "Save" to apply the changes
+
+- Step-3 :  Create User Roles
+
+    => Go to "Manage Jenkins" > "Manage and Assign Roles."
+
+    => Click "Manage Roles" and define new roles based on your requirements (e.g., admin, developer, tester).
+
+    => Click "Add" to create a new role, and specify the permissions for that role.
 
 
-## Step-5 : Test the user login functionality
+- Step-4 : Assign Users to Roles
+
+    => After creating roles, go to "Manage Jenkins" > "Manage Users & Roles."
+
+    => Select a user and click "Assign Roles" to add them to one or more roles.
+
+
+- Step-5 : Test the user login functionality
 
 
 

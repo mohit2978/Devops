@@ -179,11 +179,7 @@ for every 1 min jenkins check with github and see if there is any commit then it
 
 In real-time we run job manually, we do not use Poll SCM!!
 
-jenkins
 
-id-mohit
-
-pass-2978
 
 next day when we start ip will be changed so here ip needs to be changed in jenkins!
 
