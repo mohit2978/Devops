@@ -62,6 +62,18 @@ click on apply and save!!
 
 if every env we have different server , then we can pass server name as parameter too!!
 
+
+
+when you try to build it ask your parameters
+
+![alt text](image-3.png)
+
+output:
+![alt text](image-4.png)
+
+In real time we deploy at cluster not at server!!We build image and deploy to cluster!!
+
+
 ## User & Roles Management In Jenkins
 
 => In Our Project multiple teams will be available
@@ -80,6 +92,7 @@ Note: Every team members will have their own user account to login into jenkins.
 
 ## How to create users and manage user permissions
 
+As devlopers should not delete jenkins job!! only run the job!!
 
 -> Go to Jenkins Dashboard
 
@@ -87,11 +100,15 @@ Note: Every team members will have their own user account to login into jenkins.
 
 -> Create Users
 
--> Go to Configure Global Security
+-> Go to Security
+
+![alt text](image-5.png)
+
+using this you can give permissions to different user!!
 
 -> Manage Roles & Assign Roles
 
-Note: By default admin role will be available and we can create custom role based on requirement
+>Note: By default admin role will be available and we can create custom role based on requirement
 
 -> In Role we can configure what that Role assigned user can do in jenkins
 
