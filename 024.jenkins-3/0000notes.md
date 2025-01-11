@@ -2,21 +2,13 @@
 
 In real-time we build job manually , we do not build automatically whenever change happens automatic build is not done!!
 
-In tomcat directory bin folder we have startup.sh ,s o go to that directorya and run this
+In tomcat directory bin folder we have startup.sh ,so go to that directorya and run this
 
     sh startup.sh
 
 To stop use shutdown.sh
 
-jenkins
 
-id-mohit
-
-pass-2978
-
-go to manage jenkins>system 
-
-in jenkins url change ip to new ip of ec2-machine!!
 
 >Note:Also chnage ip of tomcat in job!! where u want to deploy
 
