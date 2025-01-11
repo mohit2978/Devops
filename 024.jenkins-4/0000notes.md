@@ -39,7 +39,7 @@ in jenkins url change ip to new ip of ec2-machine!!
 
 => It is responsible to distribute Jobs execution to slave machines.
 
-Note: We can run jobs on Jenkins Master machine directly but not recommended.
+>Note: We can run jobs on Jenkins Master machine directly but not recommended.
 
 ### Jenkins Slave
 
@@ -67,6 +67,8 @@ Note: We can run jobs on Jenkins Master machine directly but not recommended.
             $ sudo hostname jenkins-slave
             $ exit
 
+    ![alt text](image.png)
+
     4) Install Java Software
 
             $ sudo apt install default-jre
@@ -75,41 +77,65 @@ Note: We can run jobs on Jenkins Master machine directly but not recommended.
 
                 $ mkdir slavenode
 
+        can give any node , this directory is our workspace directory!
 
 - Step-3: Configure Slave Node in Jenkins Master Node
 	
+    Till now there is no relation between master ans slave , now we need to configuree the relation between both!!
 
     1) Go to Jenkins Dashboard
     2) Go to Manage Jenkins
     3) Select Nodes option
     4) Click on 'New Node' -> Enter Node Name -> Select Permanent Agent
-    5) Enter Remote Root Directory ( /home/ubuntu/slavenode )
+    5) Enter Remote Root Directory ( /home/ubuntu/slavenode ),no of executors means no of jobs that can run parallely!!
     6) Enter Label name as Slave-1
     7) Select Launch Method as 'Launch Agent Via SSH'
-    8) Give Host as 'Slave VM DNS URL'
+    8) Give Host as 'Slave VM DNS public ipv4 URL'
     9) Add Credentials ( Select Kind as : SSH Username with private key )
+
+    ![alt text](image-1.png)
+
     10) Enter Username as : ubuntu
+
     11) Select Private Key as Enter Directley and add private key
 
     >Note: Open pem file and copy content add add 
 
     12) Select Host Key Strategy as 'Manually Trusted Key Verification Strategy'
 
-    13) Click on Apply and Save (We can see configured slave)
+    13) Click on Save (We can see configured slave)
 
+To run old job we need to put where to run job!!
 
-#### With above steps Master and Slave Configuration Completed 
+![alt text](image-2.png)
+
+You need to put label !!
+
+start tomcat by command startup.sh!!
+
+![alt text](image-3.png)
+
+see output of console we can see it ran on slave node!!
+
+In slave machine you can see it is in workspace inside folder we have created!!
+
+![alt text](image-4.png)
+
+>With above steps Master and Slave Configuration Completed 
+
+Now we have deployed using one slave but in real time we use pipeline where we tell use any slave which is available!!
 
 -> Go to Jenkins Server and Create Jenkins Job
 
-Note: Under Generation Section of Job creation process, Select "Restrict Where This Project Can Run" and enter Slave Nodel Label name and finish job creation.
+>Note: Under Generation Section of Job creation process, Select "Restrict Where This Project Can Run" and enter Slave Nodel Label name and finish job creation.
 
 -> Execute the Job using 'Build Now' option
 
-Note: Job will be executed on Slave Node (Go to Job Console Ouput and verify execution details)
+>Note: Job will be executed on Slave Node (Go to Job Console Ouput and verify execution details)
 
+Q--> What will happen if master is down??
 
-
+Sol--> need to take backup of jenkins job of master machine!!We use thin backup plugin !!
 
 
 
