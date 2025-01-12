@@ -63,8 +63,10 @@ both type are used!!
  Agent tells on which jenkins slave machine to run !! if you do not know which slave to run put agent
  as any!!
 
-Then we tell about tools!! like here below we need maven!!  maven "maven-3.9" here 
-maven is key Maven is value!!
+Then we tell about tools!! like here below we need maven!!  maven "Maven" here 
+maven is key Maven is value!!as we have that one set in global tools!!
+
+![alt text](image-8.png)
 
 Then we write about stages!!
 
@@ -163,7 +165,7 @@ pipeline {
     agent any
     
     tools{
-        maven "maven-3.9.8"
+        maven "Maven"
     }
 
     stages {
@@ -180,6 +182,11 @@ pipeline {
     }
 }
 
+We are using sh command to run the command as we running!! mvn clean package command
+
+Here we are telling tools as Maven !!If we remove that than slave we know do not have maven installed so to run mvn clean pacakage we must tell where to take Maven , this is maven we have configuered in global tool!!
+
+Global tool is send by master node to slave node, whatever software needed we configure them as global tools in pipeline!!
 
  ```
 ![alt text](image-6.png)
@@ -190,6 +197,8 @@ When you are new to pipeline you can use this to generate piepline !!
 
 using this we can generate code/snippet to do something!!
 
+
+
  ### SSH Agent Configuration
 
  
@@ -199,6 +208,10 @@ using this we can generate code/snippet to do something!!
 
 => Install SSH Agent plugin 
 	
+>Note:We were using deploy to container plugin in freeStyle project!!For piepline we need SSH agent plugin!!
+
+![alt text](image-9.png)
+
 		(Manage Jenkins -> Plugins -> Available -> Search for SSH Agent -> Install)		
 
 => Use pipeline syntax and create ssh-agent for tomcat server vm.		
@@ -216,9 +229,17 @@ using this we can generate code/snippet to do something!!
 				}					
 
 
-=> With the help of ssh-agent we will copy war file to tomcat server using scp command
+=> With the help of ssh-agent we will copy war file to tomcat server using scp command scp means secure copy ,where strict hostKeychecking is no!!
 
-sh 'scp -o StrictHostKeyChecking=no target/01-maven-web-app.war ec2-user@public-ip:/home/ec2-user/apache-tomcat-9.0.91/webapps'
+`sh 'scp -o StrictHostKeyChecking=no target/01-maven-web-app.war ec2-user@public-ip:/home/ec2-user/apache-tomcat-9.0.91/webapps'`
+
+-o means options
+
+StrictHostKeyChecking=no as tomcat is in differnt machine so putting this option as no!!
+
+-o StrictHostKeyChecking=no
+(This SSH option disables the host key verification check.
+Normally, when you connect to a remote server for the first time, SSH asks for confirmation to add the server's key to the known hosts file. This option skips that prompt, which is useful in automated scripts but reduces security.)
 
 ### Git + Maven + Tomcat + Jenkins Pipeline
 
@@ -228,7 +249,7 @@ pipeline {
     agent any
     
     tools{
-        maven "maven-3.9.8"
+        maven "Maven"
     }
 
     stages {
@@ -246,12 +267,54 @@ pipeline {
         stage('Deployment'){
             steps{
                 sshagent(['tomcat-server-credentials']) {
-                   sh 'scp -o StrictHostKeyChecking=no 
-                        target/01-maven-web-app.war 
-                        ec2-user@public-ip:/home/ec2-user/apache-tomcat-9.0.91/webapps'
+                   sh 'scp -o StrictHostKeyChecking=no target/01-maven-web-app.war ec2-user@public-ip:/home/ec2-user/apache-tomcat-9.0.91/webapps'
                 }
             }
         }
     }
 }
 ```
+
+
+Ques:When we specify agent:any in pipeline can it run on master jenkins node
+
+ChatGPT said:
+Yes, specifying agent any in a Jenkins pipeline means that the job can run on any available node, including the master (or controller) node, provided the master is configured to accept builds.
+
+To run on specific node
+
+```pipeline
+
+pipeline {
+   agent {
+        label 'slave-node'
+    }
+   
+   tools{
+       maven "Maven"
+   }
+
+   stages {
+       stage('Git Clone') {
+           steps {
+              git branch: 'develop', url: 'https://github.com/ashokitschool/maven-web-app.git'
+           }
+       }
+       stage('Maven Build'){
+           steps{
+            sh 'mvn clean package'
+           }
+       }
+        stage('Deployment'){
+            steps{
+                sshagent(['jenkins-slave-cred']) {
+                   sh 'scp -o StrictHostKeyChecking=no target/01-maven-web-app.war ec2-user@<ip>:/home/ec2-user/apache-tomcat-9.0.97/webapps'
+                }
+            }
+        }
+   }
+}
+
+```
+
+3 machines are communicating here : master , slave and tomcat server!!
