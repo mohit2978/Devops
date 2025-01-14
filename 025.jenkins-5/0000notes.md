@@ -6,11 +6,6 @@ In tomcat directory bin folder we have startup.sh ,so go to that directorya and 
 
 To stop use shutdown.sh
 
-jenkins
-
-id-mohit
-
-pass-2978
 
 go to manage jenkins>system 
 
