@@ -2,9 +2,27 @@
 
 ![alt text](image.png)
 
+Branching in other VCS is expensive as they copy whole chnanges to new branch but in git it only cpies chnages !! here creating ,moving from brnach to other is very easy!!
+
+We have a head pointer which points to current branch!!
+
 ![alt text](image-1.png)
 
+`git branch -v`--> tells last commit of all branches!!
+
 ![alt text](image-2.png)
+
+Renaming a branch
+
+![alt text](image-23.png)
+
+Renaming a branch without going to it
+
+![alt text](image-24.png)
+
+deleting a branch
+
+![alt text](image-25.png)
 
 Let us suppose we created a brnach devlop from master
 
@@ -25,6 +43,14 @@ now we move to master
 and make a commit
 
 ![alt text](image-7.png)
+
+`git log`--> tells commit history (canot see logs of diverging branch), can see brnaches which are a part of current brnach
+
+`git log --oneline`--> tells in oneline
+
+`git log --oneline --graph`--> tells in oneline in graph
+
+`git log --oneline --graph --all`--> tells in oneline in graph in all brnaches
 
 ![alt text](image-8.png)
 
