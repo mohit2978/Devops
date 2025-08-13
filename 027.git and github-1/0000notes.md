@@ -46,3 +46,8 @@ or can use command `git commit -am "commit message"`
 
 ![alt text](image-20.png)
 
+## Git log
+
+![alt text](image-21.png)
+
+![alt text](image-22.png)
