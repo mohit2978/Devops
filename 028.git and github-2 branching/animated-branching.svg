@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Animated Git branching overview</title>
+  <desc id="desc">Commits appear on main, then feature and hotfix branches grow away from it while branch pointers move.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07131e"/><stop offset="1" stop-color="#101827"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect width="1200" height="620" rx="30" fill="url(#bg)"/>
+  <text x="70" y="84" fill="#f8fafc" font-family="Inter,Segoe UI,sans-serif" font-size="46" font-weight="700">Git branches are lightweight pointers</text>
+  <text x="72" y="126" fill="#94a3b8" font-family="Inter,Segoe UI,sans-serif" font-size="22">Watch one history split into independent lines of work.</text>
+  <g fill="none" stroke-linecap="round" stroke-width="7">
+    <path d="M130 330H1000" stroke="#334155"/>
+    <path d="M390 330C500 330 470 215 590 215H860" stroke="#8b5cf6" stroke-dasharray="470" stroke-dashoffset="470"><animate attributeName="stroke-dashoffset" values="470;0;0" keyTimes="0;.35;1" dur="8s" repeatCount="indefinite"/></path>
+    <path d="M700 330C790 330 760 445 865 445H1040" stroke="#10b981" stroke-dasharray="360" stroke-dashoffset="360"><animate attributeName="stroke-dashoffset" values="360;360;0;0" keyTimes="0;.38;.72;1" dur="8s" repeatCount="indefinite"/></path>
+  </g>
+  <g stroke="#0f172a" stroke-width="8">
+    <circle cx="150" cy="330" r="27" fill="#38bdf8"/><circle cx="300" cy="330" r="27" fill="#38bdf8"/>
+    <circle cx="450" cy="330" r="27" fill="#38bdf8"/><circle cx="620" cy="330" r="27" fill="#38bdf8"/>
+    <circle cx="800" cy="330" r="27" fill="#38bdf8"/><circle cx="1000" cy="330" r="27" fill="#38bdf8"/>
+    <g opacity="0"><circle cx="590" cy="215" r="27" fill="#a78bfa"/><circle cx="735" cy="215" r="27" fill="#a78bfa"/><circle cx="860" cy="215" r="27" fill="#a78bfa"/><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.25;.42;1" dur="8s" repeatCount="indefinite"/></g>
+    <g opacity="0"><circle cx="865" cy="445" r="27" fill="#34d399"/><circle cx="1040" cy="445" r="27" fill="#34d399"/><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.55;.76;1" dur="8s" repeatCount="indefinite"/></g>
+  </g>
+  <g font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="22" font-weight="700">
+    <g><rect x="934" y="255" width="132" height="48" rx="13" fill="#075985"/><text x="1000" y="286" text-anchor="middle" fill="#e0f2fe">master</text></g>
+    <g opacity="0"><rect x="795" y="137" width="130" height="48" rx="13" fill="#5b21b6"/><text x="860" y="168" text-anchor="middle" fill="#ede9fe">feature</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.36;.43;1" dur="8s" repeatCount="indefinite"/></g>
+    <g opacity="0"><rect x="975" y="493" width="130" height="48" rx="13" fill="#047857"/><text x="1040" y="524" text-anchor="middle" fill="#d1fae5">hotfix</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.7;.77;1" dur="8s" repeatCount="indefinite"/></g>
+  </g>
+  <circle cx="150" cy="330" r="38" fill="none" stroke="#7dd3fc" stroke-width="4" filter="url(#glow)"><animate attributeName="cx" values="150;300;450;620;800;1000;1000" keyTimes="0;.12;.24;.36;.48;.62;1" dur="8s" repeatCount="indefinite"/></circle>
+  <text x="70" y="574" fill="#cbd5e1" font-family="Inter,Segoe UI,sans-serif" font-size="21">Each branch stores only a pointer to a commit—not a copy of the project.</text>
+</svg>

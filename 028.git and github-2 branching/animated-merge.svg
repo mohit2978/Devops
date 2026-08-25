@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+  <title id="title">Animated fast-forward and three-way merge</title><desc id="desc">A hotfix fast-forwards master, followed by a develop branch merging through a new merge commit.</desc>
+  <defs><linearGradient id="bgm" x2="1" y2="1"><stop stop-color="#06131c"/><stop offset="1" stop-color="#151827"/></linearGradient><marker id="am" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L9 4L0 8Z" fill="#64748b"/></marker></defs>
+  <rect width="1200" height="660" rx="30" fill="url(#bgm)"/>
+  <text x="62" y="72" fill="#f8fafc" font-family="Inter,Segoe UI,sans-serif" font-size="42" font-weight="700">How Git merges branches</text>
+  <text x="62" y="111" fill="#94a3b8" font-family="Inter,Segoe UI,sans-serif" font-size="21">The animation first fast-forwards master, then creates a three-way merge commit.</text>
+  <g stroke="#64748b" stroke-width="5" fill="none" marker-end="url(#am)"><path d="M1010 355H800"/><path d="M800 355H590"/><path d="M590 355H380"/><path d="M380 355H170"/></g>
+  <g font-family="ui-monospace,Consolas,monospace" font-size="23" text-anchor="middle" fill="#e2e8f0">
+    <g><rect x="95" y="318" width="150" height="75" rx="16" fill="#1e293b"/><text x="170" y="364">98ca9</text><rect x="305" y="318" width="150" height="75" rx="16" fill="#1e293b"/><text x="380" y="364">34ac2</text><rect x="515" y="318" width="150" height="75" rx="16" fill="#1e293b"/><text x="590" y="364">f30ab</text></g>
+    <g opacity="0"><rect x="725" y="318" width="150" height="75" rx="16" fill="#134e4a" stroke="#2dd4bf" stroke-width="4"/><text x="800" y="364">28bd1</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.16;.26;1" dur="10s" repeatCount="indefinite"/></g>
+    <g opacity="0"><path d="M800 318C780 230 690 210 590 300" fill="none" stroke="#8b5cf6" stroke-width="5"/><rect x="725" y="180" width="150" height="75" rx="16" fill="#4c1d95"/><text x="800" y="226">43ef8</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.36;.48;1" dur="10s" repeatCount="indefinite"/></g>
+    <g opacity="0"><path d="M1010 318L875 235" fill="none" stroke="#f59e0b" stroke-width="5"/><rect x="935" y="318" width="150" height="75" rx="16" fill="#78350f" stroke="#fbbf24" stroke-width="4"/><text x="1010" y="364">56ab3</text><animate attributeName="opacity" values="0;0;0;1;1" keyTimes="0;.55;.68;.76;1" dur="10s" repeatCount="indefinite"/></g>
+  </g>
+  <g font-family="Inter,Segoe UI,sans-serif" font-size="21" font-weight="700" text-anchor="middle">
+    <g><rect x="520" y="432" width="140" height="50" rx="14" fill="#0284c7"/><text x="590" y="465" fill="white">master</text><animateTransform attributeName="transform" type="translate" values="0 0;210 0;210 0;420 0" keyTimes="0;.28;.65;.78" dur="10s" repeatCount="indefinite"/></g>
+    <g opacity="0"><rect x="730" y="107" width="140" height="50" rx="14" fill="#7c3aed"/><text x="800" y="140" fill="white">develop</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.4;.48;1" dur="10s" repeatCount="indefinite"/></g>
+  </g>
+  <g font-family="Inter,Segoe UI,sans-serif" font-size="20"><g opacity="0"><rect x="62" y="520" width="390" height="62" rx="16" fill="#0c4a6e"/><text x="82" y="558" fill="#e0f2fe">Fast-forward: move the branch pointer</text><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.12;.32;.42;1" dur="10s" repeatCount="indefinite"/></g><g opacity="0"><rect x="62" y="520" width="470" height="62" rx="16" fill="#451a03"/><text x="82" y="558" fill="#fef3c7">Three-way merge: create commit 56ab3</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.62;.76;1" dur="10s" repeatCount="indefinite"/></g></g>
+</svg>
