@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgOom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+
+    <!-- Alert / Danger Gradient -->
+    <linearGradient id="dangerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </linearGradient>
+
+    <linearGradient id="kernelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <filter id="oomShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", Consolas, Menlo, monospace; }
+  </style>
+
+  <!-- Container -->
+  <rect width="1020" height="540" rx="16" fill="url(#bgOom)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Title Header -->
+  <g transform="translate(0, 24)">
+    <text class="sans" x="510" y="20" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700" letter-spacing="2">DEEP DIVE INTERVIEW SCENARIO: EXIT CODE 137</text>
+    <text class="sans" x="510" y="52" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">Linux OOM-Killer vs Java OutOfMemoryError</text>
+    <text class="sans" x="510" y="74" text-anchor="middle" fill="#94a3b8" font-size="13">Why the JVM Dies Abruptly With No Stack Trace &amp; How to Diagnose It</text>
+  </g>
+
+  <!-- ================= 3 ARCHITECTURE BLOCKS ================= -->
+
+  <!-- BLOCK 1: Memory Growth -->
+  <g transform="translate(35, 115)">
+    <rect width="295" height="270" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.4" filter="url(#oomShadow)"/>
+    <rect x="35" y="-12" width="225" height="24" rx="12" fill="#0284c7"/>
+    <text class="sans" x="147" y="4" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">1. MEMORY OVERFLOW</text>
+
+    <g transform="translate(18, 25)" class="sans" font-size="12">
+      <text x="0" y="16" fill="#f8fafc" font-weight="700">JVM Total Footprint Growth:</text>
+      
+      <rect x="0" y="28" width="259" height="135" rx="6" fill="#050811" stroke="#1e293b"/>
+      <g transform="translate(12, 42)" class="mono" font-size="11">
+        <text x="0" y="12" fill="#fbbf24">Heap Space (-Xmx): 4.0 GB</text>
+        <text x="0" y="32" fill="#ec4899">Metaspace: 500 MB</text>
+        <text x="0" y="52" fill="#38bdf8">Thread Stacks: 400 MB</text>
+        <text x="0" y="72" fill="#34d399">Direct Buffers/JIT: 300 MB</text>
+        <line x1="0" y1="84" x2="235" y2="84" stroke="#334155" stroke-dasharray="2,2"/>
+        <text x="0" y="104" fill="#ef4444" font-weight="700">Total RSS: 5.2 GB</text>
+      </g>
+
+      <g transform="translate(0, 185)">
+        <text x="0" y="0" fill="#f87171" font-size="11" font-weight="700">Container limit = 5.0 GB</text>
+        <text x="0" y="16" fill="#94a3b8" font-size="11">Process RSS breaches cgroup limit!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Flow Arrow 1 -> 2 -->
+  <path d="M 335 245 L 360 245" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- BLOCK 2: Linux Kernel Action -->
+  <g transform="translate(365, 115)">
+    <rect width="295" height="270" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.4" filter="url(#oomShadow)"/>
+    <rect x="35" y="-12" width="225" height="24" rx="12" fill="url(#kernelGrad)"/>
+    <text class="sans" x="147" y="4" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">2. KERNEL OOM-KILLER</text>
+
+    <g transform="translate(18, 25)" class="sans" font-size="12">
+      <text x="0" y="16" fill="#f8fafc" font-weight="700">Kernel Intervention:</text>
+      
+      <rect x="0" y="28" width="259" height="135" rx="6" fill="#050811" stroke="#1e293b"/>
+      <g transform="translate(12, 42)" class="sans" font-size="11">
+        <text x="0" y="10" fill="#cbd5e1">1. Host OS runs out of physical RAM</text>
+        <text x="0" y="28" fill="#cbd5e1">2. Kernel calculates oom_badness</text>
+        <text x="0" y="46" fill="#fbbf24">3. Selects largest consumer (java)</text>
+        <text x="0" y="68" fill="#ef4444" font-weight="700">4. Sends uncatchable SIGKILL (-9)</text>
+        <text x="0" y="86" fill="#94a3b8">JVM cannot catch or log this!</text>
+      </g>
+
+      <g transform="translate(0, 185)">
+        <text x="0" y="0" fill="#f8fafc" font-weight="700">Resulting Linux Exit Code:</text>
+        <text class="mono" x="0" y="18" fill="#ef4444" font-size="13" font-weight="700">128 + 9 = 137 (SIGKILL)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Flow Arrow 2 -> 3 -->
+  <path d="M 665 245 L 690 245" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- BLOCK 3: Verification & Fix -->
+  <g transform="translate(695, 115)">
+    <rect width="290" height="270" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.4" filter="url(#oomShadow)"/>
+    <rect x="35" y="-12" width="220" height="24" rx="12" fill="#059669"/>
+    <text class="sans" x="145" y="4" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">3. AUDIT &amp; RESOLUTION</text>
+
+    <g transform="translate(18, 25)" class="sans" font-size="12">
+      <text x="0" y="16" fill="#f8fafc" font-weight="700">How to Verify in Interview:</text>
+      
+      <rect x="0" y="28" width="254" height="135" rx="6" fill="#050811" stroke="#1e293b"/>
+      <g transform="translate(10, 42)" class="mono" font-size="10">
+        <text x="0" y="10" fill="#38bdf8">$ dmesg -T | grep -i oom</text>
+        <text x="0" y="28" fill="#94a3b8">"Out of memory: Killed</text>
+        <text x="0" y="42" fill="#f87171">process 8492 (java)"</text>
+        <line x1="0" y1="56" x2="230" y2="56" stroke="#1e293b"/>
+        <text x="0" y="72" fill="#38bdf8">$ journalctl -k</text>
+        <text x="0" y="88" fill="#34d399">Look for oom_reaper event</text>
+      </g>
+
+      <g transform="translate(0, 185)">
+        <text x="0" y="0" fill="#34d399" font-size="11" font-weight="700">Production Best Practice:</text>
+        <text x="0" y="16" fill="#cbd5e1" font-size="11">Keep <tspan fill="#fbbf24" font-weight="700">-Xmx &lt;= 75%</tspan> of container RAM!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= BOTTOM SUMMARY TABLE ================= -->
+  <g transform="translate(35, 410)">
+    <rect width="950" height="100" rx="8" fill="#0a0f1d" stroke="#334155" stroke-width="1"/>
+    
+    <g transform="translate(25, 20)" class="sans" font-size="12">
+      <text x="0" y="0" fill="#94a3b8" font-weight="700" letter-spacing="1">CRITICAL ARCHITECTURAL DIFFERENCE:</text>
+      
+      <text x="0" y="24" fill="#e2e8f0">
+        <tspan font-weight="700" fill="#f59e0b">• Java OutOfMemoryError (JVM Layer): </tspan>
+        Thrown by JVM inside Heap. Prints full stack trace. Triggers -XX:+HeapDumpOnOutOfMemoryError.
+      </text>
+      
+      <text x="0" y="48" fill="#e2e8f0">
+        <tspan font-weight="700" fill="#ef4444">• Linux OOM-Killer (OS Kernel Layer): </tspan>
+        Kernel terminates JVM via uncatchable SIGKILL (-9). Zero stack trace in logs. Exit code 137.
+      </text>
+    </g>
+  </g>
+</svg>

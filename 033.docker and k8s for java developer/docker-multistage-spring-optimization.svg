@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgOpt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+
+    <linearGradient id="badGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </linearGradient>
+
+    <linearGradient id="goodGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+
+    <filter id="optShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", Consolas, Menlo, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1020" height="540" rx="16" fill="url(#bgOpt)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Title Header -->
+  <g transform="translate(0, 24)">
+    <text class="sans" x="510" y="20" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700" letter-spacing="2">DOCKER PRODUCTION OPTIMIZATION FOR JAVA SDE-2</text>
+    <text class="sans" x="510" y="52" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">Bloated Traditional Build vs Multi-Stage Layered Build</text>
+    <text class="sans" x="510" y="74" text-anchor="middle" fill="#94a3b8" font-size="13">Shrinking Docker Image from 850 MB to 130 MB &amp; Caching Maven Dependencies</text>
+  </g>
+
+  <!-- ================= LEFT: BLOATED BUILD (850 MB) ================= -->
+  <g transform="translate(40, 115)">
+    <rect width="445" height="280" rx="12" fill="#0f172a" stroke="#ef4444" stroke-width="1.5" stroke-opacity="0.4" filter="url(#optShadow)"/>
+    <rect x="35" y="-12" width="230" height="24" rx="12" fill="url(#badGrad)"/>
+    <text class="sans" x="150" y="4" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">TRADITIONAL SINGLE-STAGE (850 MB)</text>
+
+    <!-- Layers Visualization -->
+    <g transform="translate(25, 28)">
+      <rect width="395" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
+      <text class="mono" x="15" y="26" fill="#f87171" font-size="11">FROM openjdk:17 (Heavy Full JDK OS)</text>
+      <text class="mono" x="380" y="26" text-anchor="end" fill="#94a3b8" font-size="10">~500 MB</text>
+
+      <g transform="translate(0, 48)">
+        <rect width="395" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
+        <text class="mono" x="15" y="26" fill="#f87171" font-size="11">RUN apt-get install maven &amp; compilers</text>
+        <text class="mono" x="380" y="26" text-anchor="end" fill="#94a3b8" font-size="10">~220 MB</text>
+      </g>
+
+      <g transform="translate(0, 96)">
+        <rect width="395" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
+        <text class="mono" x="15" y="26" fill="#f87171" font-size="11">COPY target/order-service.jar app.jar</text>
+        <text class="mono" x="380" y="26" text-anchor="end" fill="#94a3b8" font-size="10">~80 MB</text>
+      </g>
+
+      <g transform="translate(0, 148)" class="sans" font-size="11">
+        <text x="0" y="14" fill="#ef4444" font-weight="700">Major Production Flaws:</text>
+        <text x="0" y="32" fill="#cbd5e1">• Contains Maven, build caches, git, and compilers in prod</text>
+        <text x="0" y="48" fill="#cbd5e1">• Runs as <tspan fill="#f87171" font-weight="700">root</tspan> user (high security vulnerability)</text>
+        <text x="0" y="64" fill="#cbd5e1">• Code change forces re-downloading all dependencies!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= RIGHT: MULTI-STAGE LAYERED (130 MB) ================= -->
+  <g transform="translate(535, 115)">
+    <rect width="445" height="280" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.4" filter="url(#optShadow)"/>
+    <rect x="35" y="-12" width="250" height="24" rx="12" fill="url(#goodGrad)"/>
+    <text class="sans" x="160" y="4" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">MULTI-STAGE + DISTROLESS (130 MB)</text>
+
+    <!-- Layers Visualization -->
+    <g transform="translate(25, 28)">
+      <rect width="395" height="42" rx="6" fill="#1e293b" stroke="#10b981" stroke-opacity="0.5"/>
+      <text class="mono" x="15" y="26" fill="#38bdf8" font-size="11">STAGE 1: builder (Maven + JDK)</text>
+      <text class="mono" x="380" y="26" text-anchor="end" fill="#34d399" font-size="10">Discarded!</text>
+
+      <g transform="translate(0, 48)">
+        <rect width="395" height="42" rx="6" fill="#1e293b" stroke="#10b981" stroke-opacity="0.5"/>
+        <text class="mono" x="15" y="26" fill="#34d399" font-size="11">STAGE 2: gcr.io/distroless/java17</text>
+        <text class="mono" x="380" y="26" text-anchor="end" fill="#34d399" font-size="10">~90 MB</text>
+      </g>
+
+      <g transform="translate(0, 96)">
+        <rect width="395" height="42" rx="6" fill="#1e293b" stroke="#10b981" stroke-opacity="0.5"/>
+        <text class="mono" x="15" y="26" fill="#fbbf24" font-size="11">COPY --from=builder /layers .</text>
+        <text class="mono" x="380" y="26" text-anchor="end" fill="#fbbf24" font-size="10">~40 MB</text>
+      </g>
+
+      <g transform="translate(0, 148)" class="sans" font-size="11">
+        <text x="0" y="14" fill="#34d399" font-weight="700">Production Best Practices:</text>
+        <text x="0" y="32" fill="#cbd5e1">• Minimal attack surface (No shell, no package manager)</text>
+        <text x="0" y="48" fill="#cbd5e1">• Runs as non-root user (<tspan fill="#34d399" font-weight="700">USER nonroot:nonroot</tspan>)</text>
+        <text x="0" y="64" fill="#cbd5e1">• Dependencies cached in Docker layer (lightning fast CI/CD)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= BOTTOM TOOL SUMMARY BAR ================= -->
+  <g transform="translate(40, 415)">
+    <rect width="940" height="95" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+    
+    <g transform="translate(25, 24)" class="sans" font-size="12">
+      <text x="0" y="0" fill="#f8fafc" font-weight="700">SPRING BOOT 2.3+ LAYERED JAR OPTIMIZATION:</text>
+      <text class="mono" x="0" y="24" fill="#38bdf8" font-size="11">
+        java -Djarmode=layertools -jar app.jar extract
+      </text>
+      <text x="0" y="46" fill="#cbd5e1">
+        Splits JAR into 4 distinct layers: <tspan fill="#fbbf24">dependencies</tspan>, <tspan fill="#38bdf8">spring-boot-loader</tspan>, <tspan fill="#a855f7">snapshot-dependencies</tspan>, and <tspan fill="#34d399">application</tspan>.
+      </text>
+    </g>
+  </g>
+</svg>

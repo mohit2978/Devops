@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 650" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgReset" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+
+    <!-- Gradients -->
+    <linearGradient id="resetGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+
+    <linearGradient id="revertGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <linearGradient id="commitBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <filter id="cShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", Consolas, Menlo, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1020" height="650" rx="16" fill="url(#bgReset)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(0, 22)">
+    <text class="sans" x="510" y="18" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="2">GIT HISTORY MANIPULATION</text>
+    <text class="sans" x="510" y="48" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="800">Git Reset vs Git Revert: Undoing Changes Safely</text>
+    <text class="sans" x="510" y="70" text-anchor="middle" fill="#94a3b8" font-size="12.5">Rewinding Local Pointers vs Creating Inverting Forward Commits in Shared Repositories</text>
+  </g>
+
+  <!-- Left Column: Git Reset -->
+  <g transform="translate(40, 105)">
+    <rect width="455" height="510" rx="12" fill="#0f172a" stroke="#f43f5e" stroke-width="1.5" stroke-opacity="0.5" filter="url(#cShadow)"/>
+    <rect x="25" y="-12" width="220" height="24" rx="12" fill="url(#resetGrad)"/>
+    <text class="sans" x="135" y="4" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">GIT RESET (Rewinds Pointer)</text>
+
+    <!-- Visual Commit Track -->
+    <g transform="translate(25, 25)">
+      <line x1="25" y1="35" x2="360" y2="35" stroke="#334155" stroke-width="3"/>
+      
+      <!-- C1 -->
+      <circle cx="45" cy="35" r="13" fill="url(#commitBlue)"/>
+      <text class="mono" x="45" y="39" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">C1</text>
+      <!-- C2 (Target) -->
+      <circle cx="150" cy="35" r="14" fill="#38bdf8" stroke="#fff" stroke-width="2"/>
+      <text class="mono" x="150" y="39" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="800">C2</text>
+      <rect x="122" y="58" width="56" height="18" rx="4" fill="#0284c7"/>
+      <text class="mono" x="150" y="71" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700">TARGET</text>
+      <!-- C3 (Orphaned / Discarded) -->
+      <circle cx="270" cy="35" r="13" fill="#475569" stroke="#ef4444" stroke-dasharray="3,3" stroke-width="2"/>
+      <text class="mono" x="270" y="39" text-anchor="middle" fill="#94a3b8" font-size="9.5" font-weight="700">C3</text>
+      <rect x="238" y="58" width="64" height="18" rx="4" fill="#7f1d1d"/>
+      <text class="mono" x="270" y="71" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">OLD HEAD</text>
+
+      <!-- Backward Arrow indicator -->
+      <path d="M 260 15 C 220 -5, 180 -5, 160 15" stroke="#f43f5e" stroke-width="2" fill="none"/>
+      <polygon points="160,15 168,8 168,18" fill="#f43f5e"/>
+      <text class="mono" x="210" y="4" text-anchor="middle" fill="#f43f5e" font-size="9.5" font-weight="700">HEAD moves back</text>
+    </g>
+
+    <!-- The 3 Modes of Reset Table (Well padded & wrapped) -->
+    <g transform="translate(20, 130)">
+      <rect width="415" height="225" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text class="sans" x="15" y="24" fill="#f43f5e" font-size="11.5" font-weight="700">The 3 Modes of Git Reset:</text>
+      
+      <!-- Mode 1: Soft -->
+      <text class="mono" x="15" y="48" fill="#38bdf8" font-size="10.5" font-weight="700">1. --soft (git reset --soft HEAD~1)</text>
+      <text class="sans" x="15" y="66" fill="#cbd5e1" font-size="10">• Moves HEAD only.</text>
+      <text class="sans" x="25" y="80" fill="#94a3b8" font-size="9.5">Changes remain <tspan fill="#34d399" font-weight="700">Staged in Index</tspan>.</text>
+
+      <!-- Mode 2: Mixed (Default) -->
+      <text class="mono" x="15" y="106" fill="#fbbf24" font-size="10.5" font-weight="700">2. --mixed (Default mode)</text>
+      <text class="sans" x="15" y="124" fill="#cbd5e1" font-size="10">• Moves HEAD and resets Index.</text>
+      <text class="sans" x="25" y="138" fill="#94a3b8" font-size="9.5">Changes stay in <tspan fill="#fbbf24" font-weight="700">Working Tree</tspan> as unstaged.</text>
+
+      <!-- Mode 3: Hard -->
+      <text class="mono" x="15" y="164" fill="#ef4444" font-size="10.5" font-weight="700">3. --hard (DESTRUCTIVE)</text>
+      <text class="sans" x="15" y="182" fill="#fca5a5" font-size="10">• Resets HEAD, Index, and Working Directory.</text>
+      <text class="sans" x="25" y="196" fill="#fca5a5" font-size="9.5">All uncommitted and committed changes destroyed!</text>
+    </g>
+
+    <!-- Danger Notice (Safe bounds) -->
+    <g transform="translate(20, 375)">
+      <rect width="415" height="110" rx="8" fill="#450a0a" stroke="#dc2626" stroke-width="1"/>
+      <text class="sans" x="15" y="24" fill="#fca5a5" font-size="11" font-weight="700">CRITICAL SDE-2 WARNING:</text>
+      <text class="sans" x="15" y="46" fill="#fecaca" font-size="10">• Rewrites history by moving HEAD backwards.</text>
+      <text class="sans" x="15" y="64" fill="#fecaca" font-size="10">• Never use on shared or public remote branches!</text>
+      <text class="sans" x="15" y="82" fill="#fecaca" font-size="10">• If pushed, requires destructive <tspan class="mono" font-weight="700">--force</tspan>.</text>
+    </g>
+  </g>
+
+  <!-- Right Column: Git Revert -->
+  <g transform="translate(525, 105)">
+    <rect width="455" height="510" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.5" filter="url(#cShadow)"/>
+    <rect x="25" y="-12" width="220" height="24" rx="12" fill="url(#revertGrad)"/>
+    <text class="sans" x="135" y="4" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">GIT REVERT (Advances Pointer)</text>
+
+    <!-- Visual Commit Track -->
+    <g transform="translate(25, 25)">
+      <line x1="25" y1="35" x2="360" y2="35" stroke="#334155" stroke-width="3"/>
+      
+      <!-- C1 -->
+      <circle cx="45" cy="35" r="13" fill="url(#commitBlue)"/>
+      <text class="mono" x="45" y="39" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">C1</text>
+
+      <!-- C2 (Buggy) -->
+      <circle cx="140" cy="35" r="13" fill="#f59e0b"/>
+      <text class="mono" x="140" y="39" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">C2</text>
+      <rect x="114" y="58" width="52" height="18" rx="4" fill="#b45309"/>
+      <text class="mono" x="140" y="71" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700">BUGGY</text>
+
+      <!-- C3 -->
+      <circle cx="230" cy="35" r="13" fill="url(#commitBlue)"/>
+      <text class="mono" x="230" y="39" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">C3</text>
+
+      <!-- C4: Revert Commit -->
+      <circle cx="320" cy="35" r="15" fill="url(#revertGrad)" stroke="#fff" stroke-width="2"/>
+      <text class="mono" x="320" y="39" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="800">C2'</text>
+      <rect x="294" y="58" width="52" height="18" rx="4" fill="#047857"/>
+      <text class="mono" x="320" y="71" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700">REVERT</text>
+
+      <!-- Forward Arrow indicator -->
+      <path d="M 140 15 C 190 -10, 260 -10, 310 15" stroke="#10b981" stroke-width="2" fill="none"/>
+      <polygon points="310,15 305,6 300,14" fill="#10b981"/>
+      <text class="mono" x="225" y="4" text-anchor="middle" fill="#10b981" font-size="9.5" font-weight="700">Inverts C2 in new commit</text>
+    </g>
+
+    <!-- Key Mechanics of Revert (Well padded & wrapped) -->
+    <g transform="translate(20, 130)">
+      <rect width="415" height="225" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text class="sans" x="15" y="24" fill="#34d399" font-size="11.5" font-weight="700">How Git Revert Functions:</text>
+
+      <text class="mono" x="15" y="48" fill="#34d399" font-size="10.5" font-weight="700">Syntax: git revert &lt;commit-hash&gt;</text>
+      <text class="sans" x="15" y="66" fill="#cbd5e1" font-size="10">• Computes inverse diff of target commit.</text>
+      <text class="sans" x="15" y="82" fill="#cbd5e1" font-size="10">• Appends changes as a new forward commit.</text>
+
+      <text class="sans" x="15" y="108" fill="#f8fafc" font-size="11" font-weight="700">Preserves Full Audit Trail:</text>
+      <text class="sans" x="15" y="126" fill="#94a3b8" font-size="9.5">• Buggy commit remains permanently in log.</text>
+      <text class="sans" x="15" y="142" fill="#94a3b8" font-size="9.5">• Explains why code was undone without erasing.</text>
+
+      <text class="mono" x="15" y="168" fill="#38bdf8" font-size="10.5" font-weight="700">Reverting a Merge Commit:</text>
+      <text class="mono" x="15" y="186" fill="#cbd5e1" font-size="10">git revert -m 1 &lt;merge-commit-hash&gt;</text>
+    </g>
+
+    <!-- Production Safety Notice (Safe bounds) -->
+    <g transform="translate(20, 375)">
+      <rect width="415" height="110" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+      <text class="sans" x="15" y="24" fill="#6ee7b7" font-size="11" font-weight="700">PRODUCTION COLLABORATION STANDARD:</text>
+      <text class="sans" x="15" y="46" fill="#d1fae5" font-size="10">• Completely safe for shared branches.</text>
+      <text class="sans" x="15" y="64" fill="#d1fae5" font-size="10">• Standard push works; no force-push needed.</text>
+      <text class="sans" x="15" y="82" fill="#d1fae5" font-size="10">• Zero merge conflicts caused for teammates.</text>
+    </g>
+  </g>
+</svg>

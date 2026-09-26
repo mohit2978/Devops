@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgMem" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+
+    <!-- OS Memory Gradient -->
+    <linearGradient id="osGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+
+    <!-- JVM Heap Gradient -->
+    <linearGradient id="heapGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <!-- JVM Non-Heap Gradient -->
+    <linearGradient id="nonHeapGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+
+    <!-- Page Cache Gradient -->
+    <linearGradient id="cacheGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- Free Memory Gradient -->
+    <linearGradient id="freeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+
+    <filter id="fShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", Consolas, Menlo, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1020" height="520" rx="16" fill="url(#bgMem)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Title Header -->
+  <g transform="translate(0, 24)">
+    <text class="sans" x="510" y="20" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="2">LINUX OS MEMORY VS JVM PROCESS ARCHITECTURE</text>
+    <text class="sans" x="510" y="52" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">Understanding "free -m" &amp; JVM Memory Footprint</text>
+    <text class="sans" x="510" y="74" text-anchor="middle" fill="#94a3b8" font-size="13">Why Linux uses remaining RAM as Buffers/Cache and why it's immediately available to Java</text>
+  </g>
+
+  <!-- ================= TOTAL PHYSICAL HOST RAM (16 GB) ================= -->
+  <g transform="translate(45, 110)">
+    <!-- RAM Label -->
+    <text class="sans" x="0" y="-8" fill="#cbd5e1" font-size="13" font-weight="700">Total Host Physical RAM: 16 GB</text>
+    <text class="mono" x="930" y="-8" text-anchor="end" fill="#94a3b8" font-size="12">$ free -h</text>
+
+    <!-- Memory Bar Stack (930px total width) -->
+    <!-- 1. OS & Daemons (2 GB = 115px) -->
+    <rect x="0" y="0" width="115" height="52" rx="6" fill="url(#osGrad)" filter="url(#fShadow)"/>
+    <text class="sans" x="57" y="26" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">OS / Kernel</text>
+    <text class="mono" x="57" y="42" text-anchor="middle" fill="#dbeafe" font-size="10">2.0 GB</text>
+
+    <!-- 2. JVM Heap (6 GB = 350px) -->
+    <rect x="119" y="0" width="350" height="52" fill="url(#heapGrad)" filter="url(#fShadow)"/>
+    <text class="sans" x="294" y="26" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">JVM Heap (-Xmx 6g)</text>
+    <text class="mono" x="294" y="42" text-anchor="middle" fill="#fef3c7" font-size="10">Young Gen (Eden + S0/S1) + Old Gen</text>
+
+    <!-- 3. JVM Non-Heap (2 GB = 115px) -->
+    <rect x="473" y="0" width="115" height="52" fill="url(#nonHeapGrad)" filter="url(#fShadow)"/>
+    <text class="sans" x="530" y="26" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">JVM Non-Heap</text>
+    <text class="mono" x="530" y="42" text-anchor="middle" fill="#fce7f3" font-size="10">2.0 GB</text>
+
+    <!-- 4. Buffers / Page Cache (5 GB = 245px) -->
+    <rect x="592" y="0" width="245" height="52" fill="url(#cacheGrad)" filter="url(#fShadow)"/>
+    <text class="sans" x="714" y="26" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Buffers &amp; Page Cache</text>
+    <text class="mono" x="714" y="42" text-anchor="middle" fill="#d1fae5" font-size="10">4.5 GB (Reclaimable!)</text>
+
+    <!-- 5. Free RAM (1.5 GB = 88px) -->
+    <rect x="841" y="0" width="89" height="52" rx="6" fill="url(#freeGrad)" filter="url(#fShadow)"/>
+    <text class="sans" x="885" y="26" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Free</text>
+    <text class="mono" x="885" y="42" text-anchor="middle" fill="#cbd5e1" font-size="10">1.5 GB</text>
+
+    <!-- Bracket for Real Available Memory -->
+    <g transform="translate(592, 62)">
+      <path d="M 0 0 L 0 10 L 169 10 L 169 20 L 169 10 L 338 10 L 338 0" stroke="#10b981" stroke-width="1.5" fill="none"/>
+      <rect x="79" y="24" width="180" height="24" rx="12" fill="#10b981"/>
+      <text class="sans" x="169" y="40" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">ACTUAL AVAILABLE RAM = 6.0 GB</text>
+    </g>
+  </g>
+
+  <!-- ================= LOWER SECTION: 2 COMPARISON CARDS ================= -->
+  <!-- Card 1: Inside the Java Process -->
+  <g transform="translate(45, 230)">
+    <rect width="450" height="245" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.4"/>
+    <rect x="20" y="-12" width="220" height="24" rx="6" fill="#f59e0b"/>
+    <text class="sans" x="130" y="4" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">JVM PROCESS TOTAL MEMORY</text>
+
+    <g transform="translate(20, 26)" class="sans" font-size="12">
+      <text x="0" y="16" fill="#f8fafc" font-weight="700">Total Resident Set Size (RSS) = Heap + Non-Heap</text>
+      
+      <g transform="translate(0, 32)">
+        <circle cx="6" cy="6" r="4" fill="#f59e0b"/>
+        <text x="18" y="10" fill="#cbd5e1"><tspan font-weight="700" fill="#fbbf24">Heap Space (-Xmx):</tspan> Young (Eden, S0/S1) + Old Gen</text>
+        
+        <circle cx="6" cy="28" r="4" fill="#ec4899"/>
+        <text x="18" y="32" fill="#cbd5e1"><tspan font-weight="700" fill="#f472b6">Metaspace:</tspan> Class metadata, methods, constant pool</text>
+        
+        <circle cx="6" cy="50" r="4" fill="#ec4899"/>
+        <text x="18" y="54" fill="#cbd5e1"><tspan font-weight="700" fill="#f472b6">Thread Stacks (-Xss):</tspan> 500 threads × 1MB = 500MB</text>
+        
+        <circle cx="6" cy="72" r="4" fill="#ec4899"/>
+        <text x="18" y="76" fill="#cbd5e1"><tspan font-weight="700" fill="#f472b6">Code Cache &amp; Direct NIO:</tspan> JIT compiled code + Netty</text>
+
+        <circle cx="6" cy="94" r="4" fill="#ec4899"/>
+        <text x="18" y="98" fill="#cbd5e1"><tspan font-weight="700" fill="#f472b6">GC Overhead:</tspan> Native JVM internal memory structures</text>
+      </g>
+
+      <rect x="0" y="150" width="410" height="32" rx="6" fill="#1e293b"/>
+      <text class="mono" x="14" y="171" fill="#fbbf24" font-size="11">Rule: Container RAM &gt; -Xmx + Non-Heap (avoid OOM!)</text>
+    </g>
+  </g>
+
+  <!-- Card 2: Interpreting "free -h" Command Output -->
+  <g transform="translate(525, 230)">
+    <rect width="450" height="245" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.4"/>
+    <rect x="20" y="-12" width="220" height="24" rx="6" fill="#10b981"/>
+    <text class="sans" x="130" y="4" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">READING "free -h" OUTPUT</text>
+
+    <!-- Terminal Output Snippet -->
+    <g transform="translate(15, 24)">
+      <rect width="420" height="74" rx="6" fill="#050811" stroke="#1e293b"/>
+      <text class="mono" x="12" y="20" fill="#38bdf8" font-size="11">$ free -h</text>
+      <text class="mono" x="12" y="38" fill="#94a3b8" font-size="10">              total    used    free  shared  buff/cache  available</text>
+      <text class="mono" x="12" y="56" fill="#f8fafc" font-size="10">Mem:           16Gi   10.0Gi   1.5Gi   250Mi       4.5Gi      6.0Gi</text>
+    </g>
+
+    <!-- Explanations -->
+    <g transform="translate(20, 116)" class="sans" font-size="11">
+      <text x="0" y="12" fill="#e2e8f0"><tspan font-weight="700" fill="#ef4444">1. "free" (1.5Gi):</tspan> Untouched, completely idle memory.</text>
+      <text x="0" y="32" fill="#e2e8f0"><tspan font-weight="700" fill="#10b981">2. "buff/cache" (4.5Gi):</tspan> OS disk cache (reclaimed instantly on request).</text>
+      <text x="0" y="52" fill="#e2e8f0"><tspan font-weight="700" fill="#38bdf8">3. "available" (6.0Gi):</tspan> RAM ready for Java WITHOUT swapping!</text>
+      
+      <rect x="0" y="66" width="410" height="30" rx="6" fill="#1e293b"/>
+      <text class="sans" x="12" y="86" fill="#34d399" font-size="11" font-weight="600">Key Takeaway: Never panic if "free" is low — check "available"!</text>
+    </g>
+  </g>
+</svg>

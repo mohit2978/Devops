@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 640" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgInternals" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+
+    <!-- Gradients for Objects -->
+    <linearGradient id="commitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+
+    <linearGradient id="treeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+
+    <linearGradient id="blobGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", Consolas, Menlo, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1020" height="640" rx="16" fill="url(#bgInternals)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(0, 22)">
+    <text class="sans" x="510" y="18" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="2">GIT ARCHITECTURAL INTERNALS</text>
+    <text class="sans" x="510" y="48" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="800">Content-Addressable Object Storage &amp; 3-Stage Pipeline</text>
+    <text class="sans" x="510" y="70" text-anchor="middle" fill="#94a3b8" font-size="12.5">Immutable Directed Acyclic Graph (DAG) of Blobs, Trees, and Commits</text>
+  </g>
+
+  <!-- Section 1: The Three Areas of Git -->
+  <g transform="translate(40, 105)">
+    <rect width="940" height="125" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
+    <rect x="25" y="-12" width="220" height="24" rx="12" fill="#334155"/>
+    <text class="sans" x="135" y="4" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">1. THE THREE TREES OF GIT</text>
+
+    <!-- Box 1: Working Directory -->
+    <g transform="translate(25, 22)">
+      <rect width="265" height="82" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text class="sans" x="15" y="24" fill="#38bdf8" font-size="12.5" font-weight="700">Working Directory</text>
+      <text class="sans" x="15" y="44" fill="#94a3b8" font-size="10.5">Actual files on your local filesystem.</text>
+      <text class="mono" x="15" y="64" fill="#e2e8f0" font-size="10">State: Untracked / Modified</text>
+    </g>
+
+    <!-- Transition 1 -->
+    <g transform="translate(305, 52)">
+      <rect width="40" height="22" rx="4" fill="#a855f7"/>
+      <text class="mono" x="20" y="15" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">add</text>
+    </g>
+
+    <!-- Box 2: Staging Area / Index -->
+    <g transform="translate(360, 22)">
+      <rect width="265" height="82" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1"/>
+      <text class="sans" x="15" y="24" fill="#c084fc" font-size="12.5" font-weight="700">Staging Area (.git/index)</text>
+      <text class="sans" x="15" y="44" fill="#94a3b8" font-size="10.5">Binary cache tracking file hashes.</text>
+      <text class="mono" x="15" y="64" fill="#e2e8f0" font-size="10">State: Staged for next commit</text>
+    </g>
+
+    <!-- Transition 2 -->
+    <g transform="translate(640, 52)">
+      <rect width="46" height="22" rx="4" fill="#f43f5e"/>
+      <text class="mono" x="23" y="15" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">commit</text>
+    </g>
+
+    <!-- Box 3: Git Repository / Object Store -->
+    <g transform="translate(700, 22)">
+      <rect width="215" height="82" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+      <text class="sans" x="15" y="24" fill="#34d399" font-size="12.5" font-weight="700">Git DB (.git/objects)</text>
+      <text class="sans" x="15" y="44" fill="#94a3b8" font-size="10.5">Permanent immutable object store.</text>
+      <text class="mono" x="15" y="64" fill="#e2e8f0" font-size="10">State: Committed (HEAD)</text>
+    </g>
+  </g>
+
+  <!-- Section 2: Object Database Graph (DAG) -->
+  <g transform="translate(40, 250)">
+    <rect width="940" height="360" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1" filter="url(#cardShadow)"/>
+    <rect x="25" y="-12" width="280" height="24" rx="12" fill="#1e293b" stroke="#475569"/>
+    <text class="sans" x="140" y="4" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="700">2. OBJECT STORE: BLOB, TREE, COMMIT</text>
+
+    <!-- Branch Reference Box (Safely Sized) -->
+    <g transform="translate(25, 25)">
+      <rect width="190" height="65" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text class="sans" x="12" y="20" fill="#38bdf8" font-size="10" font-weight="700">BRANCH REFERENCE</text>
+      <text class="mono" x="12" y="36" fill="#94a3b8" font-size="9.5">refs/heads/main</text>
+      <text class="mono" x="12" y="52" fill="#f8fafc" font-size="10">Points to: 9f8a2b...</text>
+    </g>
+
+    <!-- Commit Object Node -->
+    <g transform="translate(25, 110)">
+      <rect width="215" height="215" rx="8" fill="#1c1917" stroke="#f43f5e" stroke-width="1.5"/>
+      <rect x="15" y="-10" width="125" height="20" rx="4" fill="url(#commitGrad)"/>
+      <text class="sans" x="77" y="4" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">COMMIT OBJECT</text>
+      
+      <text class="mono" x="15" y="28" fill="#f43f5e" font-size="10.5" font-weight="700">SHA: 9f8a2b (40-char)</text>
+      <text class="sans" x="15" y="52" fill="#94a3b8" font-size="10.5">• <tspan fill="#38bdf8" font-weight="700">tree</tspan> a1b2c3 (Root folder)</text>
+      <text class="sans" x="15" y="72" fill="#94a3b8" font-size="10.5">• <tspan fill="#f43f5e" font-weight="700">parent</tspan> 4d5e6f (Prev commit)</text>
+      <text class="sans" x="15" y="92" fill="#94a3b8" font-size="10.5">• <tspan fill="#fbbf24" font-weight="700">author</tspan> Alice &lt;alice@co&gt;</text>
+      <text class="sans" x="15" y="112" fill="#94a3b8" font-size="10.5">• <tspan fill="#fbbf24" font-weight="700">committer</tspan> Alice</text>
+      <text class="sans" x="15" y="132" fill="#94a3b8" font-size="10.5">• <tspan fill="#fff" font-weight="700">message</tspan> "feat: auth api"</text>
+      <line x1="15" y1="148" x2="200" y2="148" stroke="#334155" stroke-width="1"/>
+      <text class="sans" x="15" y="168" fill="#cbd5e1" font-size="9.5">Inspect with:</text>
+      <text class="mono" x="15" y="184" fill="#a855f7" font-size="10">git cat-file -p 9f8a2b</text>
+    </g>
+
+    <!-- Connector Commit to Root Tree -->
+    <path d="M 240 200 L 285 200" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+    <circle cx="285" cy="200" r="4" fill="#38bdf8"/>
+
+    <!-- Root Tree Object Node -->
+    <g transform="translate(295, 95)">
+      <rect width="265" height="235" rx="8" fill="#0c1e30" stroke="#0ea5e9" stroke-width="1.5"/>
+      <rect x="15" y="-10" width="145" height="20" rx="4" fill="url(#treeGrad)"/>
+      <text class="sans" x="87" y="4" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">TREE: ROOT FOLDER</text>
+
+      <text class="mono" x="15" y="28" fill="#38bdf8" font-size="10.5" font-weight="700">SHA: a1b2c3 (Contents)</text>
+      <text class="mono" x="15" y="52" fill="#94a3b8" font-size="9.5">100644 blob e69de2 README.md</text>
+      <text class="mono" x="15" y="72" fill="#94a3b8" font-size="9.5">100644 blob 3b18e5 pom.xml</text>
+      <text class="mono" x="15" y="92" fill="#38bdf8" font-size="9.5">040000 tree 8c9d1a src/</text>
+
+      <line x1="15" y1="110" x2="250" y2="110" stroke="#1e3a5f" stroke-width="1"/>
+      <text class="sans" x="15" y="132" fill="#cbd5e1" font-size="10.5" font-weight="700">Tree Architecture:</text>
+      <text class="sans" x="15" y="152" fill="#94a3b8" font-size="10">• Directory hierarchy snapshot</text>
+      <text class="sans" x="15" y="170" fill="#94a3b8" font-size="10">• Stores file modes &amp; names</text>
+      <text class="sans" x="15" y="188" fill="#94a3b8" font-size="10">• References Blobs &amp; Subtrees</text>
+    </g>
+
+    <!-- Connectors Tree to Blobs & Subtrees -->
+    <path d="M 560 140 L 610 85" stroke="#10b981" stroke-width="2" fill="none"/>
+    <path d="M 560 185 L 610 185" stroke="#0ea5e9" stroke-width="2" fill="none"/>
+    <path d="M 560 230 L 610 280" stroke="#10b981" stroke-width="2" fill="none"/>
+
+    <!-- Right Side: Blobs and Subtree (Padded & Safely Sized) -->
+    <!-- Blob 1 -->
+    <g transform="translate(615, 45)">
+      <rect width="300" height="70" rx="6" fill="#062d22" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="12" y="-9" width="100" height="18" rx="4" fill="url(#blobGrad)"/>
+      <text class="sans" x="62" y="4" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">BLOB OBJECT</text>
+      <text class="mono" x="12" y="24" fill="#34d399" font-size="10" font-weight="700">SHA: e69de2 (README.md)</text>
+      <text class="sans" x="12" y="42" fill="#cbd5e1" font-size="9.5">Pure file contents only.</text>
+      <text class="sans" x="12" y="56" fill="#94a3b8" font-size="9.5">No filenames or directory paths stored here.</text>
+    </g>
+
+    <!-- Subtree -->
+    <g transform="translate(615, 145)">
+      <rect width="300" height="80" rx="6" fill="#0c1e30" stroke="#0ea5e9" stroke-width="1.5"/>
+      <rect x="12" y="-9" width="115" height="18" rx="4" fill="url(#treeGrad)"/>
+      <text class="sans" x="69" y="4" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">SUBTREE (src/)</text>
+      <text class="mono" x="12" y="24" fill="#38bdf8" font-size="10" font-weight="700">SHA: 8c9d1a</text>
+      <text class="mono" x="12" y="44" fill="#94a3b8" font-size="9.5">100644 blob f71a32 App.java</text>
+      <text class="mono" x="12" y="62" fill="#94a3b8" font-size="9.5">100644 blob bb4390 Service.java</text>
+    </g>
+
+    <!-- Blob 2 -->
+    <g transform="translate(615, 250)">
+      <rect width="300" height="70" rx="6" fill="#062d22" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="12" y="-9" width="100" height="18" rx="4" fill="url(#blobGrad)"/>
+      <text class="sans" x="62" y="4" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">BLOB OBJECT</text>
+      <text class="mono" x="12" y="24" fill="#34d399" font-size="10" font-weight="700">SHA: 3b18e5 (pom.xml)</text>
+      <text class="sans" x="12" y="42" fill="#cbd5e1" font-size="9.5">Content-addressable &amp; de-duplicated.</text>
+      <text class="sans" x="12" y="56" fill="#94a3b8" font-size="9.5">Identical files across folders share 1 blob!</text>
+    </g>
+  </g>
+</svg>
