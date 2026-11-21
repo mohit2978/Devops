@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="500" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="80" width="420" height="250" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="490" y="80" width="480" height="145" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="490" y="245" width="480" height="85" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M450,195 L490,160" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M484.9,172.0 L490,160 L477.5,163.5" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M450,290 L490,285" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M479.1,292.1 L490,285 L477.7,280.8" fill="none" stroke="#2f9e44" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">The example Dockerfile — what prints when?</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="110.0">FROM ubuntu</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="138.0">LABEL maintainer=&quot;Ashok&quot;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="166.0"></tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffa94d" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="194.0">RUN echo &#x27;hello from run-1&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffa94d" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="222.0">RUN echo &#x27;hello from run-2&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="250.0"></tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="278.0">CMD echo &#x27;hi from cmd-1&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="306.0">CMD echo &#x27;hi from cmd-2&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="506" y="106.0">$ docker build -t img-1 .</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="506" y="129.0">#5 RUN echo &#x27;hello from run-1&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffa94d" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="506" y="152.0">hello from run-1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="506" y="175.0">#6 RUN echo &#x27;hello from run-2&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffa94d" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="506" y="198.0">hello from run-2</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="506" y="273.0">$ docker run img-1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="506" y="299.0">hi from cmd-2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="720" y="360.0">cmd-1 never prints: only the LAST CMD is used</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="410.0">RUN output appears during BUILD (once) • CMD output appears every time a container RUNS</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="440.0">run it again → no build output (layers cached) • docker run img-1 again → &#x27;hi from cmd-2&#x27; again</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="470.0">with BuildKit use  docker build --progress=plain  to see RUN output</tspan></text>
+</g>
+</svg>

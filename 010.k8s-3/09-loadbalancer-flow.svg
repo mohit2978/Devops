@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="450" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="175" width="120" height="70" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="200" y="150" width="220" height="120" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M140,210 L200,210" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M188.3,215.7 L200,210 L188.3,204.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="500" y="80" width="470" height="140" rx="14" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="130" width="140" height="60" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="780" y="125" width="160" height="70" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M670,160 L780,160" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M768.3,165.7 L780,160 L768.3,154.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M420,210 L530,160" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<path d="M521.7,170.0 L530,160 L517.0,159.7" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<rect x="500" y="250" width="470" height="140" rx="14" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="300" width="140" height="60" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M670,330 L860,195" fill="none" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M853.7,206.4 L860,195 L847.2,197.2" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M420,210 L530,330" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<path d="M517.9,325.2 L530,330 L526.3,317.6" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">type: LoadBalancer on EKS — what gets created</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="80.0" y="210.0">users</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="310.0" y="189.4">AWS Classic LB</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="310.0" y="205.3">created automatically</tspan><tspan x="310.0" y="219.1">DNS: a785…elb.</tspan><tspan x="310.0" y="232.8">ap-south-1.amazonaws.com</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="735" y="100.0">worker node 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="600.0" y="152.5">nodePort</tspan><tspan x="600.0" y="167.5">(auto)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="860.0" y="152.5">javawebapppod</tspan><tspan x="860.0" y="167.5">:8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="735" y="270.0">worker node 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="600.0" y="322.5">nodePort</tspan><tspan x="600.0" y="337.5">(auto)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="400.0">URL: http://&lt;LB-DNS-name&gt;/java-web-app/  (takes 1–3 min for DNS to work)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="500" y="428.0">delete the Service → the LB is deleted too • LB and worker nodes are billable</tspan></text>
+</g>
+</svg>

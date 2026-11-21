@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="270" rx="16" fill="#ffffff" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="510" y="75" width="470" height="270" rx="16" fill="#ffffff" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="60" y="140" width="140" height="70" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M200,175 L280,175" fill="none" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M268.3,180.7 L280,175 L268.3,169.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="280" y="140" width="170" height="70" rx="12" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="545" y="125" width="400" height="40" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="185" width="110" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="685" y="185" width="110" height="60" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M795,215 L820,215" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<path d="M808.3,220.7 L820,215 L808.3,209.3" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<rect x="820" y="185" width="110" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M745,165 L745,185" fill="none" stroke="#6741d9" stroke-width="2"/>
+<path d="M739.3,173.3 L745,185 L750.7,173.3" fill="none" stroke="#6741d9" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Self-healing: a bare Pod vs a Pod managed by a ReplicaSet</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold"><tspan x="255" y="98.0">✗ kind: Pod (created directly)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#2f9e44" font-weight="bold"><tspan x="745" y="98.0">✓ kind: ReplicaSet (replicas: 2)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="130.0" y="166.2">javawebpod</tspan><tspan x="130.0" y="183.8">✗ deleted</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="365.0" y="166.2">nothing</tspan><tspan x="365.0" y="183.8">happens</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="255" y="251.2">nobody owns the pod → it&#x27;s gone for good</tspan><tspan x="255" y="268.8">→ application DOWN</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="745.0" y="145.0">ReplicaSet: desired 2, actual 1 → create 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="615.0" y="215.0">pod A</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="740.0" y="215.0">pod B ✗</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="875.0" y="206.9">pod C ✓</tspan><tspan x="875.0" y="223.1">(new)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="745" y="290.0">replacement created in seconds → app stays UP</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="380.0">never deploy apps as bare Pods — let a controller (ReplicaSet / Deployment …) own them</tspan></text>
+</g>
+</svg>

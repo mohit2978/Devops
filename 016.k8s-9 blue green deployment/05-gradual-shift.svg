@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" width="1000" height="380">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="380" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="115" width="200.0" height="50" rx="0" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="280" y="115" width="180.0" height="50" rx="0" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="460.0" y="115" width="20.0" height="50" rx="0" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M245,140 L275,140" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M263.3,145.7 L275,140 L263.3,134.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="520" y="115" width="100.0" height="50" rx="0" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="620.0" y="115" width="100.0" height="50" rx="0" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M485,140 L515,140" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M503.3,145.7 L515,140 L503.3,134.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="760.0" y="115" width="200.0" height="50" rx="0" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M725,140 L755,140" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M743.3,145.7 L755,140 L743.3,134.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Optional: shift traffic gradually instead of all at once</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="140" y="95.0">start</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="140.0" y="140.0">blue 100%</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="380" y="95.0">test with 10%</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="370.0" y="140.0">blue 90%</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="470.0" y="182.0">green 10%</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="620" y="95.0">half</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="570.0" y="140.0">blue 50%</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="670.0" y="140.0">green 50%</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="860" y="95.0">done</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="860.0" y="140.0">green 100%</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="220.0">watch errors &amp; latency at each step; if green misbehaves, send 100% back to blue</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="255.0">this weighted variant is really a CANARY release</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="500" y="290.0">plain K8s Services can&#x27;t do weights → use HAProxy / NGINX ingress canary annotations / a service mesh (Istio) / Argo Rollouts</tspan></text>
+</g>
+</svg>

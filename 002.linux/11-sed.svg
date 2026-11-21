@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="520" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="80" width="290" height="125" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="330" y="90" width="315" height="106" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="660" y="90" width="315" height="106" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="330" y="225" width="315" height="84" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="660" y="225" width="315" height="84" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="330" y="360" width="315" height="62" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="660" y="360" width="315" height="106" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="240" width="290" height="160" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">sed — stream editor: edit text without opening the file</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="36" y="102.0">data.txt</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="36" y="126.0">1 java is free</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="36" y="150.0">2 java is oop. java is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="36" y="174.0">3 python is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="36" y="198.0">4 aws is cloud</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="335" y="78.0">sed &#x27;s/java/py/&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="645" y="78.0">1st match per line</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="108.0">py is free</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="130.0">py is oop. java is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="152.0">python is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="174.0">aws is cloud</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="665" y="78.0">sed &#x27;s/java/py/g&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="975" y="78.0">g = all matches</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="108.0">py is free</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="130.0">py is oop. py is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="152.0">python is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="174.0">aws is cloud</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="335" y="213.0">sed &#x27;2d&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="645" y="213.0">delete line 2</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="243.0">java is free</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="265.0">python is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="287.0">aws is cloud</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="665" y="213.0">sed &#x27;/python/d&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="975" y="213.0">delete matching lines</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="243.0">java is free</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="265.0">java is oop. java is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="287.0">aws is cloud</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="335" y="348.0">sed -n &#x27;2,3p&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="645" y="348.0">print lines 2–3 only</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="378.0">java is oop. java is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="400.0">python is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="665" y="348.0">sed &#x27;2i\NEW&#x27;</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="975" y="348.0">insert before line 2</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="378.0">java is free</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="400.0">NEW</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="422.0">java is oop. java is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="444.0">…</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="165.0" y="279.4">remember</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="165.0" y="297.9">output goes to the screen —</tspan><tspan x="165.0" y="314.2">the file is NOT changed</tspan><tspan x="165.0" y="330.4"></tspan><tspan x="165.0" y="346.7">sed -i &#x27;…&#x27; file</tspan><tspan x="165.0" y="362.9">→ edit the file in place</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="485.0">s = substitute • d = delete • p = print (use -n) • i = insert before • a = append after • $ = last line</tspan></text>
+</g>
+</svg>

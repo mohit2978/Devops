@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="500" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="115" width="215" height="80" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="40" y="133" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="108" y="133" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="176" y="133" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="270" y="115" width="215" height="80" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="280" y="133" width="60" height="44" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="348" y="133" width="60" height="44" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="416" y="133" width="60" height="44" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M245,155 L270,155" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M258.3,160.7 L270,155 L258.3,149.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="115" width="215" height="80" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="520" y="133" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="588" y="133" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="656" y="133" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M485,155 L510,155" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M498.3,160.7 L510,155 L498.3,149.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="270" y="205" width="215" height="30" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="30" y="315" width="215" height="80" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="40" y="333" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="108" y="333" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="176" y="333" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="270" y="315" width="215" height="80" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="280" y="333" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="348" y="333" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="416" y="333" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M245,355 L270,355" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M258.3,360.7 L270,355 L258.3,349.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="315" width="215" height="80" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="520" y="333" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="588" y="333" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="656" y="333" width="60" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M485,355 L510,355" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M498.3,360.7 L510,355 L498.3,349.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="750" y="315" width="215" height="80" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="760" y="333" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="828" y="333" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="896" y="333" width="60" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M725,355 L750,355" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M738.3,360.7 L750,355 L738.3,349.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Deployment strategies: Recreate vs RollingUpdate (v1 → v2)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="17" fill="#e03131" font-weight="bold"><tspan x="30" y="95.0">Recreate</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="70.0" y="155.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="138.0" y="155.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="206.0" y="155.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="310.0" y="155.0">none</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="378.0" y="155.0">none</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="446.0" y="155.0">none</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="550.0" y="155.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="618.0" y="155.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="686.0" y="155.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="377.5" y="220.0">users get errors here</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="500" y="253.0">all old pods deleted first → DOWNTIME</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="17" fill="#2f9e44" font-weight="bold"><tspan x="30" y="295.0">RollingUpdate</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="70.0" y="355.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="138.0" y="355.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="206.0" y="355.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="310.0" y="355.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="378.0" y="355.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="446.0" y="355.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="550.0" y="355.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="618.0" y="355.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="686.0" y="355.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="790.0" y="355.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="858.0" y="355.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="926.0" y="355.0">v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="500" y="453.0">one by one, new pod ready before old one goes → no downtime</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="500" y="488.0">RollingUpdate knobs: maxSurge (extra pods allowed, default 25%) • maxUnavailable (pods that may be down, default 25%)</tspan></text>
+</g>
+</svg>

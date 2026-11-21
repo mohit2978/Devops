@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="85" width="225" height="105" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="265" y="85" width="225" height="105" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="85" width="225" height="105" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="755" y="85" width="225" height="105" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="255" width="440" height="110" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="520" y="255" width="440" height="110" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Built-in namespaces and cross-namespace names</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="132.5" y="130.0">default</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="132.5" y="147.9">your stuff when no -n is given</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="377.5" y="122.5">kube-system</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="377.5" y="140.4">K8s system pods: coredns,</tspan><tspan x="377.5" y="155.4">kube-proxy, aws-node</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="622.5" y="122.5">kube-public</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="622.5" y="140.4">readable by everyone</tspan><tspan x="622.5" y="155.4">(cluster info)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="867.5" y="130.0">kube-node-lease</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="867.5" y="147.9">node heartbeats</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="500" y="220.0">⚠ don&#x27;t edit, rename or delete the built-in namespaces</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="260.0" y="301.2">same namespace</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="260.0" y="319.8">http://javawebappsvc</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="740.0" y="295.0">from ANOTHER namespace</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="740.0" y="312.2">http://javawebappsvc.ashokit-ns</tspan><tspan x="740.0" y="327.2">or full: javawebappsvc.ashokit-ns.svc.cluster.local</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="500" y="400.0">namespaces separate names &amp; permissions — the network between namespaces is still open unless you add NetworkPolicies</tspan></text>
+</g>
+</svg>

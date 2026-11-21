@@ -1,31 +1,33 @@
-# Lecture 4
+# Kubernetes · Lecture 4: NodePort, ClusterIP & Namespaces
 
+> We created the cluster from an **Ubuntu** host machine, so the SSH username is **`ubuntu`**.
 
->Note: remember we used ubuntu machine to create cluster so username is ubuntu only
+---
 
-### create cluster command
+## 1. Cluster commands (recap)
 
-`
-eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b`
+```bash
+# create the cluster (takes ~15 minutes)
+eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b
 
->Note: It takes time to start
+# delete the cluster after practice (avoid billing)
+eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
 
-### delete cluster command
+# delete all pods, services etc. in the current (default) namespace
+kubectl delete all --all
+```
 
-`eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
-`
+---
 
+## 2. NodePort Service
 
-- to delete all the resources(pods,services all) we have created
-        
-        $ kubectl delete all --all
+Last lecture we exposed pods with a **LoadBalancer** Service. **NodePort** is another way to expose pods outside the cluster.
 
- ## Example K8S Node Port Service       
+![NodePort overview](08-nodeport-overview.svg)
 
- another way to expose pods!!yesterday we have seen load balancer
+NodePort opens the **same port (30000–32767) on every worker node**, so the app is reachable at `http://<node-public-ip>:<nodePort>`.
 
-
- ```yml
+```yml
 ---
 apiVersion: v1
 kind: Service
@@ -38,14 +40,12 @@ spec:
  ports:
   - port: 80
     targetPort: 8080
-...    
+...
+```
 
- ```
-Yesterday we have seen how to write pods and Service yml in one ,so we use that only need to change spec type to NodePort
-
+We reuse last lecture's Pod + Service file and only change the service `type` to `NodePort`:
 
 ```yml
-
 ---
 apiVersion: v1
 kind: Pod
@@ -74,31 +74,50 @@ spec:
 ...
 ```
 
-![alt text](image.png)
- 
-see pods and service got created,service type is NodePort!!
+![Pod and NodePort service created](image.png)
 
-$ kubectl get pods -o wide --> to get on which worker node pod is running
+The pod and service are created, and the service type is **NodePort**.
 
+### The port numbers
 
->Note: We need to enable node-port number in the security group inbound rules of worker node in which our pod is running.so that from service we can access the pod
+![nodePort, port and targetPort](01-nodeport-ports.svg)
 
-![alt text](image-1.png)
+| Field | Meaning | Example |
+|-------|---------|---------|
+| `nodePort` | Port opened on **every worker node** (30000–32767) | 30441 / 30070 |
+| `port` | The **Service's** own port (its ClusterIP inside the cluster) | 80 |
+| `targetPort` | The **container's** port that traffic is forwarded to | 8080 |
+| `containerPort` | The port the app listens on inside the container (should equal `targetPort`) | 8080 |
 
-we see for now our port is 30441 so enable that ip--> anywhere!!
+### Accessing the app
 
-  URL To Access Our app : http://node-public-ip:node-port/java-web-app
+![Reaching a NodePort app](02-nodeport-access.svg)
 
-  ![alt text](image-2.png)
+```bash
+kubectl get svc               # PORT(S) shows 80:<nodePort>/TCP
+kubectl get pods -o wide      # which worker node runs the pod (+ its IP)
+```
 
-we can access by public ip of worker node in which pod is running!!
+> Open the **nodePort** in the **security group inbound rules** of the worker nodes, or the browser can't reach it.
 
->Every time you delete nodePort service and create a new service, you get a new random port, we want to get a fixed port number
+![Security group inbound rule for the nodePort](image-1.png)
 
-### What is Nodeport number ?
- => If we don't specify node-port in service manifest yml then k8s will assign random node port number for the service in the range of 30000 to 32767.
+Here the nodePort is **30441**, so add an inbound rule for TCP 30441 (from *anywhere* for practice; your own IP is safer).
 
->Note: If We don't want random node port number, we can specify that port number in service manifest yml in range only(30000 to 32767).
+**URL:** `http://<node-public-ip>:<node-port>/java-web-app`
+
+![App opened via node IP and nodePort](image-2.png)
+
+> We used the public IP of the worker node running the pod. Actually **any** worker node's IP works: kube-proxy opens the nodePort on every node and forwards the traffic to the pod.
+
+### Random vs fixed nodePort
+
+Every time you delete and re-create the NodePort Service you get a **new random port**. We want a fixed one.
+
+![Random vs fixed nodePort](03-random-vs-fixed-nodeport.svg)
+
+- If `nodePort` isn't specified, Kubernetes picks a **random** port in **30000–32767**.
+- To get a fixed port, set `nodePort` yourself (it must be in that range and unused).
 
 ```yml
 ---
@@ -114,26 +133,26 @@ spec:
   - port: 80
     targetPort: 8080
     nodePort: 30070
-... 
-
+...
 ```
 
-$ cat /<file-name>--> to see content of file 
+```bash
+cat <file-name>               # check the file content
+kubectl apply -f <yml-file-name>
+kubectl get pods
+kubectl get service           # PORT(S) → 80:30070/TCP
+```
+**URL:** `http://<node-public-ip>:30070/java-web-app`
 
-$ kubectl apply -f \<yml-file-name>
+> **NodePort vs LoadBalancer:** with a LoadBalancer you get **one stable URL on port 80**, with nothing to look up. With NodePort you must find a worker node's public IP, open the nodePort in the security group, and the node can be replaced (new IP). So NodePort is fine for testing; LoadBalancer is used for real traffic.
 
-$ kubectl get pods
+---
 
-$ kubectl get service
+## 3. ClusterIP Service
 
+With type **ClusterIP**, one **static (fixed) IP** is created to reach all matching pods **from inside the cluster**.
 
-  URL To Access Our app : http://node-public-ip:node-port/java-web-app
-
->Note: In service load balancer you can use url of load balancer and port 80 fixed so no need to remember , here we need to search worker node in which pod is running , enable service port number in inbound rule and then we can access by public-ip of worker node!!  
-
-## Example K8S ClusterIP Service
-
-=> When we use service type as ClusterIP then one static ip will be created to access our all pods with in the cluster.
+![ClusterIP overview](09-clusterip-overview.svg)
 
 ```yml
 ---
@@ -149,95 +168,122 @@ spec:
   - port: 80
     targetPort: 8080
 ...
-
 ```
 
-All pods mapped to cluster IP!!This is not for outside access ,only for internal access ,we want to deploy database pods ,than database pods must be accessed internally ,not by outside world!!
+- All pods with the label are mapped behind the cluster IP.
+- **Not for outside access**, only internal. Typical use: **database pods**, which must be reachable by other pods but **not** by the outside world.
+- ClusterIP is also the **default** type when `type` isn't specified.
 
-> To change service type just edit yml file and then apply !! on applying you see pod is unchanged and see service is changed!!
+### Changing the type
 
-![alt text](image-3.png)
+To change the service type, edit the YAML and apply it again:
 
-cannot use cluster IP outside !! use case fixed ip for pods!! within cluster we will be able to access pods!!
+![Changing the service type with apply](04-change-service-type.svg)
 
-Used for DB pods deployment!!
+![apply output: pod unchanged, service configured; service is now ClusterIP](image-3.png)
 
-## K8S Namespaces
+The pod is `unchanged`; the service is `configured` and now shows `TYPE ClusterIP`, `CLUSTER-IP 10.100.75.17`, `EXTERNAL-IP <none>`.
 
-=> Namespaces are used to group k8s resources
-	
-	  frontend-app-pods ==> create under one namespace
+> You **can't** open a ClusterIP from outside. It gives pods a **fixed internal address**, reachable only inside the cluster.
 
-	  backend-app-pods ==> create under one namespace
+### Testing a ClusterIP from inside
 
-	  database-pods ==> create under once namespace
+![Testing ClusterIP from inside the cluster](05-clusterip-test.svg)
 
-=> We can create multiple namespaces in k8s cluster
+```bash
+kubectl run tmp --rm -it --image=busybox -- wget -qO- http://javawebappsvc/java-web-app
+```
+Pods call the **service name** (`javawebappsvc`); CoreDNS turns it into the ClusterIP.
 
-	Ex : ashokit-a1-ns, ashokit-a2-ns
+### The 3 service types together
 
-=> Each namespace is isolated with another namespace
+![Service types](10-service-types.svg)
 
->Note: When we delete a namespace, all the resources belongs to that namespace gets deleted.	
+| | ClusterIP | NodePort | LoadBalancer |
+|---|---|---|---|
+| Reachable from | Inside the cluster | `nodeIP:30000-32767` | Public LB URL |
+| Use for | Databases, internal APIs | Testing / demos | Public apps |
+| Extra setup | None | Open nodePort in security group | None (cloud LB created automatically) |
 
-- display all namespaces available
-    
-      $ kubectl get ns
+---
 
-  ![alt text](image-4.png)
+## 4. Kubernetes Namespaces
 
-  You see some namespace already available namespaces , except default there are namespaces used by k8s.
+**Namespaces group Kubernetes resources** logically:
 
-- get the pods available in kube-system namespace
+| Pods | Namespace |
+|------|-----------|
+| frontend app pods | one namespace |
+| backend app pods | one namespace |
+| database pods | one namespace |
 
-      $ kubectl get pods -n <namespace-name>
+![Namespaces](11-namespaces-overview.svg)
 
-    ![alt text](image-6.png)
+- You can create **many namespaces** in a cluster, e.g. `ashokit-a1-ns`, `ashokit-a2-ns`.
+- Each namespace is **isolated** from the others: names only have to be unique within a namespace, and permissions/quotas can be set per namespace.
 
-    ![alt text](image-5.png)
+> ⚠ **Deleting a namespace deletes all resources in it.**
 
->kubectl get pods --> gives pod in default namespace as we do not mention the namespace
+```bash
+kubectl get ns          # list namespaces
+```
 
->Note: If we don't give namespace then k8s will check under default namespace.
+![kubectl get ns](image-4.png)
 
+Some namespaces already exist. Apart from `default`, they're used by Kubernetes itself.
 
-=> We can create namespace in 2 ways
+![Built-in namespaces and cross-namespace names](07-builtin-namespaces-dns.svg)
 
-1) using kubectl create ns command
+```bash
+kubectl get pods -n <namespace-name>
+```
 
-2) using manifest yml
+`kubectl get pods -n default`: our `javawebapppod` is in `default`:
 
-Approach-1:  
+![Pods in the default namespace](image-5.png)
 
-		$ kubectl create ns ashokit-ns		
+`kubectl get pods -n kube-system`: the system pods (`aws-node`, `coredns`, `kube-proxy`):
 
-Approach-2:
+![Pods in kube-system](image-6.png)
 
+> `kubectl get pods` without `-n` shows the **default** namespace. If no namespace is given, Kubernetes uses `default`.
+
+### Creating namespaces
+
+**Approach 1: command**
+```bash
+kubectl create ns ashokit-ns
+```
+
+**Approach 2: manifest YAML**
 ```yml
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
  name: ashokit-ns-2
-...		
+...
+```
+```bash
+kubectl apply -f <yml-file>
 ```
 
-$ kubectl apply -f \<yml-file>
+**Delete a namespace**
+```bash
+kubectl delete ns <namespace-name>
+```
 
-- We can delete namespace using below command
+### Pod and Service inside our namespace
 
-      $ kubectl delete ns <namespace-name>
+Previously the pod and service were in `default`; now we put them in our own namespace by adding `namespace:` under each resource's `metadata`:
 
-### Pod and service under our namespace
-
-Previously pod and service was in default namepsace now we want them to be in our namespace!!
-
+![Resources in a namespace](06-namespace-yaml.svg)
 
 ```yml
 ---
 apiVersion: v1
 kind: Namespace
-metadata: 
+metadata:
  name: ashokit-ns
 ---
 apiVersion: v1
@@ -268,38 +314,63 @@ spec:
     targetPort: 8080
 ...
 ```
+> The Namespace must be listed **first** in the file so it exists before the pod and service are created in it. Pod and Service must be in the **same** namespace, because a Service only selects pods in its own namespace.
 
-$ kubectl apply -f \<yml-file>
+```bash
+kubectl apply -f <yml-file>
+kubectl get ns
+kubectl get pods -n ashokit-ns
+```
 
-$ kubectl get ns
+![Pod in ashokit-ns](image-7.png)
 
-$ kubectl get pods -n ashokit-ns
+```bash
+kubectl get service -n ashokit-ns
+```
 
-![alt text](image-7.png)
+![Service in ashokit-ns](image-8.png)
 
-$ kubectl get service -n ashokit-ns
+```bash
+kubectl get all -n ashokit-ns
+kubectl delete ns ashokit-ns
+```
 
-![alt text](image-8.png)
+![Namespace deleted, only built-in namespaces remain](image-9.png)
 
-$ kubectl get all -n ashokit-ns
+The namespace (and its pod and service) is deleted; only the built-in namespaces remain.
 
-$ kubectl delete ns ashokit-ns
+> The `80:31220/TCP` at the top of that screenshot shows that a **LoadBalancer** Service also gets a nodePort: the cloud load balancer sends traffic to that port on the nodes.
 
-![alt text](image-9.png)
+> ⚠ **Don't touch, rename or delete the namespaces that already exist** (`default`, `kube-system`, `kube-public`, `kube-node-lease`).
 
->see deleted
+---
 
-> Do not touch rename or anything else the namespaces already present !!
+## 5. Interview questions (lectures 1–4)
 
-### Questions
-1) What is Orchestration
-2) K8S Introduction
-3) K8S Advantages
-4) K8S Architecture
-5) K8S Architecture components
-6) K8S Cluster Setup
-7) K8S Resources
-8) What is POD
-9) What is Service (ClusterIP, NodePort & LBR)
-10) What is Namespace
+| # | Question | Where to revise |
+|---|----------|-----------------|
+| 1 | What is orchestration? | Lecture 1 |
+| 2 | Kubernetes introduction | Lecture 1 |
+| 3 | Kubernetes advantages | Lecture 1 |
+| 4 | Kubernetes architecture | Lecture 1 |
+| 5 | Architecture components (API server, scheduler, controller manager, etcd, kubelet, kube-proxy) | Lecture 1 |
+| 6 | Cluster setup (Minikube / kubeadm / EKS) | Lectures 1–2 |
+| 7 | Kubernetes resources | Lecture 2 |
+| 8 | What is a Pod? | Lectures 1–3 |
+| 9 | What is a Service (ClusterIP, NodePort, LoadBalancer)? | Lectures 2–4 |
+| 10 | What is a Namespace? | Lectures 2 & 4 |
 
+---
+
+## 6. Quick revision
+
+| Topic | Key point |
+|-------|-----------|
+| NodePort | Port 30000–32767 on every node; `http://nodeIP:nodePort` |
+| Fixed nodePort | Set `nodePort:` in the YAML (within range) |
+| Security group | Open the nodePort on worker nodes |
+| port / targetPort | Service port / container port |
+| ClusterIP | Fixed internal IP + DNS name; inside the cluster only (DB pods) |
+| Change type | Edit YAML → `kubectl apply` (pod unchanged, service configured) |
+| Namespace | Logical group; delete it → everything inside is deleted |
+| `-n <ns>` | Without it, kubectl uses `default` |

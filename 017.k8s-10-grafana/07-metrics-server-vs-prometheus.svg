@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="230" y="75" width="360" height="40" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="600" y="75" width="380" height="40" rx="6" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="125" width="200" height="42" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="230" y="125" width="360" height="42" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="600" y="125" width="380" height="42" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="175" width="200" height="42" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="230" y="175" width="360" height="42" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="600" y="175" width="380" height="42" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="225" width="200" height="42" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="230" y="225" width="360" height="42" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="600" y="225" width="380" height="42" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="275" width="200" height="42" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="230" y="275" width="360" height="42" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="600" y="275" width="380" height="42" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">metrics-server vs Prometheus</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="410.0" y="95.0">metrics-server</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="790.0" y="95.0">Prometheus</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="120.0" y="146.0">data</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="410.0" y="146.0">CPU &amp; memory only</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="790.0" y="146.0">hundreds of metrics + custom app metrics</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="120.0" y="196.0">history</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="410.0" y="196.0">latest value only</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="790.0" y="196.0">stored over time (days/weeks)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="120.0" y="246.0">used by</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="410.0" y="246.0">kubectl top, HPA</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="790.0" y="246.0">Grafana dashboards, alerts</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="120.0" y="296.0">UI / query</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="410.0" y="296.0">none</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="790.0" y="296.0">PromQL + web UI</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="355.0">HPA still uses metrics-server by default — keep it even when you add Prometheus</tspan></text>
+</g>
+</svg>

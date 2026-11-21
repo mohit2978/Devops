@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="90" width="230" height="290" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="620" y="80" width="350" height="310" rx="16" fill="#ebfbee" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="645" y="175" width="300" height="190" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="625" y="210" width="22" height="120" rx="4" fill="#ffe3e3" stroke="#e03131" stroke-width="2"/>
+<rect x="300" y="95" width="290" height="70" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M260,130 L300,130" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M288.3,135.7 L300,130 L288.3,124.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M590,130 L645,210" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M633.7,203.6 L645,210 L643.0,197.2" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="300" y="195" width="290" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M260,230 L300,230" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M288.3,235.7 L300,230 L288.3,224.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M590,230 L645,230" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M633.3,235.7 L645,230 L633.3,224.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="300" y="295" width="290" height="70" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M260,330 L300,330" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M288.3,335.7 L300,330 L288.3,324.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M590,330 L645,330" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M633.3,335.7 L645,330 L633.3,324.3" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">3 ways to connect to your Linux EC2 VM</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="145.0" y="178.1">your laptop</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="145.0" y="197.3"></tspan><tspan x="145.0" y="213.5"></tspan><tspan x="145.0" y="229.8">my-key.pem</tspan><tspan x="145.0" y="246.0">(private key)</tspan><tspan x="145.0" y="262.3"></tspan><tspan x="145.0" y="278.5">keep it secret!</tspan><tspan x="145.0" y="294.8">chmod 400 my-key.pem</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="795" y="100.0">AWS cloud</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="795" y="195.0">EC2 Linux VM</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="795" y="223.8">public IP 13.233.x.x</tspan><tspan x="795" y="240.0">holds the PUBLIC key</tspan><tspan x="795" y="256.2">security group: port 22 open</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#e03131" font-weight="bold"><tspan x="636" y="340.0">SG</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="445.0" y="123.1">① MobaXterm / PuTTY</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="445.0" y="139.1">Session → SSH → host + user + .pem</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="445.0" y="223.1">② ssh command</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="445.0" y="239.1">ssh -i my-key.pem ec2-user@&lt;public-ip&gt;</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="445.0" y="323.1">③ EC2 Instance Connect</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="445.0" y="339.1">browser: Connect button in AWS console</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="420.0">all 3 use SSH (Secure Shell) on port 22 • key pair: AWS keeps the public key, you keep the private .pem</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="448.0">default user: Amazon Linux → ec2-user • Ubuntu → ubuntu</tspan></text>
+</g>
+</svg>

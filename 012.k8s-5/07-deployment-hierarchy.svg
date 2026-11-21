@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="1000" height="440">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="440" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="80" width="250" height="95" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="30" y="210" width="250" height="95" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M155,175 L155,210" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M149.3,198.3 L155,210 L160.7,198.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="360" y="210" width="170" height="95" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M280,257 L360,257" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M348.3,262.7 L360,257 L348.3,251.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="560" y="210" width="170" height="95" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M280,257 L560,257" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M548.3,262.7 L560,257 L548.3,251.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="780" y="200" width="200" height="115" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M780,257 L730,257" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M741.7,251.3 L730,257 L741.7,262.7" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M800,315 Q620,345 445,305" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M457.7,302.1 L445,305 L455.2,313.1" fill="none" stroke="#e8590c" stroke-width="2"/>
+<rect x="780" y="80" width="200" height="60" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M880,140 L880,200" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M874.3,188.3 L880,200 L885.7,188.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Deployment → ReplicaSet → Pods  (+ Service in front)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="155.0" y="112.5">Deployment</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="155.0" y="131.7">javawebdeploy</tspan><tspan x="155.0" y="146.7">strategy, rollout history</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="155.0" y="242.5">ReplicaSet</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="155.0" y="261.7">javawebdeploy-7c9f…</tspan><tspan x="155.0" y="276.7">keeps replicas = 2</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="165" y="192.0">creates &amp; manages</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="445.0" y="243.8">Pod 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="445.0" y="260.4">label app=javawebapp</tspan><tspan x="445.0" y="274.1">container :8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="645.0" y="243.8">Pod 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="645.0" y="260.4">label app=javawebapp</tspan><tspan x="645.0" y="274.1">container :8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="880.0" y="236.9">Service javawebsvc</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="880.0" y="253.5">type LoadBalancer</tspan><tspan x="880.0" y="267.2">selector app=javawebapp</tspan><tspan x="880.0" y="281.0">port 80 → 8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="880.0" y="110.0">users → AWS LB URL</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="355.0">you create ONLY the Deployment; it creates the ReplicaSet, which creates the pods</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="385.0">Deployment adds on top of ReplicaSet: rolling updates, rollback (revision history), pause/resume</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="413.0">the Service finds pods by LABEL, so it doesn&#x27;t care which ReplicaSet / version created them</tspan></text>
+</g>
+</svg>

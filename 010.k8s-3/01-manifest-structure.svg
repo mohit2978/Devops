@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="80" width="330" height="200" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="400" y="85" width="160" height="40" rx="8" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="400" y="135" width="160" height="40" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="400" y="185" width="160" height="40" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="400" y="235" width="160" height="40" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="330" width="300" height="30" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="330" width="190" height="30" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="366" width="300" height="30" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="366" width="190" height="30" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="402" width="300" height="30" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="402" width="190" height="30" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Every Kubernetes manifest has the same 4 top-level fields</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="106.0">---</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#74c0fc" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="128.0">apiVersion: v1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="150.0">kind: Pod</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="172.0">metadata:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="194.0">  name: javawebapppod</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="216.0">spec:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="238.0">  ...</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="260.0">...</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="480.0" y="105.0">apiVersion</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="105.0">which API group/version defines this kind</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="480.0" y="155.0">kind</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="155.0">WHAT to create: Pod, Service, Deployment…</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="480.0" y="205.0">metadata</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="205.0">name, labels, namespace of the resource</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="480.0" y="255.0">spec</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="255.0">the DESIRED state: containers, ports, replicas…</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="315.0">common kind → apiVersion</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="400.0" y="345.0">Pod / Service / Namespace</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="655.0" y="345.0">v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="400.0" y="381.0">Deployment / ReplicaSet</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="655.0" y="381.0">apps/v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="400.0" y="417.0">HorizontalPodAutoscaler</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="655.0" y="417.0">autoscaling/v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="450.0">--- starts a document, ... ends it (optional) • kubectl explain pod.spec shows every field</tspan></text>
+</g>
+</svg>

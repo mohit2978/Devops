@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="500" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<path d="M90,380 L950,380" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M90,380 L90,100" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M90,369 L176,369 L202,175 L262,122 L348,208 L434,268 L520,277 L606,277 L632,376 L692,380 L950,380" fill="none" stroke="#e03131" stroke-width="3"/>
+<path d="M90,340 L228,340 L228,260 L296,260 L296,180 L382,180 L382,140 L632,140 L838,140 L838,340 L950,340" fill="none" stroke="#1971c2" stroke-width="3.5"/>
+<path d="M90,272 L950,272" fill="none" stroke="#e8590c" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M176,380 L176,388" fill="none" stroke="#1e1e1e" stroke-width="1.5"/>
+<path d="M632,380 L632,388" fill="none" stroke="#1e1e1e" stroke-width="1.5"/>
+<path d="M838,380 L838,388" fill="none" stroke="#1e1e1e" stroke-width="1.5"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">HPA in action: load goes up → pods go up → load goes down → pods go down</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="950" y="400.0">time →</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="80" y="100.0">high</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#e8590c" font-weight="bold"><tspan x="950" y="262.3">target 50%</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="272.0" y="111.5">CPU % (red)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="477.0" y="126.0">replicas (blue) 1 → 6</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="176.0" y="405.1">load-generator</tspan><tspan x="176.0" y="418.9">starts</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="631.8" y="405.1">load-generator</tspan><tspan x="631.8" y="418.9">stopped</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="838.1999999999999" y="405.1">≈5 min later</tspan><tspan x="838.1999999999999" y="418.9">scale down</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="460.0">scale up is fast (seconds); scale down waits ~5 minutes (stabilization) so pods don&#x27;t flap up and down</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="485.0">desired replicas = ceil( current replicas × current CPU% ÷ target% )   e.g. 1 × 250% ÷ 50% = 5</tspan></text>
+</g>
+</svg>

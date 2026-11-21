@@ -1,77 +1,80 @@
-# Kubernetes Lecture 3
+# Kubernetes · Lecture 3: Manifest YAML, Pods & LoadBalancer Service
 
->Note: remember we used ubuntu machine to create cluster so username is ubuntu only
+> We created the cluster from an **Ubuntu** host machine, so the SSH username is **`ubuntu`**.
 
-### create cluster command
+---
 
-`
-eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b`
+## 1. Cluster commands (recap)
 
->Note: It takes time to start
+```bash
+# create the cluster (takes ~15 minutes)
+eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b
 
-### delete cluster command
+# delete the cluster after practice (avoid billing)
+eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
+```
 
-`eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
-`
+![No resources found in default namespace](image.png)
 
-![alt text](image.png)
+The cluster is ready, but `kubectl get pods` finds nothing: we haven't created any pods yet, and kubectl looks in the **`default`** namespace.
 
-no namespace so getting this!
+---
 
-## Manifest YML
-=> In K8s we will use Manifest YML to deploy our application or to do anything in K8s cluster!!
+## 2. Manifest YAML
 
-=> Entire k8s is dependent on this yml,most people not able to write these only!!
+- In Kubernetes we use **manifest YAML files** to deploy applications, or to do almost anything in the cluster.
+- The whole of Kubernetes depends on these files; being able to **write them confidently** is a key skill.
 
-### K8s Manifest YML Syntax
+### Manifest syntax
 
 ```yml
 ---
 apiVersion: <version-number>
-kind:  <resource-type>
-metadata: <name>
-spec: <container>
+kind: <resource-type>
+metadata:
+  name: <name>
+spec:
+  <desired state, e.g. containers>
 ...
 ```
-starts with 3 -(hyphens) and ends with 3 dots
 
-apiVersion --> version of resource you are going to create
+![Manifest structure](01-manifest-structure.svg)
 
-kind--> what type of k8s resource you want to create like if pod then kind is POD ,if service then SERVICE
+| Field | Meaning |
+|-------|---------|
+| `apiVersion` | API version of the resource you're creating (`v1` for Pod/Service, `apps/v1` for Deployment…) |
+| `kind` | **Type** of resource: `Pod`, `Service`, `Deployment`, `Namespace`… (case-sensitive: `Pod`, not `POD`) |
+| `metadata` | Name (and labels, namespace) of the resource |
+| `spec` | The **specification**: for a pod, the containers, Docker image, ports… |
 
-metdata --> name to resource you want to give
+- A file starts with `---` (three hyphens) and may end with `...` (three dots).
+- Run a manifest with:
+  ```bash
+  kubectl apply -f <manifest-yml>
+  ```
 
-spec-->here we specify docker image , here we tell about container!!
-
-
-- Execute k8s manifest yml like below
-    
-        $ kubectl apply -f <manifest-yml>
-
-we can create multiple resources from one yml,sections are separated by 3 hyphens
-
+**Multiple resources in one file** are separated by `---`:
 ```yml
 ---
 apiVersion: <version-number>
-kind:  <resource-type>
-metadata: <name>
-spec: <container>
+kind: <resource-type>
+metadata: ...
+spec: ...
 ---
 apiVersion: <version-number>
-kind:  <resource-type>
-metadata: <name>
-spec: <container>
----
-apiVersion: <version-number>
-kind:  <resource-type>
-metadata: <name>
-spec: <container>
+kind: <resource-type>
+metadata: ...
+spec: ...
 ...
 ```
 
-These yml file you can get from internet and chatgpt 
+![YAML basics](02-yaml-basics.svg)
 
-### Example K8S POD Manifest YML
+> You can find manifest templates online or ask ChatGPT, but **understand every line** before applying. `kubectl explain pod.spec.containers` documents every field.
+
+---
+
+## 3. Pod manifest
 
 ```yml
 ---
@@ -89,80 +92,99 @@ spec:
    - containerPort: 8080
 ...
 ```
-In metadata we give label with name!!label can be anything, under label you can put color:red!!
 
-=> Labels are used to identify pod!!
+![Pod manifest explained](03-pod-manifest.svg)
 
-Conatiners we can have multiple container inside pod, image it take from dokcerHub!!
+- In `metadata` we give the pod a **name** and **labels**. A label is any `key: value` pair, e.g. `app: javawebapp` or `color: red`.
+- **Labels identify pods**: Services (and later ReplicaSets/Deployments) find pods by their labels.
+- `containers` is a **list**: a pod can have **multiple containers**. The `image` is pulled from Docker Hub.
+- To add another container, add another `- name:` entry under `containers`:
 
-To create multiple containers we put multiple containers section inside spec!!
+![Adding a second container to the pod YAML](image-1.png)
 
-![alt text](image-1.png)
+![Multi-container pod](04-multi-container-pod.svg)
 
--  check pods available
-            
-        $ kubectl get pods
+> ⚠ The screenshot has `label:` (singular). The correct field is **`labels:`**; with `label:` kubectl rejects the file (or the label is ignored), and the Service would never find the pod.
 
- - check nodes available
+---
 
-        $ kubectl get nodes
+## 4. Creating and inspecting the pod
 
-  ![alt text](image-2.png)             
+![Inspection commands](05-inspect-commands.svg)
 
-- create and then Execute k8s manifest yml
+**Check pods and nodes**
+```bash
+kubectl get pods
+kubectl get nodes
+```
 
-        $ kubectl apply -f <manifest-yml>
+![kubectl get pods and get nodes](image-2.png)
 
-    ![alt text](image-3.png)
-    
-    see pods got created
+**Create the pod from the manifest**
+```bash
+kubectl apply -f <manifest-yml>
+```
 
-- Check pods running in which worker node
+![Pod created](image-3.png)
 
-        $ kubectl get pods -o wide
+The pod is created.
 
-    ![alt text](image-4.png)
+**Which worker node runs the pod?**
+```bash
+kubectl get pods -o wide
+```
 
-     192.168.19.209   ip-192-168-3-73.ap-south-1.compute.internal 
-     
-   ip-192-168-3-73.ap-south-1.compute.internal -->  tells private ip and name of worker node
+![kubectl get pods -o wide](image-4.png)
 
-   ip-->192-168-3-73
+```
+192.168.19.209   ip-192-168-3-73.ap-south-1.compute.internal
+```
+- `192.168.19.209` is the **pod's IP**.
+- `ip-192-168-3-73.ap-south-1.compute.internal` is the **worker node's name**, which contains its **private IP**, `192.168.3.73`.
 
-   ![alt text](image-6.png)
+![Pod scheduled on a node](06-pod-on-node.svg)
 
-   see pod is created here!!
+In the EC2 console, that worker node has private IP **192.168.3.73**, so the pod was created on this node:
 
-   Your control plane decides on which worker node pod is going to be created!!
+![EC2 console showing the worker node with private IP 192.168.3.73](image-6.png)
 
-- describe pod
+> The **control plane (scheduler) decides** which worker node a pod runs on.
 
-        $ kubectl describe pod <pod-name>
+**Describe the pod**
+```bash
+kubectl describe pod <pod-name>
+```
 
-    ![alt text](image-7.png)
+![kubectl describe pod](image-7.png)
 
-    You can see all pods details!!
+All pod details: image, node, IP, labels, container state. **Restart Count** shows how many times the container has been restarted.
 
-    Restart tells how many time pod is restarted!!
+![Events section of describe](image-8.png)
 
-    ![alt text](image-8.png)
+The **Events** at the bottom show what happened: scheduled → pulling image → created → started. This is the first place to look when a pod is stuck.
 
-    can see events here too!
+**Pod logs**
+```bash
+kubectl logs <pod-name>
+```
 
-- get pod logs
+![kubectl logs showing Tomcat starting](image-5.png)
 
-        $ kubectl logs <pod-name>
+Tomcat started inside the container.
 
-    ![alt text](image-5.png)
+---
 
+## 5. Can we access the application now?
 
-question --> my application running on k8s pod , can i access application now?
+**No.** Pods live on the cluster's private network and can't be reached from outside. To access pods from outside, we need a **Service**.
 
-answer --> no we can not access as we cannot access pods outside!!To acess pods outside we need services!!
+![Why a Service is needed](07-why-service.svg)
 
-### Example K8S Service Manifest YML
+---
 
-=> Service is used to expose pods
+## 6. Service manifest
+
+A **Service is used to expose pods**.
 
 ```yml
 ---
@@ -179,72 +201,61 @@ spec:
     targetPort: 8080
 ...
 ```
- javawebappsvc is name of service
 
-in spec we are telling service specification , for now we are using loadBalancer , it will use Aws load balancer!!rest 2 services we will see next lecture!!
+![Service manifest explained](08-service-manifest.svg)
 
-```yml
-spec:
- type: LoadBalancer
- selector:
-  app: javawebapp
- ports:
-  - port: 80
-    targetPort: 8080
+- `javawebappsvc` is the **name** of the service.
+- `spec` is the service specification:
+  - `type: LoadBalancer`: create an **AWS load balancer** (the other two types, ClusterIP and NodePort, come next lecture).
+  - `selector`: picks the pods **by their labels**. That's why pod labels are so important: the selector must match `app: javawebapp`.
+  - `port: 80`: port the **load balancer** listens on (default HTTP port).
+  - `targetPort: 8080`: the **container port** where the app runs.
+
+```bash
+kubectl get service
+kubectl apply -f <service-manifest-yml>
 ```
 
-type tells we need load balancer service!!
+![Service created](image-10.png)
 
->Selector selects the pods based on label in selector we give labels of pod!! that's why label of pods are very important!!
+Our service is listed. The other one, `kubernetes`, is a **default service** (it points to the API server); don't delete it.
 
-In ports we tell port of load balacer as 80 default port for load balancer
+> Once the service is created, the load balancer appears in the **EC2 → Load Balancers** dashboard:
 
-and conatiner port on which application running is 8080 defined as targetPort!!
+![AWS console: load balancer created by the service](image-9.png)
 
-- check k8s services
+![LoadBalancer flow](09-loadbalancer-flow.svg)
 
-        $ kubectl get service
+**Access the application with the load balancer's DNS URL:**
+```
+http://<LBR-DNS-URL>/java-web-app/
+```
+(It can take 1–3 minutes before the DNS name starts working.)
 
--  create service
+![App working through the load balancer URL](image-11.png)
 
-        $ kubectl apply -f <service-manifest-yml>
+It works: Tomcat is serving the app on the load balancer's DNS URL.
 
-![alt text](image-10.png)
+```bash
+kubectl get svc        # short for kubectl get service
+```
 
-we can see our service , kubernetes is not our service other one is , kubernetes is default one
+![kubectl get svc with EXTERNAL-IP](image-12.png)
 
->Note: Once service got created we can see in EC2 dashabord Load balancer creation.
+**Delete everything we created:**
+```bash
+kubectl delete all --all
+```
 
-![alt text](image-9.png)
+![delete all output](image-13.png)
 
-=> We can access our application using Loadbalance DNS url
+> Deleting the service also **deletes the load balancer** in AWS.
 
-		URL : LBR-DNS-URL/java-web-app/
+---
 
-![alt text](image-11.png)
+## 7. Pod and Service in a single YAML
 
-> working!!
-
-you see on Load balancer DNS URL tomcat is running!! 
-
-get details of services running by
-`kubectl get svc`
-
-![alt text](image-12.png)
-
-- to delete all the resources(pods,services all) we have created
-        
-        $ kubectl delete all --all
-
-![alt text](image-13.png)
-
-you see load balancer also delted with service!!
-
-now we need to execute again both yml !! 1st pod and then create service!!
-but we want to be in single yml!!
-
-
-### Example K8S POD & Service Manifest in Single YML	
+Running two files every time (pod first, then service) is tedious, so we put both in **one file**, separated by `---`:
 
 ```yml
 ---
@@ -274,22 +285,33 @@ spec:
     targetPort: 8080
 ...
 ```
->Note: just combined above 2 yml by 3 hyphens!! see pod label is same as service selector!!
 
+![Pod and Service in one file](10-single-file.svg)
 
+> We just joined the two files with `---`. The **pod label equals the service selector** (`app: javawebapp`), which is what connects them.
 
-- execute manifest yml
-        
-        $ kubectl apply -f <manifest-yml>
+```bash
+kubectl apply -f <manifest-yml>
+kubectl get pods
+kubectl get service
+kubectl delete -f <manifest-yml>    # removes exactly what the file created
+```
 
-- Get pods
-        
-        $ kubectl get pods
+> 💰 The **load balancer** and the **worker nodes** are billable. Here EKS created a **Classic Load Balancer** (the default for `type: LoadBalancer` without the AWS Load Balancer Controller).
 
-- Get service 
-    
-        $ kubectl get service
+---
 
-> Load balancer is billable!! worker node is billable!!
+## 8. Quick revision
 
-> here load balacer is classic load balancer
+| Topic | Key point |
+|-------|-----------|
+| Manifest | `apiVersion`, `kind`, `metadata`, `spec` |
+| `---` | Separates multiple resources in one file |
+| Labels | `metadata.labels`: how Services find pods |
+| Multi-container pod | Several `- name:` entries under `containers`; they share one IP |
+| `kubectl get pods -o wide` | Pod IP + node it runs on |
+| `kubectl describe pod` | Details + Events (troubleshooting) |
+| `kubectl logs` | App output |
+| Service | Exposes pods; `selector` must match pod labels |
+| LoadBalancer | AWS LB, `port: 80` → `targetPort: 8080`; URL = LB DNS |
+| `kubectl delete all --all` | Deletes pods + services (and the LB) in the current namespace |

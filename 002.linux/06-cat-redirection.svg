@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="80" width="300" height="150" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="380" y="110" width="280" height="120" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="690" y="110" width="280" height="120" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M330,155 L380,155" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M368.3,160.7 L380,155 L368.3,149.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M180,230 C180,320 820,320 830,232" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<path d="M835.7,243.7 L830,232 L824.3,243.7" fill="none" stroke="#495057" stroke-width="1.5"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">cat with  &gt;  (overwrite)  vs  &gt;&gt;  (append)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="102.0">f1.txt (before)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="123.0">line 1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="144.0">line 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="520" y="95.0">cat &gt; f1.txt   type: hello  Ctrl+D</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="396" y="132.0">f1.txt (after)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="396" y="153.0">hello</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="520" y="255.0">OVERWRITES — old data gone ✗</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="830" y="95.0">cat &gt;&gt; f1.txt  type: hello  Ctrl+D</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="706" y="132.0">f1.txt (after)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="706" y="153.0">line 1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="706" y="174.0">line 2</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="706" y="195.0">hello</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="830" y="255.0">APPENDS at the end ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="345.0">cat f1.txt → view  •  cat -n f1.txt → with line numbers  •  cat f1.txt f2.txt &gt; f3.txt → merge files</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="375.0">same operators work for any command:  ls &gt; list.txt   •   date &gt;&gt; log.txt</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="402.0">touch → empty file   •   cat &gt; → file with data   •   cp → copy   •   vi → create &amp; edit</tspan></text>
+</g>
+</svg>

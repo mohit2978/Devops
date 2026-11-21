@@ -1,67 +1,69 @@
-# Lecture-6
+# Kubernetes · Lecture 6: Deployments, Scaling & HPA
 
->Note: remember we used ubuntu machine to create cluster so username is ubuntu only
+> We created the cluster from an **Ubuntu** host machine, so the SSH username is **`ubuntu`**.
 
-### create cluster command
+---
 
-`
-eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b`
+## 1. Cluster commands (recap)
 
->Note: It takes time to start
+```bash
+# create the cluster (takes ~15 minutes)
+eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b
 
-### delete cluster command
+# delete the cluster after practice (avoid billing)
+eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
+```
 
-`eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
-`
+| Command | What it does |
+|---------|-------------|
+| `kubectl delete all --all` | Delete all pods, services, deployments, replicasets **in the current (default) namespace** |
+| `kubectl get all -n <namespace>` | Show everything in a namespace |
+| `kubectl apply -f <yml-file>` | Create / update resources from a manifest |
+| `kubectl get ns` | List namespaces |
 
+> ⚠ `delete all --all` only touches the current namespace, and "all" doesn't include ConfigMaps, Secrets or volumes.
 
-- to delete all the resources(pods,services all) we have created
-        
-        $ kubectl delete all --all
+---
 
- - to get everything in any namespace
+## 2. Kubernetes Deployment
 
-        $ kubectl get all  -n <namespace-name> 
+A **Deployment** is a Kubernetes resource that manages the **life cycle of your pods**.
 
-- to execute manifest yml
+> **Deployment is the most recommended way to deploy applications in Kubernetes.**
 
-        $ kubectl apply -f <yml-file>
+![Deployment, ReplicaSet and Pods](01-deployment-hierarchy.svg)
 
-- get all namespace
+You create only the Deployment. It creates a **ReplicaSet**, which creates and watches the **pods**.
 
-        $ kubectl get ns   
+### Advantages
 
+| Advantage | Meaning |
+|-----------|---------|
+| **Zero downtime** | Several pods run; if one goes down the others keep serving, and it's replaced |
+| **Scaling** | Change the number of pods manually, or automatically with **HPA** |
+| **Rolling update & rollback** | Deploy new versions pod by pod with no downtime; **roll back** to the previous version if something breaks |
 
-## K8S Deployment
+### Deployment strategies
 
+Suppose pods are already running and the code changes, so we must replace old pods with new ones. Two strategies:
 
-=> It is one of the k8s resource/component
+![Recreate vs RollingUpdate](03-recreate-vs-rolling.svg)
 
->Note: It is most recommended approach to deploy our applications in k8s.
+| Strategy | How | Downtime? |
+|----------|-----|-----------|
+| **Recreate** | Delete **all** existing pods, then create the new ones | ✗ Yes, briefly nothing is running |
+| **RollingUpdate** (default) | Replace pods **one by one**: start a new one, then remove an old one | ✓ No downtime |
 
-=> Deployment will manage pod life cycle.
+RollingUpdate can be tuned:
+```yaml
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1          # at most 1 extra pod during the update
+    maxUnavailable: 0    # never go below the desired number of pods
+```
 
-=> We have below advantages with K8s Deployment 
-
-1) Zero Downtime --> if one pod goes down another pod will be up
-
-2) Auto Scaling --> load increase pods increase and if load decrease pods will be decreased
-
-3) Rolling Update & Rollback -->deploy using zero downtime.RollingUpdate means it will delete and create new pod one by one.Rollback means we can comeback to previous deployment!!
-
-Suppose pods already running in k8s cluster!! Now we want to redeploy as code changes!! Now we need to delete old pod and create new ones!!
-
-=> We have below deployment strategies
-
-1) ReCreate (all at once)
-
-2) RollingUpdate (one by one)
-
-
-=> ReCreate means it will delete all existing pods and will create new pods.It will have some downtime!!
-
-=> RollingUpdate means it will delete and create new pod one by one.No downtime!!
-
+### Deployment + Service manifest
 
 ```yml
 ---
@@ -71,7 +73,7 @@ metadata:
  name: javawebdeploy
 spec:
  replicas: 2
- strategy: 
+ strategy:
   type: RollingUpdate
  selector:
   matchLabels:
@@ -100,121 +102,132 @@ spec:
   - port: 80
     targetPort: 8080
 ...
-
 ```
->Note:Here we have put deployement strategy in spec of Deployment!!quite understandable yml
 
-$ kubectl delete all --all
+![Deployment YAML anatomy](02-deployment-yaml.svg)
 
-$ kubectl get all
+- The deployment **strategy** goes in the Deployment's `spec`.
+- `spec.selector.matchLabels` **must match** `template.metadata.labels`, so the Deployment knows which pods it owns.
+- The Service's `selector` uses the same label to find the pods.
+- `port: 80` is the Service port users hit; `targetPort: 8080` is the container's port.
 
-$ kubectl apply -f \<yml-file>
+```bash
+kubectl delete all --all
+kubectl get all
+kubectl apply -f <yml-file>
+kubectl get all
+```
 
-$ kubectl get all
+![kubectl get all after applying the deployment](image.png)
 
-![alt text](image.png)
+> A **ReplicaSet** was created: internally a Deployment always uses a ReplicaSet.
 
->Note: see Replicaset is created ,internally deployment uses replicaset only!!
+### Self-healing
 
-![alt text](image-1.png)
->See self healing working!!
+![Self-healing and manual scaling](05-self-healing-scaling.svg)
 
->Note: Access app using LBR URL
+Delete a pod and the ReplicaSet immediately creates a replacement to keep `replicas: 2`:
 
-![alt text](image-2.png)
+![Self-healing in action](image-1.png)
 
-### Manual Scaling
-$ kubectl scale deployment javawebdeploy --replicas 4
+> Access the app using the **LoadBalancer URL** (`kubectl get svc` → `EXTERNAL-IP`):
 
-$ kubectl get pods
+![App opened through the LoadBalancer URL](image-2.png)
 
-$ kubectl scale deployment javawebdeploy --replicas 3
+### Rolling update & rollback commands
 
->Autoscaling we need to do some configurations ,it would not happend directly!!
+![Rollout history and rollback](04-rollback.svg)
 
-### Autoscaling
+```bash
+# deploy a new version (triggers a rolling update)
+kubectl set image deployment/javawebdeploy javawebappcontainer=ashokit/javawebapp:v2
 
--> It is the process of increasing / decreasing infrastructure resources based on demand.
+kubectl rollout status  deployment/javawebdeploy   # watch progress
+kubectl rollout history deployment/javawebdeploy   # list revisions
+kubectl rollout undo    deployment/javawebdeploy   # back to the previous revision
+kubectl rollout undo    deployment/javawebdeploy --to-revision=1
+```
+Old ReplicaSets are kept (scaled to 0), so a rollback simply scales the old one back up.
 
--> Autoscaling can be done in 2 ways
+### Manual scaling
 
-1) Horizontal Scaling
+```bash
+kubectl scale deployment javawebdeploy --replicas 4
+kubectl get pods
+kubectl scale deployment javawebdeploy --replicas 3
+```
 
-2) Verticle Scaling
+> Manual scaling needs a human. **Autoscaling** needs some setup; it doesn't happen by itself.
 
--> Horizontal Scaling means increasing number of instances/servers/pods.
+---
 
--> Veriticle Scaling means increasing capacity of single system.
+## 3. Autoscaling
 
-    HPA(Elasticity) : Horizontal POD Autoscaling
+**Autoscaling** = automatically increasing / decreasing infrastructure resources based on demand.
 
-    VPA : Vertical POD Autoscaling (we don't use this)
+![Horizontal vs vertical scaling](06-horizontal-vs-vertical.svg)
 
-HPA: It is used to scale up/down no.of pod replicas based on the observed metrics 
-    (CPU or memory utilization)
+| Type | Meaning | In Kubernetes |
+|------|---------|---------------|
+| **Horizontal scaling** | Increase the **number** of instances / servers / pods | **HPA**: Horizontal Pod Autoscaler (elastic, widely used) |
+| **Vertical scaling** | Increase the **capacity** (CPU / RAM) of a single system | **VPA**: Vertical Pod Autoscaler (we don't use this) |
 
--> HPA will interact with "Metric Server" to identify CPU/Memory utilization of POD.so we need to install that Metrics server!!
+### HPA (Horizontal Pod Autoscaler)
 
--> Metrics server is an application that collect metrics from objects such as pods, nodes according to the state of CPU, RAM and keeps them in time.
+HPA **scales the number of pod replicas up or down based on observed metrics** (CPU or memory utilization).
 
-- to get node metrics
-        
-        $ kubectl top nodes
+![How HPA works](07-hpa-architecture.svg)
 
-- to get pod metrics
-        
-        $ kubectl top pods
+- HPA asks the **Metrics Server** for the current CPU/memory usage of the pods.
+- **Metrics Server** is an application that collects resource metrics (CPU, RAM) from pods and nodes (via each node's kubelet) and keeps the latest values.
+- Every ~15 seconds HPA compares usage with the target and changes the Deployment's `replicas`.
 
->Note: By default metrics server is not available in our k8s cluster
+```bash
+kubectl top nodes      # node CPU / memory
+kubectl top pods       # pod CPU / memory
+```
 
->Metrices server will run as pod only so we use yml!!
-### Step-1 : Install Metrics API
+> ⚠ Metrics Server is **not installed by default** on EKS. Without it, `kubectl top` fails and HPA shows `TARGETS: <unknown>`.
+> Metrics Server itself runs as **pods**, installed from YAML.
 
->In ubuntu git client is already available so use git --version and see
+---
 
-1) clone git repo
- 
-        $ git clone https://github.com/ashokitschool/k8s_metrics_server
+## 4. HPA hands-on
 
-2) check the cloned repo
+### Step 1: Install the Metrics Server
 
-        $ cd k8s_metrics_server
+Git is already installed on Ubuntu (`git --version` to check).
 
-        $ ls deploy/1.8+/
+```bash
+git clone https://github.com/ashokitschool/k8s_metrics_server
+cd k8s_metrics_server
+ls deploy/1.8+/
+kubectl apply -f deploy/1.8+/          # apply all manifests in that folder
+```
 
-3)  apply all manifest files from manifest-server directlry
+![Applying the metrics server manifests](image-3.png)
 
-        $ kubectl apply -f deploy/1.8+/
+> It creates a service account, roles, role bindings, a Deployment and a Service: everything Metrics Server needs.
 
-![alt text](image-3.png)
+> 💡 Official alternative: `kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml`
 
->Note: it will create service account, role, role binding all the stuff
+```bash
+kubectl get all -n kube-system    # metrics-server is installed in kube-system
+kubectl top nodes
+kubectl top pods
+```
 
-- we can see metric server running in kube-system ns
-        $ kubectl get all -n kube-system
+![metrics-server running in kube-system](image-4.png)
 
-- check the top nodes using metric server
-        $ kubectl top nodes
+Metrics Server runs as a **pod**, with a **ClusterIP** Service, because it's only used internally (no public access needed). The output also shows the CPU usage of the worker nodes (EC2 instances):
 
-- check the top pods using metric server
-        $ kubectl top pods
+![kubectl top output](image-5.png)
 
+Now we get CPU and memory information.
 
->Note: When we install Metric Server, it is installed under the kube-system namespaces.
+### Step 2: Deploy a sample application with resource requests
 
-![alt text](image-4.png)
-
-See metrics server insatlled as a pod!! for this cluster ip service is created as it is used for internal purpose !! no need of public access!!
-
-also see cpu utilization of nodes(ec2-worker-nodes)!!
-
-![alt text](image-5.png)
-
-see we are getting cpu and memory information!!
-
-### Step-2 : Deploy Sample Application
-
-using k8s provided image, here we have put resoucre limit!!
+We use an image provided by the Kubernetes project, with **resource requests/limits** set:
 
 ```yml
 ---
@@ -234,7 +247,7 @@ spec:
    spec:
      containers:
      - name: hpa-demo-deployment
-       image: k8s.gcr.io/hpa-example
+       image: registry.k8s.io/hpa-example     # older notes: k8s.gcr.io/hpa-example (registry moved)
        ports:
        - containerPort: 80
        resources:
@@ -243,11 +256,20 @@ spec:
          requests:
            cpu: 200m
 ...
-
 ```
-### Step-3 : Create Service
 
- see label is run: hpa-demo-deployment
+![Requests, limits and the CPU target](08-requests-target.svg)
+
+| Field | Meaning |
+|-------|---------|
+| `requests.cpu: 200m` | Guaranteed CPU (0.2 core); the scheduler reserves it. **HPA calculates its % against this value**, so HPA doesn't work without requests |
+| `limits.cpu: 500m` | Maximum CPU; above it the container is throttled |
+
+`m` = millicores: **1000m = 1 CPU core**.
+
+### Step 3: Create a Service
+
+The label is `run: hpa-demo-deployment`:
 ```yml
 ---
 apiVersion: v1
@@ -263,12 +285,11 @@ spec:
    run: hpa-demo-deployment
 ...
 ```
-here we are not giving any service type!! so default service it will take is Cluster Ip , can see below image!!
+No `type` is given, so the default **ClusterIP** is used (fine, because the load test runs inside the cluster):
 
-![alt text](image-6.png)
+![Service created as ClusterIP](image-6.png)
 
-### Step-4 : Create HPA
-to run kubectl get hpa or to get autoscaler in cluster
+### Step 4: Create the HPA
 
 ```yml
 ---
@@ -285,55 +306,101 @@ spec:
  maxReplicas: 10
  targetCPUUtilizationPercentage: 50
 ...
-
 ```
 
-in spec we tell what to monitor
+`scaleTargetRef` says **what to scale**: the Deployment from Step 2.
 ```yml
  scaleTargetRef:
   apiVersion: apps/v1
   kind: Deployment
   name: hpa-demo-deployment
 ```
-Here we monitor deployment we created at step-2, here we telling id cpu utlization>50 percent scale up!!
+- If average CPU > **50% of the request** (> 100m per pod) → add pods, up to **10**.
+- When load drops → remove pods, down to **1**.
 
-![alt text](image-7.png)
+Equivalent shortcut: `kubectl autoscale deployment hpa-demo-deployment --cpu-percent=50 --min=1 --max=10`
 
-see we get hpa ,in sometime we get other things 
-### Step-5 : Increase the Load
+> Newer clusters also offer `autoscaling/v2`, which supports memory and custom metrics:
+> ```yaml
+> apiVersion: autoscaling/v2
+> kind: HorizontalPodAutoscaler
+> spec:
+>   metrics:
+>   - type: Resource
+>     resource: { name: cpu, target: { type: Utilization, averageUtilization: 50 } }
+> ```
 
-$ kubectl get hpa
+![HPA created](image-7.png)
 
-![alt text](image-8.png)
+The HPA is created; after a short while its targets show real values.
 
-On new window we increase load
+### Step 5: Increase the load
 
-$ kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://hpa-demo-deployment; done"
+```bash
+kubectl get hpa
+```
 
-Note: After executing load generator open new git bash and connect to eks vost vm and monitor hpa with below commands
+![kubectl get hpa before load](image-8.png)
 
-$ kubectl get hpa -w
+![Load test setup](10-load-test.svg)
 
-![alt text](image-10.png)
+In a **new terminal**, start a load generator that calls the service in a loop:
+```bash
+kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://hpa-demo-deployment; done"
+```
 
-![alt text](image-9.png)
+> After starting the load generator, open **another** Git Bash window, connect to the EKS host VM and watch the HPA:
 
->see how cpu utilization goes down and replicas are made to decrease the cpu utilization!!
+```bash
+kubectl get hpa -w        # -w = watch, updates live
+```
 
-$ kubectl describe deploy hpa-demo-deployment
+![HPA watching CPU rise](image-10.png)
 
-$ kubectl get hpa
+![HPA adding replicas](image-9.png)
 
-$ kubectl get events
+> CPU utilization goes up, so HPA adds replicas; as more pods share the load, CPU per pod comes back down towards the target.
 
-$ kubectl top pods 
+![HPA in action](09-hpa-in-action.svg)
 
-$ kubectl get hpa
+**How many pods?** HPA uses:
+```
+desired replicas = ceil( current replicas × current CPU% ÷ target CPU% )
+e.g. 1 pod at 250% → ceil(1 × 250 / 50) = 5 pods
+```
 
-now we decreased load
-![](image-11.png)
+Useful commands while it runs:
+```bash
+kubectl describe deploy hpa-demo-deployment
+kubectl get hpa
+kubectl get events
+kubectl top pods
+kubectl get hpa
+```
 
-now in some time pod will be decreased too
+Now stop the load generator (`Ctrl+C`; `--rm` deletes the busybox pod), and the load drops:
 
-![alt text](image-12.png)
+![Load decreased](image-11.png)
 
+After some time the pods are reduced too:
+
+![Pods scaled back down](image-12.png)
+
+> Scale-down is deliberately **slow** (about **5 minutes** of stabilization) so pods don't flap up and down on short dips in load.
+
+---
+
+## 5. Quick revision
+
+| Topic | Key point |
+|-------|-----------|
+| Deployment | Recommended way to run apps; manages a ReplicaSet → pods |
+| Labels | `selector.matchLabels` = `template.metadata.labels` = Service `selector` |
+| Recreate | Delete all, then create; downtime |
+| RollingUpdate | One by one; no downtime (default) |
+| Rollback | `kubectl rollout undo deployment/<name>` |
+| Manual scaling | `kubectl scale deployment <name> --replicas N` |
+| HPA | Changes replicas from CPU/memory metrics |
+| Metrics Server | Required for HPA and `kubectl top`; runs in `kube-system` |
+| requests.cpu | Needed for HPA; % is calculated against it |
+| Scale down | Waits ~5 min to avoid flapping |

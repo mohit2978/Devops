@@ -1,238 +1,231 @@
-# Kubernetes Lecture 1
-
-Kubernetes (between k ans s 8 character so called as k8s) 
-
-=> It is free & open source s/w
-
-=> Google developed this k8s
-
-=> K8s developed using GO programming language
-
-=> K8S provides Orchestration (Management)
-
-=> K8S is used to manage containers 
-	(create/stop/start/delete/scale-up/scale-down)
-
-![alt text](image-1.png)
-
-> we have multiple containers in microservices ,one container for each service , to manage all container we use k8s
-
-### Advantages
-
-1) Auto Scaling : Based on demand containers count will be increased or decreased. In docker swarm we need to increase container manually!!
-
-2) Load Balancing : Load will be distributed all containers which are up and running
-
-3) Self Healing : If any container got crashed then it will replaced with new container
-
-These advantages are not with dockerSwarm so we use k8s only!!
+# Kubernetes · Lecture 1: What, Why & Architecture
 
 ---
 
-### Docker vs k8s
+## 1. What is Kubernetes?
 
+**Kubernetes** is often written **K8s**: "K", then **8** letters ("ubernete"), then "s".
 
-Docker : Containerization platform
+- **Free & open-source** software.
+- **Developed by Google**, later donated to the **CNCF** (Cloud Native Computing Foundation).
+- Written in the **Go** programming language.
+- An **orchestration** (management) platform for **containers**: it can **create, start, stop, delete, scale up and scale down** containers.
 
->Note: Packaging our app code and dependencies as single unit for execution is called as Containerization.
+![What is Kubernetes](01-what-is-k8s.svg)
 
-Kubernetes : Orchestration platform
-
->Note: Orchestration means managing the containers.
-
-----
-
-### Architecture
->Any orchestration follow cluster architecture
-
-![alt text](image.png)
-
-=> K8S will follow cluster architecture
-
-=> Cluster means group of servers will be available so multiple machines are required for k8s setup
-
-=> In K8s Cluster we will have master node (control plane) and worker nodes
-
-=> we have one master node and multiple worker nodes then we go for k8s
-
-
-### K8S Cluster Components
-
-A Kubernetes cluster consists of one or more machines that have Kubernetes installed on them. The machines can be physical servers, virtual machines (VM), cloud instances, your laptop, Raspberry Pis, and more. Installing Kubernetes on these machines and connecting them together creates a Kubernetes cluster. After creating a cluster, you can deploy applications to that cluster.
-
-Machines in a Kubernetes cluster are, normally, referred to as Nodes
-
- Kubernetes cluster contains two types of Nodes:
-
-1) Control Node (Master Node)
-
- 	Here we  have these components
-
-	 - API Server
-	 - Schedular
-	 - Controller Manager
-	 - ETCD
-
-2) Worker Node
-
-	Here we  have these components
-	- Kubelet
-	- Kube Proxy
-	- Docker Runtime
-	- POD
-	- Container
-
->Control Node is like manager and Worker Node are employees under manager !! To give task to Control plane we use Kubectl Command line interface or can use User Interface !! we assign task to Control plane and it assign task to worker node!!
-
-![alt text](image-2.png)
-
-Masters host the control plane. That is a fancy way of referring to the brains of the cluster.
-
-With this in mind, it is good practice to have more than one Master in order to maintain high availability (HA). This way, if one of them fails, the cluster can remain operational. It is common to have 3 or 5 Masters in a production cluster and to spread them across failure domains. It is not wise to stick them all in the same room, under the same leaky air conditioning unit, functioning on the same glitchy electricity supply.
-
-![alt text](image-5.png)
-
-![alt text](image-4.png)
-
-## How K8s works??
-
-=> To deploy our application using k8s we need to communicate with control node or control plane.
-
-=> We will use KUBECTL (CLI) to communicate with control plane.
-
-=> API Server will receive the request given by kubectl and it will store that request in ETCD with pending status.
-
-=> ETCD (no full form) is an internal database of k8s cluster.
-
-=> Schedular will identify pending requests available in ETCD and it will identify worker node to schedule the task.
-
->Note: Schedular will identify worker node using kubelet.
-
-=> Kubelet is called as Node Agent. It will maintain all the worker node information. Kubelet provide worker node information to the control plane and then scheduler decides if the worker node has enough resources then request is assigned to that worker node!!
-
-=> For communication we need a network so Kube Proxy will provide network for the cluster communication.
-
-=> Once task is assigned to worker node,thenController Manager will verify all the tasks are working as expected or not.
-
-=> In Worker Node, Docker Engine will be available to run docker container.
-
-=> In K8s, container will be created inside POD.
-
-=> POD is a smallest building block that we can create in k8s cluster.In k8s everything is represented as POD!!
-
->Note: A Pod is a way to represent a running process in a cluster.
-
-=>A Pod encapsulates one or more containers. It provides a unique network IP, attaches storage resources, and decides how containers should run. Everything in a Pod is tightly coupled. so just one more layer of OS on container having IP !!
-
->Note:We should clarify that containers in a Pod are not necessarily made by Docker. Other container runtimes are supported as well. Docker is, however, one of the most commonly used container runtimes, and we’ll use it in all our examples.
-
-=> Inside POD, docker container will be created.there can be multiple container running inside one pod!!
-
-=> sending request for k8s cluster for deployment of application ,we are telling to create POD for the application!! 
-
->Note: In K8s, everything will be represented as POD only.
-
-=> to Create PODs we will be using yml Files
+> In a microservices project there is **one container per service** (order, payment, user, cart…), often several copies of each, spread over many servers. Managing them by hand is impossible, so we use Kubernetes.
 
 ---
 
-## What is a POD
+## 2. Why Kubernetes? Advantages
 
-=> POD is a smallest building block in the k8s cluster.
+![Advantages of Kubernetes](02-advantages.svg)
 
-=> Application will be deployed as a pod in k8s.
+| Advantage | What it means |
+|-----------|---------------|
+| **Auto scaling** | Based on demand, the number of containers (pods) is **increased or decreased automatically**. In Docker Swarm you scale manually. |
+| **Load balancing** | Incoming load is **distributed across all running containers**. |
+| **Self healing** | If a container **crashes**, K8s **replaces it with a new one** automatically. |
 
-=> We can create multiple pods for one application.
+These are the reasons companies choose Kubernetes over Docker Swarm.
 
-=> To create a POD we will use YML file called as Manifest YML.
-
-=> In POD manifest YML we will configure our Docker image.
-
-=> If POD is damaged/crashed/deleted then k8s will create new pod 
-  (self-healing)
-
-=> If application running in multiple pods, then k8s will distribute the load to all running pods (Load Balancer).
-
-=> PODs can be increased or decreased automatically based on the load (Scalability).
-
-=> One POD can communicate with other POD as they have IPs!!
-
+> The core idea: you declare the **desired state** ("I want 3 copies of order-service") and Kubernetes keeps the **actual state** matching it.
 
 ---
 
-### K8S Cluster Setup
+## 3. Docker vs Kubernetes
 
-1) Mini Kube => Single Node cluster => Only for practice (everything in single system control plane and worker node) not used in real time
+![Docker vs Kubernetes](03-docker-vs-k8s.svg)
 
-2) Kubeadm Cluster => Self Managed Cluster => The person who using this are responsible for everything
+| | Docker | Kubernetes |
+|---|---|---|
+| Type | **Containerization** platform | **Orchestration** platform |
+| Meaning | Packaging app code + dependencies as a single unit for execution | Managing (running, scaling, healing) the containers |
+| Scope | One container / one machine | Hundreds of containers across many machines |
 
-3) Provider Managed Cluster => Ready Made Cluster => Provider will take care of everything
-
-	Most of the cloud providers have hosted Kubernetes Services. Some of the more popular ones include:
-
-	- AWS: Elastic Kubernetes Service (EKS)
-
-	- Azure: Azure Kubernetes Service (AKS)
-
-	- DO: Digital Ocean Kubernetes Service (DOKS)
-
-	- GCP: Google Kubernetes Engine (GKE)
-
-	- Linode: Linode Kubernetes Engine (LKE)
-
-	>Note: Provider Managed Clusters are billable.
-
-	Hosted Kubernetes is where your cloud provider rents you a Kubernetes cluster. Sometimes, it is called Kubernetes as a Service.
-
-	In the hosted model, the cloud provider builds the Kubernetes cluster, owns the control plane, and is responsible for all of the following:
-
-	- Control plane performance
-
-	- Control plane availability
-
-	- Control plane updates
-
-	You, the user, are responsible for:
-
-	- Worker Nodes
-
-	- User applications
-
-	- Paying the bill
-
-	![alt text](image-3.png)
-
->Most of companies use Provider Managed cluster only!! Companies not use self managed cluster if any issue came with it ,company has to handle it ,in provider managed cluster provider is responsible!!
-
-> In interview never say you using minicube cluster !!
-
-> we are going to use EKS!!
+They are **not competitors**: Docker *builds* the containers, Kubernetes *manages* them.
 
 ---
 
+## 4. Kubernetes architecture
 
+> Every orchestration tool follows a **cluster architecture**.
 
+![Kubernetes architecture](04-architecture.svg)
 
-## How EKS works
+- A **cluster** = a group of servers (**nodes**) working together, so K8s needs **multiple machines**.
+- Nodes can be physical servers, VMs, cloud instances (EC2), even a laptop or Raspberry Pi.
+- A cluster has two types of nodes:
+  - **Control plane / master node**: the **brain**, which decides and stores state.
+  - **Worker nodes**: the **muscle**, which actually run your containers.
+- Typical setup: **one (or more) master node + multiple worker nodes**.
 
-An EKS cluster consists of two major components: Control plane and Nodes. When provisioning an EKS cluster to run an application, the control plane is hosted on the AWS-managed VPC, whereas the worker nodes and other infrastructure are hosted in the customer-managed VPC. The worker nodes may communicate with the control plane through the managed API endpoint in the control plane. The worker nodes are connected to the control plane through the API or an EKS-managed ENI, placed in the customer subnets.
+> **Analogy:** the control plane is the **manager** and worker nodes are the **employees**. You give tasks to the manager using **kubectl** (CLI) or a **UI** (dashboard); the manager assigns them to employees.
 
+| Node type | Components |
+|-----------|-----------|
+| **Control plane (master)** | API Server, Scheduler, Controller Manager, etcd |
+| **Worker node** | kubelet, kube-proxy, container runtime (Docker / containerd), Pods → containers |
 
-## Example: Hosting a web application
-Let’s look at an example to understand how EKS works in detail. For example, we want to host a highly available web application. The deployed EKS cluster’s control plane will be deployed in the AWS-managed cluster; the control plane will communicate with the worker nodes in the Customer-managed VPC through the EKS-managed ENI, assign tasks to the nodes, and maintain their health status. Nodes will not directly interact with the worker nodes; an application load balancer will forward the user requests to the nodes and serve the application.
+---
 
+## 5. Control plane components (the brain)
 
-## EKS Distro
-Amazon EKS Distro, an open-source distribution of Kubernetes provided by AWS. It offers the same core components that power Amazon Elastic Kubernetes Service (EKS) for creating and managing containerized applications. The difference between EKS and EKS-D is that the latter is available to install and manage locally. EKS-D can be used on-premises, in a cloud, or in any system. EKS-D provides a path to having essentially the same Amazon EKS Kubernetes distribution running wherever you need to run it.
+The master node **manages the entire cluster**: it monitors the health of all nodes, stores cluster information, decides which worker node runs which containers, and if a worker node fails, **moves its workload to a healthy node**.
 
-EKS Distro automatically creates and manages Kubernetes clusters. It offers a consistent Kubernetes experience across AWS cloud and data centers. It alleviates the need to manually track, update, and determine Kubernetes compatibility across different teams. EKS distro also offers installable, reproducible Kubernetes builds for cluster creation as well as security patches even after the community support expires.
+![Control plane components](05-control-plane.svg)
 
+| Component | Role |
+|-----------|------|
+| **API Server** | The **front door** of the cluster. Every request (from kubectl, UI, or other components) goes through it; it validates and processes them. **All components talk only to the API server.** |
+| **Scheduler** | Places **pods onto nodes**. Looks at resource needs (CPU / RAM), affinity / anti-affinity and other constraints to pick the best node. |
+| **Controller Manager** | Runs **control loops**: continuously compares **desired state vs current state** and fixes differences (recreates crashed pods, handles node failures, keeps the right number of replicas). |
+| **etcd** | A distributed **key-value database**: the cluster's single source of truth (config, desired state, info about pods, services…). Only the API server reads/writes it. |
 
+> The name **etcd** comes from the Linux `/etc` config folder + **d** for *distributed*.
 
+### High availability: more than one master
 
+![Masters and workers](09-masters-and-workers.svg)
 
+- Masters host the control plane; **user apps run only on worker nodes**.
+- In production, run **3 or 5 masters** (an odd number, so they can agree by majority) so the cluster survives if one fails.
+- Spread them across **different failure domains** (data centers / availability zones), not all in the same room with the same leaky AC and the same power supply!
 
+---
 
+## 6. Worker node components (the muscle)
 
+A worker node is just a **VM or physical server** capable of running containers. It provides compute, storage and networking to your applications.
 
+![Worker node components](06-worker-node.svg)
 
+| Component | Role |
+|-----------|------|
+| **kubelet** | The **node agent** on every worker. Talks to the API server, receives pod specs, **starts / stops / monitors containers**, and reports node & pod health back to the control plane. |
+| **kube-proxy** | Maintains **network rules** (iptables / IPVS) on each node so traffic for a Service reaches the right pods, from inside or outside the cluster. |
+| **Container runtime** | Actually **pulls images and runs containers**. Docker was the classic choice; since K8s 1.24, **containerd** or **CRI-O** are used directly (Docker-built images still work). |
+| **Pod** | Wraps one or more containers; gets its own IP. |
+
+---
+
+## 7. How Kubernetes works (step by step)
+
+To deploy an application we talk to the **control plane** using **kubectl**.
+
+![How Kubernetes works](07-how-k8s-works.svg)
+
+1. **kubectl** sends the request (e.g. `kubectl apply -f pod.yml`) to the **API Server**.
+2. The **API Server** validates it and **stores it in etcd** with a *pending* status.
+3. The **Scheduler** sees the pending (unscheduled) pod and **picks a worker node** with enough resources, using the node information that each **kubelet** reports.
+4. The API Server hands the pod to that node's **kubelet**.
+5. The **kubelet** tells the **container runtime** to pull the image and **start the container inside a pod**.
+6. The **Controller Manager** keeps checking that everything runs as expected (desired = actual) and recreates pods that die.
+7. **kube-proxy** sets up the network rules so the pod can be reached.
+
+> When you "deploy an application" to Kubernetes, you are really asking it to **create Pods** for that application. Pods are described in **YAML** files.
+
+---
+
+## 8. What is a Pod?
+
+![What is a Pod](08-pod.svg)
+
+- A **Pod is the smallest building block** you can create in a K8s cluster. In K8s, everything runs as a Pod.
+- A Pod **represents a running process** in the cluster.
+- A Pod **encapsulates one or more containers**, gives them a **unique IP address**, attaches **storage**, and defines how the containers should run. Containers in a pod are tightly coupled: they share the network (talk via `localhost`) and volumes.
+  - Think of it as *one more layer around the container, with its own IP*.
+- Containers in a pod don't have to be made by Docker; any supported runtime works.
+- Your **application is deployed as a pod**, and **one application can have many pods** (replicas).
+- Pods are created from a **manifest YAML** file in which you configure your **Docker image**.
+- **Self-healing:** if a pod is damaged / crashed / deleted, K8s creates a new one.
+- **Load balancing:** if the app runs in multiple pods, K8s distributes load across them.
+- **Scalability:** the number of pods can increase or decrease automatically with load.
+- Pods can **communicate with each other** using their IPs (but a recreated pod gets a **new IP**, which is why we later use *Services*).
+
+```bash
+kubectl apply -f pod.yml          # create the pod from the manifest
+kubectl get pods -o wide          # list pods with their IP and node
+kubectl describe pod order-pod    # details + events
+```
+
+---
+
+## 9. K8s cluster setup options
+
+![Cluster setup options](10-cluster-setup-options.svg)
+
+| Option | Type | Notes |
+|--------|------|-------|
+| **Minikube** | Single-node cluster (control plane + worker on one machine) | **Practice only**, never used in real projects |
+| **Kubeadm** | **Self-managed** cluster on your own VMs | You are responsible for **everything**: setup, upgrades, HA, failures |
+| **Provider-managed** | **Ready-made** cluster from a cloud provider | Provider takes care of the control plane. **Billable** |
+
+Popular managed Kubernetes services:
+
+| Cloud | Service |
+|-------|---------|
+| AWS | **EKS**: Elastic Kubernetes Service |
+| Azure | **AKS**: Azure Kubernetes Service |
+| Google Cloud | **GKE**: Google Kubernetes Engine |
+| DigitalOcean | **DOKS**: DigitalOcean Kubernetes Service |
+| Linode | **LKE**: Linode Kubernetes Engine |
+
+### Hosted ("Kubernetes as a Service"): who manages what?
+
+![Managed Kubernetes responsibilities](11-managed-responsibility.svg)
+
+| Cloud provider is responsible for | You are responsible for |
+|-----------------------------------|------------------------|
+| Control plane **performance** | **Worker nodes** |
+| Control plane **availability** | **Your applications** |
+| Control plane **updates / upgrades** | **Paying the bill** |
+
+> Most companies use **provider-managed clusters**. With a self-managed cluster, every problem is the company's to fix; with a managed one, the provider handles the control plane.
+>
+> In interviews, **never say you use Minikube**. In these notes we use **AWS EKS**.
+
+---
+
+## 10. How AWS EKS works
+
+![How AWS EKS works](12-eks.svg)
+
+An EKS cluster has two major parts:
+
+| Part | Where it runs | Managed by |
+|------|---------------|-----------|
+| **Control plane** (API servers, etcd, scheduler, controllers), spread across multiple AZs | **AWS-managed VPC** | AWS |
+| **Worker nodes** (EC2 instances) + other infrastructure | **Your (customer-managed) VPC** | You |
+
+- Worker nodes talk to the control plane through the **managed API endpoint**, connected via an **EKS-managed ENI** (elastic network interface) placed in your subnets.
+- You use **kubectl** against the same API endpoint.
+
+### Example: hosting a highly available web application
+- The **control plane** (in AWS's VPC) assigns work to the worker nodes through the EKS-managed ENI and keeps track of their health.
+- **User traffic never goes through the control plane.** An **Application Load Balancer (ALB)** forwards user requests directly to the worker nodes / pods.
+- Placing worker nodes in **multiple Availability Zones** keeps the app up even if one AZ fails.
+
+### EKS Distro (EKS-D)
+- An **open-source distribution of Kubernetes** from AWS, with the **same core components** that power Amazon EKS.
+- Difference: **EKS** is fully managed by AWS; **EKS-D** you install and manage **yourself**: on-premises, in any cloud, or any system.
+- Gives a consistent, reproducible Kubernetes build everywhere, with security patches even after community support for a version ends.
+
+---
+
+## 11. Quick revision
+
+| Term | One-liner |
+|------|-----------|
+| Kubernetes (K8s) | Open-source container orchestration platform by Google (written in Go) |
+| Orchestration | Managing containers: create, scale, heal, load-balance |
+| Cluster | Control plane (master) + worker nodes |
+| API Server | Front door; everything talks to it |
+| Scheduler | Chooses the node for each pod |
+| Controller Manager | Keeps desired state = actual state |
+| etcd | Key-value DB storing cluster state |
+| kubelet | Node agent; runs and reports pods |
+| kube-proxy | Network rules so Services reach pods |
+| Container runtime | Pulls images, runs containers (containerd / Docker) |
+| Pod | Smallest deployable unit; 1+ containers with one IP |
+| Managed K8s | Provider runs the control plane (EKS, AKS, GKE) |

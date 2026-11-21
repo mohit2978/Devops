@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="250" rx="16" fill="#f8f9fa" stroke="#495057" stroke-width="2"/>
+<rect x="45" y="115" width="420" height="70" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="75" width="470" height="250" rx="16" fill="#f3f0ff" stroke="#6741d9" stroke-width="2"/>
+<rect x="535" y="115" width="420" height="150" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">ReplicationController vs ReplicaSet — label selectors</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="255" y="98.0">ReplicationController (v1, outdated)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="61" y="139.0">selector:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="61" y="161.0">  app: javawebapp        # equality only</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="255" y="221.9">matches pods whose label EQUALS the value</tspan><tspan x="255" y="238.1">(can&#x27;t say “one of these” or “not this”)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#6741d9" font-weight="bold"><tspan x="745" y="98.0">ReplicaSet (apps/v1)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="551" y="139.0">selector:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="551" y="160.0">  matchLabels:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="551" y="181.0">    app: javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="551" y="202.0">  matchExpressions:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="551" y="223.0">  - key: env</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="551" y="244.0">    operator: In          # In, NotIn, Exists</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#6741d9" font-weight="bold"><tspan x="745" y="295.0">matchLabels + set-based matchExpressions</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="365.0">ReplicaSet = the newer RC with richer selectors • in practice you use a Deployment, which creates the ReplicaSet</tspan></text>
+</g>
+</svg>

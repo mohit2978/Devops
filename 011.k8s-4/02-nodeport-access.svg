@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="110" width="176" height="130" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="40" cy="110" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="216" y="110" width="176" height="130" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="236" cy="110" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M196,175 L216,175" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M204.3,180.7 L216,175 L204.3,169.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="412" y="110" width="176" height="130" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="432" cy="110" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M392,175 L412,175" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M400.3,180.7 L412,175 L400.3,169.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="608" y="110" width="176" height="130" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="628" cy="110" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M588,175 L608,175" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M596.3,180.7 L608,175 L596.3,169.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="804" y="110" width="176" height="130" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="824" cy="110" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M784,175 L804,175" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M792.3,180.7 L804,175 L792.3,169.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Reaching a NodePort app — step by step</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="108.0" y="160.0">kubectl get svc</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="108.0" y="176.6">find the nodePort</tspan><tspan x="108.0" y="191.6">80:30441/TCP</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="40" y="110.0">1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="304.0" y="160.0">get pods -o wide</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="304.0" y="176.6">which NODE runs</tspan><tspan x="304.0" y="191.6">the pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="236" y="110.0">2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="160.0">EC2 → that node</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="176.6">copy its</tspan><tspan x="500.0" y="191.6">public IP</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="432" y="110.0">3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="696.0" y="160.0">security group</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="696.0" y="176.6">inbound: Custom TCP</tspan><tspan x="696.0" y="191.6">30441 from your IP</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="628" y="110.0">4</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="892.0" y="160.0">browser</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="892.0" y="176.6">http://&lt;ip&gt;:30441</tspan><tspan x="892.0" y="191.6">/java-web-app ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="824" y="110.0">5</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="290.0">kube-proxy opens the nodePort on EVERY node, so any node&#x27;s IP works — not only the one running the pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="320.0">downsides: you must know a node IP, open odd ports, and that node can disappear → LoadBalancer is easier</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="350.0">LoadBalancer: one stable DNS name on port 80, no node IPs, no extra security-group rules</tspan></text>
+</g>
+</svg>

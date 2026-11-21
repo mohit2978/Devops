@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="560" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="70" width="470" height="470" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="158.0" width="250" height="40" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M560,178 L470,178" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M481.7,172.3 L470,178 L481.7,183.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="560" y="201.0" width="250" height="40" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M560,221 L470,221" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M481.7,215.3 L470,221 L481.7,226.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="560" y="256.0" width="250" height="58" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M560,285 L470,285" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M481.7,279.3 L470,285 L481.7,290.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="560" y="342.0" width="250" height="58" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M560,371 L470,371" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M481.7,365.3 L470,371 L481.7,376.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="560" y="439.0" width="250" height="58" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M560,468 L470,468" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M481.7,462.3 L470,468 L481.7,473.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="830" y="255" width="150" height="150" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M830,330 L810,330" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M821.7,324.3 L810,330 L821.7,335.7" fill="none" stroke="#e8590c" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Deployment YAML — the labels must match</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="94.0">apiVersion: apps/v1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="115.5">kind: Deployment</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="137.0">metadata:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="158.5">  name: javawebdeploy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="180.0">spec:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#74c0fc" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="201.5">  replicas: 2</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="223.0">  strategy:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#74c0fc" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="244.5">    type: RollingUpdate</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="266.0">  selector:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="287.5">    matchLabels:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="309.0">      app: javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="330.5">  template:          # = pod spec</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="352.0">    metadata:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="373.5">      labels:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="395.0">        app: javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="416.5">    spec:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="438.0">      containers:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="459.5">      - name: javawebappcontainer</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="481.0">        image: ashokit/javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="502.5">        ports:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="524.0">        - containerPort: 8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="685.0" y="171.1">replicas</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="685.0" y="186.5">how many pods to keep running</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="685.0" y="214.1">strategy</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="685.0" y="229.5">RollingUpdate (default) or Recreate</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="685.0" y="278.1">selector.matchLabels</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="685.0" y="293.4">which pods this Deployment owns…</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="685.0" y="357.2">template labels</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="685.0" y="372.6">…must match the labels</tspan><tspan x="685.0" y="386.3">put on new pods</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="685.0" y="461.1">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="685.0" y="476.4">image + port of your app</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="905.0" y="302.5">Service</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="905.0" y="319.1">selector:</tspan><tspan x="905.0" y="332.9">  app: javawebapp</tspan><tspan x="905.0" y="346.6"></tspan><tspan x="905.0" y="360.4">must match too</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="500" y="552.0">mismatched labels → Deployment is rejected, or the Service sends traffic to nothing</tspan></text>
+</g>
+</svg>

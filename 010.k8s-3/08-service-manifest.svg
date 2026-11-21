@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="75" width="400" height="270" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="90" width="210" height="80" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="230" width="470" height="120" rx="14" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="270" width="410" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M605,170 L605,270" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M599.3,258.3 L605,270 L610.7,258.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M430,233 L500,250" fill="none" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M487.3,252.7 L500,250 L490.0,241.7" fill="none" stroke="#e03131" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Service manifest — how it connects to the pod</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="101.0">apiVersion: v1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="123.0">kind: Service</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="145.0">metadata:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="167.0">  name: javawebappsvc</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="189.0">spec:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#74c0fc" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="211.0">  type: LoadBalancer</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="233.0">  selector:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="255.0">    app: javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="277.0">  ports:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="299.0">  - port: 80</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="321.0">    targetPort: 8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="605.0" y="115.0">AWS load balancer</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="605.0" y="131.6">listens on port 80</tspan><tspan x="605.0" y="146.6">(type: LoadBalancer)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="735" y="250.0">pod  labels: app=javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="300.0">container listening on 8080 (targetPort)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="615" y="215.0">port 80 → targetPort 8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#e03131" font-weight="bold"><tspan x="465" y="197.5">selector</tspan><tspan x="465" y="212.5">= label</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="395.0">selector must match the pod&#x27;s labels — wrong label = service with no endpoints</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="425.0">kubectl get svc • kubectl describe svc javawebappsvc → Endpoints: 192.168.19.209:8080</tspan></text>
+</g>
+</svg>

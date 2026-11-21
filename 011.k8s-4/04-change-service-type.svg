@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="1000" height="360">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="360" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="100" width="260" height="120" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M290,160 L370,160" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M358.3,165.7 L370,160 L358.3,154.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="370" y="95" width="600" height="130" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Changing the Service type = edit YAML + apply again</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="160.0" y="135.6">service.yml</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="160.0" y="154.2">type: NodePort</tspan><tspan x="160.0" y="170.4">↓ edit</tspan><tspan x="160.0" y="186.7">type: ClusterIP</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="330" y="145.0">apply</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="386" y="125.0">$ kubectl apply -f javaweb.yml</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="386" y="155.0">pod/javawebapppod unchanged</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="386" y="185.0">service/javawebappsvc configured</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="270.0">apply compares the YAML with what&#x27;s running and changes only what differs</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="300.0">unchanged = nothing to do • configured = updated in place • created = new resource</tspan></text>
+</g>
+</svg>

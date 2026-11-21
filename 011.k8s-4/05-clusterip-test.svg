@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="160" y="75" width="820" height="270" rx="16" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="175" width="110" height="60" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M130,205 L185,205" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M173.3,210.7 L185,205 L173.3,199.3" fill="none" stroke="#e03131" stroke-width="2"/>
+<rect x="200" y="140" width="230" height="130" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="145" width="200" height="120" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M430,205 L500,205" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M488.3,210.7 L500,205 L488.3,199.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="770" y="120" width="180" height="70" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M700,205 L770,155" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M763.8,166.4 L770,155 L757.2,157.2" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="770" y="215" width="180" height="70" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M700,205 L770,250" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M757.1,248.4 L770,250 L763.2,238.9" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">ClusterIP — test it from INSIDE the cluster</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="570" y="95.0">cluster</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="75.0" y="196.9">your</tspan><tspan x="75.0" y="213.1">browser</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#e03131" font-weight="bold"><tspan x="80" y="265.0">✗ no outside access</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="315.0" y="184.4">test pod (busybox)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="315.0" y="200.3">wget -qO- http://</tspan><tspan x="315.0" y="214.1">javawebappsvc/java-web-app</tspan><tspan x="315.0" y="227.8">(name, not IP!)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="600.0" y="182.5">javawebappsvc</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="600.0" y="199.1">ClusterIP 10.100.45.12</tspan><tspan x="600.0" y="214.1">port 80</tspan><tspan x="600.0" y="229.1">(fixed)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="860.0" y="147.5">pod app=javawebapp</tspan><tspan x="860.0" y="162.5">:8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="860.0" y="242.5">pod app=javawebapp</tspan><tspan x="860.0" y="257.5">:8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="570" y="375.0">kubectl run tmp --rm -it --image=busybox -- wget -qO- http://javawebappsvc/java-web-app</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="570" y="402.0">CoreDNS turns the service name into the ClusterIP → apps use names, never pod IPs</tspan></text>
+</g>
+</svg>

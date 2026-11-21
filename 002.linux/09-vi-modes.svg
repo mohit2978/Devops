@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="60" y="140" width="240" height="110" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="390" y="140" width="240" height="110" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="720" y="140" width="240" height="110" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M300,170 L390,170" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M378.3,175.7 L390,170 L378.3,164.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M390,220 L300,220" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M311.7,214.3 L300,220 L311.7,225.7" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M180,140 C180,70 840,70 840,136" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M834.3,127.3 L840,139 L845.7,127.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M840,250 C840,320 180,320 180,254" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M185.7,262.7 L180,251 L174.3,262.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">vi editor — 3 modes</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="180.0" y="172.5">COMMAND mode</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="180.0" y="191.0">vi f1.txt opens here</tspan><tspan x="180.0" y="206.0">move, delete (dd), copy (yy)</tspan><tspan x="180.0" y="221.0">paste (p)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="510.0" y="172.5">INSERT mode</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="510.0" y="191.0">type text normally</tspan><tspan x="510.0" y="206.0">-- INSERT -- shown</tspan><tspan x="510.0" y="221.0">at the bottom</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="840.0" y="172.5">LAST-LINE mode  (:)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="840.0" y="191.0">:wq save &amp; quit</tspan><tspan x="840.0" y="206.0">:q! quit, discard changes</tspan><tspan x="840.0" y="221.0">:w save • :set nu numbers</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#2f9e44" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="345" y="155.0">i</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="345" y="240.0">Esc</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="510" y="82.0">:   (from command mode)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="510" y="318.0">Enter runs the command (or Esc cancels)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="370.0">vi opens the file if it exists, otherwise creates it • stuck? press Esc, then type :q!</tspan></text>
+</g>
+</svg>

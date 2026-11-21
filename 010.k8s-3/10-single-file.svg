@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="75" width="420" height="300" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="640" y="110" width="330" height="120" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Pod + Service in ONE file</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="99.0">apiVersion: v1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="120.5">kind: Pod</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="142.0">metadata:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="163.5">  name: javawebapppod</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="185.0">  labels:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="206.5">    app: javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="228.0">  ...</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="249.5">---</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="271.0">apiVersion: v1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="292.5">kind: Service</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="314.0">spec:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="335.5">  selector:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="357.0">    app: javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="470" y="219.9">← --- separates</tspan><tspan x="470" y="236.1">   the 2 resources</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="470" y="311.9">← same label =</tspan><tspan x="470" y="328.1">   connected</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="656" y="138.0">$ kubectl apply -f app.yml</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="656" y="164.0">pod/javawebapppod created</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="656" y="190.0">service/javawebappsvc created</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="805" y="261.9">one apply creates both;</tspan><tspan x="805" y="278.1">one delete removes both:</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="805" y="315.0">kubectl delete -f app.yml</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="410.0">resources are created in file order — put Namespaces first</tspan></text>
+</g>
+</svg>

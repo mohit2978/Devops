@@ -1,74 +1,82 @@
-# Lecture-9
+# Kubernetes · Lecture 9: Blue-Green Deployment (hands-on)
 
->Note: remember we used ubuntu machine to create cluster so username is ubuntu only
+> We created the cluster from an **Ubuntu** host machine, so the SSH username is **`ubuntu`**.
 
-### create cluster command
+---
 
-`
-eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b`
+## 1. Cluster commands (recap)
 
->Note: It takes time to start
+### Create cluster command
+```bash
+eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b
+```
+> It takes time to start (~15 minutes).
 
-### delete cluster command
+### Delete cluster command
+```bash
+eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
+```
 
-`eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
-`
+| Command | What it does |
+|---------|-------------|
+| `kubectl delete all --all` | Delete all the resources (pods, services, deployments…) we created in the current (default) namespace |
+| `kubectl get all -n <namespace-name>` | Get everything in a namespace |
+| `kubectl apply -f <yml-file>` | Execute a manifest YAML |
+| `kubectl get ns` | Get all namespaces |
 
+---
 
-- to delete all the resources(pods,services all) we have created
-        
-        $ kubectl delete all --all
+## 2. Blue-green deployment (recap)
 
- - to get everything in any namespace
+Most applications use this model to deploy with **zero downtime**.
 
-        $ kubectl get all  -n <namespace-name> 
+- There are **2 production environments**: **blue** and **green**.
+- **Blue** is the **current version**; **green** is the **new version**.
+- Green is first opened **for testing**. Once testing is done, the **load balancer traffic is moved to green**.
+- If any customer faces an issue, traffic is **switched back to blue**.
+- If there's any problem in green, just **change the label back to blue**.
 
-- to execute manifest yml
+![Before the switch: live service → blue, pre-prod → green](06-before-switch.svg)
 
-        $ kubectl apply -f <yml-file>
+> In this lab the pre-prod service is a **NodePort** (for testing), not a LoadBalancer as drawn above; the idea is the same.
 
-- get all namespace
+> **Open question from class:** what about people using the application **while we change the label**? E.g. in a banking application, some people are doing transactions while we deploy. What about their transactions? **Answered in section 6** below.
 
-        $ kubectl get ns   
+---
 
- ##  Blue Green deployment
+## 3. The setup
 
- Most application use this model to deploy application with zero downtime!!
- Here we have 2 production environment blue and green !! blue is current version and green one is new version!!
- green one is open for testing ! once testing is done load balancer traffic is moved to green environment ,if any customer 
- face any issue green environment is switched back to blue one!!
+**Step 0:** Clone the git repo:
+```bash
+git clone https://github.com/ashokitschool/kubernetes_manifest_yml_files.git
+```
 
-if any problem in green just change label to blue!!
+We have **4 YAML files**:
+1. **blue** pods (Deployment) and the **live** service
+2. **green** pods (Deployment) and the **test (pre-prod)** service
 
-Now what about people using application while chnaging label? like in case of banking application and 
-we deployed , while we were deploying some people were doing some transaction , then?
-what about their transaction??
+All these YAML files are also under the folder **`k8s-yml-files`** in this repo.
 
+![The 4 YAML files](01-four-files.svg)
 
+| Step | Action |
+|------|--------|
+| 1 | Navigate into the `blue-green` directory |
+| 2 | Create the **blue** pods Deployment (pod label `v1`) |
+| 3 | Create the **live service** to expose the blue pods |
+| 4 | Access the app using the live service's **LB DNS URL** (the blue pods' response appears in the browser) |
+| 5 | Create the **green** pods Deployment |
+| 6 | Check all pods are running |
+| 7 | Create the **pre-prod service** |
+| 8 | Access the green pods using the pre-prod service |
+| 9 | Make the green pods **live** |
+| 10 | Access the live service (the green pods' response should come) |
 
-        Step-0: Clone below git repo
+---
 
-  URl : https://github.com/ashokitschool/kubernetes_manifest_yml_files.git
+## 4. Steps 1–4: blue deployment + live service
 
-We have 4 yml as
-1. blue pod and live service  
-2. green pod and test service
-
-All this yml files are under folder k8s-yml-files
-        Step-1 : Navigate into blue-green directory
-
-        Step-2 : Create Blue Pods deployment (pod-label : v1)
-
-        Step-3 : Create Live Service to expose blue pods
-
-        Step-4 : Access App using Live Service LBR DNS Url
-
-        (blue pods response we should be able to see in browser)
-
-        Step-5: Create Green Pods deployment
-
-        Step-6: Check all pods running
-### Blue deployment (Deployment yml)
+### Blue deployment (Deployment YAML)
 
 ```yml
 ---
@@ -100,17 +108,25 @@ spec:
         ports:
         - containerPort: 8080
 ...
-
 ```
-see 3 labels here!!
 
-![alt text](image.png)
+Note the **3 labels** here: `app`, `version`, `color`.
 
-see blue pods got created
+![Three labels and what uses them](02-three-labels.svg)
 
-we cannot access outside cluster so now we need to create service!!So we create service
+- `selector.matchLabels` must match the template labels, so the Deployment knows which pods it owns.
+- `imagePullPolicy: Always` means the image is pulled from Docker Hub every time a pod starts, so you always get the latest push of that tag.
 
-### live service
+```bash
+kubectl apply -f <blue-deployment-yml>
+kubectl get pods
+```
+
+![Blue pods created](image.png)
+
+The blue pods are created. We can't access them from outside the cluster, so now we create a **service**.
+
+### Live service
 
 ```yml
 ---
@@ -126,119 +142,190 @@ spec:
   - port: 80
     targetPort: 8080
 ...
-
 ```
-![alt text](image-1.png)
 
-created load balancer service!! blue pods are accessed by this!!
+- `type: LoadBalancer` gives customers a public AWS load balancer URL.
+- `selector: version: v1` makes the service send traffic only to pods labelled `version: v1` (the blue pods).
 
-![alt text](image-2.png)
+```bash
+kubectl apply -f <live-service-yml>
+kubectl get svc
+```
 
-blue pods or version v1 are accessible
+![Live LoadBalancer service created](image-1.png)
+
+The LoadBalancer service is created; the blue pods are accessed through it.
+
+![Blue (v1) app opened through the live service URL](image-2.png)
+
+The blue pods (version **v1**) are accessible at `http://<LB-DNS>/java-web-app/`.
+
+---
+
+## 5. Steps 5–8: green deployment + pre-prod service
+
 ### Green deployment
 
 ```yml
 ---
-    apiVersion: apps/v1
-    kind: Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javawebappgreendeployment
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: java-web-app
+      version: v2
+      color: green
+  template:
     metadata:
-      name: javawebappgreendeployment
+      name: javawebapppod
+      labels:
+        app: java-web-app
+        version: v2
+        color: green
     spec:
-      replicas: 2
-      strategy:
-        type: RollingUpdate
-      selector:
-        matchLabels:
-          app: java-web-app
-          version: v2
-          color: green
-      template:
-        metadata:
-          name: javawebapppod
-          labels:
-            app: java-web-app
-            version: v2
-            color: green
-        spec:
-          containers:
-          - name: javawebappcontainer
-            image: ashokit/javawebapp:v2
-            imagePullPolicy: Always
-            ports:
-            - containerPort: 8080
+      containers:
+      - name: javawebappcontainer
+        image: ashokit/javawebapp:v2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
 ...
-
 ```
-here we are using another docker image!!same code just version v2
 
-![alt text](image-3.png)
+Here we use **another Docker image tag** (`ashokit/javawebapp:v2`): the same code, just version v2 (the new release). Labels are `version: v2`, `color: green`.
 
-see blue pods and green pods both running , green one running from 6 sec
-        
-        Step-7: Create Pre-Prod service
-### Pre-prd service
+> The original notes had this YAML block indented by 4 extra spaces. YAML accepts it as long as the whole document is shifted consistently, but keep it flush-left like above to avoid mistakes.
+
+```bash
+kubectl apply -f <green-deployment-yml>
+kubectl get pods                # Step 6: check all pods running
+```
+
+![Blue and green pods running together](image-3.png)
+
+Blue pods and green pods are **both running**; the green ones have been running for only 6 seconds.
+
+### Step 7: Pre-prod service
 
 ```yml
 ---
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: javawebpreprodservice
-    spec:
-      type: NodePort
-      selector:
-        version: v2
-      ports:
-      - port: 80
-        targetPort: 8080
-        nodePort: 31785
+apiVersion: v1
+kind: Service
+metadata:
+  name: javawebpreprodservice
+spec:
+  type: NodePort
+  selector:
+    version: v2
+  ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 31785
 ...
 ```
 
-it is type of nodeport as for testing purpose!!
+It's type **NodePort** because it's for **testing purposes** only (no need to pay for a second load balancer). It selects `version: v2`, the green pods.
 
-![alt text](image-4.png)
+```bash
+kubectl apply -f <preprod-service-yml>
+kubectl get pods -o wide
+```
 
-see 1st blue and green pod are on same worker node!!
+![Pods with their nodes: blue and green spread over both workers](image-4.png)
 
-to check green one working enable port 31785 in green worker nodes!!
+The first blue pod and the first green pod are on the **same worker node** (`ip-192-168-3-141`); the second of each is on `ip-192-168-54-136`.
 
-after enabling access by node public ip
+![Where the pods landed and how testers reach green](03-pods-on-nodes.svg)
 
-![alt text](image-5.png)
+To check that green works, **enable port 31785** in the security group of the worker nodes. (A NodePort is opened on every node, so any worker node's public IP works.)
 
-now we want load balancer to access v2 or green version
+### Step 8: Access green pods using the pre-prod service
 
-        Step-8: Access Green Pods using pre-prod service
+After enabling the port, access via the **node public IP**:
 
-to make latest code live or green pod live ,we have to change selector of live service!! so just edit live servie yml!!In live service change selector to v2
+![Green (v2) app via node IP and nodePort 31785](image-5.png)
 
-![alt text](image-6.png)
+`http://13.233.233.248:31785/java-web-app/` shows **"This is latest code (Green Env)"**, so the testers verified v2.
 
-after applying see
+Now we want the **load balancer** (customers) to get v2, the green version.
 
-![alt text](image-7.png)
+---
 
-accessing by load balancer URL
+## 6. Steps 9–10: make green live
 
-        Step-9: Make green pods live 
+To make the latest code (green pods) live, we **change the selector of the live service**: just edit the live service YAML and change the selector to `v2`.
 
-        Step-10 : Access Live Service (green pods response should come)        
+![Live service YAML edited to version: v2](image-6.png)
 
+```bash
+kubectl apply -f <live-service-yml>     # Step 9: make green pods live
+```
 
->Note: to divert traffic to old application just change v2 to v1 in live service      
+![After the switch: live service → green](07-after-switch.svg)
 
-Ques-->how to manage downtime while green one is going to be up and blue to be down??it is fraction of milisec but still how to manage that??
+After applying, access the app with the **same load balancer URL**:
 
-Ans-->HA proxy server will be configuered for this!!
+![Load balancer URL now shows the Green Env](image-7.png)
 
-For long-lived TCP connections, such as database connections or websockets, HAProxy can ensure that connections are not dropped during the switchover. Traffic from an ongoing transaction will continue to flow to the blue environment until it is completed.
+**Step 10:** the live service now returns the green pods' response: *"This is latest code (Green Env)"*.
 
-Instead of an abrupt switch, you can gradually shift new traffic to the green environment while keeping ongoing sessions on the blue environment. This minimizes the risk of disrupting active users.
+### Rollback
 
-When switching from blue to green, you can configure HAProxy to stop sending new connections to the blue environment while allowing existing connections to complete. This is done using the drain mode for servers.
+> To divert traffic back to the old application, just change `v2` to `v1` in the live service.
 
-### Transaction Routing Behavior:
-- Active Transactions: If a user is mid-transaction in the blue environment, HAProxy keeps routing their requests to blue (via sticky sessions or persistent connections). Their transaction will complete without interference.
-- New Transactions: New users or transactions are directed to the green environment based on the updated HAProxy configuration or rules.
+![Rollback](08-rollback.svg)
 
+```bash
+kubectl patch svc javawebappliveservice -p '{"spec":{"selector":{"version":"v1"}}}'
+```
+
+---
+
+## 7. Zero downtime during the switch & users mid-transaction
+
+**Q: How do we manage downtime while green is coming up and blue is going down? It's a fraction of a millisecond, but how do we manage it?**
+
+**A:** An **HAProxy** server (or a similar smart load balancer) is configured for this.
+
+![Draining and sticky sessions with HAProxy](04-haproxy-drain.svg)
+
+- For **long-lived TCP connections**, such as database connections or websockets, HAProxy can ensure that connections are **not dropped** during the switchover. Traffic from an **ongoing transaction continues to flow to the blue environment until it is completed**.
+- Instead of an abrupt switch, you can **gradually shift new traffic** to the green environment while keeping ongoing sessions on the blue environment. This minimizes the risk of disrupting active users.
+- When switching from blue to green, you can configure HAProxy to **stop sending new connections to blue while allowing existing connections to complete**. This is done using the **drain mode** for servers.
+
+### Transaction routing behaviour
+- **Active transactions:** if a user is mid-transaction in the blue environment, HAProxy keeps routing their requests to blue (via **sticky sessions** or **persistent connections**). Their transaction completes without interference.
+- **New transactions:** new users or transactions are directed to the green environment based on the updated HAProxy configuration or rules.
+
+### Gradual shift (optional)
+
+![Gradual traffic shift](05-gradual-shift.svg)
+
+A weighted shift (10% → 50% → 100%) is really a **canary release**. Plain Kubernetes Services can't split by percentage; use HAProxy, NGINX Ingress canary annotations, a service mesh (Istio) or Argo Rollouts.
+
+### What happens in plain Kubernetes?
+
+Even without HAProxy, the switch is safe if you follow these rules:
+- Changing the Service selector affects **new** connections; **blue pods keep running**, so requests already in progress finish on them.
+- Don't delete the blue Deployment immediately: wait until its connections are done, and make the app handle **SIGTERM gracefully** (finish requests before exiting).
+- Keep **data in the shared database** (not in the pods) and make DB changes **backward-compatible**, so v1 and v2 both work during the switch.
+
+---
+
+## 8. Quick revision
+
+| Topic | Key point |
+|-------|-----------|
+| Blue Deployment | `version: v1`, `color: blue`, image `ashokit/javawebapp` |
+| Green Deployment | `version: v2`, `color: green`, image `ashokit/javawebapp:v2` |
+| Live service | LoadBalancer, `selector: version: v1` → customers on blue |
+| Pre-prod service | NodePort 31785, `selector: version: v2` → testers on green |
+| Go live | Change live service selector to `v2` and apply |
+| Rollback | Change it back to `v1` |
+| No dropped transactions | HAProxy drain mode + sticky sessions; in K8s keep blue running until connections finish |

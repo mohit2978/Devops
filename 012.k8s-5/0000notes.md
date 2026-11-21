@@ -1,90 +1,80 @@
-# Lecture 5
+# Kubernetes · Lecture 5: Self-Healing, ReplicaSet & Deployment
 
->Note: remember we used ubuntu machine to create cluster so username is ubuntu only
+> We created the cluster from an **Ubuntu** host machine, so the SSH username is **`ubuntu`**.
 
-### create cluster command
+---
 
-`
-eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b`
+## 1. Cluster commands (recap)
 
->Note: It takes time to start
+```bash
+# create the cluster (takes ~15 minutes)
+eksctl create cluster --name ashokit-cluster4 --region ap-south-1 --node-type t2.medium --zones ap-south-1a,ap-south-1b
 
-### delete cluster command
+# delete the cluster after practice (avoid billing)
+eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
+```
 
-`eksctl delete cluster --name ashokit-cluster4 --region ap-south-1
-`
+| Command | What it does |
+|---------|-------------|
+| `kubectl delete all --all` | Delete pods, services, replicasets, deployments **in the current (default) namespace** |
+| `kubectl get all -n <namespace>` | Show everything in a namespace |
+| `kubectl apply -f <yml-file>` | Create / update resources from a manifest |
+| `kubectl get ns` | List namespaces |
 
+---
 
-- to delete all the resources(pods,services all) we have created
-        
-        $ kubectl delete all --all
+## 2. Self-healing in Kubernetes
 
- - to get everything in any namespace
+Self-healing means: **if a pod is damaged, Kubernetes should create a new one automatically.** But in this test we deleted the pod and Kubernetes did **not** recreate it:
 
-        $ kubectl get all  -n <namespace-name> 
+![Deleted pod is not recreated](image.png)
 
-- to execute manifest yml
+Why? Until now we created pods **directly** with a Pod manifest (`kind: Pod`).
 
-        $ kubectl apply -f <yml-file>
+![Bare pod vs ReplicaSet](01-bare-pod-vs-rs.svg)
 
-- get all namespace
+- A pod created directly has **no owner**, so it gets **no self-healing**.
+- If it's damaged / crashed / deleted, Kubernetes **will not** create a new one, and the application goes **down**.
 
-        $ kubectl get ns   
+> ⚠ **Don't create pods directly to deploy applications.** Use a Kubernetes **resource (controller)** that creates the pods; then Kubernetes manages the pod life cycle.
 
+### Resources that create pods
 
+![Workload controllers](02-workload-controllers.svg)
 
-## Self healing in k8s
+| Resource | Use |
+|----------|-----|
+| **ReplicationController (RC)** | Original way to keep N pods running (**outdated**) |
+| **ReplicaSet (RS)** | Improved RC: keeps N pods running |
+| **Deployment** | Manages ReplicaSets, adds rolling updates & rollback (**use this for apps**) |
+| **DaemonSet** | Runs one pod on **every node** (log / monitoring agents) |
+| **StatefulSet** | Pods with stable names and their own storage (databases, Kafka) |
 
-- If pod is damaged then k8s should create a new pod!! 
+All of them provide **self-healing**.
 
-![alt text](image.png)
+### ReplicationController vs ReplicaSet
 
-we deleted the pod but k8s not creating pod!!
+![RC vs RS selectors](03-rc-vs-rs.svg)
 
+The real difference is the **label selector**:
+- **RC** supports only **equality-based** selectors (`app = javawebapp`).
+- **RS** also supports **set-based** selectors with `matchExpressions` (`env In (dev, qa)`, `NotIn`, `Exists`).
 
-=> As of now, we have created POD directly using POD Manifest YML.
-    
-(kind: Pod)
+---
 
-=> If we create POD directly then we don't get self-healing capability.
+## 3. ReplicaSet
 
-=> If POD is damaged/crashed/deleted then k8s will not create new POD.
+- A Kubernetes resource used to **create and manage pods**.
+- It takes care of the **pod life cycle**: when a pod is damaged / crashed / deleted, the ReplicaSet **creates a new one**.
+- It **always keeps the given number of pods** running, e.g. `replicas: 2`.
+- This gives **high availability** (no downtime if one pod dies).
+- You can **scale up / scale down** the number of pods.
 
-=> If pod damaged then our application will be down.
+![ReplicaSet reconcile loop](04-reconcile-loop.svg)
 
->Note: We shouldn't create POD directly to deploy our application in k8s.
+The ReplicaSet controller constantly compares **desired** (`replicas` in YAML) with **actual** (pods with matching labels): too few → create, too many → delete.
 
->Note: We need to use k8s resources to create pods.
-
-=> If we create pod using k8s resources, then pod life cycle will be managed by k8s.
-
-=> We have below resources to create pods
-
-1) ReplicationController (Outdated)
-2) ReplicaSet(RS)
-3) Deployment
-4) DeamonSet
-5) StatefulSet
-
-These resouces take care of self healing capability!!
-
-ReplicationController only one label is supported for identification of pod whereas in ReplicaSet muliple labels are supported!!
-
-## ReplicaSet
-
-=> It is one of the k8s resource which is used to create & manage pods.
-
-=> ReplicaSet will take care of POD life cycle.
-
->Note: When POD is damaged/crashed/deleted then ReplicaSet will create new POD.
-
-=> Always It will maintain given no.of pods count available for our application.
-
-Ex=> replicas: 2
-
-=> With this approach we can achieve high availability for our application.
-
-=> By using RS, we can scale up and scale down our PODS count.(increase and decrease number of pods)
+### ReplicaSet manifest
 
 ```yml
 ---
@@ -111,8 +101,8 @@ spec:
 ---
 apiVersion: v1
 kind: Namespace
-metadata: 
- name: ashokit-ns      
+metadata:
+ name: ashokit-ns
 ---
 apiVersion: v1
 kind: Service
@@ -127,91 +117,87 @@ spec:
   - port: 80
     targetPort: 8080
 ...
-
 ```
 
-![alt text](image-1.png)
+![The ReplicaSet manifest](image-1.png)
 
->Here kind:pod is not there , we are using kind:Replicaset. 
+- `kind: ReplicaSet` (not `kind: Pod`).
+- `selector.matchLabels` says **which pods** this ReplicaSet owns; it must match the labels in `template`.
+- `replicas: 2` means two pods run; if one is deleted the other keeps serving and a replacement is created; if both are deleted, two new ones are created.
+- `spec.template` holds the **pod details** (what used to be a Pod manifest).
+- A `-` (hyphen) in YAML marks a **list item** (`containers`, `ports`).
 
->In selector,matchlabels tells which label to match with the pod!!
+![ReplicaSet YAML and the namespace trap](05-rs-yaml-namespace.svg)
 
->replicas:2 means two pods will be created if one deleted other one be working , if all 2 deleted than 2 more will be up and running!!
+> ⚠ **Namespace trap in this example:** the ReplicaSet has no `namespace`, so its pods go to **`default`**, while the Service is in **`ashokit-ns`**. A Service only selects pods in **its own namespace**, so this Service has **no endpoints** and the LoadBalancer URL won't work. Fix: add `namespace: ashokit-ns` to the ReplicaSet's `metadata` too (or drop it from the Service). Check with `kubectl get endpoints javawebappsvc -n ashokit-ns`.
 
->In spec>template  of Replicaset we put details of POD.
+### Try it
 
-Here we have not put namespace name but can put
+```bash
+kubectl get all
+kubectl apply -f <yml-file>
+```
 
-Also - (hyphen ) whereever we put it means to add list !!
+![kubectl apply and get all](image-2.png)
 
-This helps to get high avialability - no downtime!!
+```bash
+kubectl get pods
+kubectl get rs                      # list ReplicaSets
+kubectl delete pod <pod-name>       # delete one pod…
+kubectl get pods                    # …and a new one appears (self-healing)
+```
 
+### Scaling a ReplicaSet
 
-$ kubectl get all
+![Scaling and deleting](06-scale-and-delete.svg)
 
-$ kubectl apply -f \<yml-file>
+Increase pods by editing `replicas` in the YAML and re-applying, or with a command (which **does not change the YAML file**):
+```bash
+kubectl scale rs javawebrs --replicas 3
+```
+> The ReplicaSet checks how many pods are currently running and decides whether to **scale up or down**. The next `kubectl apply` of the old YAML will set it back to 2.
 
-![alt text](image-2.png)
+![Scaled up to 3 and self-healing](image-3.png)
 
-$ kubectl get pods
+Scaling up and self-healing both work: 3 pods, ReplicaSet `DESIRED 3 / CURRENT 3 / READY 3`:
 
-$ kubectl get rs --> to see all replicaset
+![kubectl get all: 3 pods and the ReplicaSet](image-4.png)
 
-$ kubectl delete pod <pod-name>
+> Notice `javawebappsvc` is **missing** from this list: `kubectl get all` shows the `default` namespace, and the Service was created in `ashokit-ns`. That's the namespace trap described above.
 
-$ kubectl get pods
+### Deleting
 
- to increase pod we can increase by editing yml file or can use below command, this command does not affect yml file
+> To get rid of the pods, delete the **resource that created them**. Deleting only a pod just triggers self-healing.
 
-$ kubectl scale rs javawebrs --replicas 3
+```bash
+kubectl delete rs javawebrs     # deletes the ReplicaSet AND its pods
+```
 
->Note: When we execute above command replicaset will check how many pods are currently running based on that it will decide scale up or scale down.
+> In a ReplicaSet, scaling up / down is **manual**. Kubernetes **autoscaling** is used together with a **Deployment**.
 
-![alt text](image-3.png)
+---
 
-See how we scaled up and self healing capability!!
+## 4. Kubernetes Deployment
 
-![alt text](image-4.png)
+- A Kubernetes resource that **manages the pod life cycle** (through a ReplicaSet).
+- **The most recommended way to deploy applications in Kubernetes.**
 
->Note: If we want to delete the pods then we have to delete the resource which created those pods.You cannot delete only pods , you have to delete replicaset!!
+![Deployment, ReplicaSet and pods](07-deployment-hierarchy.svg)
 
-$ kubectl delete rs javawebrs
+| Advantage | Meaning |
+|-----------|---------|
+| **Zero downtime** | Several pods; one failing is replaced while others serve |
+| **Autoscaling** | With HPA, pods increase/decrease with load |
+| **Rolling update & rollback** | New versions pod by pod; go back to the previous version if needed |
 
-javawebrs is replicaset name
+### Deployment strategies
 
->Note: In ReplicaSet, scale up & scale down is manual process.
+![Recreate vs RollingUpdate](08-recreate-vs-rolling.svg)
 
-=> K8S supports Auto Scaling when we use 'Deployment' to create pods.
-
-## K8S Deployment
-
-
-=> It is one of the k8s resource/component
-
-=> It is most recommended approach to deploy our applications in k8s.
-
-=> Deployment will manage pod life cycle.
-
-=> We have below advantages with K8s Deployment 
-
-1) Zero Downtime
-
-2) Auto Scaling
-
-3) Rolling Update & Rollback
-
-
-=> We have below deployment strategies
-
-1) ReCreate (all at once)
-
-2) RollingUpdate (one by one)
-
-
-=> ReCreate means it will delete all existing pods and will create new pods.
-
-=> RollingUpdate means it will delete and create new pod one by one.
-
+| Strategy | How | Downtime |
+|----------|-----|----------|
+| **Recreate** | Delete all existing pods, then create new ones | Yes |
+| **RollingUpdate** (default) | Delete and create pods **one by one** | No |
 
 ```yml
 ---
@@ -221,7 +207,7 @@ metadata:
  name: javawebdeploy
 spec:
  replicas: 2
- strategy: 
+ strategy:
   type: RollingUpdate
  selector:
   matchLabels:
@@ -250,60 +236,67 @@ spec:
   - port: 80
     targetPort: 8080
 ...
-
 ```
->Note:quite understandable yml
+Same structure as the ReplicaSet, with `kind: Deployment` and a `strategy`.
 
-$ kubectl delete all --all
+```bash
+kubectl delete all --all
+kubectl get all
+kubectl apply -f <yml-file>
+kubectl get all            # shows deployment + replicaset + pods + service
+```
+Access the app with the **LoadBalancer URL** (`kubectl get svc` → `EXTERNAL-IP`).
 
-$ kubectl get all
+```bash
+kubectl scale deployment javawebdeploy --replicas 4
+kubectl get pods
+kubectl scale deployment javawebdeploy --replicas 3
 
-$ kubectl apply -f \<yml-file>
+# rolling update & rollback
+kubectl set image deployment/javawebdeploy javawebappcontainer=ashokit/javawebapp:v2
+kubectl rollout status  deployment/javawebdeploy
+kubectl rollout undo    deployment/javawebdeploy
+```
 
-$ kubectl get all
+---
 
-Note: Access app using LBR URL
+## 5. Autoscaling
 
-$ kubectl scale deployment javawebdeploy --replicas 4
+**Autoscaling** = increasing / decreasing infrastructure resources based on demand.
 
-$ kubectl get pods
+![Horizontal vs vertical scaling](09-horizontal-vs-vertical.svg)
 
-$ kubectl scale deployment javawebdeploy --replicas 3
+| Type | Meaning | K8s |
+|------|---------|-----|
+| **Horizontal scaling** | More instances / servers / pods | **HPA**: Horizontal Pod Autoscaler |
+| **Vertical scaling** | More capacity (CPU/RAM) for one system | **VPA**: Vertical Pod Autoscaler (we don't use this) |
 
+**HPA** scales the number of pod replicas up/down based on observed metrics (CPU or memory utilization).
 
+![How HPA works](10-hpa-architecture.svg)
 
-### Autoscaling
+- HPA asks the **Metrics Server** for pod CPU/memory usage.
+- **Metrics Server** collects CPU/RAM metrics from pods and nodes and keeps the latest values.
 
--> It is the process of increasing / decreasing infrastructure resources based on demand.
+```bash
+kubectl top nodes     # node metrics
+kubectl top pods      # pod metrics
+```
 
--> Autoscaling can be done in 2 ways
+> ⚠ Metrics Server is **not installed by default**. Installing it and running a full HPA demo is covered in **Lecture 6** (`013.k8s-6`).
 
-1) Horizontal Scaling
+---
 
-2) Verticle Scaling
+## 6. Quick revision
 
--> Horizontal Scaling means increasing number of instances/servers/pods.
-
--> Veriticle Scaling means increasing capacity of single system.
-
-    HPA : Horizontal POD Autoscaling
-
-    VPA : Vertical POD Autoscaling (we don't use this)
-
-HPA: It is used to scale up/down no.of pod replicas based on the observed metrics 
-    (CPU or memory utilization)
-
--> HPA will interact with "Metric Server" to identify CPU/Memory utilization of POD.
-
--> Metrics server is an application that collect metrics from objects such as pods, nodes according to the state of CPU, RAM and keeps them in time.
-
-- to get node metrics
-        
-        $ kubectl top nodes
-
-- to get pod metrics
-        
-        $ kubectl top pods
-
->Note: By default metrics server is not available in our k8s cluster
-
+| Topic | Key point |
+|-------|-----------|
+| Bare Pod | No owner → no self-healing; don't deploy apps this way |
+| RC vs RS | RS adds set-based selectors; RC is outdated |
+| ReplicaSet | Keeps `replicas` pods running; recreates deleted ones |
+| Labels | `selector.matchLabels` must match `template.metadata.labels` |
+| Namespaces | A Service only selects pods in its own namespace |
+| Scale | `kubectl scale rs/deployment <name> --replicas N` (YAML unchanged) |
+| Delete pods for good | Delete the owner: `kubectl delete rs <name>` |
+| Deployment | Recommended; manages ReplicaSets; rolling update & rollback |
+| HPA | Autoscaling; needs Metrics Server |

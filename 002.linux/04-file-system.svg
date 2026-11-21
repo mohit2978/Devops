@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="450" y="75" width="100" height="45" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="175" width="125" height="80" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,120 L500,145 L82,145 L82,170" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M76.3,162.3 L82,174 L87.7,162.3" fill="none" stroke="#495057" stroke-width="1.5"/>
+<rect x="160" y="175" width="125" height="80" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,120 L500,145 L222,145 L222,170" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M216.3,162.3 L222,174 L227.7,162.3" fill="none" stroke="#495057" stroke-width="1.5"/>
+<rect x="300" y="175" width="125" height="80" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,120 L500,145 L362,145 L362,170" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M356.3,162.3 L362,174 L367.7,162.3" fill="none" stroke="#495057" stroke-width="1.5"/>
+<rect x="440" y="175" width="125" height="80" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,120 L500,145 L502,145 L502,170" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M496.3,162.3 L502,174 L507.7,162.3" fill="none" stroke="#495057" stroke-width="1.5"/>
+<rect x="580" y="175" width="125" height="80" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,120 L500,145 L642,145 L642,170" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M636.3,162.3 L642,174 L647.7,162.3" fill="none" stroke="#495057" stroke-width="1.5"/>
+<rect x="720" y="175" width="125" height="80" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,120 L500,145 L782,145 L782,170" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M776.3,162.3 L782,174 L787.7,162.3" fill="none" stroke="#495057" stroke-width="1.5"/>
+<rect x="860" y="175" width="125" height="80" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,120 L500,145 L922,145 L922,170" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M916.3,162.3 L922,174 L927.7,162.3" fill="none" stroke="#495057" stroke-width="1.5"/>
+<rect x="30" y="290" width="180" height="40" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M82,255 L82,290" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M76.3,278.3 L82,290 L87.7,278.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="240" y="325" width="235" height="90" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="490" y="325" width="235" height="90" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="740" y="325" width="235" height="90" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Linux file system — everything starts at /  (root)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="22" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="97.5">/</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="82.5" y="201.2">/home</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="82.5" y="217.9">users&#x27; folders</tspan><tspan x="82.5" y="231.6">/home/ec2-user</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="222.5" y="201.2">/root</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="222.5" y="217.9">root user&#x27;s</tspan><tspan x="222.5" y="231.6">home</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="362.5" y="201.2">/etc</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="362.5" y="217.9">config files</tspan><tspan x="362.5" y="231.6">(passwd, hosts)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="502.5" y="201.2">/var</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="502.5" y="217.9">variable data</tspan><tspan x="502.5" y="231.6">/var/log logs</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="642.5" y="201.2">/bin  /usr</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="642.5" y="217.9">commands &amp;</tspan><tspan x="642.5" y="231.6">programs</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="782.5" y="201.2">/tmp</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="782.5" y="217.9">temporary</tspan><tspan x="782.5" y="231.6">files</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="922.5" y="201.2">/opt</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="922.5" y="217.9">optional apps</tspan><tspan x="922.5" y="231.6">(/opt/app)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="120.0" y="310.0">ec2-user  ← you log in here</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="300.0">everything is a FILE — the first character of  ls -l  tells the type:</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="357.5" y="362.5">-   ordinary file</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="357.5" y="379.8">-rw-r--r-- notes.txt</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="362.5">d   directory</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="607.5" y="379.8">drwxr-xr-x  projects</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="857.5" y="362.5">l   link (shortcut)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="857.5" y="379.8">lrwxrwxrwx  app → /opt/app</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="445.0">cd /  → root • cd ~ → your home • cd .. → parent • absolute path starts with /, relative path does not</tspan></text>
+</g>
+</svg>

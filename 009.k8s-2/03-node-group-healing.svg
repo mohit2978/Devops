@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="1000" height="360">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="360" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="60" y="130" width="240" height="90" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="370" y="130" width="240" height="90" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="680" y="130" width="240" height="90" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M610,175 L680,175" fill="none" stroke="#2f9e44" stroke-width="3"/>
+<path d="M668.3,180.7 L680,175 L668.3,169.3" fill="none" stroke="#2f9e44" stroke-width="3"/>
+<rect x="30" y="85" width="940" height="185" rx="16" fill="none" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Worker nodes live in an Auto Scaling Group → node-level self-healing</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="180.0" y="165.6">worker 1</tspan><tspan x="180.0" y="184.4">(EC2)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="180" y="240.0">running</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="490.0" y="165.6">worker 2</tspan><tspan x="490.0" y="184.4">(EC2)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="490" y="240.0">✗ crashed / terminated</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="800.0" y="165.6">worker 3</tspan><tspan x="800.0" y="184.4">(EC2)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="800" y="240.0">new node launched ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#2f9e44" font-weight="bold"><tspan x="645" y="160.0">ASG</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="500" y="102.0">Auto Scaling Group: desired = 2 nodes</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="305.0">the ASG keeps the node count; the pods from the dead node are rescheduled by K8s onto healthy nodes</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="333.0">two levels of self-healing: K8s heals PODS, the AWS Auto Scaling Group heals NODES</tspan></text>
+</g>
+</svg>

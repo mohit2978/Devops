@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="330" rx="16" fill="#fff5f5" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="40" y="115" width="430" height="230" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="75" width="470" height="330" rx="16" fill="#ebfbee" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="530" y="130" width="430" height="120" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Running app + database: plain docker vs docker compose</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold"><tspan x="255" y="98.0">✗ without compose — remember &amp; type everything</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="56" y="141.0">$ docker network create mynet</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="56" y="167.0">$ docker volume create dbdata</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="56" y="193.0">$ docker run -d --name db --network mynet \</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="56" y="219.0">    -e MYSQL_ROOT_PASSWORD=root \</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="56" y="245.0">    -v dbdata:/var/lib/mysql mysql:8.0</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="56" y="271.0">$ docker build -t app .</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="56" y="297.0">$ docker run -d --name app --network mynet \</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="56" y="323.0">    -p 8080:8080 app</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="255" y="375.0">5 long commands, in the right order, every time</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#2f9e44" font-weight="bold"><tspan x="745" y="98.0">✓ with compose — one file, one command</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="546" y="156.0">$ docker compose up -d</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="546" y="180.0">$ docker compose ps</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="546" y="204.0">$ docker compose logs -f app</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="546" y="228.0">$ docker compose down</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="745" y="263.8">creates the network, volume and both</tspan><tspan x="745" y="280.0">containers in the right order (depends_on);</tspan><tspan x="745" y="296.2">app reaches the DB at host name  db:3306</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="745" y="375.0">file lives in Git → same setup for everyone</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="440.0">compose = for running a multi-container app on ONE machine (dev, testing, small servers) • Kubernetes = many machines</tspan></text>
+</g>
+</svg>

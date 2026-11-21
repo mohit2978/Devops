@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="80" y="120" width="760" height="60" rx="0" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="80" y="120" width="152.0" height="60" rx="0" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M80,105 L80,195" fill="none" stroke="#495057" stroke-width="2.5"/>
+<path d="M232,105 L232,195" fill="none" stroke="#2f9e44" stroke-width="2.5" stroke-dasharray="8 6"/>
+<path d="M384,105 L384,195" fill="none" stroke="#1971c2" stroke-width="2.5" stroke-dasharray="8 6"/>
+<path d="M840,105 L840,195" fill="none" stroke="#e03131" stroke-width="2.5" stroke-dasharray="8 6"/>
+<rect x="80" y="315" width="400" height="90" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="520" y="315" width="400" height="90" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">requests, limits and the 50% CPU target</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="156.0" y="150.0">100m</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="80.0" y="95.0">0</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="232.0" y="215.0">100m = 50% target</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="384.0" y="95.0">200m request</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="840.0" y="95.0">500m limit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="500" y="260.0">HPA % is measured against the REQUEST (200m), not the limit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500" y="290.0">pod using 100m = 50% → OK • pod using 160m = 80% → scale up</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="280.0" y="345.0">requests.cpu: 200m</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="280.0" y="362.2">guaranteed share; scheduler reserves it;</tspan><tspan x="280.0" y="377.2">HPA needs it to calculate %</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="720.0" y="345.0">limits.cpu: 500m</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="720.0" y="362.2">hard ceiling; above it the container</tspan><tspan x="720.0" y="377.2">is throttled (CPU) / killed (memory)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="60.0">1 CPU core = 1000m (millicores) • 200m = 0.2 core</tspan></text>
+</g>
+</svg>

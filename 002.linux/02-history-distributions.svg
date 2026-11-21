@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="90" width="190" height="80" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="30" y="210" width="190" height="80" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="290" y="140" width="220" height="100" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M220,130 L290,175" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M277.1,173.4 L290,175 L283.2,163.9" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M220,250 L290,205" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M283.2,216.1 L290,205 L277.1,206.6" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="590" y="80" width="180" height="70" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M510,190 L590,115" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M585.3,127.1 L590,115 L577.6,118.9" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="790" y="80" width="180" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M510,190 L790,115" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M780.2,123.5 L790,115 L777.2,112.6" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="590" y="175" width="180" height="70" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M510,190 L590,210" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M577.3,212.6 L590,210 L580.0,201.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="790" y="175" width="180" height="70" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M510,190 L790,210" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M777.9,214.8 L790,210 L778.7,203.5" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="590" y="270" width="180" height="70" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M510,190 L590,305" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M578.7,298.6 L590,305 L588.0,292.2" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="790" y="270" width="180" height="70" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M510,190 L790,305" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M777.0,305.8 L790,305 L781.3,295.3" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Linux history &amp; distributions</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="125.0" y="115.0">Unix (1970s)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="125.0" y="132.2">commercial; Linus&#x27; ideas</tspan><tspan x="125.0" y="147.2">were not accepted</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="125.0" y="235.0">Minix</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="125.0" y="252.2">small Unix-like OS</tspan><tspan x="125.0" y="267.2">for teaching</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="400.0" y="167.5">Linux kernel (1991)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="400.0" y="185.4">Linus Torvalds</tspan><tspan x="400.0" y="200.4">(Lin)us + Min(ix) = Linux</tspan><tspan x="400.0" y="215.4">free &amp; open source</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="255" y="140.0">idea</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="255" y="250.0">base</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="680.0" y="107.5">Ubuntu</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="680.0" y="124.8">user: ubuntu</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="880.0" y="107.5">Amazon Linux</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="880.0" y="124.8">user: ec2-user</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="680.0" y="202.5">Red Hat (RHEL)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="680.0" y="219.8">enterprise</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="880.0" y="202.5">CentOS / Rocky</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="880.0" y="219.8">RHEL clone</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="680.0" y="297.5">SUSE</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="680.0" y="314.8">enterprise</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="880.0" y="297.5">Debian</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="880.0" y="314.8">Ubuntu&#x27;s parent</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="375.0">a distribution = Linux kernel + tools + package manager + defaults, packaged by a company/community</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="403.0">200+ distributions exist • package managers: apt (Ubuntu/Debian) • yum / dnf (Amazon Linux, RHEL)</tspan></text>
+</g>
+</svg>

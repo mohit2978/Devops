@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="450" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="90" width="260" height="120" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="340" y="80" width="640" height="270" rx="16" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="370" y="125" width="280" height="95" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="670" y="125" width="280" height="95" rx="12" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="370" y="240" width="280" height="80" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="670" y="240" width="280" height="80" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M290,150 L370,160" fill="none" stroke="#6741d9" stroke-width="2.5"/>
+<path d="M357.7,164.2 L370,160 L359.1,152.9" fill="none" stroke="#6741d9" stroke-width="2.5"/>
+<path d="M290,120 Q500,60 690,125" fill="none" stroke="#6741d9" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M677.1,126.6 L690,125 L680.8,115.9" fill="none" stroke="#6741d9" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">This lecture: Helm installs the tools that watch your cluster</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="160.0" y="127.5">Helm</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="160.0" y="145.4">package manager:</tspan><tspan x="160.0" y="160.4">installs Prometheus, Grafana,</tspan><tspan x="160.0" y="175.4">EFK … with one command</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="660" y="100.0">Kubernetes cluster</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="510.0" y="158.8">METRICS (numbers)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="510.0" y="174.7">Prometheus collects CPU, memory,</tspan><tspan x="510.0" y="188.5">requests… → Grafana draws graphs</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="810.0" y="158.8">LOGS (text lines)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="810.0" y="174.7">Fluentd collects logs →</tspan><tspan x="810.0" y="188.5">Elasticsearch stores → Kibana</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="510.0" y="271.9">“Is it healthy? How busy?</tspan><tspan x="510.0" y="288.1">When did it slow down?”</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="810.0" y="271.9">“WHAT exactly went wrong?</tspan><tspan x="810.0" y="288.1">which error, which pod?”</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="500" y="395.0">monitoring (metrics) + logging (logs) = observability</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="425.0">1) Helm  2) Prometheus  3) Grafana  4) EFK stack</tspan></text>
+</g>
+</svg>

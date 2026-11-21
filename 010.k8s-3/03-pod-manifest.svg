@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="520" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="75" width="430" height="290" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="114" width="280" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M530,144 L460,144" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M471.7,138.3 L460,144 L471.7,149.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="530" y="171" width="280" height="60" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M530,201 L460,201" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M471.7,195.3 L460,201 L471.7,206.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="530" y="238" width="280" height="60" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M530,268 L460,268" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M471.7,262.3 L460,268 L471.7,273.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="530" y="306" width="280" height="60" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M530,336 L460,336" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M471.7,330.3 L460,336 L471.7,341.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="830" y="175" width="150" height="100" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M830,215 L810,205" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M823.0,205.2 L810,205 L817.9,215.3" fill="none" stroke="#e8590c" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Pod manifest — line by line</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="101.0">apiVersion: v1</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="123.5">kind: Pod</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="146.0">metadata:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="168.5">  name: javawebapppod</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="191.0">  labels:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ff8787" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="213.5">    app: javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="236.0">spec:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#74c0fc" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="258.5">  containers:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#74c0fc" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="281.0">  - name: javawebappcontainer</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#74c0fc" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="303.5">    image: ashokit/javawebapp</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="326.0">    ports:</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="348.5">    - containerPort: 8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="670.0" y="137.1">name</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="670.0" y="153.1">unique name of the pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="670.0" y="187.2">labels</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="670.0" y="203.2">key: value tags (any you like,</tspan><tspan x="670.0" y="217.0">e.g. color: red) to IDENTIFY pods</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="670.0" y="254.2">containers (a list)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="670.0" y="270.2">one entry per container;</tspan><tspan x="670.0" y="284.0">image comes from Docker Hub</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="670.0" y="322.2">containerPort</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="670.0" y="338.2">port the app listens on</tspan><tspan x="670.0" y="352.0">(documentation, like EXPOSE)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="905.0" y="197.5">Service</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="905.0" y="212.8">selector:</tspan><tspan x="905.0" y="226.6">app: javawebapp</tspan><tspan x="905.0" y="240.3">↑ finds pods</tspan><tspan x="905.0" y="254.1">by this label</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="410.0">labels are how everything else (Services, ReplicaSets, Deployments) finds your pods</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="440.0">kubectl apply -f pod.yml → kubectl get pods → kubectl get pods --show-labels</tspan></text>
+</g>
+</svg>

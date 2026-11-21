@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="60" y="100" width="200" height="85" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="320" y="100" width="200" height="85" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M260,142 L320,142" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M308.3,147.7 L320,142 L308.3,136.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="580" y="100" width="200" height="85" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M520,142 L580,142" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M568.3,147.7 L580,142 L568.3,136.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="580" y="250" width="200" height="85" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M680,185 L680,250" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<path d="M674.3,238.3 L680,250 L685.7,238.3" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<rect x="30" y="230" width="520" height="120" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Rollout history &amp; rollback</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="160.0" y="135.0">rev 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="160.0" y="152.9">ReplicaSet image v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="420.0" y="135.0">rev 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="420.0" y="152.9">ReplicaSet image v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="680.0" y="135.0">rev 3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="680.0" y="152.9">ReplicaSet image v3 ✗ bug</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="680.0" y="285.0">rev 4</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="680.0" y="302.9">= rev 2 again (v2) ✓</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#2f9e44" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="690" y="220.0">kubectl rollout undo</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="254.0">$ kubectl set image deploy/javawebdeploy \</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="276.0">    javawebappcontainer=ashokit/javawebapp:v3</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="298.0">$ kubectl rollout status deploy/javawebdeploy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="320.0">$ kubectl rollout history deploy/javawebdeploy</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="500" y="380.0">old ReplicaSets are kept (scaled to 0) → rollback just scales the old one back up • --to-revision=N for a specific one</tspan></text>
+</g>
+</svg>

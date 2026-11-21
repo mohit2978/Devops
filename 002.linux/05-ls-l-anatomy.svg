@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" width="1000" height="380">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="380" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="90" width="940" height="60" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M95,210 L95,155" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M100.7,166.7 L95,155 L89.3,166.7" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M215,210 L215,155" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M220.7,166.7 L215,155 L209.3,166.7" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M305,210 L305,155" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M310.7,166.7 L305,155 L299.3,166.7" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M440,210 L440,155" fill="none" stroke="#6741d9" stroke-width="2"/>
+<path d="M445.7,166.7 L440,155 L434.3,166.7" fill="none" stroke="#6741d9" stroke-width="2"/>
+<path d="M548,210 L548,155" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M553.7,166.7 L548,155 L542.3,166.7" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M690,210 L690,155" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M695.7,166.7 L690,155 L684.3,166.7" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M870,210 L870,155" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M875.7,166.7 L870,155 L864.3,166.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Reading  ls -l  output, column by column</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="19" fill="#e9ecef" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="121.0">-rw-r--r--  1  ec2-user  ec2-user  667  Aug 24 06:00  f1.txt</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="95" y="226.9">type +</tspan><tspan x="95" y="243.1">permissions</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="215" y="235.0">links</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="305" y="226.9">owner</tspan><tspan x="305" y="243.1">(user)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#6741d9" font-weight="bold"><tspan x="440" y="235.0">group</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e8590c" font-weight="bold"><tspan x="548" y="226.9">size</tspan><tspan x="548" y="243.1">(bytes)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="690" y="235.0">last modified</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="870" y="235.0">name</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="30" y="300.0">ls -l   long listing A→Z    •   ls -lr  reverse order   •   ls -lt  newest first   •   ls -ltr  oldest first</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="30" y="330.0">ls -a   show hidden files (names starting with . like .bashrc)   •   ls -la  hidden + long   •   ll = ls -l</tspan></text>
+</g>
+</svg>

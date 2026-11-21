@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="260" rx="16" fill="#ffffff" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="45" y="160" width="120" height="60" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="300" y="120" width="160" height="55" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="300" y="210" width="160" height="55" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M165,180 L300,150" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M289.8,158.1 L300,150 L287.3,147.0" fill="none" stroke="#e03131" stroke-width="2"/>
+<rect x="510" y="75" width="470" height="260" rx="16" fill="#ffffff" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="530" y="165" width="100" height="55" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="670" y="150" width="140" height="85" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M630,192 L670,192" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M658.3,197.7 L670,192 L658.3,186.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="860" y="120" width="100" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M810,192 L860,142" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M855.7,154.3 L860,142 L847.7,146.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="860" y="180" width="100" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M810,192 L860,202" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M847.4,205.2 L860,202 L849.6,194.2" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="860" y="240" width="100" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M810,192 L860,262" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M848.6,255.8 L860,262 L857.8,249.2" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Why we need a Service: pod IPs keep changing</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold"><tspan x="255" y="98.0">✗ calling the pod IP directly</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="105.0" y="190.0">client</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="380.0" y="140.0">pod 10.244.1.5</tspan><tspan x="380.0" y="155.0">✗ crashed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="380.0" y="230.0">new pod 10.244.2.9</tspan><tspan x="380.0" y="245.0">(new IP!)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#e03131" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="230" y="140.0">10.244.1.5</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="255" y="305.0">the client still calls the OLD IP → broken</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#2f9e44" font-weight="bold"><tspan x="745" y="98.0">✓ calling a Service</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="580.0" y="192.5">client</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="740.0" y="177.5">Service</tspan><tspan x="740.0" y="192.5">stable IP + DNS</tspan><tspan x="740.0" y="207.5">order-svc</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="910.0" y="142.0">app=order</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="910.0" y="202.0">app=order</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="910.0" y="262.0">app=order</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="745" y="291.9">finds pods by LABEL (selector: app=order)</tspan><tspan x="745" y="308.1">→ new pods are picked up automatically</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="370.0">a Service = a fixed name/IP in front of a changing set of pods, with built-in load balancing</tspan></text>
+</g>
+</svg>

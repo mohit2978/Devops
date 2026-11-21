@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="80" width="260" height="140" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="330" y="95" width="310" height="73" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="660" y="95" width="310" height="97" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="330" y="240" width="310" height="73" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="660" y="240" width="310" height="73" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">grep — print the lines that match</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#adb5bd" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="102.0">f1.txt</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="126.0">1 I am learning aws</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="150.0">2 AWS is a cloud</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="174.0">3 java is easy</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="198.0">4 aws and devops</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="480" y="84.0">grep &#x27;aws&#x27; f1.txt</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="117.0">I am learning aws</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="141.0">aws and devops</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="635" y="180.0">case-sensitive match</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="810" y="84.0">grep -i &#x27;aws&#x27; f1.txt</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="117.0">I am learning aws</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="141.0">AWS is a cloud</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="165.0">aws and devops</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="965" y="204.0">-i ignore case</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="480" y="229.0">grep -n &#x27;aws&#x27; f1.txt</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="262.0">1:I am learning aws</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="346" y="286.0">4:aws and devops</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="635" y="325.0">-n with line numbers</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="810" y="229.0">grep -v &#x27;aws&#x27; f1.txt</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="262.0">AWS is a cloud</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="676" y="286.0">java is easy</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="965" y="325.0">-v lines WITHOUT the word</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="385.0">grep &#x27;java&#x27; *  → search every file in the folder  •  grep -r &#x27;java&#x27; dir/  → search recursively</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="412.0">pipe output into it:  ps aux | grep java   •   cat app.log | grep ERROR | wc -l</tspan></text>
+</g>
+</svg>

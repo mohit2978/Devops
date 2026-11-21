@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="85" width="300" height="90" rx="12" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="35" y="115" width="120" height="48" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="185" y="115" width="120" height="48" rx="12" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M155,139 L185,139" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M173.3,144.7 L185,139 L173.3,133.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M305,139 L430,240" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M417.3,237.0 L430,240 L424.4,228.2" fill="none" stroke="#e8590c" stroke-width="2"/>
+<rect x="20" y="190" width="300" height="90" rx="12" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="35" y="220" width="120" height="48" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="185" y="220" width="120" height="48" rx="12" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M155,244 L185,244" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M173.3,249.7 L185,244 L173.3,238.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M305,244 L430,240" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M418.5,246.0 L430,240 L418.1,234.7" fill="none" stroke="#e8590c" stroke-width="2"/>
+<rect x="20" y="295" width="300" height="90" rx="12" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="35" y="325" width="120" height="48" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="185" y="325" width="120" height="48" rx="12" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M155,349 L185,349" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M173.3,354.7 L185,349 L173.3,343.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M305,349 L430,240" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M424.9,252.0 L430,240 L417.5,243.4" fill="none" stroke="#e8590c" stroke-width="2"/>
+<rect x="430" y="170" width="220" height="140" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="740" y="170" width="220" height="140" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M650,240 L740,240" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M728.3,245.7 L740,240 L728.3,234.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="800" y="340" width="120" height="60" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M850,340 L850,310" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M855.7,321.7 L850,310 L844.3,321.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">EFK — centralized logging</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="bold"><tspan x="170" y="100.0">worker node 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="95.0" y="132.1">microservice 1</tspan><tspan x="95.0" y="145.9">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="bold"><tspan x="245.0" y="132.1">Fluentd</tspan><tspan x="245.0" y="145.9">(DaemonSet)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="bold"><tspan x="170" y="205.0">worker node 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="95.0" y="237.1">microservice 2</tspan><tspan x="95.0" y="250.9">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="bold"><tspan x="245.0" y="237.1">Fluentd</tspan><tspan x="245.0" y="250.9">(DaemonSet)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="bold"><tspan x="170" y="310.0">worker node 3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="95.0" y="342.1">microservice 3</tspan><tspan x="95.0" y="355.9">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="bold"><tspan x="245.0" y="342.1">Fluentd</tspan><tspan x="245.0" y="355.9">(DaemonSet)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="240" y="425.0">reads /var/log/containers/*.log on its node</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="540.0" y="212.5">Elasticsearch</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="540.0" y="229.1">(StatefulSet + PVC)</tspan><tspan x="540.0" y="242.9">stores &amp; INDEXES logs</tspan><tspan x="540.0" y="256.6">= the log lake,</tspan><tspan x="540.0" y="270.4">searchable</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="850.0" y="212.5">Kibana</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="850.0" y="229.1">(Deployment)</tspan><tspan x="850.0" y="242.9">web UI: search, filter</tspan><tspan x="850.0" y="256.6">by pod / namespace,</tspan><tspan x="850.0" y="270.4">charts</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="860.0" y="370.0">you</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#e8590c" font-weight="bold"><tspan x="370" y="200.0">index</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="455.0">20 pods → 20 × kubectl logs is impossible; EFK puts every pod&#x27;s logs in ONE searchable place</tspan></text>
+</g>
+</svg>

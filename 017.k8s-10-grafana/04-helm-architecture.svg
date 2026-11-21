@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="160" cy="130" rx="130" ry="50" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="230" width="240" height="110" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M160,180 L160,230" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M154.3,218.3 L160,230 L165.7,218.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="380" y="80" width="590" height="280" rx="16" fill="#e7f5ff" stroke="#1971c2" stroke-width="2"/>
+<rect x="410" y="135" width="200" height="60" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M280,285 L410,170" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M405.0,182.0 L410,170 L397.5,173.5" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="700" y="125" width="240" height="45" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M610,165 L700,147" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M689.6,154.8 L700,147 L687.4,143.8" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="700" y="185" width="240" height="45" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M610,165 L700,207" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M687.0,207.2 L700,207 L691.8,196.9" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="700" y="245" width="240" height="45" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M610,165 L700,267" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M688.0,262.0 L700,267 L696.5,254.5" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="410" y="260" width="200" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Helm architecture (Helm 3)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="160" y="121.2">chart repository</tspan><tspan x="160" y="138.8">(internet)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="160.0" y="262.5">helm client</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="160.0" y="279.8">on the EKS host VM</tspan><tspan x="160.0" y="294.8">uses ~/.kube/config</tspan><tspan x="160.0" y="309.8">(same as kubectl)</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="150" y="205.0">helm repo add / pull</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="675" y="100.0">Kubernetes cluster</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="510.0" y="165.0">API server</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="300" y="323.1">renders templates</tspan><tspan x="300" y="336.9">→ sends manifests</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="820.0" y="147.5">Deployment</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="820.0" y="207.5">Service</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="820.0" y="267.5">ConfigMap</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="510.0" y="287.5">release record</tspan><tspan x="510.0" y="302.5">(a Secret)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="675" y="385.0">Helm 3 has no server part (Helm 2&#x27;s &#x27;Tiller&#x27; is gone) — the client talks straight to the API server</tspan></text>
+</g>
+</svg>

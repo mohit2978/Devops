@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="300" y="85" width="400" height="95" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="240" width="280" height="130" rx="12" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="55" y="280" width="80" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="143" y="280" width="80" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,180 L180,240" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M190.5,232.3 L180,240 L192.5,243.4" fill="none" stroke="#1971c2" stroke-width="2"/>
+<rect x="360" y="240" width="280" height="130" rx="12" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="375" y="280" width="80" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="463" y="280" width="80" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,180 L500,240" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M494.3,228.3 L500,240 L505.7,228.3" fill="none" stroke="#1971c2" stroke-width="2"/>
+<rect x="680" y="240" width="280" height="130" rx="12" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="695" y="280" width="80" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="783" y="280" width="80" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="871" y="280" width="80" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,180 L820,240" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M807.5,243.4 L820,240 L809.5,232.3" fill="none" stroke="#1971c2" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">What is Kubernetes (K8s)?</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#495057" font-weight="normal"><tspan x="500.0" y="66.0">an open-source ORCHESTRATION platform: it manages containers for you</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="115.0">Kubernetes  (the orchestrator)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="134.8">create • start / stop • delete • scale up / down</tspan><tspan x="500.0" y="152.3">load-balance • self-heal crashed containers</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="180" y="258.0">server 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="95.0" y="307.5">order</tspan><tspan x="95.0" y="322.5">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="183.0" y="307.5">payment</tspan><tspan x="183.0" y="322.5">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="500" y="258.0">server 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="415.0" y="307.5">user</tspan><tspan x="415.0" y="322.5">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="503.0" y="307.5">cart</tspan><tspan x="503.0" y="322.5">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="820" y="258.0">server 3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="307.5">search</tspan><tspan x="735.0" y="322.5">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="823.0" y="307.5">notify</tspan><tspan x="823.0" y="322.5">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="911.0" y="307.5">order</tspan><tspan x="911.0" y="322.5">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="400.0">microservices = one container per service → dozens of containers across many servers → K8s manages them all</tspan></text>
+</g>
+</svg>

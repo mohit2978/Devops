@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="310" height="270" rx="16" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="35" y="88" width="280" height="36" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="345" y="75" width="310" height="270" rx="16" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="360" y="88" width="280" height="36" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="670" y="75" width="310" height="270" rx="16" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="685" y="88" width="280" height="36" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="110" y="165" width="60" height="40" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="180" y="165" width="60" height="40" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M175,212 L175,240" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M169.3,228.3 L175,240 L180.7,228.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="40" y="272" width="60" height="40" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="110" y="272" width="60" height="40" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="180" y="272" width="60" height="40" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="272" width="60" height="40" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="420" y="145" width="160" height="40" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,185 L405,255" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M411.1,243.5 L405,255 L417.8,252.6" fill="none" stroke="#1971c2" stroke-width="2"/>
+<rect x="365" y="255" width="80" height="50" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,185 L500,255" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M494.3,243.3 L500,255 L505.7,243.3" fill="none" stroke="#1971c2" stroke-width="2"/>
+<rect x="460" y="255" width="80" height="50" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,185 L595,255" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M582.2,252.6 L595,255 L588.9,243.5" fill="none" stroke="#1971c2" stroke-width="2"/>
+<rect x="555" y="255" width="80" height="50" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="690" y="150" width="100" height="55" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M790,177 L860,177" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<path d="M848.3,182.7 L860,177 L848.3,171.3" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<rect x="860" y="150" width="100" height="55" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Why Kubernetes? 3 big advantages (Docker Swarm needs manual work)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="175.0" y="106.0">1. Auto scaling</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="106.0">2. Load balancing</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="825.0" y="106.0">3. Self healing</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="175" y="150.0">low traffic</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="140.0" y="185.0">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="210.0" y="185.0">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#2f9e44" font-weight="bold"><tspan x="175" y="255.0">traffic spike → more pods</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="70.0" y="292.0">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="140.0" y="292.0">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="210.0" y="292.0">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="280.0" y="292.0">pod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="175" y="330.0">and back down when quiet</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="165.0">100 requests</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="405.0" y="272.5">pod</tspan><tspan x="405.0" y="287.5">~33 req</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="272.5">pod</tspan><tspan x="500.0" y="287.5">~33 req</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="595.0" y="272.5">pod</tspan><tspan x="595.0" y="287.5">~33 req</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="500" y="330.0">load spread across all running pods</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="740.0" y="170.0">pod ✗</tspan><tspan x="740.0" y="185.0">crashed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="910.0" y="170.0">new pod ✓</tspan><tspan x="910.0" y="185.0">created</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e8590c" font-weight="bold"><tspan x="825" y="223.8">K8s notices the pod is gone</tspan><tspan x="825" y="240.0">and replaces it automatically</tspan><tspan x="825" y="256.2">— no human needed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="380.0">you declare the DESIRED state (e.g. 3 pods); Kubernetes keeps the ACTUAL state matching it</tspan></text>
+</g>
+</svg>

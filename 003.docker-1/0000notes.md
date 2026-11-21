@@ -1,209 +1,260 @@
-# Docker k8 jenkins ashok 
-Docker --> containerization software
+# Docker · Lecture 1: Docker, Kubernetes & Jenkins
 
-Kubernetes--> orchestration software
+## 1. The three core DevOps tools
 
-Jenkins--> CI CD software
+| Tool | Category | One-line job |
+|------|----------|--------------|
+| **Docker** | Containerization software | Packages an app + all its dependencies into an image and runs it as a container, anywhere |
+| **Kubernetes** | Orchestration software | Runs and manages *many* containers across *many* servers (scaling, healing, load balancing) |
+| **Jenkins** | CI/CD software | Automatically builds, tests and deploys the app on every code change |
 
-these 3 are used to automate project build and deployment process!!
+Together, these three **automate the project build and deployment process**.
 
-=> In realtime we will use several environments to test our application.
+![How the 3 tools work together](01-three-tools.svg)
 
-1) DEV
-2) SIT
-3) UAT (user acceptance testing)
-4) PILOT (pre prod)
-5) PROD (final delivery)
+### 1.1 Docker: containerization
 
-![alt text](image-1.png)
+![Docker explained](02-docker-explained.svg)
 
-=> Dev env used by developers for code integration testing
+- **Problem:** an app needs specific software to run (Java 17, Tomcat 9, MySQL client…). Installing the right versions by hand on every machine is slow and error-prone, and leads to the classic *"it works on my machine"*.
+- **Docker's answer:** put the **app code + its dependencies** into one package, the **image**. Running the image creates a **container**, an isolated environment where the app runs exactly the same on a laptop, a test server or AWS.
+- The only thing a machine needs is **Docker itself**.
+- **Scope:** Docker works on **one machine** at a time: build images, run / stop / delete containers.
 
-=> SIT env used by Testers for system integration testing
+### 1.2 Kubernetes: orchestration
 
-=> UAT env used by client side team for acceptance testing (Go or No Go)
+![Kubernetes explained](03-kubernetes-explained.svg)
 
-=> Pilot env used for pre-production testing
+- **Problem:** in production you have dozens of microservices, each with several container copies, spread across many servers. Who restarts a crashed container, adds more copies under load, or spreads traffic between them?
+- **Kubernetes' answer:** you **declare the desired state** in YAML ("3 copies of order-service v2 on port 80"), and Kubernetes **continuously makes reality match it**:
+  - **Scaling**: more / fewer copies based on load
+  - **Load balancing**: spreads requests across copies
+  - **Self-healing**: replaces crashed containers and failed nodes
+  - **Rolling updates**: new versions with zero downtime, plus rollback
+  - **Service discovery**: services find each other by name
+- **Docker runs a container; Kubernetes manages hundreds of them.**
 
-=> Prod env used for live deployment (end users can access our app)
+### 1.3 Jenkins: CI/CD
 
+![Jenkins explained](04-jenkins-explained.svg)
 
-=> As a devops engineer we are responsible to setup infrastructure to run our application
+- **Problem:** developers push code many times a day. Building, testing, creating images and deploying by hand every time is slow and mistakes slip through.
+- **Jenkins' answer:** an automation server that runs a **pipeline** on every commit:
+  1. **CI (Continuous Integration):** pull code → build (Maven) → run tests → code-quality checks (SonarQube)
+  2. **CD (Continuous Delivery):** build the Docker image → push it to a registry → deploy to DEV → SIT → UAT → PROD (usually via Kubernetes)
+- If any stage fails, the pipeline **stops** and the team is notified, so broken code doesn't reach users.
 
-=> We need to install all required softwares (dependencies) to run our application
+> **In short:** Docker = *how* the app is packaged. Jenkins = *when and how* it's built and shipped. Kubernetes = *where and how* it runs at scale.
 
-Note: We need to setup dependencies in all environments to run our application.
+---
 
-Note: There is a chance of doing mistakes in dependencies installation process (version compatibility issues can occur)
+## 2. Application environments
 
-=> To simplify application execution in any machine we can use Docker. Docker takes software as well as dependency and we can put it on any machine!!
+In real projects an application passes through several environments before customers see it:
 
-![alt text](image.png)
+![Application environments](05-environments.svg)
 
-Dependencies are software required to run the software !!so to run the application we must maintain proper those softwares with the versions!! Version compatibility is very important!! Docker help to maintain those dependencies!
+| # | Environment | Used by | Purpose |
+|---|-------------|---------|---------|
+| 1 | **DEV** | Developers | Code integration testing |
+| 2 | **SIT** | Testers (QA) | System Integration Testing |
+| 3 | **UAT** | Client-side team | User Acceptance Testing: **Go / No-Go** decision |
+| 4 | **PILOT** | Ops / client | Pre-production testing |
+| 5 | **PROD** | End users | Live deployment: real customers use the app |
 
-we not deploy code directly to client !! we first test it so we put in stg environment!!
+We never deploy code straight to the client; it's tested in these staging environments first.
 
-so we need to install software and dependencies in all environment docker helps in that!! 
+- As a DevOps engineer you **set up the infrastructure** to run the application in every environment.
+- That means installing **all required software (dependencies)** in **every** environment.
+- ⚠ Doing that by hand invites mistakes, especially **version compatibility issues** (DEV has Java 17, SIT accidentally gets Java 11…).
 
-## What is docker
-=> Docker is a free & open source software
+---
 
-=> Docker is used for containerization
+## 3. The dependency problem → Docker
 
-=> With the help of docker, we can run our application in any machine.
+![The dependency problem](06-dependency-problem.svg)
 
-Container = package (app code + app dependencies)
+**Dependencies** = the software required to run your software (OS, Java, Tomcat, Angular, MySQL…). Each must be the **right version**, because version compatibility is very important.
 
-=> Docker will take care of dependencies installation required for app execution.
+**Docker** takes the application **plus its dependencies** as one unit, so the same thing runs on any machine, in every environment.
 
-=> We can make our application portable using Docker.
+---
 
-## Docker Architecture
+## 4. What is Docker?
 
-![alt text](image-2.png)
+- **Free & open-source** software.
+- Used for **containerization**.
+- Lets us **run our application on any machine**.
+- **Container = package (app code + app dependencies)**, running in isolation.
+- Docker takes care of the dependencies needed for app execution.
+- Makes our application **portable**.
 
-1) Dockerfile
-2) Docker Image
-3) Docker Registry
-4) Docker Container
+---
 
-=> Dockerfile is used to specify where is app code and what dependencies are required for our application execution.
+## 5. Docker architecture
 
-Note: Dockerfile is required to build docker image.
+![Docker architecture](07-docker-architecture.svg)
 
-=> Docker Image is a package which contains code + dependencies
+| Part | What it is |
+|------|-----------|
+| **Dockerfile** | A text file of instructions: which base image, where the app code is, which dependencies to install, how to start the app. Required to build an image. |
+| **Docker image** | The built **package**: code + dependencies, read-only, made of layers. |
+| **Docker registry** (Docker Hub, AWS ECR, Nexus…) | Stores and shares images (`docker push` / `docker pull`). Docker Hub is like a **Play Store for images**. |
+| **Docker container** | A **running instance** of an image. This is where the app actually runs, on any machine with Docker. |
 
-=> Docker Registry/Docker Hub is used to store Docker Images.
+Flow: **Dockerfile → `docker build` → image → `docker push` → registry → `docker pull` → `docker run` → container**.
 
-Note: When we run docker image then Docker container will be created. Docker container is a linux virtual machine.
+On a new machine you just install Docker, pull the image and run it. **No need to install Java, Python, etc.** on that machine.
 
-=> Docker Container is used to run our application.And that container we can run on any machine!!
+### Container vs virtual machine
 
-![alt text](image-3.png)
+![Containers vs VMs](08-container-vs-vm.svg)
 
-just have docker software pull image have that image ,run container no need to install all dependency !!
+A container *feels* like a small Linux machine (it has its own files, processes and network), but it is **not a full VM**:
 
-## Installation on Ec2 instance (linux)
+| | Virtual machine | Container |
+|---|---|---|
+| Includes | Full guest OS | Only app + libraries |
+| Kernel | Its own | **Shares the host's kernel** |
+| Size | GBs | MBs |
+| Start time | Minutes | Seconds |
+| Per server | A few | Dozens to hundreds |
 
-Step-1 : Create EC2 VM (amazon linux) & connect with that vm using ssh client
+The machine running Docker is called the **host** (here, the EC2 VM); the containers run on top of the **Docker engine**.
 
-Step-2 : Execute below commands
+---
 
--  Install Docker
+## 6. Installing Docker on EC2 (Amazon Linux)
 
-		sudo yum update -y
+**Step 1:** Create an EC2 VM (Amazon Linux) and connect to it with an SSH client.
 
-		sudo yum install docker -y
+**Step 2:** Run:
+```bash
+# install Docker
+sudo yum update -y
+sudo yum install docker -y
+sudo service docker start          # or: sudo systemctl start docker
+sudo systemctl enable docker       # start automatically after reboot
 
-		sudo service docker start
+# let ec2-user run docker without sudo
+sudo usermod -aG docker ec2-user
 
-- Add ec2-user user to docker group
+# log out and back in so the group change takes effect
+exit
 
-		sudo usermod -aG docker ec2-user
+# verify
+docker -v
+```
 
-- Exit from terminal and Connect again
-		
-		exit
+![docker -v output](image-4.png)
 
--  Verify Docker installation
+---
 
-		docker -v
+## 7. Docker commands
 
-![alt text](image-4.png)
-## Commands
+![Image and container lifecycle](09-lifecycle.svg)
 
-- docker images : To display docker images available in our system
+| Command | What it does |
+|---------|-------------|
+| `docker images` | List images on this machine |
+| `docker pull <image>` | Download an image from Docker Hub |
+| `docker run <image>` | Create **and** start a container |
+| `docker ps` | List **running** containers |
+| `docker ps -a` | List running **+ stopped** containers |
+| `docker logs <container-id>` | Show a container's logs (`-f` to follow) |
+| `docker stop <container-id>` | Stop a running container (graceful) |
+| `docker start <container-id>` | Start a stopped container |
+| `docker rm <container-id>` | Delete a container (stop it first, or use `-f`) |
+| `docker rmi <image>` | Delete an image (delete its containers first, or use `-f`) |
+| `docker system prune -a` | Delete stopped containers + unused images + build cache |
 
-- docker ps : To display running docker containers
+> You only need the first few characters of an ID: `docker stop 3fa`.
 
-- docker logs \<container-id\> : To display container logs
+---
 
-- docker ps -a : To display running + stopped containers
+## 8. Running real applications from Docker Hub
 
-- docker pull <image-id/name> : To download docker image from docker hub
+Many containers can run on one machine. Each is isolated, with its own files and network:
 
-- docker rmi <image-id/name> : To delete docker image, to delete to image delete container first and then
-delete image or can force delete!
+```bash
+# Spring Boot app (Java not installed on the VM!)
+docker pull ashokit/spring-boot-rest-api
+docker run -d -p 9090:9090 ashokit/spring-boot-rest-api
+# URL: http://<public-ip>:9090/welcome/{name}
 
-- docker run <image-id/name> : To create/run docker container
+# Python Flask app (Python not installed on the VM!)
+docker pull ashokit/python-flask-app
+docker run -d -p 5000:5000 ashokit/python-flask-app
+# URL: http://<public-ip>:5000/
+```
 
-- docker stop \<container-id\> : To stop running docker container
+Pulling the image and listing it:
 
-- docker start \<container-id\> : To start docker container which is in stopped state
+![docker pull and docker images output](image-5.png)
 
-- docker rm \<container-id\> : To delete docker container
+- `-d` = **detached mode**: the container runs in the background and you get your prompt back. Use `docker logs <id>` to see its output.
+- `-p host-port:container-port` = **port mapping**.
 
-> delete stopped containers + unused images + build cache
+### Port mapping
 
-    docker system prune -a
+![Port mapping](10-port-mapping.svg)
 
-## Running real world application using docker image
-![alt text](image-8.png)
+The app listens on a port **inside** the container, which is not reachable from outside by itself. `-p` connects a **port on the host VM** to the **container's port**, so users reach it through the EC2's public IP.
 
-Here we see multiple containers on a machine!!
+- Format: **`-p host-port:container-port`**. They don't have to be the same (`-p 8080:9090` is fine).
+- **Host ports must be unique**, but two containers *can* use the same container port, because each container has its own network.
+- A machine has **65,535 port numbers** (0–65535).
+- **Open the host port in the EC2 security group** (inbound rules), or the browser can't connect:
 
-- docker pull ashokit/spring-boot-rest-api
+![Security group inbound rule for port 9090](image-7.png)
 
-- docker run -d ashokit/spring-boot-rest-api
+- Access the app at **`http://<host-vm-public-ip>:<host-port>/`**:
 
-- docker run -d -p 9090:9090 ashokit/spring-boot-rest-api
+![App running in the browser](image-6.png)
 
-URL : http://public-ip:host-port/welcome/{name}
+> Java and Python aren't installed on the EC2 VM, yet both apps run, because they're inside their containers' images.
 
-- docker pull ashokit/python-flask-app
+---
 
-- docker run -d ashokit/python-flask-app
+## 9. Dockerfile
 
-- docker run -d -p 5000:5000 ashokit/python-flask-app
+A **Dockerfile** contains the set of instructions to build a Docker image. The file must be named **`Dockerfile`**.
 
->Note: Here -d represents detached mode. so that we can run other commands to see logs of the container use docker logs command!!
+![Dockerfile keywords](11-dockerfile.svg)
 
-![alt text](image-9.png)
- 
- see we running application on docker container ,how how to access that !! to access that we need to map it to host machine port (on which docker container is running)and host machine we know is our ec2 instance whose ip we know here through which we can access the docker container!! so that why port mapping is used!! 4 digit port number we are going to use!! On Aws inbound rules security group open that port which you have mapped of host machine!!
+| Keyword | Purpose |
+|---------|---------|
+| `FROM` | Base image to start from (must be first) |
+| `MAINTAINER` | Author info (**deprecated**, use `LABEL maintainer="…"`) |
+| `RUN` | Run a command **while building** the image (e.g. install software) |
+| `CMD` | Default command run **when the container starts** (can be overridden) |
+| `ENTRYPOINT` | Fixed command run when the container starts |
+| `COPY` | Copy files from your machine into the image |
+| `ADD` | Like COPY, but can also extract `.tar` files and download URLs |
+| `WORKDIR` | Set the working directory inside the image |
+| `EXPOSE` | Document which port the app listens on |
+| `USER` | Run as this (non-root) user |
 
-> Note: 2 container can have same port number as different VM but host machine port number should be unique!!
+```bash
+docker build -t myapp:1.0 .                 # build an image from the Dockerfile in this folder
+docker run -d -p 8080:8080 myapp:1.0        # run it
+```
 
->Note: Here -p represents port mapping. (host-port:container-port)
+> Create a free account on **Docker Hub** (hub.docker.com) to browse thousands of ready-made images and push your own.
 
->Note: host port and container port no need to be same.
+---
 
->Note: In one machine we can use 65k port numbers.
+## 10. Quick revision
 
-> Note: To access application running in the container we will use below URL
-
-	URL : http://host-vm-public-ip:host-port/
-
-> Note: Host port number we need to enable in ec2-vm security group inbound rules to allow the traffic.
-![alt text](image-7.png)
-
-![alt text](image-5.png)
-
-![alt text](image-6.png)
-
-> you see above we access by public-ip:port of the ec2 instance!!
-
-you see even python and java is not available machine you still able to run the application!!Java ,python is installed on VM created by docker!!
-
-## DockerFile
-
-=> Dockerfile contains set of instructions to build docker image
-
-Filename : Dockerfile
-
-=> To write dockerfile we will use below keywords
-
-1) FROM
-2) MAINTAINER
-3) RUN
-4) CMD
-5) COPY
-6) ADD
-7) WORKDIR
-8) EXPOSE
-9) ENTRYPOINT
-10) USER
-
-> Create account in dockerHUb!!and run online where you can see a lot of images !!
-it's like play store !!
+| Term | Meaning |
+|------|---------|
+| Docker | Containerization: package & run apps anywhere |
+| Kubernetes | Orchestration: manage many containers across servers |
+| Jenkins | CI/CD: automate build → test → deploy |
+| Dependencies | Software needed to run your software, in the right versions |
+| Image | Package of code + dependencies (template) |
+| Container | Running instance of an image |
+| Registry | Image storage (Docker Hub, ECR, Nexus) |
+| Dockerfile | Instructions to build an image |
+| `-d` | Run detached (background) |
+| `-p host:container` | Port mapping; open the host port in the security group |

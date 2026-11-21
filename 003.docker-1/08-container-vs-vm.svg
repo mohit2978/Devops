@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="1000" height="440">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="440" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="105" width="450" height="255" rx="14" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="520" y="105" width="450" height="255" rx="14" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="55" y="125" width="190" height="45" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="55" y="178" width="190" height="55" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="265" y="125" width="190" height="45" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="265" y="178" width="190" height="55" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="55" y="245" width="400" height="45" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="55" y="300" width="400" height="45" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="545" y="125" width="125" height="108" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="682" y="125" width="125" height="108" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="819" y="125" width="125" height="108" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="545" y="245" width="400" height="45" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="545" y="300" width="400" height="45" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Containers vs virtual machines</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="255" y="90.0">Virtual machines</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="745" y="90.0">Docker containers</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="150.0" y="147.5">app A + libs</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="150.0" y="198.0">guest OS</tspan><tspan x="150.0" y="213.0">(GBs, minutes to boot)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="360.0" y="147.5">app B + libs</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="360.0" y="198.0">guest OS</tspan><tspan x="360.0" y="213.0">(GBs, minutes to boot)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="255.0" y="267.5">hypervisor (VMware, EC2&#x27;s Nitro)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="255.0" y="322.5">host OS / hardware</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="607.5" y="164.0">container 1</tspan><tspan x="607.5" y="179.0">app + libs</tspan><tspan x="607.5" y="194.0">(MBs, seconds)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="744.5" y="164.0">container 2</tspan><tspan x="744.5" y="179.0">app + libs</tspan><tspan x="744.5" y="194.0">(MBs, seconds)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="881.5" y="164.0">container 3</tspan><tspan x="881.5" y="179.0">app + libs</tspan><tspan x="881.5" y="194.0">(MBs, seconds)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="745.0" y="267.5">Docker engine</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="745.0" y="322.5">host Linux OS (ONE shared kernel)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="255" y="390.0">each VM boots its own OS → heavy</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="745" y="390.0">containers share the host kernel → light &amp; fast</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="420.0">a container FEELS like a small Linux machine, but it&#x27;s really an isolated process on the host</tspan></text>
+</g>
+</svg>

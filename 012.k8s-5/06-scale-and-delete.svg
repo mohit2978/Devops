@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="1000" height="440">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="440" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="300" rx="16" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="60" y="130" width="110" height="55" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="190" y="130" width="110" height="55" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="320" y="130" width="110" height="55" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="75" width="470" height="300" rx="16" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="540" y="125" width="410" height="60" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="540" y="205" width="410" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Scaling a ReplicaSet, and who you must delete</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="255" y="98.0">kubectl scale rs javawebrs --replicas 3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="115.0" y="157.5">pod 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="245.0" y="157.5">pod 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="375.0" y="149.4">pod 3</tspan><tspan x="375.0" y="165.6">(new)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="255" y="221.9">RS checks running pods (2) vs desired (3)</tspan><tspan x="255" y="238.1">→ creates 1; with --replicas 1 it deletes 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e8590c" font-weight="bold"><tspan x="255" y="291.9">the YAML file is NOT changed — next</tspan><tspan x="255" y="308.1">kubectl apply sets replicas back to 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="745" y="98.0">deleting</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="745.0" y="146.9">kubectl delete pod &lt;name&gt;</tspan><tspan x="745.0" y="163.1">→ RS recreates it (self-healing)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="745.0" y="226.9">kubectl delete rs javawebrs</tspan><tspan x="745.0" y="243.1">→ RS AND its pods are removed ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="745" y="291.9">pods are OWNED by the ReplicaSet — delete the owner</tspan><tspan x="745" y="308.1">(ownerReferences) to get rid of them</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="410.0">scaling a ReplicaSet is manual • automatic scaling (HPA) is used with a Deployment</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="1000" height="480">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="480" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="80" width="470" height="330" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="95" width="155" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="133" width="155" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="171" width="155" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="209" width="155" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="247" width="155" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="285" width="155" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="323" width="155" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="361" width="155" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Dockerfile — the recipe for an image</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#ffd43b" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="50" y="110.0">FROM eclipse-temurin:17-jre</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="50" y="146.0">LABEL maintainer=&quot;you@example.com&quot;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="50" y="182.0">WORKDIR /app</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="50" y="218.0">COPY target/app.jar app.jar</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="50" y="254.0">RUN apt-get update &amp;&amp; apt-get install -y curl</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="50" y="290.0">EXPOSE 8080</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e9ecef" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="50" y="326.0">USER 1001</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="50" y="362.0">ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;app.jar&quot;]</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="110.0">FROM</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="695" y="110.0">base image to start from (always first)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="148.0">LABEL / MAINTAINER</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="695" y="148.0">metadata (MAINTAINER is deprecated)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="186.0">WORKDIR</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="695" y="186.0">working folder inside the image</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="224.0">COPY / ADD</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="695" y="224.0">copy files in (ADD can also untar / fetch URLs)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="262.0">RUN</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="695" y="262.0">run a command at BUILD time (install software)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="300.0">EXPOSE</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="695" y="300.0">document the port the app listens on</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="338.0">USER</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="695" y="338.0">run as a non-root user</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="bold"><tspan x="607.5" y="376.0">CMD / ENTRYPOINT</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="695" y="376.0">command run when the CONTAINER starts</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="440.0">docker build -t myapp:1.0 .   →   docker run -d -p 8080:8080 myapp:1.0</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="500" y="465.0">RUN happens while building the image • CMD/ENTRYPOINT happen every time a container starts</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="160" width="220" height="110" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="330" y="85" width="640" height="135" rx="14" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="360" y="140" width="260" height="65" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M250,215 L330,155" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M324.0,166.5 L330,155 L317.2,157.5" fill="none" stroke="#1971c2" stroke-width="2"/>
+<rect x="330" y="245" width="640" height="135" rx="14" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M250,215 L330,315" fill="none" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M318.3,309.4 L330,315 L327.1,302.3" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">The control plane decides WHERE the pod runs</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="140.0" y="192.5">control plane</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="140.0" y="209.8">scheduler picks a</tspan><tspan x="140.0" y="224.8">node with enough</tspan><tspan x="140.0" y="239.8">CPU / RAM</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="650" y="105.0">worker node  ip-192-168-3-73.ap-south-1.compute.internal</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="650" y="127.0">node private IP 192.168.3.73</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="490.0" y="165.0">javawebapppod</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="490.0" y="181.6">pod IP 192.168.19.209</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="650" y="265.0">worker node  ip-192-168-42-147.ap-south-1.compute.internal</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="650" y="287.0">node private IP 192.168.42.147</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="395.0">pod IP ≠ node IP • node name = &#x27;ip-&#x27; + its private IP • kubectl get pods -o wide shows both</tspan></text>
+</g>
+</svg>

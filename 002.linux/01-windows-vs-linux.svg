@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="75" width="200" height="40" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="75" width="345" height="40" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="605" y="75" width="355" height="40" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="125" width="200" height="38" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="125" width="345" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="605" y="125" width="355" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="169" width="200" height="38" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="169" width="345" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="605" y="169" width="355" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="213" width="200" height="38" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="213" width="345" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="605" y="213" width="355" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="257" width="200" height="38" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="257" width="345" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="605" y="257" width="355" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="301" width="200" height="38" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="301" width="345" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="605" y="301" width="355" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="345" width="200" height="38" rx="6" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="345" width="345" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="605" y="345" width="355" height="38" rx="6" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Windows vs Linux</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="140.0" y="95.0"></tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="422.5" y="95.0">Windows</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="782.5" y="95.0">Linux</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="140.0" y="144.0">Made by</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="422.5" y="144.0">Microsoft</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="782.5" y="144.0">Linus Torvalds + community</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="140.0" y="188.0">Cost</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="422.5" y="188.0">paid (commercial)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="782.5" y="188.0">free &amp; open source</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="140.0" y="232.0">Interface</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="422.5" y="232.0">GUI (mouse, windows)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="782.5" y="232.0">CLI (commands) — GUI optional</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="140.0" y="276.0">Users</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="422.5" y="276.0">single-user oriented</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="782.5" y="276.0">multi-user</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="140.0" y="320.0">Security</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="422.5" y="320.0">needs antivirus</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="782.5" y="320.0">strong permissions, rarely needs AV</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="140.0" y="364.0">Best for</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="422.5" y="364.0">personal use: games, movies, browsing</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="782.5" y="364.0">servers: Jenkins, Nexus, K8s, web apps</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="400.0">≈ 90%+ of cloud servers run Linux → every DevOps tool in this course runs on a Linux VM</tspan></text>
+</g>
+</svg>
