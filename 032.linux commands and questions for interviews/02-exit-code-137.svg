@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="500" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="105" width="740" height="46" rx="0" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="243" width="555" height="46" rx="0" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="595" y="243" width="129.5" height="46" rx="0" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M780,88 L780,300" fill="none" stroke="#e03131" stroke-width="3" stroke-dasharray="8 6"/>
+<rect x="40" y="325" width="430" height="120" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="325" width="450" height="120" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Exit code 137 — the container hit its memory limit</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold"><tspan x="40" y="92.0">✗  -Xmx4g inside a 4 GiB container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="410" y="128.0">heap  (-Xmx4g = the WHOLE limit)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#2f9e44" font-weight="bold"><tspan x="40" y="230.0">✓  -Xmx3g  (≈ 75% of the limit)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="317.5" y="266.0">heap  -Xmx3g</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="659.75" y="266.0">non-heap</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#2f9e44" font-weight="normal"><tspan x="757.25" y="300.0">headroom</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="788" y="82.0">container limit 4 GiB</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="255.0" y="350.0">exit code = 128 + signal number</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="255.0" y="369.2">128 + 9 (SIGKILL) = 137</tspan><tspan x="255.0" y="386.7"></tspan><tspan x="255.0" y="404.2">killed from OUTSIDE the JVM →</tspan><tspan x="255.0" y="421.7">no OutOfMemoryError, no stack trace</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="735.0" y="350.0">common exit codes</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="369.2">137 → SIGKILL  (OOM killer / kill -9)</tspan><tspan x="735.0" y="386.7">143 → SIGTERM  (graceful stop / kill -15)</tspan><tspan x="735.0" y="404.2">130 → SIGINT  (Ctrl+C)</tspan><tspan x="735.0" y="421.7">1 → the app itself failed (exception)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="475.0">prove it:  dmesg -T | grep -i oom   •   kubectl describe pod → Last State: OOMKilled</tspan></text>
+</g>
+<g ><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="780" y="105" width="0" height="46" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"><animate attributeName="width" values="0;140;140;0" keyTimes="0;0.4;0.97;1" dur="10s" repeatCount="indefinite"/></rect></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25;0.27;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="855" y="128.0">non-heap</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;0.3;1;1;0" keyTimes="0;0.4;0.43;0.47;0.5;0.95;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="660" y="160" width="240" height="40" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="780.0" y="180.0">kernel: SIGKILL ⚡</tspan></text></g></g>
+</svg>

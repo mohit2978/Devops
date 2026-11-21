@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="1000" height="480">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="480" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="330" rx="16" fill="#ffffff" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<ellipse cx="90" cy="175" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="190" cy="175" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M164,175 L119,175" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M130.7,169.3 L119,175 L130.7,180.7" fill="none" stroke="#495057" stroke-width="2"/>
+<ellipse cx="90" cy="295" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="190" cy="295" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M164,295 L119,295" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M130.7,289.3 L119,295 L130.7,300.7" fill="none" stroke="#495057" stroke-width="2"/>
+<ellipse cx="290" cy="295" rx="26" ry="26" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M264,295 L219,295" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M230.7,289.3 L219,295 L230.7,300.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="348.0" y="280" width="89" height="30" rx="8" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M348.0,295 L320.0,295" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M331.7,289.3 L320.0,295 L331.7,300.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="75" width="470" height="330" rx="16" fill="#ffffff" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<ellipse cx="580" cy="175" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="680" cy="175" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M654,175 L609,175" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M620.7,169.3 L609,175 L620.7,180.7" fill="none" stroke="#495057" stroke-width="2"/>
+<ellipse cx="580" cy="295" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="680" cy="295" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M654,295 L609,295" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M620.7,289.3 L609,295 L620.7,300.7" fill="none" stroke="#495057" stroke-width="2"/>
+<ellipse cx="780" cy="295" rx="26" ry="26" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M754,295 L709,295" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M720.7,289.3 L709,295 L720.7,300.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="838.0" y="280" width="89" height="30" rx="8" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M838.0,295 L810.0,295" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M821.7,289.3 L810.0,295 L821.7,300.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="780" cy="175" rx="26" ry="26" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M754,175 L709,175" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M720.7,169.3 L709,175 L720.7,180.7" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">git push --force  vs  --force-with-lease</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#e03131" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="255" y="98.0">--force  (blind overwrite)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="bold"><tspan x="40" y="135.0">GitHub (origin)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="90" y="175.0">A</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="190" y="175.0">B</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="bold"><tspan x="40" y="255.0">your laptop  (you last fetched at B)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="90" y="295.0">A</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="190" y="295.0">B</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="290" y="295.0">Y</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="392.5" y="295.0">feature</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="11" fill="#6741d9" font-weight="normal"><tspan x="360" y="168.1">T = teammate&#x27;s</tspan><tspan x="360" y="181.9">new commit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#2f9e44" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="745" y="98.0">--force-with-lease  (safe)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="bold"><tspan x="530" y="135.0">GitHub (origin)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="580" y="175.0">A</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="680" y="175.0">B</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="bold"><tspan x="530" y="255.0">your laptop  (you last fetched at B)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="580" y="295.0">A</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="680" y="295.0">B</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="780" y="295.0">Y</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="882.5" y="295.0">feature</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="780" y="175.0">T</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="11" fill="#6741d9" font-weight="normal"><tspan x="850" y="168.1">T = teammate&#x27;s</tspan><tspan x="850" y="181.9">new commit</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.45;0.47;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="290" cy="175" rx="26" ry="26" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/><path d="M264,175 L219,175" fill="none" stroke="#495057" stroke-width="2"/><path d="M230.7,169.3 L219,175 L230.7,180.7" fill="none" stroke="#495057" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="290" y="175.0">T</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="290" cy="175" rx="26" ry="26" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/><path d="M264,175 L219,175" fill="none" stroke="#495057" stroke-width="2"/><path d="M230.7,169.3 L219,175 L230.7,180.7" fill="none" stroke="#495057" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="290" y="175.0">Y</tspan></text></g></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.25;0.44;0.45;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M290,270 L290,205" keyPoints="0;0;1;1" keyTimes="0;0.25;0.42;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-35.0" y="-13" width="70" height="26" rx="8" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">push -f</text></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="255" y="346.9">teammate&#x27;s commit T is GONE ✗</tspan><tspan x="255" y="363.1">(no warning)</tspan></text></g></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.25;0.47;0.48;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M780,270 L780,205" keyPoints="0;0;1;1" keyTimes="0;0.25;0.42;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-28.0" y="-13" width="56" height="26" rx="8" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">push</text></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="745" y="346.9">✗ rejected: remote changed since your fetch</tspan><tspan x="745" y="363.1">→ git fetch, look at T, then decide ✓</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.02;0.04;0.25;0.27;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500.0" y="440.0">a teammate pushed T after your last fetch</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25;0.27;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500.0" y="440.0">only overwrite what you have SEEN → always prefer --force-with-lease</tspan></text></g></g>
+</svg>

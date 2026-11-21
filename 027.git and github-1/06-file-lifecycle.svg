@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="1000" height="480">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="480" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<path d="M130,122 L130,430" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="45" y="82" width="170" height="40" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M380,122 L380,430" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="295" y="82" width="170" height="40" rx="12" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M630,122 L630,430" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="545" y="82" width="170" height="40" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M880,122 L880,430" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="795" y="82" width="170" height="40" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M130,160 L880,160" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M868.3,165.7 L880,160 L868.3,154.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M880,215 L380,215" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M391.7,209.3 L380,215 L391.7,220.7" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M380,270 L630,270" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M618.3,275.7 L630,270 L618.3,264.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M630,325 L880,325" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M868.3,330.7 L880,325 L868.3,319.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M380,380 L130,380" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M141.7,374.3 L130,380 L141.7,385.7" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Lifecycle of a file&#x27;s status</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="130.0" y="102.0">Untracked</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="380.0" y="102.0">Unmodified</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="630.0" y="102.0">Modified</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="880.0" y="102.0">Staged</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="505.0" y="134.0">1. git add file  (start tracking)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="630.0" y="189.0">2. git commit  (snapshot saved)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="505.0" y="244.0">3. edit the file</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="755.0" y="299.0">4. git add file  (stage the edit)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="255.0" y="354.0">5. git rm --cached (untrack)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="455.0">Unmodified = tracked AND identical to the last commit • after a commit, a staged file becomes unmodified</tspan></text>
+</g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.001;0.01;0.95;0.98;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M130,160 L880,160 L880,215 L380,215 L380,270 L630,270 L630,325 L880,325" keyPoints="0;0;0.3916;0.3916;0.4204;0.4204;0.6815;0.6815;0.7102;0.7102;0.8407;0.8407;0.8695;0.8695;1;1" keyTimes="0;0.04;0.2;0.22;0.25;0.27;0.42;0.44;0.47;0.49;0.6;0.62;0.65;0.67;0.8;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-32.5" y="-13" width="65" height="26" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"><animate attributeName="fill" values="#e9ecef;#ffd8a8;#96f2d7;#ffec99;#ffd8a8" keyTimes="0;0.2;0.42;0.6;0.8" calcMode="discrete" dur="10s" repeatCount="indefinite"/></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">a.txt</text></g>
+</svg>

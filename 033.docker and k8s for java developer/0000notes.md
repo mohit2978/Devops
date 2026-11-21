@@ -2,6 +2,8 @@
 
 This guide bridges the gap between basic DevOps knowledge (covered in folders `003` to `021`) and the advanced containerization & orchestration patterns required in **Senior Java Developer (SDE-2 / Lead Backend)** interviews.
 
+> All diagrams are **animated**: open the markdown preview to see them play.
+
 ---
 
 ## 1. Syllabus Gap Analysis: What Was Covered vs What SDE-2 Requires
@@ -27,7 +29,7 @@ This guide bridges the gap between basic DevOps knowledge (covered in folders `0
 
 In standard single-stage builds, the Docker image includes Maven, JDK compilers, and temporary dependencies, resulting in bloated images ($\approx 850\text{ MB}$).
 
-![Docker Optimization](docker-multistage-spring-optimization.svg)
+![Multi-stage build and layered JAR](01-multistage-layers.svg)
 
 #### Why Spring Boot 2.3+ Layered JARs?
 In a fat JAR, dependencies change rarely, while application code changes every commit. By splitting the JAR into layers:
@@ -89,6 +91,8 @@ ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 > **The Disaster Scenario:** You assign a Docker/K8s memory limit of `1 GB` to a container running on an EC2 host with `64 GB` RAM. You run `java -jar app.jar` without flags.
 > - **What happens in older JVMs (Java 8 < u191)?** The JVM queries the host OS, sees 64 GB RAM, sets its default heap to $64\text{ GB} / 4 = 16\text{ GB}$. As the app allocates memory past 1 GB, the **Linux Kernel immediately kills the container with `OOMKilled` (Exit code 137)**!
 
+![JVM memory inside a container](02-jvm-container-memory.svg)
+
 #### Modern Solution (Java 11 & Java 17+):
 Modern JDKs feature **Container Support** enabled by default (`-XX:+UseContainerSupport`). Instead of hardcoded heap limits (`-Xmx2g`), configure percentage-based dynamic memory:
 
@@ -117,6 +121,8 @@ ENTRYPOINT java -jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
+![Shell form vs exec form](03-pid1-exec-form.svg)
+
 #### Why Shell Form Breaks Graceful Shutdown:
 - **Shell Form:** Docker spawns `/bin/sh -c "java -jar app.jar"`. The shell process becomes **PID 1**. When Kubernetes sends a `SIGTERM` to shut down the pod, **the shell does NOT forward the signal to Java**.
 - Java never receives `SIGTERM`. Spring Boot never executes its shutdown hooks. After 30 seconds, Kubernetes loses patience and sends an uncatchable `SIGKILL (-9)`, dropping all active client requests!
@@ -128,7 +134,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
 In production, microservices cannot rely on a single ping. Kubernetes provides 3 specialized probes:
 
-![K8s Probes Lifecycle](k8s-pod-probes-lifecycle.svg)
+![The 3 probes over a pod's life](04-probes-timeline.svg)
 
 #### 1. Startup Probe
 - **Purpose:** Protects slow-starting Spring Boot applications (which may take 30–60s initializing Spring context, Hibernate, and connecting to Kafka/DB).
@@ -147,6 +153,8 @@ In production, microservices cannot rely on a single ping. Kubernetes provides 3
 > *"Should you check database availability in your Liveness Probe?"*  
 > **Answer: NEVER!** If your MySQL database restarts or experiences network latency, a Liveness probe that checks the database will fail across **all 50 microservice pods simultaneously**, causing Kubernetes to restart every pod at the exact same moment (a cascading restart storm that crashes the entire cluster)!  
 > Database connectivity belongs strictly in the **Readiness Probe**.
+
+![Never check the DB in the liveness probe](05-liveness-db-trap.svg)
 
 #### Spring Boot 2.3+ & Kubernetes Manifest Configuration:
 
@@ -191,7 +199,7 @@ livenessProbe:
 
 During a rolling update (`kubectl set image ...`), Kubernetes removes old pods while starting new ones. If not configured correctly, users encounter intermittent **`502 Bad Gateway`** errors.
 
-![Zero-Downtime Graceful Shutdown](k8s-zero-downtime-graceful-shutdown.svg)
+![Zero-downtime graceful shutdown](06-graceful-shutdown.svg)
 
 #### Why 502 Errors Occur During Pod Termination:
 1. Kubelet marks the old Pod as `Terminating`.
@@ -239,6 +247,8 @@ resources:
     memory: "2Gi"    # 2 GB RAM
 ```
 
+![Requests, limits and QoS](08-limits-qos.svg)
+
 #### What Happens When Limits Are Exceeded?
 
 | Resource | When Pod Exceeds Limit | Linux Kernel Mechanism | Result |
@@ -263,6 +273,8 @@ In folders `009.k8s-2`, services were exposed using `NodePort` and `LoadBalancer
 
 #### The Enterprise Ingress Pattern:
 An **Ingress Controller** (e.g. NGINX Ingress, AWS ALB Ingress Controller) acts as a reverse proxy with a single external IP and manages path-based routing:
+
+![Ingress routing](09-ingress-routing.svg)
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -302,6 +314,8 @@ spec:
 ### Topic 8: InitContainers for Schema Migrations & Dependencies
 
 An **InitContainer** runs to completion *before* the application container starts. If an InitContainer fails, the main container never starts.
+
+![InitContainers](10-init-containers.svg)
 
 #### Production Use Cases:
 1. **Database Schema Migration (Flyway / Liquibase):** Avoid running schema migrations in application code where multiple replicas might run migrations concurrently.
@@ -349,6 +363,9 @@ USER appuser
 ---
 
 ### Q4: What is the difference between Kubernetes `Deployment` and `StatefulSet`?
+
+![Deployment vs StatefulSet vs DaemonSet](11-workload-types.svg)
+
 - **`Deployment`:** For stateless applications (Spring Boot microservices). Pods are interchangeable, have random generated names (`order-pod-7f9b8c-x4z`), and do not maintain dedicated volume identity.
 - **`StatefulSet`:** For stateful systems (Kafka, MySQL, Redis, Elasticsearch). Pods have stable, predictable network identities (`kafka-0`, `kafka-1`), boot in sequential order, and each attaches to its own dedicated PersistentVolumeClaim that persists across pod restarts.
 
@@ -363,11 +380,17 @@ A **DaemonSet** ensures that exactly one copy of a Pod runs on every single work
 ---
 
 ### Q6: How does Kubernetes Service load balancing work under the hood?
+
+![How a Service reaches a pod](12-service-routing.svg)
+
 Kubernetes Services are virtual IPs (ClusterIP), not physical load balancers. **Kube-Proxy** runs on every worker node and configures Linux kernel **iptables** or **IPVS** rules. When a packet is addressed to the Service ClusterIP, the Linux kernel randomly rewrites the destination IP to one of the healthy Pod IPs backing that service.
 
 ---
 
 ### Q7: What is the difference between `maxSurge` and `maxUnavailable` in rolling updates?
+
+![Rolling update](07-rolling-update.svg)
+
 - **`maxSurge`:** The maximum number of extra Pods that can be scheduled above the desired replica count during an update (e.g., `maxSurge: 25%`).
 - **`maxUnavailable`:** The maximum number of Pods that can be unavailable during the update process (e.g., `maxUnavailable: 0` ensures zero-downtime by creating new pods before deleting old ones).
 

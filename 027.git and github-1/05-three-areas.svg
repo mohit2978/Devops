@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" width="1000" height="460">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="460" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="115" width="260" height="185" rx="12" fill="#e7f5ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="370" y="115" width="260" height="185" rx="12" fill="#fff9db" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="700" y="115" width="260" height="185" rx="12" fill="#ebfbee" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M300,160 L370,160" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M358.3,165.7 L370,160 L358.3,154.3" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M630,160 L700,160" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M688.3,165.7 L700,160 L688.3,154.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M170,115 L170,88 L830,88 L830,108" fill="none" stroke="#6741d9" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M824.3,101.3 L830,113 L835.7,101.3" fill="none" stroke="#6741d9" stroke-width="2"/>
+<path d="M370,280 L300,280" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M311.7,274.3 L300,280 L311.7,285.7" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M830,300 L830,355 L170,355 L170,305" fill="none" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M175.7,311.7 L170,300 L164.3,311.7" fill="none" stroke="#e03131" stroke-width="2"/>
+<rect x="150" y="400" width="700" height="44" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">The 3 areas of Git</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="170" y="140.0">Working directory</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="170" y="251.9">your project files</tspan><tspan x="170" y="268.1">— you edit here</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="140.0">Staging area (index)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="251.9">changes chosen for</tspan><tspan x="500" y="268.1">the NEXT commit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="830" y="140.0">Repository (.git)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="830" y="251.9">saved snapshots</tspan><tspan x="830" y="268.1">(commits / versions)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1971c2" font-weight="bold"><tspan x="335" y="177.5">git</tspan><tspan x="335" y="192.5">add</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#2f9e44" font-weight="bold"><tspan x="665" y="177.5">git</tspan><tspan x="665" y="192.5">commit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#6741d9" font-weight="bold"><tspan x="500" y="76.0">git commit -am &quot;msg&quot;  → skip staging (only files Git already tracks)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#e8590c" font-weight="bold"><tspan x="335" y="312.5">git restore</tspan><tspan x="335" y="327.5">--staged</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="500" y="372.0">git checkout -- file  /  git restore file  → discard edits, back to last commit ⚠</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="422.0">git status → shows which files are in which area</tspan></text>
+</g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.001;0.02;0.9;0.93;1" dur="9s" repeatCount="indefinite"/><animateMotion path="M170,215 L500,215 L830,215" keyPoints="0;0;0.5;0.5;1;1" keyTimes="0;0.12;0.27;0.42;0.57;1" calcMode="linear" dur="9s" repeatCount="indefinite"/><rect x="-46.0" y="-13" width="92" height="26" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"><animate attributeName="fill" values="#ffc9c9;#ffec99;#b2f2bb" keyTimes="0;0.27;0.57" calcMode="discrete" dur="9s" repeatCount="indefinite"/></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">file.txt</text></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.02;0.04;0.26;0.28;1" dur="9s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="170" y="188.0">modified</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.27;0.29;0.51;0.53;1" dur="9s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e8590c" font-weight="bold"><tspan x="500" y="188.0">staged</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.57;0.59;0.90;0.92;1" dur="9s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="830" y="188.0">committed ✓</tspan></text></g></g>
+</svg>

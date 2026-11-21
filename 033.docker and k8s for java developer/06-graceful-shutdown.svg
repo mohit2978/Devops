@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="520" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<path d="M190,400 L190,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M274,400 L274,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M359,400 L359,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M443,400 L443,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M528,400 L528,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M612,400 L612,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M697,400 L697,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M781,400 L781,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M866,400 L866,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M950,400 L950,408" fill="none" stroke="#495057" stroke-width="1.5"/>
+<path d="M190,400 L950,400" fill="none" stroke="#495057" stroke-width="1.5"/>
+<rect x="190.0" y="112" width="84.44444444444446" height="36" rx="4" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="274.44444444444446" y="112" width="675.5555555555555" height="36" rx="4" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="190.0" y="157" width="46.888888888888886" height="36" rx="4" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="236.88888888888889" y="157" width="713.1111111111111" height="36" rx="4" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="190.0" y="282" width="84.44444444444446" height="36" rx="4" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="274.44444444444446" y="282" width="675.5555555555555" height="36" rx="4" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="190.0" y="327" width="253.33333333333331" height="36" rx="4" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="443.3333333333333" y="327" width="337.77777777777777" height="36" rx="4" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="781.1111111111111" y="327" width="168.8888888888889" height="36" rx="4" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M950,100 L950,395" fill="none" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Zero-downtime termination: why preStop sleep 15 avoids 502s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="190.0" y="420.0">0s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="274.44444444444446" y="420.0">5s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="358.8888888888889" y="420.0">10s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="443.3333333333333" y="420.0">15s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="527.7777777777778" y="420.0">20s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="612.2222222222222" y="420.0">25s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="696.6666666666666" y="420.0">30s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="781.1111111111111" y="420.0">35s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="865.5555555555555" y="420.0">40s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="950.0" y="420.0">45s</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold"><tspan x="40" y="95.0">✗ no preStop</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="180" y="130.0">routing</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="180" y="175.0">Spring Boot</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="232.22222222222223" y="130.0">still routed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="612.2222222222222" y="130.0">removed from endpoints</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="213.44444444444446" y="175.0">stop</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="593.4444444444445" y="175.0">process gone</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#2f9e44" font-weight="bold"><tspan x="40" y="265.0">✓ preStop sleep 15 + graceful</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="180" y="300.0">routing</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="180" y="345.0">Spring Boot</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="232.22222222222223" y="300.0">still routed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="612.2222222222222" y="300.0">removed — no new requests</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="316.66666666666663" y="345.0">preStop: sleep 15 (serving ✓)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="612.2222222222222" y="345.0">SIGTERM → finish in-flight (≤20 s)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="865.5555555555555" y="345.0">exited ✓</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#e03131" font-weight="bold"><tspan x="945.0" y="380.0">grace 45 s → SIGKILL</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="455.0">terminationGracePeriodSeconds: 45  •  preStop: sleep 15  •  server.shutdown=graceful (20 s)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="485.0">Kubernetes removes the pod IP and sends SIGTERM at the SAME time; the sleep gives routing tables time to update</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="185.0" y="200" width="230" height="30" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="300.0" y="215.0">traffic → dead pod = 502 ✗</tspan></text></g></g>
+<g><animateTransform attributeName="transform" type="translate" values="190 0;950 0" dur="14s" repeatCount="indefinite"/><line x1="0" y1="105" x2="0" y2="395" stroke="#e03131" stroke-width="3" stroke-linecap="round"/></g>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="1000" height="440">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="440" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="80" width="470" height="280" rx="16" fill="#ffffff" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="40" y="128" width="80" height="34" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M120,145 L470,145" fill="none" stroke="#495057" stroke-width="1.2" stroke-dasharray="8 6"/>
+<rect x="40" y="178" width="80" height="34" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M120,195 L470,195" fill="none" stroke="#495057" stroke-width="1.2" stroke-dasharray="8 6"/>
+<rect x="40" y="228" width="80" height="34" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M120,245 L470,245" fill="none" stroke="#495057" stroke-width="1.2" stroke-dasharray="8 6"/>
+<rect x="40" y="278" width="80" height="34" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M120,295 L470,295" fill="none" stroke="#495057" stroke-width="1.2" stroke-dasharray="8 6"/>
+<rect x="510" y="80" width="470" height="280" rx="16" fill="#ffffff" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="530" y="128" width="80" height="34" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M610,145 L960,145" fill="none" stroke="#495057" stroke-width="1.2" stroke-dasharray="8 6"/>
+<rect x="530" y="178" width="80" height="34" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M610,195 L960,195" fill="none" stroke="#495057" stroke-width="1.2" stroke-dasharray="8 6"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Load average — compare it with the number of CPU cores (nproc)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="255" y="105.0">4 cores, load 2.15</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="80.0" y="145.0">core 0</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="80.0" y="195.0">core 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="80.0" y="245.0">core 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="80.0" y="295.0">core 3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#2f9e44" font-weight="bold"><tspan x="255" y="335.0">≈ 53% busy → healthy ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="745" y="105.0">2 cores, load 4.50</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="570.0" y="145.0">core 0</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="570.0" y="195.0">core 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold"><tspan x="745" y="335.0">threads QUEUE and wait ✗</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="392.0">$ uptime   →   load average: 2.15, 1.80, 1.45   (last 1 min, 5 min, 15 min)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="420.0">load ≈ threads running + waiting for CPU  •  load / cores &gt; 1 means work is queueing</tspan></text>
+</g>
+<g><animateMotion path="M160,145 L440,145" keyPoints="0;1" keyTimes="0;1" calcMode="linear" dur="6s" repeatCount="indefinite"/><rect x="-35.0" y="-13" width="70" height="26" rx="8" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive" fill="#1e1e1e">thread</text></g>
+<g><animateMotion path="M160,195 L440,195" keyPoints="0;1" keyTimes="0;1" calcMode="linear" dur="6s" repeatCount="indefinite"/><rect x="-35.0" y="-13" width="70" height="26" rx="8" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive" fill="#1e1e1e">thread</text></g>
+<g><animateMotion path="M650,145 L930,145" keyPoints="0;1" keyTimes="0;1" calcMode="linear" dur="6s" repeatCount="indefinite"/><rect x="-35.0" y="-13" width="70" height="26" rx="8" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive" fill="#1e1e1e">thread</text></g>
+<g><animateMotion path="M650,195 L930,195" keyPoints="0;1" keyTimes="0;1" calcMode="linear" dur="6s" repeatCount="indefinite"/><rect x="-35.0" y="-13" width="70" height="26" rx="8" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive" fill="#1e1e1e">thread</text></g>
+<g ><animate attributeName="opacity" values="1;0.35;1" dur="1.2s" begin="0.0s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="550" y="270" width="85" height="30" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="592.5" y="285.0">waiting…</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="1;0.35;1" dur="1.2s" begin="0.3s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="650" y="270" width="85" height="30" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="692.5" y="285.0">waiting…</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="1;0.35;1" dur="1.2s" begin="0.6s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="750" y="270" width="85" height="30" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="792.5" y="285.0">waiting…</tspan></text></g></g>
+</svg>

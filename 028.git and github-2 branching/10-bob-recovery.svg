@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="120" cy="160" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="240" cy="160" rx="26" ry="26" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M214,160 L149,160" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M160.7,154.3 L149,160 L160.7,165.7" fill="none" stroke="#495057" stroke-width="2"/>
+<ellipse cx="360" cy="160" rx="26" ry="26" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M334,160 L269,160" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M280.7,154.3 L269,160 L280.7,165.7" fill="none" stroke="#495057" stroke-width="2"/>
+<ellipse cx="480" cy="160" rx="26" ry="26" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M454,160 L389,160" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M400.7,154.3 L389,160 L400.7,165.7" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="404.0" y="77" width="152" height="30" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M480,107 L480,136" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M474.3,124.3 L480,136 L485.7,124.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="240" cy="300" rx="26" ry="26" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="360" cy="300" rx="26" ry="26" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M223,280 L139,182" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M150.9,187.2 L139,182 L142.3,194.6" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M334,300 L269,300" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M280.7,294.3 L269,300 L280.7,305.7" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Bob&#x27;s fix: replay only his own commit onto the new history</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="120" y="160.0">C2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="240" y="160.0">C3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="360" y="160.0">D1′</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="480" y="160.0">D2′</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="480" y="92.0">origin/feature</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="240" y="300.0">D1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="360" y="300.0">D2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="360.0">git rebase --onto origin/feature &lt;old-D2-hash&gt; bob-work</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="392.0">or:  git switch -c bob-work-recovered origin/feature  &amp;&amp;  git cherry-pick &lt;B1-hash&gt;</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="1;1;0.25;0.25" keyTimes="0;0.6;0.62;1" dur="9s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="480" cy="300" rx="26" ry="26" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/><path d="M454,300 L389,300" fill="none" stroke="#495057" stroke-width="2"/><path d="M400.7,294.3 L389,300 L400.7,305.7" fill="none" stroke="#495057" stroke-width="2"/><rect x="538.0" y="285" width="98" height="30" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/><path d="M538.0,300 L510.0,300" fill="none" stroke="#1e1e1e" stroke-width="2"/><path d="M521.7,294.3 L510.0,300 L521.7,305.7" fill="none" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="480" y="300.0">B1</tspan></text><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="587.0" y="300.0">bob-work</tspan></text></g></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.2;0.45;0.47;1" dur="9s" repeatCount="indefinite"/><animateMotion path="M480,300 L600,160" keyPoints="0;0;1;1" keyTimes="0;0.2;0.45;1" calcMode="linear" dur="9s" repeatCount="indefinite"/><rect x="-55.0" y="-13" width="110" height="26" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive" fill="#1e1e1e">B1 changes</text></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.97;0.99;1" dur="9s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="600" cy="160" rx="26" ry="26" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/><path d="M574,160 L509,160" fill="none" stroke="#495057" stroke-width="2"/><path d="M520.7,154.3 L509,160 L520.7,165.7" fill="none" stroke="#495057" stroke-width="2"/><rect x="658.0" y="145" width="98" height="30" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/><path d="M658.0,160 L630.0,160" fill="none" stroke="#1e1e1e" stroke-width="2"/><path d="M641.7,154.3 L630.0,160 L641.7,165.7" fill="none" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="600" y="160.0">B1′</tspan></text><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="707.0" y="160.0">bob-work</tspan></text></g></g>
+</svg>

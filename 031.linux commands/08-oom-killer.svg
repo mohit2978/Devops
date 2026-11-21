@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="105" width="920" height="50" rx="0" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="105" width="300" height="50" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="300" width="430" height="85" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="300" width="450" height="85" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">OOM killer — why a Java process disappears without a trace</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="40" y="92.0">RAM</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="190" y="130.0">other processes</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="255.0" y="326.2">app.log</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="255.0" y="344.1">… last normal log line …</tspan><tspan x="255.0" y="360.4">(no exception, no stack trace)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#69db7c" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="525" y="320.0">$ dmesg -T | grep -i -E &quot;oom|killed process&quot;</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="412.0">the kernel kills the biggest process to save the system → the JVM gets SIGKILL and cannot log anything</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.55;0.56;0.97;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="340" y="105" width="200" height="50" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"><animate attributeName="width" values="200;620;620" keyTimes="0;0.45;1" dur="10s" repeatCount="indefinite"/></rect></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="130.0">java (growing…)</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.6;0.62;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold"><tspan x="500" y="180.0">RAM FULL</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0.2;0.2;1;0.4;1;0.2;0.2" keyTimes="0;0.45;0.5;0.53;0.56;0.62;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="370" y="200" width="260" height="60" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="220.0">Linux kernel</tspan><tspan x="500.0" y="240.0">OOM killer ⚡</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.6;0.62;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="525" y="344.5">Out of memory: Killed process 8492 (java)</tspan><tspan x="525" y="359.5">anon-rss:3824100kB</tspan></text></g></g>
+</svg>

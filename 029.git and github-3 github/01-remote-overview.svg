@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="1000" height="440">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="440" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="380" y="85" width="240" height="70" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="380" y="215" width="240" height="64" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="380" y="335" width="240" height="64" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M450,215 L450,155" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<path d="M455.7,166.7 L450,155 L444.3,166.7" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<path d="M550,155 L550,215" fill="none" stroke="#6741d9" stroke-width="2.5"/>
+<path d="M544.3,203.3 L550,215 L555.7,203.3" fill="none" stroke="#6741d9" stroke-width="2.5"/>
+<path d="M450,335 L450,279" fill="none" stroke="#1971c2" stroke-width="2.5"/>
+<path d="M455.7,290.7 L450,279 L444.3,290.7" fill="none" stroke="#1971c2" stroke-width="2.5"/>
+<path d="M550,279 L550,335" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<path d="M544.3,323.3 L550,335 L555.7,323.3" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<path d="M620,120 L740,120 L740,367 L626,367" fill="none" stroke="#e03131" stroke-width="2.5"/>
+<path d="M633.7,361.3 L622,367 L633.7,372.7" fill="none" stroke="#e03131" stroke-width="2.5"/>
+<path d="M380,120 L260,120 L260,367 L374,367" fill="none" stroke="#495057" stroke-width="2.5" stroke-dasharray="8 6"/>
+<path d="M366.3,372.7 L378,367 L366.3,361.3" fill="none" stroke="#495057" stroke-width="2.5"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Working with a remote (GitHub)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="110.0">GitHub repo</tspan><tspan x="500.0" y="130.0">(remote “origin”)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="247.0">local repo (.git)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="357.6">working directory</tspan><tspan x="500.0" y="376.4">(your files)</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="14" fill="#e8590c" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="440" y="185.0">git push</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#6741d9" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="560" y="185.0">git fetch</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="440" y="307.0">git commit</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="560" y="307.0">git merge</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="755" y="221.2">git pull</tspan><tspan x="755" y="238.8">= fetch + merge</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="245" y="212.5">git clone</tspan><tspan x="245" y="230.0">(first time:</tspan><tspan x="245" y="247.5">copy everything)</tspan></text>
+</g>
+<g><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.02;0.34;0.36;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M450,367 L450,247 L450,120" keyPoints="0;0;0.5;0.5;1;1" keyTimes="0;0.04;0.16;0.2;0.32;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-22.0" y="-13" width="44" height="26" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">C5</text></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4;0.42;0.68;0.7;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M550,120 L550,247 L550,367" keyPoints="0;0;0.5;0.5;1;1" keyTimes="0;0.42;0.52;0.56;0.66;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-22.0" y="-13" width="44" height="26" rx="8" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">C6</text></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.74;0.76;0.96;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M620,120 L740,120 L740,367 L626,367" keyPoints="0;0;1;1" keyTimes="0;0.76;0.94;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-22.0" y="-13" width="44" height="26" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">C7</text></g>
+</svg>

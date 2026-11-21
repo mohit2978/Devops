@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="500" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="110" width="471" height="50" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"><animate attributeName="width" values="471;471;644;644;471" keyTimes="0;0.3;0.45;0.85;1" dur="10s" repeatCount="indefinite"/></rect>
+<rect x="511" y="110" width="351" height="50" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"><animate attributeName="x" values="511;511;684;684;511" keyTimes="0;0.3;0.45;0.85;1" dur="10s" repeatCount="indefinite"/><animate attributeName="width" values="351;351;178;178;351" keyTimes="0;0.3;0.45;0.85;1" dur="10s" repeatCount="indefinite"/></rect>
+<rect x="862.25" y="110" width="97.75" height="50" rx="0" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M511,172 L511,182 L960,182 L960,172" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
+<rect x="40" y="290" width="200" height="60" rx="0" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="240" y="290" width="45" height="60" rx="0" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="285" y="290" width="45" height="60" rx="0" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="330" y="290" width="290" height="60" rx="0" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="620" y="290" width="110" height="60" rx="0" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="730" y="290" width="80" height="60" rx="0" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="810" y="290" width="75" height="60" rx="0" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="885" y="290" width="75" height="60" rx="0" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M40,360 L40,372 L620,372 L620,360" fill="none" stroke="#1971c2" stroke-width="2.5"/>
+<path d="M620,360 L620,372 L960,372 L960,360" fill="none" stroke="#6741d9" stroke-width="2.5"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Memory: what free -h shows, and what lives inside the JVM</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="40" y="95.0">$ free -h   (16 GiB RAM)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="911.125" y="135.0">free</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="735.75" y="200.0">available ≈ free + cache the OS can give back (the REAL free RAM)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="40" y="270.0">inside the JVM process  (RSS ≈ heap + non-heap)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="140.0" y="320.0">Eden</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="262.5" y="320.0">S0</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="307.5" y="320.0">S1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="475.0" y="320.0">Old Gen</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="675.0" y="320.0">Metaspace</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="770.0" y="311.9">Thread</tspan><tspan x="770.0" y="328.1">stacks</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="847.5" y="311.9">Code</tspan><tspan x="847.5" y="328.1">cache</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="922.5" y="311.9">Direct</tspan><tspan x="922.5" y="328.1">buffers</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="330" y="390.0">HEAP  (-Xms2g … -Xmx4g)  — your Java objects</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#6741d9" font-weight="bold"><tspan x="790" y="390.0">NON-HEAP (native memory)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="430.0">new objects are born in Eden → survivors move to S0/S1 → long-lived ones are promoted to Old Gen</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="500" y="460.0">RSS bigger than -Xmx is normal: metaspace + thread stacks + code cache + direct buffers live outside the heap</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.32;0.34;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="275.75" y="135.0">used 8.2G</tspan></text><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="686.875" y="135.0">buff/cache 6.1G</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.85;0.87;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="362.0" y="135.0">used 11.2G  (+3G Java)</tspan></text><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="773.125" y="135.0">cache 3.1G</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.3;0.32;0.85;0.87;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="228.0">Java asks for 3G more → Linux shrinks the cache instantly (no swap, no problem)</tspan></text></g></g>
+<g><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.8;0.82;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M100,320 L202,320 L290,320" keyPoints="0;0;0.5;0.5;1;1" keyTimes="0;0.1;0.35;0.5;0.75;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-20.0" y="-13" width="40" height="26" rx="8" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">obj</text></g>
+</svg>

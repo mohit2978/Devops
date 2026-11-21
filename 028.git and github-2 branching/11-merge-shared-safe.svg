@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" width="1000" height="380">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="380" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="130" cy="200" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="300" cy="110" rx="26" ry="26" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="270" cy="200" rx="26" ry="26" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="410" cy="200" rx="26" ry="26" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="560" cy="290" rx="26" ry="26" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M277,122 L156,186" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M163.7,175.5 L156,186 L169.0,185.5" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M244,200 L159,200" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M170.7,194.3 L159,200 L170.7,205.7" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M384,200 L299,200" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M310.7,194.3 L299,200 L310.7,205.7" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M538,277 L435,215" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M447.9,216.2 L435,215 L442.1,225.9" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="618.0" y="275" width="98" height="30" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M618.0,290 L590.0,290" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M601.7,284.3 L590.0,290 L601.7,295.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Merging shared work is safe — nothing is rewritten</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="130" y="200.0">C2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="300" y="110.0">C3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="270" y="200.0">D1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="410" y="200.0">D2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="560" y="290.0">B1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="667.0" y="290.0">bob-work</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="355.0">git switch feature  &amp;&amp;  git merge master  &amp;&amp;  git push</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.3;0.32;0.97;0.99;1" dur="7s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="560" cy="160" rx="26" ry="26" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/><path d="M535,167 L438,193" fill="none" stroke="#495057" stroke-width="2"/><path d="M447.8,184.5 L438,193 L450.8,195.4" fill="none" stroke="#495057" stroke-width="2"/><path d="M534,155 L328,115" fill="none" stroke="#495057" stroke-width="2"/><path d="M340.6,111.7 L328,115 L338.4,122.8" fill="none" stroke="#495057" stroke-width="2"/><rect x="618.0" y="145" width="89" height="30" rx="8" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/><path d="M618.0,160 L590.0,160" fill="none" stroke="#1e1e1e" stroke-width="2"/><path d="M601.7,154.3 L590.0,160 L601.7,165.7" fill="none" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="560" y="160.0">M</tspan></text><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="662.5" y="160.0">feature</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.3;0.32;1" dur="7s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="468.0" y="185" width="89" height="30" rx="8" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/><path d="M468.0,200 L440.0,200" fill="none" stroke="#1e1e1e" stroke-width="2"/><path d="M451.7,194.3 L440.0,200 L451.7,205.7" fill="none" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="512.5" y="200.0">feature</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4;0.42;0.97;0.99;1" dur="7s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="850" y="216.2">D1, D2 keep their hashes</tspan><tspan x="850" y="233.8">→ Bob&#x27;s B1 is still valid ✓</tspan></text></g></g>
+</svg>

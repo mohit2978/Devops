@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="150" width="200" height="60" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="280" y="145" width="150" height="70" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="490" y="60" width="220" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="490" y="245" width="220" height="60" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="760" y="245" width="215" height="60" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="760" y="130" width="215" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M230,180 L280,180" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M268.3,185.7 L280,180 L268.3,174.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M430,160 L490,100" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M485.7,112.3 L490,100 L477.7,104.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M430,200 L490,265" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M477.9,260.2 L490,265 L486.2,252.6" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M710,275 L760,275" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M748.3,280.7 L760,275 L748.3,269.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M867,245 L867,190" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M872.7,201.7 L867,190 L861.3,201.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="250" y="345" width="330" height="44" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="630" y="345" width="345" height="44" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M560,305 L470,345" fill="none" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M478.4,335.1 L470,345 L483.0,345.4" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M640,305 L760,345" fill="none" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M747.1,346.7 L760,345 L750.7,335.9" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Cherry-pick conflict — what to do</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="130.0" y="171.2">git cherry-pick</tspan><tspan x="130.0" y="188.8">&lt;hash&gt;</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="355.0" y="180.0">conflict?</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="600.0" y="81.2">no → new commit</tspan><tspan x="600.0" y="98.8">created ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="600.0" y="266.2">yes → Git PAUSES</tspan><tspan x="600.0" y="283.8">(conflict markers)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="867.5" y="266.2">fix the files</tspan><tspan x="867.5" y="283.8">git add &lt;file&gt;</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="867.5" y="151.2">git cherry-pick</tspan><tspan x="867.5" y="168.8">--continue ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="415.0" y="367.0">--abort → cancel everything, back to start</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="802.5" y="367.0">--skip → drop this commit (its changes are lost)</tspan></text>
+</g>
+<g><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.03;0.88;0.9;1" dur="9s" repeatCount="indefinite"/><animateMotion path="M130,180 L355,180 L600,275 L867,275 L867,160" keyPoints="0;0;0.21;0.21;0.55;0.55;0.82;0.82;1;1" keyTimes="0;0.05;0.2;0.25;0.4;0.5;0.65;0.72;0.85;1" calcMode="linear" dur="9s" repeatCount="indefinite"/><rect x="-15.0" y="-13" width="30" height="26" rx="8" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive" fill="#1e1e1e">●</text></g>
+</svg>

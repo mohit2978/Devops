@@ -2,7 +2,9 @@
 
 As a Java developer working with Spring Boot, Microservices, and cloud deployments, interacting with Linux is an everyday requirement. Whether diagnosing a **100% CPU spike**, fixing **`Address already in use`** errors, inspecting **OOM (Out Of Memory) crashes**, or reading **compressed production logs**, mastering these commands is essential.
 
-![Linux Diagnostic Ecosystem](jvm-diagnosis-pipeline.svg)
+> All diagrams are **animated**: open the markdown preview to see them play.
+
+![Troubleshooting map](01-troubleshooting-map.svg)
 
 ---
 
@@ -66,9 +68,20 @@ MiB Mem :  16048.2 total,   1824.5 free,   9842.1 used,   4381.6 buff/cache
 >    ```
 > 2. Search for `nid=0x2147` in a `jstack` dump to see the exact Java class and line number executing!
 
+![Finding the high-CPU thread](02-high-cpu-thread.svg)
+
+```bash
+# the whole hunt in 3 commands
+top -H -p 8492                                   # find the hot thread id (TID)
+printf "%x\n" 8519                               # 8519 → 2147
+jstack 8492 | grep -A 10 "nid=0x2147"            # see what that thread is executing
+```
+
 ---
 
 ### C. Terminating Processes: `kill` Signals
+
+![kill signals](03-kill-signals.svg)
 
 | Signal | Name | Java Behavior | Usage |
 | :---: | :---: | :--- | :--- |
@@ -159,6 +172,10 @@ java    18204 appuser   58u  IPv6 194821      0t0  TCP *:http-alt (LISTEN)
 ```
 *Solution: Identify PID 18204 and stop it gracefully (`kill -15 18204`).*
 
+![Port already in use](05-port-in-use.svg)
+
+> Alternatively, run the new app on another port: `java -jar app.jar --server.port=8081`.
+
 ---
 
 ### B. Inspecting Listening Sockets: `ss` vs `netstat`
@@ -182,6 +199,8 @@ tcp    LISTEN  0       128            *:3306               *:*          users:((
 
 ### C. Testing Remote Connectivity: `nc` (Netcat) & `curl`
 When your microservice cannot reach MySQL, Kafka, or Redis, you must verify network reachability from the command line:
+
+![Testing connectivity with nc](06-nc-connectivity.svg)
 
 #### 1. Testing TCP Port Availability without DB client (`nc`):
 ```bash
@@ -221,7 +240,7 @@ nslookup payment-service.default.svc.cluster.local
 
 ## 3. System Resources: Memory, CPU, and Disk
 
-![Linux Memory Architecture](linux-memory-heap-breakdown.svg)
+![Memory breakdown: free -h and the JVM](04-memory-breakdown.svg)
 
 ### A. Memory Inspection: `free -h`
 ```bash
@@ -250,6 +269,8 @@ uptime
 ```text
  04:12:30 up 45 days, 18:22,  2 users,  load average: 2.15, 1.80, 1.45
 ```
+![Load average vs CPU cores](07-load-average.svg)
+
 > [!NOTE]
 > **Load Average Interpretation:**
 > - The 3 numbers represent average CPU queue load over **1 minute**, **5 minutes**, and **15 minutes**.
@@ -311,6 +332,8 @@ zcat /var/log/app/order-service-2026-09-26.log.gz | grep -C 3 "OutOfMemoryError"
 ### C. Kernel Diagnostics & OOM-Killer: `dmesg -T`
 When a Java process disappears without writing any stack trace to `app.log`, the Linux Kernel **Out-Of-Memory (OOM) Killer** likely terminated it.
 
+![OOM killer](08-oom-killer.svg)
+
 ```bash
 # -T prints human-readable timestamps
 dmesg -T | grep -i -E "oom|killed process"
@@ -329,6 +352,8 @@ dmesg -T | grep -i -E "oom|killed process"
 ```bash
 nohup java -Xms1g -Xmx2g -jar /opt/app/order-service.jar > /var/log/app/order.log 2>&1 &
 ```
+
+![nohup and output redirection](09-nohup-redirect.svg)
 > [!NOTE]
 > **Breakdown of `> /var/log/app/order.log 2>&1 &`:**
 > - `nohup`: Prevents the process from receiving `SIGHUP` when you close your SSH terminal session.
@@ -340,6 +365,8 @@ nohup java -Xms1g -Xmx2g -jar /opt/app/order-service.jar > /var/log/app/order.lo
 
 ### B. Production Systemd Service Unit
 In real-world production, background scripts are managed via `systemd` for auto-restarting on failure:
+
+![systemd restarts the app](10-systemd-restart.svg)
 
 #### File: `/etc/systemd/system/order-service.service`
 ```ini

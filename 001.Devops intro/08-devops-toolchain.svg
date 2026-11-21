@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="560" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<path d="M410,123 L440,240" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M431.6,230.1 L440,240 L442.6,227.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M410,203 L440,240" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M428.2,234.5 L440,240 L437.0,227.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M410,283 L440,240" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M437.9,252.8 L440,240 L428.7,246.4" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M410,363 L440,240" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M442.7,252.7 L440,240 L431.7,250.0" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="30" y="103" width="200" height="40" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M230,123 L270,123" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="270" y="95" width="140" height="56" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="30" y="183" width="200" height="40" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M230,203 L270,203" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="270" y="175" width="140" height="56" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="30" y="263" width="200" height="40" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M230,283 L270,283" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="270" y="255" width="140" height="56" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="30" y="343" width="200" height="40" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M230,363 L270,363" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="270" y="335" width="140" height="56" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M560,240 L590,133" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M592.3,145.8 L590,133 L581.4,142.7" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M560,240 L590,243" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M577.8,247.5 L590,243 L578.9,236.2" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M560,240 L590,353" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M581.5,343.1 L590,353 L592.5,340.2" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="590" y="105" width="140" height="56" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M730,133 L765,133" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="765" y="106" width="210" height="54" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="590" y="215" width="140" height="56" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M730,243 L765,243" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="765" y="216" width="210" height="54" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="590" y="325" width="140" height="56" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M730,353 L765,353" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="765" y="326" width="210" height="54" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="500" cy="240" rx="62" ry="62" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="110" y="430" width="780" height="90" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">DevOps toolchain — a tool for every stage</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="130.0" y="123.0">Jira, Trello</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="340.0" y="123.0">Plan</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="130.0" y="203.0">Git, GitHub, SVN</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="340.0" y="203.0">Code</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="130.0" y="283.0">Maven, Gradle, Ant</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="340.0" y="283.0">Build</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="130.0" y="363.0">JUnit, Selenium</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="340.0" y="363.0">Test</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="660.0" y="133.0">Deploy</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="870.0" y="133.0">Docker, Kubernetes</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="660.0" y="243.0">Operate</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="870.0" y="234.2">Ansible, Chef,</tspan><tspan x="870.0" y="251.8">Puppet, SaltStack</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="660.0" y="353.0">Monitor</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="870.0" y="344.2">Nagios, ELK, Splunk,</tspan><tspan x="870.0" y="361.8">Prometheus, Grafana</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="230.6">CI/CD</tspan><tspan x="500" y="249.4">Integration</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="336.9">Jenkins • Bamboo</tspan><tspan x="500" y="353.1">Hudson • GitHub Actions</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="456.2">Build → Maven / Gradle      Test → JUnit / Selenium      Deploy → Docker</tspan><tspan x="500.0" y="475.0">A DevOps engineer mostly writes scripts, pipelines &amp; config (Bash, YAML, IaC),</tspan><tspan x="500.0" y="493.8">not application features</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="520" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="150" width="115" height="58" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="167" y="150" width="115" height="58" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M145,179 L167,179" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M155.3,184.7 L167,179 L155.3,173.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="304" y="150" width="115" height="58" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M282,179 L304,179" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M292.3,184.7 L304,179 L292.3,173.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="441" y="150" width="115" height="58" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M419,179 L441,179" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M429.3,184.7 L441,179 L429.3,173.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="578" y="150" width="115" height="58" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M556,179 L578,179" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M566.3,184.7 L578,179 L566.3,173.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="715" y="150" width="115" height="58" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M693,179 L715,179" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M703.3,184.7 L715,179 L703.3,173.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="852" y="150" width="115" height="58" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M830,179 L852,179" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M840.3,184.7 L852,179 L840.3,173.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M30,138 L30,124 L556,124 L556,138" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M578,138 L578,124 L967,124 L967,138" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M30,275 L970,275" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="260" y="296" width="130" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M390,318 L440,318" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M428.3,323.7 L440,318 L428.3,312.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="440" y="291" width="180" height="54" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M620,318 L670,318" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M658.3,323.7 L670,318 L658.3,312.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="670" y="296" width="130" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="260" y="386" width="130" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M390,408 L670,408" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M658.3,413.7 L670,408 L658.3,402.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="670" y="386" width="130" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="90" y="455" width="820" height="46" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">CI / CD explained</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#495057" font-weight="normal"><tspan x="500.0" y="66.0">CI/CD = an approach to automate the project build &amp; deployment process</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="87.5" y="170.2">commit</tspan><tspan x="87.5" y="187.8">(GitHub)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="224.5" y="170.2">build</tspan><tspan x="224.5" y="187.8">(Maven)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="361.5" y="179.0">unit tests</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="498.5" y="170.2">code review</tspan><tspan x="498.5" y="187.8">(Sonar)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="635.5" y="170.2">artifact</tspan><tspan x="635.5" y="187.8">(Nexus)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="772.5" y="170.2">deploy to</tspan><tspan x="772.5" y="187.8">QA / staging</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="909.5" y="170.2">deploy to</tspan><tspan x="909.5" y="187.8">production</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1971c2" font-weight="bold"><tspan x="293" y="105.0">CI = Continuous Integration</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#2f9e44" font-weight="bold"><tspan x="772" y="105.0">CD = Continuous Delivery / Deployment</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="normal"><tspan x="293" y="231.9">every commit is merged into the shared repo,</tspan><tspan x="293" y="248.1">built &amp; tested automatically → bugs caught early</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="normal"><tspan x="772" y="231.9">the tested artifact is always ready and</tspan><tspan x="772" y="248.1">moves to servers automatically</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="16" fill="#2f9e44" font-weight="bold"><tspan x="30" y="318.0">Continuous DELIVERY</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="325.0" y="318.0">staging ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="530.0" y="309.2">manual approval</tspan><tspan x="530.0" y="326.8">(someone clicks)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="735.0" y="318.0">production</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="820" y="309.9">a human decides</tspan><tspan x="820" y="326.1">when to release</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="16" fill="#2f9e44" font-weight="bold"><tspan x="30" y="408.0">Continuous DEPLOYMENT</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="325.0" y="408.0">staging ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="normal"><tspan x="530.0" y="396.0">automatic — no human in between</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="735.0" y="408.0">production</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="820" y="399.9">every passing change</tspan><tspan x="820" y="416.1">goes live</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="478.0">Jenkins = a CI/CD server: it runs this pipeline for any project — Java, Python, .NET, React, Angular…</tspan></text>
+</g>
+</svg>

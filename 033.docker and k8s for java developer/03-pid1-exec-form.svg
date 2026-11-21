@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" width="1000" height="460">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="460" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="320" rx="16" fill="#ffffff" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="135" y="115" width="240" height="40" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="85" y="195" width="340" height="48" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M255,155 L255,195" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M249.3,183.3 L255,195 L260.7,183.3" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M255,243 L255,300" fill="none" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M249.3,288.3 L255,300 L260.7,288.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="510" y="75" width="470" height="320" rx="16" fill="#ffffff" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="625" y="115" width="240" height="40" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="575" y="225" width="340" height="48" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M745,155 L745,225" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M739.3,213.3 L745,225 L750.7,213.3" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">ENTRYPOINT: shell form vs exec form (who is PID 1?)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e03131" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="255" y="98.0">✗ ENTRYPOINT java -jar app.jar</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="255.0" y="135.0">kubelet: SIGTERM</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="255.0" y="219.0">PID 1:  /bin/sh -c &quot;java -jar app.jar&quot;</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#2f9e44" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="745" y="98.0">✓ ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;app.jar&quot;]</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="745.0" y="135.0">kubelet: SIGTERM</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="745.0" y="249.0">PID 1:  java</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="425.0">shell form = /bin/sh is PID 1 and swallows signals • in scripts use:  exec java …  • or an init like tini</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="330" y="272.0">✗ not forwarded</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.55;0.57;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="85" y="300" width="340" height="48" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="255.0" y="324.0">PID 7:  java  (never hears SIGTERM)</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.55;0.57;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="85" y="300" width="340" height="48" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="255.0" y="324.0">30 s later: SIGKILL ✗ requests dropped</tspan></text></g></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.04;0.05;0.23;0.24;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M255,155 L255,195" keyPoints="0;0;1;1" keyTimes="0;0.05;0.18;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-28.0" y="-13" width="56" height="26" rx="8" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">TERM</text></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.04;0.05;0.23;0.24;1" dur="10s" repeatCount="indefinite"/><animateMotion path="M745,155 L745,225" keyPoints="0;0;1;1" keyTimes="0;0.05;0.18;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><rect x="-28.0" y="-13" width="56" height="26" rx="8" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">TERM</text></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25;0.27;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="745" y="311.2">Spring Boot shutdown hooks run ✓</tspan><tspan x="745" y="328.8">finish requests → close DB pool → exit</tspan></text></g></g>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" width="1000" height="340">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="340" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="150" width="110" height="60" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="175" y="150" width="110" height="60" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M150,180 L175,180" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M163.3,185.7 L175,180 L163.3,174.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="310" y="150" width="110" height="60" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M285,180 L310,180" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M298.3,185.7 L310,180 L298.3,174.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="445" y="150" width="110" height="60" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M420,180 L445,180" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M433.3,185.7 L445,180 L433.3,174.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="580" y="150" width="110" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M555,180 L580,180" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M568.3,185.7 L580,180 L568.3,174.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="715" y="150" width="110" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M690,180 L715,180" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M703.3,185.7 L715,180 L703.3,174.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="850" y="150" width="110" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M825,180 L850,180" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M838.3,185.7 L850,180 L838.3,174.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M40,132 L40,118 L555,118 L555,132" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M580,132 L580,118 L960,118 L960,132" fill="none" stroke="#2f9e44" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">SDLC — 7 stages every application goes through</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="95.0" y="180.0">Plan</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="95" y="248.0">what to build?</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="230.0" y="180.0">Code</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="230" y="248.0">write the code</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="365.0" y="180.0">Build</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="365" y="239.9">compile &amp;</tspan><tspan x="365" y="256.1">package</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="180.0">Test</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="248.0">find bugs</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="635.0" y="180.0">Deploy</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="635" y="239.9">install app</tspan><tspan x="635" y="256.1">on server</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="770.0" y="180.0">Operate</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="770" y="239.9">configs,</tspan><tspan x="770" y="256.1">updates</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="905.0" y="180.0">Monitor</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="905" y="239.9">health with</tspan><tspan x="905" y="256.1">100 → 10k users</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1971c2" font-weight="bold"><tspan x="297" y="100.0">DEVELOPMENT team  (works on local laptop)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#2f9e44" font-weight="bold"><tspan x="770" y="100.0">OPERATIONS team  (works on servers)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#495057" font-weight="normal"><tspan x="500" y="305.0">Dev writes the code  →  hands it over to Ops  →  Ops deploys, operates &amp; monitors it</tspan></text>
+</g>
+</svg>

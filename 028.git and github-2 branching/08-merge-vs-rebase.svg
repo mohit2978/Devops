@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="80" width="470" height="280" rx="16" fill="#ffffff" stroke="#1971c2" stroke-width="2" stroke-dasharray="8 6"/>
+<ellipse cx="75" cy="220" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="205" cy="160" rx="26" ry="26" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="185" cy="285" rx="26" ry="26" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="305" cy="285" rx="26" ry="26" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="420" cy="220" rx="26" ry="26" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M181,171 L101,208" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M109.3,198.0 L101,208 L114.0,208.2" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M163,272 L100,235" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M113.0,236.1 L100,235 L107.2,245.8" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M279,285 L214,285" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M225.7,279.3 L214,285 L225.7,290.7" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M395,213 L233,168" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M245.8,165.7 L233,168 L242.8,176.6" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M397,233 L330,271" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M337.4,260.3 L330,271 L343.0,270.1" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="510" y="80" width="470" height="280" rx="16" fill="#ffffff" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<ellipse cx="565" cy="220" rx="26" ry="26" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="665" cy="220" rx="26" ry="26" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M639,220 L594,220" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M605.7,214.3 L594,220 L605.7,225.7" fill="none" stroke="#495057" stroke-width="2"/>
+<ellipse cx="775" cy="220" rx="26" ry="26" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M749,220 L694,220" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M705.7,214.3 L694,220 L705.7,225.7" fill="none" stroke="#495057" stroke-width="2"/>
+<ellipse cx="885" cy="220" rx="26" ry="26" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M859,220 L804,220" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M815.7,214.3 L804,220 L815.7,225.7" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Merge vs Rebase — same files, different history</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1971c2" font-weight="bold"><tspan x="255" y="105.0">MERGE: keeps what really happened</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="75" y="220.0">C2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="205" y="160.0">C3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="185" y="285.0">D1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="305" y="285.0">D2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="420" y="220.0">M</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="255" y="340.0">✓ old commits untouched   ✗ extra merge commit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#2f9e44" font-weight="bold"><tspan x="745" y="105.0">REBASE: a clean straight line</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="565" y="220.0">C2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="665" y="220.0">C3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="775" y="220.0">D1′</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="885" y="220.0">D2′</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="745" y="340.0">✓ linear, easy to read   ✗ rewrites commits</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="385.0">merge INTO the branch you are on  •  rebase the branch you are on ONTO a base</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.3;0.32;0.95;0.97;1" dur="6s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="830" y="280.0">new hashes!</tspan></text></g></g>
+</svg>

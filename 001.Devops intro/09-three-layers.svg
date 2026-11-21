@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="55" cy="165" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M55,176 L55,213" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M35,193 L55,185 L75,193" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M40,243 L55,213 L70,243" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="130" y="100" width="220" height="210" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M145,166 L335,166" fill="none" stroke="#1e1e1e" stroke-width="1.5"/>
+<rect x="410" y="100" width="220" height="210" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M425,166 L615,166" fill="none" stroke="#1e1e1e" stroke-width="1.5"/>
+<rect x="690" y="100" width="220" height="210" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M705,166 L895,166" fill="none" stroke="#1e1e1e" stroke-width="1.5"/>
+<path d="M80,205 L130,205" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M118.3,210.7 L130,205 L118.3,199.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M91.7,199.3 L80,205 L91.7,210.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M350,205 L410,205" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M398.3,210.7 L410,205 L398.3,199.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M361.7,199.3 L350,205 L361.7,210.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M630,205 L690,205" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M678.3,210.7 L690,205 L678.3,199.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M641.7,199.3 L630,205 L641.7,210.7" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="130" y="345" width="780" height="54" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">The 3 layers (tiers) of an application</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#495057" font-weight="normal"><tspan x="500.0" y="66.0">Tier = Server = Layer — all mean the same thing</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="55" y="268.0">end user</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="240" y="125.0">WEB SERVER</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="normal"><tspan x="240" y="148.0">(presentation layer)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="240" y="208.8">shows the application</tspan><tspan x="240" y="226.2">who: UI/UX developers</tspan><tspan x="240" y="243.8">uses: HTML, CSS, JS</tspan><tspan x="240" y="261.2">e.g. Nginx, Apache</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="520" y="125.0">APP SERVER</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="normal"><tspan x="520" y="148.0">(logic layer)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="520" y="208.8">lets you USE the app</tspan><tspan x="520" y="226.2">who: backend developers</tspan><tspan x="520" y="243.8">uses: Java, Python, Go…</tspan><tspan x="520" y="261.2">e.g. Tomcat, Node.js</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="800" y="125.0">DB SERVER</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="normal"><tspan x="800" y="148.0">(data layer)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="800" y="208.8">stores &amp; retrieves data</tspan><tspan x="800" y="226.2">who: DB admins</tspan><tspan x="800" y="243.8">uses: SQL</tspan><tspan x="800" y="261.2">e.g. MySQL, Oracle, Postgres</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="105.0" y="191.0">HTTP</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="380.0" y="191.0">API</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="660.0" y="191.0">SQL</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="520.0" y="363.2">Admins use SSH (port 22) to log in and manage these servers.</tspan><tspan x="520.0" y="380.8">The tiers themselves talk over HTTP / APIs / database protocols.</tspan></text>
+</g>
+</svg>

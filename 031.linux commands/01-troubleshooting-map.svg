@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="520" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="85" width="200" height="60" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M220,115 L260,115" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M248.3,120.7 L260,115 L248.3,109.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="260" y="85" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="442" y="85" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M417,115 L442,115" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M430.3,120.7 L442,115 L430.3,109.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="624" y="85" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M599,115 L624,115" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M612.3,120.7 L624,115 L612.3,109.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="806" y="85" width="157" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M781,115 L806,115" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M794.3,120.7 L806,115 L794.3,109.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="185" width="200" height="60" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M220,215 L260,215" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M248.3,220.7 L260,215 L248.3,209.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="260" y="185" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="442" y="185" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M417,215 L442,215" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M430.3,220.7 L442,215 L430.3,209.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="624" y="185" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M599,215 L624,215" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M612.3,220.7 L624,215 L612.3,209.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="806" y="185" width="157" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M781,215 L806,215" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M794.3,220.7 L806,215 L794.3,209.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="285" width="200" height="60" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M220,315 L260,315" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M248.3,320.7 L260,315 L248.3,309.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="260" y="285" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="442" y="285" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M417,315 L442,315" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M430.3,320.7 L442,315 L430.3,309.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="624" y="285" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M599,315 L624,315" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M612.3,320.7 L624,315 L612.3,309.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="806" y="285" width="157" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M781,315 L806,315" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M794.3,320.7 L806,315 L794.3,309.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="385" width="200" height="60" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M220,415 L260,415" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M248.3,420.7 L260,415 L248.3,409.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="260" y="385" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="442" y="385" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M417,415 L442,415" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M430.3,420.7 L442,415 L430.3,409.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="624" y="385" width="157" height="60" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M599,415 L624,415" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M612.3,420.7 L624,415 L612.3,409.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="806" y="385" width="157" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M781,415 L806,415" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M794.3,420.7 L806,415 L794.3,409.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Production troubleshooting map — symptom → commands</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="120.0" y="106.2">100% CPU</tspan><tspan x="120.0" y="123.8">slow app</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="338.5" y="106.9">jps -lv</tspan><tspan x="338.5" y="123.1">find PID</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="520.5" y="106.9">top -H -p PID</tspan><tspan x="520.5" y="123.1">hot thread</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="702.5" y="106.9">printf &quot;%x&quot; TID</tspan><tspan x="702.5" y="123.1">→ hex nid</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="884.5" y="106.9">jstack PID</tspan><tspan x="884.5" y="123.1">find the line</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="120.0" y="206.2">Port 8080</tspan><tspan x="120.0" y="223.8">already in use</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="338.5" y="206.9">lsof -i :8080</tspan><tspan x="338.5" y="223.1">who owns it</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="520.5" y="206.9">ss -tulpn</tspan><tspan x="520.5" y="223.1">all listeners</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="702.5" y="206.9">kill -15 PID</tspan><tspan x="702.5" y="223.1">graceful stop</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="884.5" y="206.9">restart the</tspan><tspan x="884.5" y="223.1">new app ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="120.0" y="306.2">Java process</tspan><tspan x="120.0" y="323.8">vanished</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="338.5" y="306.9">dmesg -T |</tspan><tspan x="338.5" y="323.1">grep -i oom</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="520.5" y="306.9">free -h</tspan><tspan x="520.5" y="323.1">real memory</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="702.5" y="306.9">journalctl -k</tspan><tspan x="702.5" y="323.1">kernel log</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="884.5" y="306.9">fix -Xmx /</tspan><tspan x="884.5" y="323.1">memory limit ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="120.0" y="415.0">Disk full</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="338.5" y="406.9">df -h</tspan><tspan x="338.5" y="423.1">which disk</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="520.5" y="406.9">du -sh * |</tspan><tspan x="520.5" y="423.1">sort -rh</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="702.5" y="406.9">zgrep old .gz</tspan><tspan x="702.5" y="423.1">logs if needed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="884.5" y="406.9">rotate / delete</tspan><tspan x="884.5" y="423.1">old logs ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="505.0">each row is covered in detail below</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.001;0.010;0.240;0.250;1" dur="12s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="75" width="976" height="80" rx="14" fill="none" stroke="#e8590c" stroke-width="4"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.250;0.260;0.490;0.500;1" dur="12s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="175" width="976" height="80" rx="14" fill="none" stroke="#e8590c" stroke-width="4"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.500;0.510;0.740;0.750;1" dur="12s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="275" width="976" height="80" rx="14" fill="none" stroke="#e8590c" stroke-width="4"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.750;0.760;0.990;0.999;1" dur="12s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="375" width="976" height="80" rx="14" fill="none" stroke="#e8590c" stroke-width="4"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"></g></g>
+</svg>

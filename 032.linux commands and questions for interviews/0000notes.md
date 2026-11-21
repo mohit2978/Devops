@@ -2,13 +2,15 @@
 
 This guide compiles the most critical, real-world Linux troubleshooting scenarios and technical questions asked during senior Java Developer, Backend Engineer, and DevOps interviews.
 
+> All diagrams are **animated**: open the markdown preview to see them play.
+
 ---
 
 ## Scenario 1: The 100% CPU Spike Investigation (#1 Most Asked Question)
 
 > **Interviewer:** *"Your Spring Boot microservice running on an AWS EC2 instance is consuming 100% CPU. Users are reporting timeouts. Walk me through the exact step-by-step commands you run on the Linux terminal to find the culprit line in your Java code."*
 
-![High CPU Investigation Workflow](high-cpu-investigation-workflow.svg)
+![High CPU investigation](01-high-cpu-thread.svg)
 
 ### Step-by-Step Resolution:
 
@@ -73,7 +75,7 @@ Look at line 142 in `OrderDiscountCalculator.java`. You will typically find:
 
 > **Interviewer:** *"Your Java microservice running in a Docker container or Kubernetes pod died abruptly. There is NO `OutOfMemoryError` or stack trace in `application.log`. The container exited with code 137. What happened, why is there no log, and how do you prove it?"*
 
-![Linux OOM Killer Mechanism](oom-killer-mechanism.svg)
+![Exit code 137 and the container memory limit](02-exit-code-137.svg)
 
 ### Answer & Deep Dive:
 
@@ -110,6 +112,8 @@ Always set the JVM Max Heap (`-Xmx`) to **at most 70-75%** of the container/syst
 
 > **Interviewer:** *"What is the difference between `kill -15`, `kill -9`, and `kill -3` when managing a Java application in Linux?"*
 
+![kill signals](03-kill-signals.svg)
+
 | Signal | Name | Can be Caught? | Effect on Java / Spring Boot Application |
 | :---: | :---: | :---: | :--- |
 | **`kill -15`** | `SIGTERM` | **Yes** | **Graceful Shutdown**: Calls Spring's `@PreDestroy` methods, closes HikariCP database pools, finishes in-flight HTTP requests, removes microservice from Eureka/Consul discovery. |
@@ -121,6 +125,8 @@ Always set the JVM Max Heap (`-Xmx`) to **at most 70-75%** of the container/syst
 ## Scenario 4: Resolving "Address already in use: 8080"
 
 > **Interviewer:** *"You deploy a new build of your Spring Boot service, but it fails to start with `java.net.BindException: Address already in use`. How do you resolve this?"*
+
+![Port already in use](04-port-in-use.svg)
 
 ### Terminal Commands:
 ```bash
@@ -156,6 +162,8 @@ kill -9 19021
 ## Scenario 5: Disk Space Full & "Ghost" Deleted Files
 
 > **Interviewer:** *"The disk on your production server is 100% full (`No space left on device`). You used `rm app.log` to delete a massive 20GB log file, but `df -h` still shows the disk as 100% full! Why, and how do you fix it without restarting the application?"*
+
+![Deleted file still holding disk space](05-ghost-deleted-file.svg)
 
 ### Explanation:
 In Linux, deleting a file with `rm` only removes the directory entry (name link). If an active Java process **still has an open file descriptor** pointing to that file inode, the OS will **not release the disk blocks** until the process closes the descriptor or terminates!
@@ -194,6 +202,8 @@ Clear the file content through the `/proc` filesystem:
 
 > **Interviewer:** *"Your Java application cannot connect to an Oracle/MySQL database on host `10.0.1.50:3306`. The server does not have `mysql` client or `telnet` installed. How do you test if the port is open and accessible from your Linux instance?"*
 
+![Testing a port with nc](06-nc-connectivity.svg)
+
 ### Solution 1: Using `nc` (Netcat)
 ```bash
 nc -zv 10.0.1.50 3306
@@ -222,6 +232,8 @@ curl -v telnet://10.0.1.50:3306
 > ```
 > *Is this server about to run out of memory? Explain the difference between `free` and `available`."*
 
+![free vs available memory](07-memory-free.svg)
+
 ### Answer:
 - **`free` (400 MB)** is memory that is completely empty and untouched.
 - In Linux, unused RAM is wasted RAM! The kernel uses inactive memory for **`buff/cache`** (caching disk blocks, jar files, and database indexes) to make disk operations lightning fast.
@@ -233,6 +245,8 @@ curl -v telnet://10.0.1.50:3306
 ## Scenario 8: Searching Across 30 Compressed Daily Logs
 
 > **Interviewer:** *"We archive daily logs using gzip (`app-2026-09-01.log.gz` to `app-2026-09-30.log.gz`). You need to find all occurrences of `PaymentGatewayException` across all 30 days. How do you do it quickly without running `gunzip` on all files?"*
+
+![zgrep across compressed logs](08-zgrep-logs.svg)
 
 ### Command:
 ```bash
@@ -253,6 +267,8 @@ zgrep -Hn -C 2 "PaymentGatewayException" /var/log/app/app-*.log.gz
 > *Is the system overloaded?"*
 
 ### Answer:
+![Load average vs CPU cores](09-load-average.svg)
+
 - It **depends completely on the number of CPU cores**!
 - Check total cores using:
   ```bash
@@ -270,16 +286,15 @@ zgrep -Hn -C 2 "PaymentGatewayException" /var/log/app/app-*.log.gz
 
 ### Detailed Technical Breakdown:
 
-```text
- nohup   java -jar app.jar   > app.log   2>&1   &
- ─────   ─────────────────   ─────────   ────   ─
-   │             │               │         │    │
-   │             │               │         │    └── 5. Background Execution: Runs job asynchronously in background.
-   │             │               │         └─────── 4. Redirect Stderr (2) to Stdout (1): Both error & normal logs merge.
-   │             │               └───────────────── 3. Redirect Stdout (1) to app.log (Overwrite/Create).
-   │             └───────────────────────────────── 2. The Java Application Execution.
-   └─────────────────────────────────────────────── 1. Immune to SIGHUP: Process keeps running when SSH disconnects.
-```
+![nohup and redirection](10-nohup-redirect.svg)
+
+| # | Part | Meaning |
+| :---: | :--- | :--- |
+| 1 | `nohup` | Immune to `SIGHUP`: the process keeps running when the SSH session disconnects |
+| 2 | `java -jar app.jar` | The Java application itself |
+| 3 | `> app.log` | Redirect **stdout** (fd 1) to `app.log` (creates / overwrites it) |
+| 4 | `2>&1` | Redirect **stderr** (fd 2) to wherever stdout goes, so errors and normal logs land in one file |
+| 5 | `&` | Run in the background and give the terminal prompt back |
 
 1. **`nohup` (No Hang Up):** Prevents the process from receiving the `SIGHUP` (Signal Hang Up) signal sent when the controlling terminal or SSH session closes.
 2. **`> app.log`:** Redirects File Descriptor 1 (`stdout`) to `app.log`.
@@ -292,7 +307,7 @@ zgrep -Hn -C 2 "PaymentGatewayException" /var/log/app/app-*.log.gz
 
 > **Interviewer:** *"Your Spring Boot application has stopped responding to API calls. The CPU utilization is near 0%, but the Tomcat thread pool is exhausted, and health checks are timing out. How do you verify on Linux whether a deadlock is occurring?"*
 
-![Java Deadlock Detection Workflow](deadlock-detection-workflow.svg)
+![Java deadlock](11-deadlock.svg)
 
 ### Understanding a Java Deadlock
 A deadlock occurs when two or more threads are permanently blocked because each holds a lock that the other needs:
@@ -395,6 +410,8 @@ MySQL automatically resolves database deadlocks by selecting the transaction wit
 ---
 
 ### How to Fix Deadlocks in Java Code:
+
+![Fixing a deadlock with lock ordering](12-deadlock-fix.svg)
 1. **Enforce Consistent Lock Ordering:** Always acquire locks in a predetermined, globally consistent order (e.g., sort account IDs before locking: `lock(min(id1, id2))` followed by `lock(max(id1, id2))`).
 2. **Use Timed Locks (`tryLock`):** Replace `synchronized` blocks with `ReentrantLock.tryLock(timeout, TimeUnit)` so threads back off instead of waiting indefinitely.
 3. **Keep Critical Sections Minimal:** Avoid calling external microservices, database operations, or long-running computations inside synchronized blocks.

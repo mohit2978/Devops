@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="600" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="400" y="85" width="200" height="60" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="45" y="230" width="250" height="310" rx="16" fill="#ffffff" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="80" y="255" width="180" height="56" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="80" y="430" width="180" height="56" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M135,430 L135,311" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M140.7,322.7 L135,311 L129.3,322.7" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M205,311 L205,430" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M199.3,418.3 L205,430 L210.7,418.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M232,269 L447,159" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M439.2,169.4 L447,159 L434.0,159.3" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M433,131 L218,241" fill="none" stroke="#6741d9" stroke-width="2"/>
+<path d="M225.8,230.6 L218,241 L231.0,240.7" fill="none" stroke="#6741d9" stroke-width="2"/>
+<rect x="375" y="230" width="250" height="310" rx="16" fill="#ffffff" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="410" y="255" width="180" height="56" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="410" y="430" width="180" height="56" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M465,430 L465,311" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M470.7,322.7 L465,311 L459.3,322.7" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M535,311 L535,430" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M529.3,418.3 L535,430 L540.7,418.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M516,255 L516,145" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M521.7,156.7 L516,145 L510.3,156.7" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M484,145 L484,255" fill="none" stroke="#6741d9" stroke-width="2"/>
+<path d="M478.3,243.3 L484,255 L489.7,243.3" fill="none" stroke="#6741d9" stroke-width="2"/>
+<rect x="705" y="230" width="250" height="310" rx="16" fill="#ffffff" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="740" y="255" width="180" height="56" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="740" y="430" width="180" height="56" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M795,430 L795,311" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M800.7,322.7 L795,311 L789.3,322.7" fill="none" stroke="#1971c2" stroke-width="2"/>
+<path d="M865,311 L865,430" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M859.3,418.3 L865,430 L870.7,418.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M768,269 L553,159" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M566.0,159.3 L553,159 L560.8,169.4" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M567,131 L782,241" fill="none" stroke="#6741d9" stroke-width="2"/>
+<path d="M769.0,240.7 L782,241 L774.2,230.6" fill="none" stroke="#6741d9" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Distributed VCS — how Git works</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#495057" font-weight="normal"><tspan x="500.0" y="66.0">every PC has its own full repository; one central repository (GitHub) holds the final shared code</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="105.6">central repo</tspan><tspan x="500.0" y="124.4">(GitHub server)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="bold"><tspan x="170" y="555.0">PC #1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="170.0" y="274.2">local repo</tspan><tspan x="170.0" y="291.8">(.git — full history)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="170.0" y="449.2">working copy</tspan><tspan x="170.0" y="466.8">(your files)</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="125" y="370.0">commit</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="215" y="370.0">checkout</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e8590c" font-weight="bold"><tspan x="351.4477934594619" y="237.0">push</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#6741d9" font-weight="bold"><tspan x="313.5522065405381" y="163.0">pull</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="bold"><tspan x="500" y="555.0">PC #2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="274.2">local repo</tspan><tspan x="500.0" y="291.8">(.git — full history)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="449.2">working copy</tspan><tspan x="500.0" y="466.8">(your files)</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="455" y="370.0">commit</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="545" y="370.0">checkout</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e8590c" font-weight="bold"><tspan x="541.6" y="200.0">push</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#6741d9" font-weight="bold"><tspan x="458.4" y="200.0">pull</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="bold"><tspan x="830" y="555.0">PC #3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="830.0" y="274.2">local repo</tspan><tspan x="830.0" y="291.8">(.git — full history)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="830.0" y="449.2">working copy</tspan><tspan x="830.0" y="466.8">(your files)</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="785" y="370.0">commit</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="bold"><tspan x="875" y="370.0">checkout</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e8590c" font-weight="bold"><tspan x="648.5522065405381" y="237.0">push</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#6741d9" font-weight="bold"><tspan x="686.4477934594619" y="163.0">pull</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="588.0">full backup on every PC • work offline • share through the central repo</tspan></text>
+</g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.001;0.02;0.56;0.59;1" dur="9s" repeatCount="indefinite"/><animateMotion path="M135,458 L135,283 L232.2876128690238,269.24397060763744 L447.2876128690238,159.2439706076374 L500,115" keyPoints="0;0;0.2999;0.2999;0.4682;0.4682;0.8821;0.8821;1;1" keyTimes="0;0.06;0.2;0.24;0.27;0.29;0.42;0.46;0.5;1" calcMode="linear" dur="9s" repeatCount="indefinite"/><rect x="-22.0" y="-13" width="44" height="26" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">C1</text></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.55;0.98;0.999;1" dur="9s" repeatCount="indefinite"/><animateMotion path="M500,115 L484.0,145.0 L484.0,255.0 L500,283 L535,311 L535,430 L500,458" keyPoints="0;0;0.0883;0.0883;0.3741;0.3741;0.4579;0.4579;0.5744;0.5744;0.8835;0.8835;1;1" keyTimes="0;0.55;0.58;0.6;0.72;0.74;0.76;0.78;0.8;0.8;0.9;0.92;0.94;1" calcMode="linear" dur="9s" repeatCount="indefinite"/><rect x="-22.0" y="-13" width="44" height="26" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">C1</text></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.55;0.98;0.999;1" dur="9s" repeatCount="indefinite"/><animateMotion path="M500,115 L567.2876128690237,130.7560293923626 L782.2876128690237,240.7560293923626 L830,283 L865,311 L865,430 L830,458" keyPoints="0;0;0.1185;0.1185;0.5328;0.5328;0.6421;0.6421;0.719;0.719;0.9231;0.9231;1;1" keyTimes="0;0.55;0.58;0.6;0.72;0.74;0.76;0.78;0.8;0.8;0.9;0.92;0.94;1" calcMode="linear" dur="9s" repeatCount="indefinite"/><rect x="-22.0" y="-13" width="44" height="26" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e">C1</text></g>
+</svg>

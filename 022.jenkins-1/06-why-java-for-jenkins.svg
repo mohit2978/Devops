@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 390" width="1000" height="390">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="390" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="85" width="430" height="235" rx="16" fill="#e7f5ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="70" y="135" width="370" height="46" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="70" y="195" width="370" height="46" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="70" y="255" width="370" height="46" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="530" y="85" width="430" height="235" rx="16" fill="#fff9db" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="135" width="370" height="46" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="192" width="370" height="56" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="560" y="260" width="370" height="44" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Why install Java for Jenkins, but nothing for VS Code?</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="255" y="110.0">VS Code (an Electron app)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="255.0" y="158.0">VS Code code (TypeScript → JavaScript)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="255.0" y="218.0">Node.js runtime — bundled inside ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="255.0" y="278.0">Chromium — bundled inside ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="745" y="110.0">Jenkins on a server</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="745.0" y="158.0">Jenkins code (Java bytecode, jenkins.war)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="745.0" y="211.2">Java runtime (JVM) — NOT bundled ✗</tspan><tspan x="745.0" y="228.8">→ you install openjdk-17 yourself</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="745.0" y="282.0">server OS (Ubuntu)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="255" y="345.0">all-in-one: download → run</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e8590c" font-weight="bold"><tspan x="745" y="345.0">relies on the Java already on the system</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="375.0">No bundled JVM → smaller package • you pick the Java version • servers often already have Java</tspan></text>
+</g>
+</svg>

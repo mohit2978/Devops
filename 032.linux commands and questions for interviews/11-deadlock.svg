@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="1000" height="480">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="480" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="200" width="230" height="80" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="730" y="200" width="230" height="80" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="500" cy="120" rx="70" ry="42" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="500" cy="360" rx="70" ry="42" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M270,215 L432,135" fill="none" stroke="#2f9e44" stroke-width="3"/>
+<path d="M424.0,145.3 L432,135 L419.0,135.1" fill="none" stroke="#2f9e44" stroke-width="3"/>
+<path d="M730,265 L568,345" fill="none" stroke="#2f9e44" stroke-width="3"/>
+<path d="M576.0,334.7 L568,345 L581.0,344.9" fill="none" stroke="#2f9e44" stroke-width="3"/>
+<path d="M270,265 L432,345" fill="none" stroke="#e03131" stroke-width="3" stroke-dasharray="8 6"/>
+<path d="M419.0,344.9 L432,345 L424.0,334.7" fill="none" stroke="#e03131" stroke-width="3"/>
+<path d="M730,215 L568,135" fill="none" stroke="#e03131" stroke-width="3" stroke-dasharray="8 6"/>
+<path d="M581.0,135.1 L568,135 L576.0,145.3" fill="none" stroke="#e03131" stroke-width="3"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Java deadlock — two threads waiting for each other forever</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="155.0" y="240.0">pool-2-thread-1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="845.0" y="240.0">pool-2-thread-2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="111.2">🔒 Lock A</tspan><tspan x="500" y="128.8">(account 1)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="351.2">🔒 Lock B</tspan><tspan x="500" y="368.8">(account 2)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="330" y="150.0">HOLDS</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="bold"><tspan x="670" y="335.0">HOLDS</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="320" y="335.0">WAITS FOR</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="680" y="150.0">WAITS FOR</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="500" y="231.2">circular wait</tspan><tspan x="500" y="248.8">→ nobody moves</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="normal"><tspan x="500" y="430.0">symptoms: CPU ≈ 0%, Tomcat thread pool exhausted, health checks time out</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="458.0">jstack -l PID  →  &quot;Found one Java-level deadlock&quot;  + the exact line (TransferService.java:45)</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="100" y="290" width="110" height="28" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="155.0" y="304.0">BLOCKED</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="790" y="290" width="110" height="28" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="845.0" y="304.0">BLOCKED</tspan></text></g></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.04;0.05;0.9;0.91;1" dur="6s" repeatCount="indefinite"/><animateMotion path="M270,265 L420,339" keyPoints="0;0;1;1" keyTimes="0;0.05;0.4;1" calcMode="linear" dur="6s" repeatCount="indefinite"/><rect x="-13.0" y="-13" width="26" height="26" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e"></text></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.04;0.05;0.9;0.91;1" dur="6s" repeatCount="indefinite"/><animateMotion path="M730,215 L580,141" keyPoints="0;0;1;1" keyTimes="0;0.05;0.4;1" calcMode="linear" dur="6s" repeatCount="indefinite"/><rect x="-13.0" y="-13" width="26" height="26" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e"></text></g>
+</svg>

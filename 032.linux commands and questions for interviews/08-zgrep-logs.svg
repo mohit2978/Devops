@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="100" width="230" height="30" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="48" y="134" width="230" height="30" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="56" y="168" width="230" height="30" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="64" y="202" width="230" height="30" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="72" y="236" width="230" height="30" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="400" y="150" width="200" height="80" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="720" y="110" width="250" height="160" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M285,190 L400,190" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M388.3,195.7 L400,190 L388.3,184.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M600,190 L720,190" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M708.3,195.7 L720,190 L708.3,184.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">zgrep — search 30 gzipped logs without unzipping them</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="155.0" y="115.0">app-2026-09-01.log.gz</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="163.0" y="149.0">app-2026-09-02.log.gz</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="171.0" y="183.0">app-2026-09-03.log.gz</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="179.0" y="217.0">app-2026-09-04.log.gz</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="187.0" y="251.0">app-2026-09-05.log.gz</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="170" y="290.0">… 30 compressed files</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="173.8">zgrep</tspan><tspan x="500.0" y="190.0">decompress in memory</tspan><tspan x="500.0" y="206.2">→ search the stream</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="845.0" y="190.0"></tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#69db7c" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="735" y="130.0">matches</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="320.0">zgrep -Hn -C 2 &quot;PaymentGatewayException&quot; /var/log/app/app-*.log.gz</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="350.0">-H file name • -n line number • -C 2 two lines of context • files stay compressed on disk</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="378.0">friends: zcat (print) • zless (page through) • zgrep -c (count matches per file)</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.3;0.32;0.97;0.99;1" dur="8s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="735" y="165.0">09-04.gz:812: Payment…Exception</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.97;0.99;1" dur="8s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="735" y="195.0">09-17.gz:96:  Payment…Exception</tspan></text></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.6;0.62;0.97;0.99;1" dur="8s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="12" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="735" y="225.0">09-29.gz:44:  Payment…Exception</tspan></text></g></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.04;0.05;0.25;0.26;1" dur="8s" repeatCount="indefinite"/><animateMotion path="M290,190 L600,190 L715,190" keyPoints="0;0;1;1" keyTimes="0;0.05;0.25;1" calcMode="linear" dur="8s" repeatCount="indefinite"/><rect x="-15.0" y="-13" width="30" height="26" rx="8" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e"></text></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.4;0.41;1" dur="8s" repeatCount="indefinite"/><animateMotion path="M290,190 L600,190 L715,190" keyPoints="0;0;1;1" keyTimes="0;0.2;0.4;1" calcMode="linear" dur="8s" repeatCount="indefinite"/><rect x="-15.0" y="-13" width="30" height="26" rx="8" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e"></text></g>
+<g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.34;0.35;0.55;0.56;1" dur="8s" repeatCount="indefinite"/><animateMotion path="M290,190 L600,190 L715,190" keyPoints="0;0;1;1" keyTimes="0;0.35;0.55;1" calcMode="linear" dur="8s" repeatCount="indefinite"/><rect x="-15.0" y="-13" width="30" height="26" rx="8" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"></rect><text x="0" y="1" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace" fill="#1e1e1e"></text></g>
+</svg>

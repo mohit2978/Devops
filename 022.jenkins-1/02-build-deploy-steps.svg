@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" width="1000" height="340">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="340" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="95" width="160" height="110" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="225" y="95" width="160" height="110" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M190,150 L225,150" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M213.3,155.7 L225,150 L213.3,144.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="420" y="95" width="160" height="110" rx="12" fill="#96f2d7" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M385,150 L420,150" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M408.3,155.7 L420,150 L408.3,144.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="615" y="95" width="160" height="110" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M580,150 L615,150" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M603.3,155.7 L615,150 L603.3,144.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="810" y="95" width="160" height="110" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M775,150 L810,150" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M798.3,155.7 L810,150 L798.3,144.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="110" y="265" width="780" height="54" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Build &amp; Deployment process — 5 steps</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="110.0" y="132.5">1. Checkout</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="110.0" y="151.7">take latest code</tspan><tspan x="110.0" y="169.2">from GitHub repo</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="110" y="230.0">GitHub</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="305.0" y="132.5">2. Build</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="305.0" y="151.7">compile &amp; package</tspan><tspan x="305.0" y="169.2">→ .jar / .war</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="305" y="230.0">Maven</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="132.5">3. Code review</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="151.7">check quality,</tspan><tspan x="500.0" y="169.2">bugs, smells</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="500" y="230.0">SonarQube</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="695.0" y="132.5">4. Store artifact</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="695.0" y="151.7">upload the .war</tspan><tspan x="695.0" y="169.2">to a repository</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="695" y="230.0">Nexus</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="890.0" y="132.5">5. Deploy</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="890.0" y="151.7">install the app</tspan><tspan x="890.0" y="169.2">on the server</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="890" y="230.0">Tomcat / Docker / K8s</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="283.2">Developers commit code many times a day → this whole sequence must run every time</tspan><tspan x="500.0" y="300.8">→ doing it by hand is slow &amp; error prone → automate it with Jenkins</tspan></text>
+</g>
+</svg>

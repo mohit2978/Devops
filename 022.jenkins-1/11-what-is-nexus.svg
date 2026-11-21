@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="520" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="25" y="155" width="170" height="90" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M195,200 L290,200" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M278.3,205.7 L290,200 L278.3,194.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="290" y="95" width="340" height="280" rx="12" fill="#fff4e6" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="320" y="162" width="280" height="32" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="320" y="200" width="280" height="32" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="320" y="238" width="280" height="32" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="320" y="306" width="280" height="32" rx="8" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="780" y="110" width="180" height="60" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M630,220 L780,140" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M772.3,150.5 L780,140 L767.0,140.5" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="780" y="200" width="180" height="60" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M630,220 L780,230" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M767.9,234.9 L780,230 L768.7,223.6" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="780" y="290" width="180" height="60" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M630,220 L780,320" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M767.1,318.2 L780,320 L773.4,308.8" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M780,330 Q680,300 602,216" fill="none" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M614.1,220.7 L602,216 L605.8,228.4" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M25,412 L975,412" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="25" y="430" width="200" height="56" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M225,458 L300,458" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M288.3,463.7 L300,458 L288.3,452.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="300" y="430" width="330" height="56" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M630,458 L700,458" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M688.3,463.7 L700,458 L688.3,452.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="700" y="430" width="275" height="56" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">What is Nexus?  →  a warehouse for build artifacts</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#495057" font-weight="normal"><tspan x="500.0" y="66.0">Nexus Repository Manager stores every versioned .jar / .war (and Docker image) your builds produce</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="110.0" y="190.6">Jenkins</tspan><tspan x="110.0" y="209.4">builds the .war</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="242.5" y="186.0">upload</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#495057" font-weight="normal"><tspan x="242" y="222.0">(mvn deploy)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="460" y="118.0">Nexus Repository</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="460" y="147.0">maven-releases  (final versions)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="460.0" y="178.0">app-1.0.war</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="460.0" y="216.0">app-1.1.war</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="460.0" y="254.0">app-1.2.war   ← latest</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="460" y="291.0">maven-snapshots  (work in progress)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="460.0" y="322.0">app-1.3-SNAPSHOT.war</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="870.0" y="140.0">DEV server</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="870.0" y="230.0">QA server</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="870.0" y="320.0">PROD server</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="705" y="142.5">download the</tspan><tspan x="705" y="157.5">SAME .war</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="720" y="395.0">prod broken? redeploy app-1.1 in seconds</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="125.0" y="449.2">Maven Central</tspan><tspan x="125.0" y="466.8">(internet)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="465.0" y="449.2">Nexus proxy repo</tspan><tspan x="465.0" y="466.8">(caches downloaded dependencies)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="837.5" y="449.2">builds get spring, junit… fast</tspan><tspan x="837.5" y="466.8">from inside the company</tspan></text>
+</g>
+</svg>

@@ -1,5 +1,7 @@
 # Advanced Git & GitHub Engineering Guide: SDE-2 Interview Preparation & Architectural Mastery
 
+> All diagrams are **animated**: open the markdown preview to see them play. Arrows between commits point from a commit to its parent.
+
 ---
 
 ## 1. Executive Summary & Curriculum Gap Analysis
@@ -29,7 +31,7 @@ While sufficient for day-to-day Junior Developer tasks, **SDE-2 (Mid-to-Senior S
 
 Branch integration is one of the most heavily scrutinized areas in technical interviews.
 
-![Git Merge vs Git Rebase Visualized](./git-merge-vs-rebase-visualized.svg)
+![Merge vs rebase](01-merge-vs-rebase.svg)
 
 ---
 
@@ -60,12 +62,7 @@ Branch integration is one of the most heavily scrutinized areas in technical int
 
 Assume `main` has advanced with commit `C3`, while `feature` has two commits `F1` and `F2` branched from `C2`.
 
-```
-Initial diverged state:
-main:    C1 ─── C2 ─── C3
-                 \
-feature:          F1 ─── F2
-```
+![Starting point: diverged branches](01a-walk-start.svg)
 
 #### Approach A: Git Merge
 When you run:
@@ -79,12 +76,7 @@ git merge feature
 3. If conflicts arise, you resolve them and commit.
 4. Git creates commit `M` whose parents are `C3` and `F2`.
 
-```
-Resulting Merge Graph:
-main:    C1 ─── C2 ─── C3 ─────── M (HEAD -> main)
-                 \               /
-feature:          F1 ────────── F2
-```
+![Result of git merge](01b-walk-merge.svg)
 
 #### Approach B: Git Rebase
 When you run:
@@ -100,12 +92,7 @@ git rebase main
 5. Git applies `F2` on top of `F1'` $\rightarrow$ results in `F2'` (new SHA).
 6. The old commits `F1` and `F2` become unreferenced (eligible for garbage collection).
 
-```
-Resulting Rebase Graph:
-main:    C1 ─── C2 ─── C3
-                         \
-feature:                  F1' ─── F2' (HEAD -> feature)
-```
+![Result of git rebase](01c-walk-rebase.svg)
 
 Now, bringing `main` up to date is a simple zero-conflict **Fast-Forward Merge**:
 ```bash
@@ -139,24 +126,13 @@ When you rebase, Git creates new commit SHAs (`F1'`), discarding the original SH
 
 When closing a PR in GitHub/GitLab, three options exist:
 
-```
-+----------------------------------------------------------------------------------------------------+
-| 1. Create a merge commit (git merge --no-ff)                                                      |
-|    - Appends all individual feature commits + 1 merge commit.                                      |
-|    - PROS: Retains full history and author metadata.                                               |
-|    - CONS: Can make main branch git log noisy and cluttered.                                      |
-+----------------------------------------------------------------------------------------------------+
-| 2. Squash and merge (git merge --squash)                                                           |
-|    - Condenses all N commits on feature branch into exactly 1 clean commit on main.                |
-|    - PROS: Completely eliminates WIP/typo commits ("fix typo", "test"). Perfect for small PRs.     |
-|    - CONS: Discards granular incremental commit history.                                           |
-+----------------------------------------------------------------------------------------------------+
-| 3. Rebase and merge (git rebase + fast-forward)                                                    |
-|    - Replays each commit individually onto main in a flat line without a merge commit.            |
-|    - PROS: Clean linear history with full granular commits.                                        |
-|    - CONS: Modifies commit SHAs; if any commit broke builds, git bisect must check every commit.   |
-+----------------------------------------------------------------------------------------------------+
-```
+![PR merge strategies](02-pr-merge-strategies.svg)
+
+| Button | Git equivalent | What happens on `main` | ✓ Pros | ✗ Cons |
+| :--- | :--- | :--- | :--- | :--- |
+| **Create a merge commit** | `git merge --no-ff` | All feature commits **+ 1 merge commit** | Full history and author metadata kept | `git log` on main gets noisy |
+| **Squash and merge** | `git merge --squash` | All N commits condensed into **exactly 1** commit | Removes WIP / "fix typo" commits; perfect for small PRs | Loses the granular commit history |
+| **Rebase and merge** | `git rebase` + fast-forward | Each commit replayed **in a straight line**, no merge commit | Linear history *and* granular commits | Commit SHAs change; no single commit marks the PR |
 
 ---
 
@@ -164,7 +140,7 @@ When closing a PR in GitHub/GitLab, three options exist:
 
 Git is fundamentally **not** a file delta tracker (unlike SVN or CVS). Git is a **content-addressable filesystem** built on a Directed Acyclic Graph (DAG) of immutable cryptographic objects.
 
-![Git Internals Objects & Architecture](./git-internals-objects-architecture.svg)
+![Git internals: refs, commits, trees, blobs](03-git-internals.svg)
 
 ---
 
@@ -241,7 +217,9 @@ git cat-file -p HEAD
 
 ## 4. History Manipulation & Disaster Recovery: Reset, Revert, and Reflog
 
-![Git Reset vs Revert Lifecycle](./git-reset-vs-revert-lifecycle.svg)
+![git reset modes](04-reset-modes.svg)
+
+![git revert vs git reset](04b-revert-vs-reset.svg)
 
 ---
 
@@ -299,6 +277,8 @@ git revert -m 1 <merge-commit-hash>
 Every time `HEAD` moves (commit, checkout, rebase, reset, merge), Git appends an entry to `.git/logs/HEAD`.
 
 #### Practical Recovery Scenario: Rescuing an Accidental `git reset --hard`
+
+![Recovering with git reflog](05-reflog-recovery.svg)
 Suppose you ran `git reset --hard HEAD~3` and accidentally wiped 3 critical commits:
 
 ```bash
@@ -328,27 +308,25 @@ git branch recovery-branch 8f9c1d2
 
 In enterprise software engineering (especially high-throughput Microservices and Continuous Delivery):
 
-```
-+----------------------------------------------------------------------------------------------------+
-| TRUNK-BASED DEVELOPMENT (TBD) - Preferred for Modern Cloud-Native CI/CD                           |
-| - Single shared branch ("main" or "trunk").                                                        |
-| - Developers create short-lived feature branches (< 1-2 days lifecycle).                           |
-| - Frequently merged into main via PRs with automated CI testing.                                   |
-| - Incomplete features are protected behind Feature Flags (Toggles), NOT long-lived branches.        |
-| - Enables multiple deployments per day; eliminates painful multi-week "merge hell".                |
-+----------------------------------------------------------------------------------------------------+
-| GITFLOW - Suited for Traditional Scheduled Release Cadences (e.g., On-Premises, Embedded)         |
-| - Multiple persistent branches: main, develop, release/*, feature/*, hotfix/*.                    |
-| - High governance and verification at stage boundaries.                                            |
-| - Heavier overhead; slow feedback loops; prone to massive merge conflicts during release merges.   |
-+----------------------------------------------------------------------------------------------------+
-```
+![Trunk-based development vs GitFlow](06-trunk-vs-gitflow.svg)
+
+| | Trunk-Based Development (TBD) | GitFlow |
+| :--- | :--- | :--- |
+| **Best for** | Modern cloud-native CI/CD, microservices | Scheduled releases (on-premises, embedded, mobile app stores) |
+| **Branches** | One shared `main` (trunk) + short-lived feature branches | Persistent `main`, `develop`, plus `release/*`, `feature/*`, `hotfix/*` |
+| **Branch lifetime** | Less than 1–2 days | Days to weeks |
+| **Integration** | Merged to main often via PRs with automated CI | Merged at stage boundaries (feature → develop → release → main) |
+| **Unfinished work** | Hidden behind **feature flags** (toggles) | Kept on long-lived feature branches |
+| **Deploy frequency** | Many times per day | Per release cycle |
+| **Downside** | Needs strong automated tests + feature-flag discipline | Heavy overhead, slow feedback, painful "merge hell" at release time |
 
 ---
 
 ### Automated Bug Isolation with `git bisect`
 
 When a regression or bug is discovered in production, identifying which commit introduced it across hundreds of commits manually is tedious. `git bisect` executes a binary search ($O(\log N)$) through the commit history.
+
+![git bisect binary search](07-git-bisect.svg)
 
 #### Automated Bisect with Maven / JUnit:
 ```bash
@@ -382,6 +360,8 @@ git bisect reset
 
 > **Question:** An engineer committed an active AWS Access Key or Database Password and pushed it to GitHub. What is the immediate and complete incident response?
 
+![Leaked secret incident response](08-leaked-secret.svg)
+
 1. **Step 1 (Immediate - Containment)**:
    - **Revoke and rotate the compromised credential immediately** in the AWS Console / Vault / IAM. Do not assume deleting the commit makes it secure; web crawlers index public GitHub commits in under 3 seconds.
 2. **Step 2 (Local & Remote History Rewrite)**:
@@ -409,6 +389,8 @@ git bisect reset
 ---
 
 ### Safe Force Pushing: `--force` vs. `--force-with-lease`
+
+![--force vs --force-with-lease](09-force-with-lease.svg)
 
 | Command | Behavior | Risk Level |
 | :--- | :--- | :--- |
@@ -537,6 +519,8 @@ Example: `git bisect run npm test` or `git bisect run ./gradlew test`.
 ---
 
 ### Q11: What is a "Detached HEAD" state, what causes it, and how do you save work created in it?
+
+![Detached HEAD](11-detached-head.svg)
 **Answer:**
 - **Definition**: Normally, `HEAD` points to a branch name (symbolic reference), which in turn points to a commit. A "Detached HEAD" occurs when `HEAD` points directly to a commit hash instead of a branch reference.
 - **Cause**: Running `git checkout <commit-hash>` or `git checkout origin/main`.
@@ -550,6 +534,8 @@ Example: `git bisect run npm test` or `git bisect run ./gradlew test`.
 ---
 
 ### Q12: How does `git cherry-pick` work under the hood, and what are its risks?
+
+![git cherry-pick](12-cherry-pick.svg)
 **Answer:**
 - **Mechanism**: `git cherry-pick <commit-hash>` calculates the diff introduced by `<commit-hash>` relative to its immediate parent, and applies that diff as a brand new commit on top of your current `HEAD`.
 - **Common Use Cases**:
@@ -590,6 +576,8 @@ When you execute `git stash`:
 ---
 
 ### Q15: What are Git Hooks and how can an engineering organization enforce pre-commit checks?
+
+![Git hooks](10-git-hooks.svg)
 **Answer:**
 Git hooks are custom bash/python scripts located in `.git/hooks/` that execute automatically before or after Git lifecycle events:
 - **Client-Side Hooks**:

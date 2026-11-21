@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 370" width="900" height="370">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="900" height="370" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="145" width="150" height="110" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="220" y="125" width="130" height="50" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="220" y="220" width="130" height="50" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M180,185 L220,152" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M214.6,163.8 L220,152 L207.4,155.1" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M180,215 L220,245" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M207.2,242.5 L220,245 L214.0,233.5" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="380" y="132" width="400" height="36" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="380" y="227" width="80" height="36" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M380,295 L790,295" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M380,289 L380,301" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M460,289 L460,301" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M540,289 L540,301" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M620,289 L620,301" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M700,289 L700,301" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M780,289 L780,301" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="450.0" y="38.0">Why DevOps?  Speed of delivery = Agility</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#495057" font-weight="normal"><tspan x="450.0" y="66.0">Same product, same price — the customer picks whoever delivers faster</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="normal"><tspan x="105.0" y="189.4">Same product</tspan><tspan x="105.0" y="210.6">₹10,000</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="normal"><tspan x="285.0" y="150.0">Store A</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="normal"><tspan x="285.0" y="245.0">Store B</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="580" y="150.0">10 days</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#2f9e44" font-weight="bold"><tspan x="475" y="245.0">2 days  ✓ customer picks this</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="380" y="312.0">0</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="460" y="312.0">2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="540" y="312.0">4</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="620" y="312.0">6</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="700" y="312.0">8</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="780" y="312.0">10</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="830" y="312.0">days</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="normal"><tspan x="450" y="345.0">Companies invest crores in software → they need it in users&#x27; hands FAST.  DevOps delivers that speed.</tspan></text>
+</g>
+</svg>

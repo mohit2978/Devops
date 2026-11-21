@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 410" width="1000" height="410">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="410" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="80" cy="108" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M80,119 L80,156" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M60,136 L80,128 L100,136" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M65,186 L80,156 L95,186" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="44" y="200" width="72" height="26" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<circle cx="160" cy="108" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M160,119 L160,156" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M140,136 L160,128 L180,136" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M145,186 L160,156 L175,186" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="124" y="200" width="72" height="26" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<circle cx="240" cy="108" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M240,119 L240,156" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M220,136 L240,128 L260,136" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M225,186 L240,156 L255,186" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="204" y="200" width="72" height="26" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M285,140 L465,140" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M453.3,145.7 L465,140 L453.3,134.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M465,175 L285,175" fill="none" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M296.7,169.3 L285,175 L296.7,180.7" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<circle cx="500" cy="108" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M500,119 L500,156" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M480,136 L500,128 L520,136" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M485,186 L500,156 L515,186" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M535,140 L715,140" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M703.3,145.7 L715,140 L703.3,134.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M715,175 L535,175" fill="none" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M546.7,169.3 L535,175 L546.7,180.7" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="715" y="100" width="240" height="100" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M40,250 L960,250" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="30" y="275" width="290" height="54" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="355" y="275" width="290" height="54" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="680" y="275" width="290" height="54" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M320,302 L355,302" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M343.3,307.7 L355,302 L343.3,296.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M645,302 L680,302" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M668.3,307.7 L680,302 L668.3,296.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">What is a server?  →  think of a waiter</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="80.0" y="213.0">biryani</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="160.0" y="213.0">sweets</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="240.0" y="213.0">salad</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="375.0" y="128.0">orders (requests)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="normal"><tspan x="375.0" y="189.0">serves each order</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="208.0">waiter</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="625.0" y="128.0">passes order</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="normal"><tspan x="625.0" y="189.0">food ready</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="normal"><tspan x="835.0" y="140.0">kitchen</tspan><tspan x="835.0" y="160.0">(cooks the food)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="175.0" y="293.2">customer = user / client</tspan><tspan x="175.0" y="310.8">(your browser)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="293.2">waiter = server</tspan><tspan x="500.0" y="310.8">(e.g. an EC2 instance)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="825.0" y="293.2">kitchen = app logic</tspan><tspan x="825.0" y="310.8">+ database</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1971c2" font-weight="bold"><tspan x="500" y="370.0">SERVER = a computer that serves services to end users on request</tspan></text>
+</g>
+</svg>

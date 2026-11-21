@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="500" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="80" width="450" height="220" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M50,170 L460,170" fill="none" stroke="#e03131" stroke-width="2.5" stroke-dasharray="8 6"/>
+<path d="M50,270 L110,245 L170,195 L220,135 L280,128 L340,185 L400,245 L460,258" fill="none" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M50,270 L110,245 L170,195 L220,170 L280,170 L340,185 L400,245 L460,258" fill="none" stroke="#1971c2" stroke-width="3.5"/>
+<rect x="520" y="80" width="450" height="220" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="540" y="170" width="380" height="50" rx="0" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M730,150 L730,235" fill="none" stroke="#1971c2" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M920,130 L920,235" fill="none" stroke="#e03131" stroke-width="3" stroke-dasharray="8 6"/>
+<rect x="30" y="330" width="300" height="90" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="350" y="330" width="300" height="90" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="670" y="330" width="300" height="90" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M930,440 L70,440" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M81.7,434.3 L70,440 L81.7,445.7" fill="none" stroke="#e03131" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">requests &amp; limits: CPU is throttled, memory is killed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="255" y="100.0">CPU  (limit 2 cores)</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#e03131" font-weight="bold"><tspan x="460" y="160.0">limit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1971c2" font-weight="bold"><tspan x="255" y="280.0">wanted (dashed) vs got (blue): THROTTLED → slower, not killed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="745" y="100.0">Memory  (request 1Gi, limit 2Gi)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1971c2" font-weight="bold"><tspan x="730" y="145.0">request (reserved)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#e03131" font-weight="bold"><tspan x="920" y="125.0">limit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="180.0" y="358.8">Guaranteed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="180.0" y="377.3">requests == limits</tspan><tspan x="180.0" y="393.5">evicted LAST</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="358.8">Burstable</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="377.3">requests &lt; limits</tspan><tspan x="500.0" y="393.5">evicted 2nd</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="820.0" y="358.8">BestEffort</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="820.0" y="377.3">no requests / limits</tspan><tspan x="820.0" y="393.5">evicted FIRST</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="500" y="465.0">eviction order when a node runs out of memory: BestEffort → Burstable → Guaranteed</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="500" y="490.0">requests = what the scheduler reserves to place the pod  •  limits = the hard ceiling at runtime</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><polygon points="191,170 220,135 280,128 324,170" fill="#ffc9c9" stroke="none"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"></g></g>
+<g ><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="540" y="170" width="0" height="50" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"><animate attributeName="width" values="0;410;410;0" keyTimes="0;0.45;0.97;1" dur="10s" repeatCount="indefinite"/></rect></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"></g></g>
+<g ><animate attributeName="opacity" values="0;0;1;0.3;1;1;0" keyTimes="0;0.42;0.45;0.49;0.52;0.95;1" dur="10s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="620" y="245" width="260" height="38" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="750.0" y="264.0">OOMKilled (exit 137) ⚡</tspan></text></g></g>
+</svg>

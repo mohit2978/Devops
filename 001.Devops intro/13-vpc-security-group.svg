@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 530" width="1000" height="530">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="530" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="80" cy="175" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M80,186 L80,223" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M60,203 L80,195 L100,203" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M65,253 L80,223 L95,253" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="275" width="130" height="48" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="255" cy="245" rx="68" ry="42" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M110,215 L187,238" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M174.2,240.1 L187,238 L177.4,229.2" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="360" y="90" width="615" height="390" rx="18" fill="#ffffff" stroke="#1971c2" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="430" y="160" width="150" height="290" rx="10" fill="#fff5f5" stroke="#e03131" stroke-width="2"/>
+<path d="M323,245 L440,208" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M430.5,216.9 L440,208 L427.1,206.1" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="440" y="190" width="130" height="36" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M570,208 L700,208" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M688.3,213.7 L700,208 L688.3,202.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M323,245 L440,273" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M427.3,275.8 L440,273 L429.9,264.8" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="440" y="255" width="130" height="36" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M570,273 L700,273" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M688.3,278.7 L700,273 L688.3,267.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M323,245 L440,338" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M427.3,335.1 L440,338 L434.4,326.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="440" y="320" width="130" height="36" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M570,338 L700,338" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M688.3,343.7 L700,338 L688.3,332.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M323,245 L440,403" fill="none" stroke="#e03131" stroke-width="2"/>
+<path d="M428.5,397.0 L440,403 L437.6,390.2" fill="none" stroke="#e03131" stroke-width="2"/>
+<rect x="440" y="385" width="130" height="36" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="700" y="175" width="250" height="215" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Network: VPC + Security Group + Key pair</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="85.0" y="290.9">my-key.pem</tspan><tspan x="85.0" y="307.1">(private key)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="255" y="245.0">internet</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="15" fill="#1971c2" font-weight="bold"><tspan x="380" y="115.0">VPC (Virtual Private Cloud) — your own private network in AWS, like a VPN</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="505" y="145.0">Security Group (firewall)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="505.0" y="208.0">22  SSH  ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="505.0" y="273.0">80  HTTP  ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="505.0" y="338.0">443  HTTPS  ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="505.0" y="403.0">3306 MySQL ✗</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="825.0" y="238.8">EC2 instance</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="825.0" y="259.2">(your server)</tspan><tspan x="825.0" y="276.7"></tspan><tspan x="825.0" y="294.2">stores your PUBLIC key</tspan><tspan x="825.0" y="311.7">port 22 → SSH login</tspan><tspan x="825.0" y="329.2">port 80/443 → website</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="505.0">Source 0.0.0.0/0 = anyone on the internet   •   “All traffic” opens every port (0–65535) — avoid it, open only what you need</tspan></text>
+</g>
+</svg>

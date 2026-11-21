@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="80" width="470" height="360" rx="16" fill="#ffffff" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<circle cx="80" cy="185" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M80,196 L80,233" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M60,213 L80,205 L100,213" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M65,263 L80,233 L95,263" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="150" y="160" width="320" height="150" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="80" width="470" height="360" rx="16" fill="#ffffff" stroke="#2f9e44" stroke-width="2" stroke-dasharray="8 6"/>
+<circle cx="550" cy="150" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M550,161 L550,198" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M530,178 L550,170 L570,178" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M535,228 L550,198 L565,228" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M575,185 L640,185" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M628.3,190.7 L640,185 L628.3,179.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="640" y="145" width="140" height="80" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M780,185 L830,185" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M818.3,190.7 L830,185 L818.3,179.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="830" y="140" width="135" height="90" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="270" width="400" height="80" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Why Jenkins?  Manual build &amp; deploy vs automated</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#e03131" font-weight="bold"><tspan x="255" y="105.0">MANUAL  (by hand, every time)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="255" y="135.0">commit 1 … commit 2 … commit 3 … many times a day</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="80" y="276.9">tired</tspan><tspan x="80" y="293.1">engineer</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="310.0" y="200.0">1. pull latest code from GitHub</tspan><tspan x="310.0" y="217.5">2. build with Maven</tspan><tspan x="310.0" y="235.0">3. code review with Sonar</tspan><tspan x="310.0" y="252.5">4. upload artifact to Nexus</tspan><tspan x="310.0" y="270.0">5. deploy to dev, QA, prod…</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="255" y="340.0">↻ repeat for EVERY commit × EVERY environment</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="normal"><tspan x="255" y="386.2">✗ takes a lot of time   ✗ repeated work</tspan><tspan x="255" y="403.8">✗ error prone (miss one step → broken release)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#2f9e44" font-weight="bold"><tspan x="745" y="105.0">AUTOMATED  with Jenkins</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="550" y="250.0">developer</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="607.5" y="173.0">git push</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="710.0" y="175.6">Jenkins</tspan><tspan x="710.0" y="194.4">(CI/CD server)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="897.5" y="176.2">dev / QA /</tspan><tspan x="897.5" y="193.8">prod servers</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="760.0" y="301.2">the same 5 steps run automatically,</tspan><tspan x="760.0" y="318.8">in the same order, every time — in minutes</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#2f9e44" font-weight="normal"><tspan x="745" y="386.2">✓ fast   ✓ no repeated manual work</tspan><tspan x="745" y="403.8">✓ consistent → far fewer mistakes</tspan></text>
+</g>
+</svg>

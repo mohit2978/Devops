@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="100" width="300" height="210" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M340,205 L440,205" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M428.3,210.7 L440,205 L428.3,199.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="440" y="100" width="520" height="210" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="335" width="450" height="46" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="335" width="450" height="46" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">git init — turn a folder into a Git repository</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="190" y="125.0">my-project/</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="190" y="181.2">index.html</tspan><tspan x="190" y="200.0">app.js</tspan><tspan x="190" y="218.8">style.css</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="190" y="290.0">just a normal folder</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="390.0" y="193.0">git init</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="700" y="125.0">my-project/</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="540" y="181.2">index.html</tspan><tspan x="540" y="200.0">app.js</tspan><tspan x="540" y="218.8">style.css</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="normal"><tspan x="700" y="290.0">now a repository — Git stores EVERYTHING in .git</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal"><tspan x="265.0" y="358.0">git status → which files are tracked / untracked / modified</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#e03131" font-weight="bold"><tspan x="735.0" y="358.0">rm -rf .git → deletes the whole history ⚠</tspan></text>
+</g>
+<g ><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.25;0.4;0.92;1" dur="6s" repeatCount="indefinite"/><g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round"><rect x="640" y="140" width="290" height="128" rx="12" fill="#ffec99" stroke="#e8590c" stroke-width="2"/></g><g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive"><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#e8590c" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="785" y="162.0">.git/  (hidden)</tspan></text><text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="785" y="200.5">HEAD      config</tspan><tspan x="785" y="218.0">objects/  ← snapshots</tspan><tspan x="785" y="235.5">refs/     ← branches</tspan></text></g></g>
+</svg>

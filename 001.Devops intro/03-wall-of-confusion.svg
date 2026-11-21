@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" width="1000" height="660">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="660" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="110" width="300" height="44" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="40" y="168" width="300" height="66" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<circle cx="190" cy="262" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M190,273 L190,310" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M170,290 L190,282 L210,290" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M175,340 L190,310 L205,340" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="660" y="110" width="300" height="44" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="660" y="168" width="300" height="66" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<circle cx="810" cy="262" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M810,273 L810,310" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M790,290 L810,282 L830,290" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M795,340 L810,310 L825,340" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="420" y="150" width="160" height="190" rx="2" fill="#fff0f0" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M420,174 L580,174" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M420,198 L580,198" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M420,222 L580,222" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M420,246 L580,246" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M420,270 L580,270" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M420,294 L580,294" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M420,318 L580,318" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M460,150 L460,174" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M500,150 L500,174" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M540,150 L540,174" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M440,174 L440,198" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M480,174 L480,198" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M520,174 L520,198" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M560,174 L560,198" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M460,198 L460,222" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M500,198 L500,222" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M540,198 L540,222" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M440,222 L440,246" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M480,222 L480,246" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M520,222 L520,246" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M560,222 L560,246" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M460,246 L460,270" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M500,246 L500,270" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M540,246 L540,270" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M440,270 L440,294" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M480,270 L480,294" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M520,270 L520,294" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M560,270 L560,294" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M460,294 L460,318" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M500,294 L500,318" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M540,294 L540,318" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M440,318 L440,340" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M480,318 L480,340" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M520,318 L520,340" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<path d="M560,318 L560,340" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+<rect x="428" y="222" width="144" height="52" rx="6" fill="#ffffff" stroke="#e03131" stroke-width="2"/>
+<rect x="190" y="370" width="620" height="50" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M40,445 L960,445" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="150" y="500" width="700" height="125" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<circle cx="210" cy="520" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M210,531 L210,568" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M190,548 L210,540 L230,548" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M195,598 L210,568 L225,598" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<circle cx="790" cy="520" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M790,531 L790,568" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M770,548 L790,540 L810,548" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M775,598 L790,568 L805,598" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="265" y="600" width="22" height="11" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="1.5" transform="rotate(-12 276 605)"/>
+<rect x="292" y="606" width="22" height="11" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="1.5" transform="rotate(8 303 611)"/>
+<rect x="318" y="598" width="22" height="11" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="1.5" transform="rotate(20 329 603)"/>
+<rect x="680" y="604" width="22" height="11" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="1.5" transform="rotate(-8 691 609)"/>
+<rect x="706" y="598" width="22" height="11" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="1.5" transform="rotate(14 717 603)"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Dev vs Ops — the Wall of Confusion</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="19" fill="#e03131" font-weight="bold"><tspan x="500" y="85.0">BEFORE DevOps: two separate teams blaming each other</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="190.0" y="132.0">DEV TEAM</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="190.0" y="191.6">“It works on my machine!</tspan><tspan x="190.0" y="210.4">Your deployment is wrong.”</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#1e1e1e" font-weight="bold"><tspan x="810.0" y="132.0">OPS TEAM</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="810.0" y="191.6">“I deployed exactly what</tspan><tspan x="810.0" y="210.4">you gave me. Code is wrong!”</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#e03131" font-weight="bold"><tspan x="500" y="238.0">WALL OF</tspan><tspan x="500" y="258.0">CONFUSION</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="500.0" y="395.0">Real cause: Dev never told Ops “install Java first” → no shared knowledge</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="19" fill="#2f9e44" font-weight="bold"><tspan x="500" y="475.0">AFTER: break the wall  →  DevOps = Dev + Ops working as ONE team</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="normal"><tspan x="500" y="542.0">Dev + Ops = one team</tspan><tspan x="500" y="562.0">shared goals • shared tools • automation (CI/CD)</tspan><tspan x="500" y="582.0">same environment everywhere (Docker)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#495057" font-weight="normal"><tspan x="500" y="645.0">DevOps is a methodology (a culture + practices) to deliver applications speedily</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="560" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="115" width="140" height="70" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="210" y="115" width="140" height="70" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M180,150 L210,150" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M198.3,155.7 L210,150 L198.3,144.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="380" y="115" width="140" height="70" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M350,150 L380,150" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M368.3,155.7 L380,150 L368.3,144.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M520,150 L600,150" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M588.3,155.7 L600,150 L588.3,144.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="600" y="115" width="180" height="70" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M780,150 L835,150" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M823.3,155.7 L835,150 L823.3,144.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<circle cx="870" cy="118" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M870,129 L870,166" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M850,146 L870,138 L890,146" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M855,196 L870,166 L885,196" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M40,248 L960,248" fill="none" stroke="#495057" stroke-width="1.5" stroke-dasharray="8 6"/>
+<rect x="40" y="302" width="140" height="70" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M110,372 L110,402" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M104.3,390.3 L110,402 L115.7,390.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="55" y="402" width="110" height="40" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M110,442 L110,482" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M104.3,470.3 L110,482 L115.7,470.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="210" y="302" width="140" height="70" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M180,337 L210,337" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M198.3,342.7 L210,337 L198.3,331.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M280,372 L280,402" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M274.3,390.3 L280,402 L285.7,390.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="225" y="402" width="110" height="40" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M280,442 L280,482" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M274.3,470.3 L280,482 L285.7,470.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="380" y="302" width="140" height="70" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M350,337 L380,337" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M368.3,342.7 L380,337 L368.3,331.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M450,372 L450,402" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M444.3,390.3 L450,402 L455.7,390.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="395" y="402" width="110" height="40" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M450,442 L450,482" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<path d="M444.3,470.3 L450,482 L455.7,470.3" fill="none" stroke="#2f9e44" stroke-width="2"/>
+<rect x="560" y="312" width="150" height="50" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="8 6"/>
+<circle cx="870" cy="320" r="11" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M870,331 L870,368" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M850,348 L870,340 L890,348" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M855,398 L870,368 L885,398" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M40,490 L960,490" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M948.3,495.7 L960,490 L948.3,484.3" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Agile vs DevOps — who reaches the user first?</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="17" fill="#6741d9" font-weight="bold"><tspan x="40" y="95.0">AGILE: develop + test small pieces at the same time (sprints)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="110.0" y="140.6">Sprint 1</tspan><tspan x="110.0" y="159.4">dev ⇄ test</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="280.0" y="140.6">Sprint 2</tspan><tspan x="280.0" y="159.4">dev ⇄ test</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="450.0" y="140.6">Sprint 3</tspan><tspan x="450.0" y="159.4">dev ⇄ test</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="690.0" y="140.6">whole app</tspan><tspan x="690.0" y="159.4">released at the END</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="870" y="212.0">client waits…</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="40" y="220.0">✓ no time gap between dev &amp; testing     ✗ client still gets everything at once (like waterfall)</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="17" fill="#2f9e44" font-weight="bold"><tspan x="40" y="282.0">DEVOPS: release every finished piece to the market immediately</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="110.0" y="327.6">Sprint 1</tspan><tspan x="110.0" y="346.4">dev ⇄ test</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="110.0" y="422.0">release v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="280.0" y="327.6">Sprint 2</tspan><tspan x="280.0" y="346.4">dev ⇄ test</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="280.0" y="422.0">release v2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="450.0" y="327.6">Sprint 3</tspan><tspan x="450.0" y="346.4">dev ⇄ test</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="450.0" y="422.0">release v3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="normal"><tspan x="635.0" y="337.0">…v4, v5 …</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="normal"><tspan x="870" y="423.9">users get features</tspan><tspan x="870" y="440.1">early &amp; continuously</tspan></text>
+<text xml:space="preserve" text-anchor="end" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="960" y="512.0">time</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="330" y="512.0">the market (end users)</tspan></text>
+</g>
+</svg>

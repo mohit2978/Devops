@@ -1,285 +1,387 @@
-# Lecture-1 jenkins
+# Lecture 1 · Jenkins & CI/CD
 
-=> Open source Software & free of cost
+> **Jenkins** is a free, open-source **CI/CD server** that automates the **build & deployment** of any project.
 
-=> Developed by using Java Language,so to run jenkins we must have java!!
+---
 
-=> It is called as CI CD Server
+## 1. The problem: manual build & deployment
 
-		CI : Continuous Integration
+### 1.1 What is "build & deployment"?
 
-		CD : Continuos Delivery
+Before an application reaches users, these steps run **every time** the code changes:
 
-=> CI CD is one appraoch to automate project Build & Deployment process.
+![Build & deployment steps](02-build-deploy-steps.svg)
 
-=> Using Jenkins we can deploy any type of project (ex: java, python, dot net, react, angular).
+| # | Step | Tool | What it does |
+|---|------|------|--------------|
+| 1 | Take latest code | **GitHub** | Pull the newest commit from the repo |
+| 2 | Build source code | **Maven** | Compile, run tests, package into a `.jar` / `.war` (the **artifact**) |
+| 3 | Code review | **SonarQube** | Scan code for bugs, vulnerabilities, code smells |
+| 4 | Upload artifact | **Nexus** | Store the `.war` in an artifact repository (versioned) |
+| 5 | Deploy | **Tomcat / Docker / K8s** | Install the app on the server |
 
-## What is Build & Deployment
+### 1.2 What is Nexus, and why is it needed?
 
-=> Take latest code from Git Hub Repo
+**Nexus (Sonatype Nexus Repository Manager)** is an **artifact repository**: a central, versioned **warehouse** for the files your builds produce (`.jar`, `.war`, Docker images, npm packages…).
 
-=> Build Source code using Maven
+> GitHub stores **source code**. Nexus stores the **built output** of that code.
 
-=> Perform Code Review Using Sonar
+![What is Nexus](11-what-is-nexus.svg)
 
-=> Upload Project Artifact into Nexus
+**Why not just keep the `.war` in the Jenkins workspace?**
+The workspace is **overwritten on every build**. `target/maven-web-app.war` from build #41 is gone after build #42. So if today's release breaks production, you have no copy of yesterday's working version. Nexus fixes this:
 
-=> Deploy code into server.
+| Need | How Nexus helps |
+|------|-----------------|
+| **Version history** | Every build is stored as `app-1.0.war`, `app-1.1.war`, `app-1.2.war`… nothing is overwritten |
+| **Rollback** | Prod broken by 1.2? Redeploy `app-1.1.war` from Nexus in seconds, with no rebuild |
+| **Same artifact everywhere** | Build **once**, then DEV, QA and PROD all download the **exact same file**, so what QA tested is what goes live |
+| **Separate build from deploy** | Jenkins builds & uploads; the deploy step (or another team/tool) just downloads, so there's no need to rebuild on each server |
+| **Sharing between teams** | Team A publishes a library `.jar`; Team B adds it as a Maven dependency from Nexus |
+| **Dependency cache (proxy)** | Nexus caches libraries from Maven Central (spring, junit…), so builds are faster and still work if the internet is slow or blocked |
+| **Security / control** | Login, permissions, only approved artifacts go to production |
 
-These are build and deployment steps
+**Two main repository types (for Maven):**
+- **`maven-releases`**: final, fixed versions (e.g. `1.2`). Once uploaded, they never change.
+- **`maven-snapshots`**: in-progress versions (e.g. `1.3-SNAPSHOT`). Can be re-uploaded many times during development.
 
-=> In single day multipe times code will be committed to git hub repository from Development team so multiple times we have to perform build and deployment process.
-
->Note: If we do build and deployment process manually then it is time taking process and error prone.
-
-=> To overcome above problems, we need to automate Project Build and Deployment process.
-
-=> To automate project build and deployment process we will use JENKINS.
-
-![alt text](image.png)
-
-![alt text](image-1.png)
-
-## Jenkins Server Setup in Linux VM 
-
-
-Git Repo : https://github.com/ashokitschool/DevOps-Documents/blob/main/01-Jenkins-Server-Setup.md
-
-
-can see documentation of installing jenkins in jenkins.io documentation!!
-
-here too ubuntu machine so username is ubuntu!!
-
-- Step - 1 : Create Linux VM 
-
-1) Create Ubuntu VM using AWS EC2 (t2.medium) 
-2) Enable 8080 Port Number in Security Group Inbound Rules
-3) Connect to VM using MobaXterm
-
--  Step-2 : Install Java 
-
+**How it's used in the pipeline:**
 ```
+GitHub → Jenkins (mvn clean package) → Sonar check → mvn deploy → Nexus → servers download the .war → deploy
+```
+`mvn deploy` uploads the artifact to Nexus. Its URL is configured in `pom.xml` (`<distributionManagement>`), and the Nexus username/password goes in Maven's `settings.xml`.
+
+**Alternatives:** JFrog Artifactory, AWS CodeArtifact, GitHub Packages. Docker images often go to Docker Hub / AWS ECR instead.
+
+### 1.3 Why manual is a problem
+
+The development team **commits code to GitHub many times in a single day**, so these 5 steps have to be repeated many times a day, and for **multiple environments** (dev, QA, UAT, prod).
+
+![Manual vs Jenkins](01-manual-vs-jenkins.svg)
+
+**Challenges of the manual process:**
+- Every day we need to deploy the latest code
+- Deploy code in multiple environments
+- Takes a lot of time
+- Repeated work
+- **Error prone**: forget one step and the release breaks
+
+**Solution:** automate the project build & deployment process. **To automate it, we use Jenkins.**
+
+---
+
+## 2. What is CI/CD?
+
+> **CI/CD is an approach to automate the project build & deployment process.**
+
+![CI/CD explained](03-ci-cd-explained.svg)
+
+### CI: Continuous Integration
+- Developers **integrate (merge)** their code into the shared repository **frequently**, many times a day.
+- **Every commit automatically triggers** a build + tests (+ code review).
+- Bugs are caught **early**, minutes after the commit instead of weeks later.
+- Output: a tested **artifact** (e.g. `maven-web-app.war`).
+
+### CD: Continuous Delivery vs Continuous Deployment
+"CD" can mean two slightly different things:
+
+| | Continuous **Delivery** | Continuous **Deployment** |
+|---|---|---|
+| Artifact is always ready to release | ✓ | ✓ |
+| Auto-deployed to QA / staging | ✓ | ✓ |
+| Goes to **production** | After a **manual approval** (someone clicks a button) | **Automatically**, no human step |
+| Used when | Business wants control over release timing | Team has strong automated tests |
+
+In these notes, **CD = Continuous Delivery**.
+
+### Where Jenkins fits
+**Jenkins is the CI/CD server**: the "robot" that watches the repo and runs every step of this pipeline for you.
+
+---
+
+## 3. What is Jenkins?
+
+- **Open source** software, **free of cost**.
+- **Developed in Java** → **to run Jenkins we must have Java installed** on the machine.
+- Called a **CI/CD server** (**CI**: Continuous Integration, **CD**: Continuous Delivery).
+- Can build & deploy **any type of project**: Java, Python, .NET, React, Angular…
+- Has **thousands of plugins** (Git, Maven, Docker, Kubernetes, Slack…) to connect to almost any tool.
+- Web UI runs on **port 8080** by default.
+
+### Example: a Jenkins job with GitHub + Maven + Docker
+
+![Jenkins + Docker job](04-jenkins-docker-job.svg)
+
+1. Developers **push code** to GitHub.
+2. Jenkins **clones** the repo.
+3. Jenkins asks **Maven to build** it → `.war` file.
+4. Jenkins **builds a Docker image** containing the app.
+5. The image is **deployed** as a running container.
+
+---
+
+## 4. Jenkins server setup on a Linux VM (Ubuntu on AWS EC2)
+
+Reference docs: [01-Jenkins-Server-Setup.md](https://github.com/ashokitschool/DevOps-Documents/blob/main/01-Jenkins-Server-Setup.md) · official guide on [jenkins.io](https://www.jenkins.io/doc/book/installing/linux/)
+
+![Jenkins server setup](05-jenkins-server-setup.svg)
+
+> On an Ubuntu EC2 machine the default username is **`ubuntu`**.
+
+### Step 1: Create the Linux VM
+1. Create an **Ubuntu VM** using AWS EC2 (**t2.medium**: Jenkins + Maven builds need ~4 GiB RAM; t2.micro freezes).
+2. **Enable port 8080** in the Security Group **inbound rules** (Jenkins UI runs on 8080).
+3. Connect to the VM using **MobaXterm** (SSH, port 22).
+
+### Step 2: Install Java (Jenkins is a Java app)
+```bash
 sudo apt update
 sudo apt install fontconfig openjdk-17-jre
 java -version
 ```
 
-- Step-3 : Install Jenkins 
-```
+### Step 3: Install Jenkins
+```bash
+# download Jenkins' signing key (so apt trusts the Jenkins repo)
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
+# add the Jenkins apt repository
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+# install
 sudo apt-get update
 sudo apt-get install jenkins
 ```
 
--  Step-4 : Start Jenkins  
+### Step 4: Start Jenkins
+```bash
+sudo systemctl enable jenkins   # start automatically on every boot
+sudo systemctl start jenkins    # start it now
+```
 
-```
-sudo systemctl enable jenkins
-sudo systemctl start jenkins
-```
--  Step-5 : Verify Jenkins 
-
-```
+### Step 5: Verify Jenkins
+```bash
 sudo systemctl status jenkins
 ```
-![alt text](image-2.png)	
+Look for **`active (running)`**. Notice the main process is `java ... -jar jenkins.war`: Jenkins really is just a Java program.
 
-- Step-6 : Open jenkins server in browser using VM public ip 
+![systemctl status jenkins output](image-2.png)
 
+### Step 6: Open Jenkins in the browser
 ```
-http://public-ip:8080/
+http://<public-ip>:8080/
 ```
 
--  Step-7 : Copy jenkins admin pwd 
-```
+### Step 7: Copy the initial admin password
+```bash
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
-![alt text](image-3.png)
+![initialAdminPassword output](image-3.png)
 
-![alt text](image-4.png)
+Paste it into the **Unlock Jenkins** screen:
 
-Paste password here!!
-	   
-- Step-8 : Create Admin Account & Install Required Plugins(Suggested) in Jenkins 
+![Unlock Jenkins screen](image-4.png)
 
-![alt text](image-5.png)
+### Step 8: Install suggested plugins & create the admin account
 
+![Installing suggested plugins](image-5.png)
 
-Then sign in and then logout and login !!
+Then create the admin user, sign in, log out, and log in again to confirm the account works.
 
-ques--> vscode written in typescript we need not install typescript to run vscode but for jenkins we need to install java, why?
+---
 
-Answer--> you don't need to install JavaScript for VS Code because it packages its runtime. For Jenkins, Java must be installed because it relies on an external Java runtime environment.
+## 5. Q: Why must we install Java for Jenkins, but nothing for VS Code?
 
-1. VS Code and JavaScript Runtime:
-- Built-in Runtime:
-Visual Studio Code is built using Electron, which packages the necessary runtime components (like Node.js and Chromium) along with the application itself. This means the JavaScript runtime required to execute VS Code is bundled into the application, so users don't need to install anything extra.
-- Self-Contained:
-When you download and install VS Code, it already includes everything it needs to run, making it self-sufficient.
+VS Code is written in TypeScript, yet we never install TypeScript/Node to run it. Jenkins, on the other hand, needs Java installed first. Why?
 
-2. Jenkins and Java Runtime:
-- External Dependency:
-Jenkins is written in Java, which requires a Java Virtual Machine (JVM) to run. However, unlike Electron-based apps, Jenkins does not bundle the JVM with its distribution to keep its package size smaller and allow users to choose the specific Java version they prefer.
-- Separation of Concerns:
-By requiring users to install Java separately, Jenkins delegates the responsibility of providing the runtime environment to the system. This makes Jenkins lightweight and flexible, especially in server or containerized environments where Java is often pre-installed or managed centrally.
+![Why Java for Jenkins](06-why-java-for-jenkins.svg)
 
-### Why They Differ:
-- Packaging Strategy:
-VS Code takes an all-in-one approach, while Jenkins relies on the host system to provide the runtime.
+**1. VS Code: runtime is bundled**
+- Built with **Electron**, which **packages Node.js + Chromium inside the app**.
+- When you install VS Code, it already contains everything it needs → **self-contained**.
 
-- Use Case:
-Jenkins is often deployed on servers, where pre-installed Java is common, whereas VS Code is a desktop application meant to "just work" for individual users.
+**2. Jenkins: runtime is an external dependency**
+- Written in **Java** → needs a **JVM** to run.
+- Jenkins **does not bundle the JVM**, to keep the package small and let you **choose your Java version**.
+- **Separation of concerns:** the system provides the runtime; Jenkins stays lightweight and flexible, especially on servers/containers where Java is often pre-installed or centrally managed.
 
-- Ecosystem Flexibility:
-Jenkins users may already have Java installed for other applications. Allowing Java to be managed separately prevents redundancy and keeps Jenkins lightweight.
-## what is job in jenkins ?
+**Why they differ**
 
-=> JOB means set of steps that we are giving to jenkins to perform the task
+| | VS Code | Jenkins |
+|---|---|---|
+| Packaging | All-in-one | Relies on host's Java |
+| Use case | Desktop app, should "just work" | Server software; Java is common on servers |
+| Flexibility | Fixed bundled runtime | Reuse existing Java, no duplicate JVMs |
 
-		step-1 : take code from git repo
+---
 
-		step-2 : perform maven build
+## 6. What is a Jenkins job?
 
-		step-3 : build docker image
+> **JOB = a set of steps we give Jenkins to perform a task.**
 
-		step-4 : deploy docker image in k8s cluster
+Example job:
+1. Take code from the Git repo
+2. Perform a Maven build
+3. Build a Docker image
+4. Deploy the Docker image to a K8s cluster
 
-## Creating First Job in Jenkins 
+![Jenkins job anatomy](07-jenkins-job-anatomy.svg)
 
-1) Goto Jenkins Dashboard
+| Job type | How it's created | When used |
+|----------|------------------|-----------|
+| **Freestyle project** | Using the **GUI** (forms) | Learning, simple jobs |
+| **Pipeline** | Using a **script** (`Jenkinsfile`) | **Real-time projects**: versioned in Git, repeatable |
 
-2) Click on New Item
+---
 
-		-> Enter Item Name (Job Name)
-		-> Select Free Style Project & Click OK
-		-> Enter some description
-		-> Click on 'Build' tab
-		-> Click on 'Add Build Step' and select 'Execute Shell'
+## 7. Creating the first Jenkins job (Freestyle)
 
-FreeStyle means using GUI we create job!!
-
-Pipeline means we use some script to create job
-
-3) In build steps Enter below shellscript
+1. Go to the **Jenkins Dashboard**.
+2. Click **New Item**:
+   - Enter the **item name** (job name), e.g. `FirstJob`
+   - Select **Freestyle project** → **OK**
+   - Enter a description
+   - Go to the **Build Steps** section → **Add build step** → **Execute shell**
+3. Enter this shell script:
 
 ```bash
 echo "Hello Guys,"
-touch ashokit.txt
-echo "Hello Guys, Welcome to Jenkins Classes" >> ashokit.txt
-echo "Done..!!"		
+touch ashokit.txt                                          # create the file (if not there)
+echo "Hello Guys, Welcome to Jenkins Classes" >> ashokit.txt  # >> APPENDS a line
+echo "Done..!!"
 ```
 
-![alt text](image-6.png)
+![Execute shell build step](image-6.png)
 
-In post-build you can have post build actions , once application build is done what to be done next!!
+> **Post-build Actions** = what should happen *after* the build finishes (e.g. send an email, archive the artifact, trigger another job).
 
-4)  Save
+4. Click **Save**. The Jenkins job is created.
 
->Note: With above steps we have created JENKINS Job
+Inside the job page (from the dashboard):
 
-When from dashboard you go inside job
+![FirstJob status page](image-7.png)
 
-![alt text](image-7.png)
+5. Click **Build Now** to start the job execution. Each run gets a **build number** (#1, #2…).
 
-5) Click on 'Build Now' to start Job execution
+![Build history](image-8.png)
 
-![alt text](image-8.png)
+6. Click a **build number** → **Console Output** to see the execution details:
 
-6) Click on 'Build Number' and then click on 'Console Ouput' to see job execution details.
+![Console output of FirstJob](image-9.png)
 
-![alt text](image-9.png)
+`Finished: SUCCESS` means every command ran without error.
 
-=> Jenkins Home Directory in EC2 : /var/lib/jenkins/workspace/
+### Where does the job actually run? The workspace
 
-		$ cd /var/lib/jenkins/workspace/
+![Build now and workspace](08-build-now-workspace.svg)
 
-7) Go to Jenkins home directory and check for the job name --> check the file created inside the job
+- Jenkins home: **`/var/lib/jenkins/`**
+- Each job gets a folder in **`/var/lib/jenkins/workspace/<job-name>/`**. Whatever the job does happens here, and its output files live here.
 
-![alt text](image-10.png)
+```bash
+cd /var/lib/jenkins/workspace/
+```
 
- whatever job you execute it will be done here!!
+7. Go to the workspace and check the job folder and the file created inside it:
 
-![alt text](image-11.png)
+![workspace folder listing](image-10.png)
 
-Output will be in this directory only!!Till now we have done 2 builds!!
+![ashokit.txt after 2 builds](image-11.png)
 
-after build 3 
+After 2 builds the file has **2 lines**. After build #3, **3 lines**, because `>>` appends and the workspace is **reused** between builds:
 
-![alt text](image-12.png)
+![ashokit.txt after build 3](image-12.png)
 
-> Note: to see any error we see in logs!!
+> **Note:** to investigate any error, look at the **Console Output (logs)**.
 
-## Jenkins Job with with GIT Hub Repo + Maven - Integeration
+---
 
-clone git and build code using maven!!
+## 8. Jenkins job with GitHub + Maven integration
 
-Step-1 : Instal git client in jenkins server
+Goal: **clone a Git repo and build the code using Maven.**
 
-	 sudo apt install git -y
+![Git + Maven job](09-git-maven-job.svg)
 
-Step-2 : Configure Maven as global tool
->No need to install maven!!we tell jenkins to install maven!!
+### Step 1: Install the Git client on the Jenkins server
+```bash
+sudo apt install git -y
+```
 
-  (Jenkins Dashboard -> Manage Jenkins --> Global Tools Configuration -> Add maven) Then click on apply and then save!!
+### Step 2: Configure Maven as a global tool
+> No need to install Maven manually. **We tell Jenkins to install Maven.**
 
-![alt text](image-13.png)
->Note: With step-2 configuration, jenkins will download and install maven s/w  
+**Dashboard → Manage Jenkins → Tools (Global Tool Configuration) → Add Maven** → name it, tick **Install automatically**, choose a version → **Apply** → **Save**.
 
+![Maven global tool configuration](image-13.png)
 
-Step-3 : Take project git repo (https://github.com/ashokitschool/maven-web-app.git)
+With this, Jenkins downloads & installs Maven itself the first time a job needs it.
 
-Step-4 : Create Jenkins job
+### Step 3: Take the project Git repo
+```
+https://github.com/ashokitschool/maven-web-app.git
+```
 
-			-> New Item
-			-> Enter Item Name (Job Name)
-			-> Select 'Free Style Project' & Click OK
-			-> Enter some description
-			-> Go to "Source Code Management" Tab and Select "Git"
-			-> Enter Project "Git Repo URL" As public repo no need to put password
-			-> Go to "Build tab"
-			-> Build Trigger and build environment we do not do now!!
-			-> Click on Add Build Step and Select 'Inovke Top Level Maven Targets'
-			-> Select Maven and enter goals 'clean package'
-			-> Click on Apply and Save
+### Step 4: Create the Jenkins job
+- **New Item** → enter item name (e.g. `Java Web app`) → **Freestyle project** → **OK**
+- Enter a description
+- **Source Code Management** → select **Git** → paste the **repo URL** (public repo → no credentials needed)
+- *Build Triggers* and *Build Environment*: skip for now
+- **Build Steps** → **Add build step** → **Invoke top-level Maven targets**
+- Select the Maven installation and enter goals: **`clean package`**
+  - `clean` deletes the old `target/` folder
+  - `package` compiles, runs tests and bundles the app → `target/*.war`
+- **Apply** → **Save**
 
->Note: With above steps we have created JENKINS Job
+### Step 5: Click **Build Now**
 
-Step-5 : Click on 'Build Now' to start Job execution.
+![Java Web app job page](image-14.png)
 
-Step-6 : Click on 'Build Number' and then click on 'Console Ouput' to see job execution details.
+### Step 6: Build number → **Console Output**
 
-=> Jenkins Home Directory in EC2 : /var/lib/jenkins/workspace/
+Jenkins clones the repo into the workspace, then runs Maven:
 
-=> Go to jenkins workspace and then go to job folder then go to target folder there we see war file created.
+![Console output: git clone](image-17.png)
 
-![alt text](image-14.png)
+### Step 7: Find the `.war` file
+Go to `/var/lib/jenkins/workspace/<job>/` → the cloned repo is there (`pom.xml`, `src/`, `target/`…):
 
-![alt text](image-15.png)
+![Job workspace with cloned repo](image-15.png)
 
-![alt text](image-16.png)
+Inside **`target/`** the **`maven-web-app.war`** has been created:
 
-If code has any error then build will be failed!!
+![target folder with war file](image-16.png)
 
-### Console output
+**Key behaviours**
+- If the code has an error → **build fails** (red ✗), check the console output.
+- If the code is modified → just **Build Now** again: Jenkins pulls the **latest code** and builds a **fresh `.war`**.
 
-![alt text](image-17.png)
+---
 
-If code modified just another build !! it will take latest code and build latest war file!!
+## 9. Assignment
 
-## *Assignment* 
-Create Jenkins Job to perform below operation
+Create a Jenkins job that:
+1. Takes the source code from the Git repo
+2. Builds that code using Maven
+3. **Deploys the `.war` file into a Tomcat server** (running on a **different Linux VM**)
 
-1) Take source code from git repo
+![Tomcat assignment](10-tomcat-assignment.svg)
 
-2) Build that code using maven
+> **In real projects we don't use freestyle jobs. We use pipelines** (`Jenkinsfile`), covered in the next lectures.
 
-3) Deploy war file into tomcat server (diff linux vm)
+---
 
-![alt text](image-18.png)
+## 10. Quick revision
 
->In real time we do not use free style we use pipelines
+- **Build & deployment** = checkout → build (Maven) → review (Sonar) → store (Nexus) → deploy.
+- **Nexus** = artifact repository: stores every versioned `.war`/`.jar`, so you get rollback, build-once-deploy-everywhere, and a dependency cache.
+- Manual = slow, repetitive, error prone → **automate with Jenkins**.
+- **CI** = merge often + auto build/test. **CD** = artifact always releasable, auto-deployed (prod after approval in *Delivery*, fully automatic in *Deployment*).
+- **Jenkins** = free, open-source, Java-based CI/CD server on **port 8080**. **Needs Java installed.**
+- Unlock with `/var/lib/jenkins/secrets/initialAdminPassword`.
+- **Job** = set of steps. **Freestyle** (GUI) vs **Pipeline** (script).
+- Jobs run in **`/var/lib/jenkins/workspace/<job-name>/`**. Logs are in **Console Output**.
+- Maven via **Manage Jenkins → Tools** (auto-install). Goals `clean package` → `.war` in `target/`.
