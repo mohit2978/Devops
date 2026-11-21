@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="960" height="300" rx="16" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="45" y="115" width="560" height="230" rx="14" fill="#e7f5ff" stroke="#1971c2" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="70" y="165" width="220" height="110" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="360" y="165" width="220" height="110" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M290,220 L360,220" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M348.3,225.7 L360,220 L348.3,214.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M301.7,214.3 L290,220 L301.7,225.7" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="640" y="115" width="315" height="230" rx="14" fill="#fff5f5" stroke="#e03131" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="685" y="165" width="220" height="110" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Containers on the same network can talk to each other by NAME</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="500" y="95.0">EC2 host</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="325" y="135.0">custom network  ashokit-nw  (bridge, 172.18.0.0/16, gateway .1)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="180.0" y="205.0">app container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="180.0" y="222.2">name: app</tspan><tspan x="180.0" y="237.2">IP 172.18.0.2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="470.0" y="205.0">db container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="470.0" y="222.2">name: mysqldb</tspan><tspan x="470.0" y="237.2">IP 172.18.0.3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="325" y="305.0">jdbc:mysql://mysqldb:3306/sbms  ← name, not IP</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="797" y="135.0">other network (default bridge)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="795.0" y="205.0">other container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="795.0" y="222.2">can&#x27;t reach app or</tspan><tspan x="795.0" y="237.2">mysqldb ✗ (isolated)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="410.0">user-defined networks have built-in DNS (container name → IP) • the DEFAULT bridge does not</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="440.0">docker run -d --name mysqldb --network ashokit-nw … mysql:8.0</tspan></text>
+</g>
+</svg>

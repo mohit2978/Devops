@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" width="1000" height="460">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="460" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="175" width="120" height="70" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="190" y="80" width="790" height="300" rx="16" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="220" y="120" width="540" height="220" rx="14" fill="#e7f5ff" stroke="#1971c2" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="250" y="165" width="220" height="140" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="520" y="165" width="210" height="140" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M470,235 L520,235" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M508.3,240.7 L520,235 L508.3,229.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="790" y="165" width="170" height="140" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M730,235 L790,235" fill="none" stroke="#e8590c" stroke-width="2" stroke-dasharray="8 6"/>
+<path d="M778.3,240.7 L790,235 L778.3,229.3" fill="none" stroke="#e8590c" stroke-width="2"/>
+<path d="M140,210 L250,210" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<path d="M238.3,215.7 L250,210 L238.3,204.3" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Spring Boot + MySQL with docker-compose</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="80.0" y="210.0">browser</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="585" y="100.0">EC2 host</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="490" y="140.0">network: springboot-db-net (created by compose)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="360.0" y="214.4">application</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="360.0" y="231.0">image spring-boot-mysql-app</tspan><tspan x="360.0" y="244.8">(built from the Dockerfile)</tspan><tspan x="360.0" y="258.5">port 8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="625.0" y="214.4">mysqldb</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="625.0" y="231.0">image mysql:5.7</tspan><tspan x="625.0" y="244.8">database sbms</tspan><tspan x="625.0" y="258.5">port 3306 (internal)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1971c2" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="495" y="320.0">mysqldb:3306</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="875.0" y="214.4">volume</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="875.0" y="230.3">/var/lib/mysql</tspan><tspan x="875.0" y="244.1">→ keeps DB data</tspan><tspan x="875.0" y="257.9">(see section 7)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="195" y="195.0">:8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="500" y="415.0">depends_on starts mysqldb BEFORE application (but doesn&#x27;t wait until MySQL is ready — add a healthcheck for that)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="440.0">only the app publishes a port; the DB stays private on the compose network</tspan></text>
+</g>
+</svg>

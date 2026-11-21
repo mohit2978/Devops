@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="400" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="260" rx="16" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="45" y="125" width="130" height="130" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="60" y="158" width="100" height="38" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="60" y="203" width="100" height="38" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="193" y="125" width="130" height="130" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="208" y="158" width="100" height="38" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="341" y="125" width="130" height="130" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="510" y="75" width="470" height="260" rx="16" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="535" y="125" width="130" height="130" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="550" y="158" width="100" height="38" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="683" y="125" width="130" height="130" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="698" y="158" width="100" height="38" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="831" y="125" width="130" height="130" rx="10" fill="#f8f9fa" stroke="#495057" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="846" y="158" width="100" height="38" rx="12" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Service modes: replicated vs global</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="255" y="98.0">replicated (default)  --replicas 3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="110" y="142.0">node 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="110.0" y="177.0">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="110.0" y="222.0">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="258" y="142.0">node 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="258.0" y="177.0">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="406" y="142.0">node 3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="255" y="286.9">you choose HOW MANY containers;</tspan><tspan x="255" y="303.1">swarm places them on any nodes</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="745" y="98.0">global  --mode global</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="600" y="142.0">node 1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="600.0" y="177.0">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="748" y="142.0">node 2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="748.0" y="177.0">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="896" y="142.0">node 3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="896.0" y="177.0">container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="745" y="286.9">exactly ONE container on EVERY node</tspan><tspan x="745" y="303.1">(like a K8s DaemonSet: agents, log shippers)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="370.0">docker service create --mode global --name agent &lt;image&gt;</tspan></text>
+</g>
+</svg>

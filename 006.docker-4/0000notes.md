@@ -1,137 +1,128 @@
-# Notes
+# Docker · Lecture 4: Docker Network, Docker Compose & Stateful Containers
 
-Developers only write dockerFile as need to tell what environment is needed!!
-If using k8s no need of these
+> **Developers** usually write the Dockerfile, because they know what environment the app needs. When using Kubernetes we don't need Docker networks or Compose (Kubernetes handles networking and multi-container apps).
 
-## Docker Network
+---
 
-As of now we run independent containers, so we need communication between container so for that we need Docker Network
+## 1. Docker Network
 
-=> Network is all about communication
+So far we ran **independent containers**. To let containers **communicate with each other**, we need a **Docker network**.
 
-=> Docker network is used to provide isolated network for containers
+- A network is all about **communication**.
+- A Docker network provides an **isolated network** for containers.
+- If **2 containers run on the same network**, one can communicate with the other.
 
-=> If we run 2 containers under same network then one contianer can communicate with another container.
+![Docker network drivers](01-network-drivers.svg)
 
-=> By default we have 3 networks in Docker
+**3 networks exist by default:**
 
-	1) bridge(default)
-	2) host
-	3) none
+| Network | Meaning |
+|---------|---------|
+| **bridge** (default) | For standalone containers. **Assigns an IP** to each container on a private network inside the host. Default for every container |
+| **host** | Also for standalone containers. **No separate IP**: the container shares the host's network directly (no `-p` needed) |
+| **none** | **No network** at all |
 
-=> Bridge network is used to run standalone containers. It will assign one IP for container. It is the default network for docker container.
+**2 other network types:**
 
-=> Host network is also used to run standalone containers. This will not assign any ip for our container.	
+| Network | Meaning |
+|---------|---------|
+| **overlay** | For **orchestration** (Docker Swarm): one network across many hosts |
+| **macvlan** | Assigns a **physical IP** (and MAC) on your LAN to the container |
 
-=> None means no network will be available.
+> In real projects we don't create Docker containers directly; we use **Kubernetes**.
 
-=> We can use 2 other networks also in docker
+### Containers talking by name
 
-				1) Overlay
-				2) MacvLan
+![Custom network: containers reach each other by name](02-custom-network.svg)
 
-=> Overlay network is used for Orchestration purpose (Docker Swarm)	
+On a **user-defined** network (one you create), containers can reach each other by **container name**: Docker provides built-in DNS. The **default `bridge`** network doesn't have this, which is a key reason to create your own.
 
-=> Macvlan network will assign physical Ip for our container.	
+### Network commands
 
->Note: we do not use this concept in real time , we do not create docker containers directly , we use k8s!!
+![Network commands in order](03-network-commands.svg)
 
-- display docker networks
-        
-        $ docker network ls
+```bash
+docker network ls                                          # display docker networks
+docker network create ashokit-nw                           # create a network (bridge driver)
+docker network inspect ashokit-nw                          # details + which containers are attached
+docker run -d -p 8080:8080 --network <network-name> <img>  # run a container on a custom network
+docker network rm ashokit-nw                               # delete the network
+```
 
--  create docker network
-        
-        $ docker network create ashokit-nw
+`docker network ls` shows the 3 default networks; after `docker network create ashokit-nw` there's a 4th, also using the `bridge` driver:
 
--  inspect docker network( to check container running in a network)
-        
-        $ docker network inspect ashokit-nw
+![docker network ls and create](image.png)
 
-- create docker container with custom network
-        
-        $ docker run -d -p 8080:8080 --network <network-name> <img-name>
+`docker network inspect ashokit-nw` shows the subnet `172.18.0.0/16`, gateway `172.18.0.1`, and **no containers yet** (`"Containers": {}`):
 
-- delete docker network
-        
-        $ docker network rm ashokit-nw
+![inspect: empty Containers](image-1.png)
 
-![alt text](image.png)
+Let's run a container on that network:
 
-On inspect you see no containers
+![docker run with --network ashokit-nw](image-2.png)
 
-![alt text](image-1.png)
+Now `inspect` shows the container attached, with IP **172.18.0.2**:
 
-lets run a container
-![alt text](image-2.png)
+![inspect: container attached with IP 172.18.0.2](image-3.png)
 
-let us see now inspect
-![alt text](image-3.png)
+> The container got the random name `frosty_franklin`, because if you don't name it (`--name app`), Docker assigns a name itself.
 
-You can assign name to container if you do not assign it assign itself!!
+Afterwards, stop and remove the container, then remove the network (a network can't be removed while containers are attached).
 
-Now you can stop and remove container!! and then the network!!
+---
 
-## Docker Compose
+## 2. Docker Compose
 
-=> Earlier ppl developed projects using Monolithic Architecture (everthing in single app)
+- Earlier, projects were built as a **monolithic architecture** (everything in a single app).
+- Nowadays projects are built as **microservices**: multiple backend APIs, e.g. `hotels-api`, `flights-api`, `trains-api`, `cabs-api`…
+- **Every API needs a separate container.**
 
-=> Now a days projects are developing based on Microservices architecture.
+> With many containers, **management becomes very difficult** (create / stop / start each one).
 
-=> Microservices means multiple backend apis will be avialable
+![Why Docker Compose](04-microservices-compose.svg)
 
-	Ex: 
-			hotels-api
-			flights-api
-			trains-api
-			cabs-api...
+- **Docker Compose** solves this: it manages **multi-container applications**.
+- With **a single command** we can **create / stop / start multiple containers** at once.
 
-=> For every API we need to create seperate container.
+### What is the docker-compose.yml file?
 
-Note: When we have multiple containers like this management will become very 
-difficult (create / stop / start)
+- `docker-compose.yml` specifies the **containers' information**.
+- The default file name is **`docker-compose.yml`** (you can change it and use `-f <file>`).
+- It contains up to **4 sections**:
 
-=> To overcome these problems we will use Docker Compose.
+![docker-compose.yml sections](05-compose-anatomy.svg)
 
-=> Docker Compose is used to manage Multi - Container Based applications.
+| Section | Represents |
+|---------|-----------|
+| `version` | Compose file format version (old field; newer Docker ignores it) |
+| `services` | The **containers**: image name, port mapping, environment, depends_on… |
+| `networks` | Docker networks the containers run on |
+| `volumes` | Containers' **storage** locations |
 
-=> In docker compose, using single command we can create / stop / start multiple containers at a time.
+### Docker Compose setup
 
-## What is docker-compose.yml file ?
+```bash
+# install docker compose (standalone v1 binary used in class)
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
-=> docker-compose.yml file is used to specify containers information.
+# check it's installed
+docker-compose --version
+```
 
-=> The default file name is docker-compose.yml (we can change it).
+![docker-compose installed: version 1.24.0](image-4.png)
 
-=> docker-compose.yml file contains below 4 sections
+> 💡 1.24.0 is very old. Newer Docker includes **Compose v2** as a plugin: the command is `docker compose` (with a space). On Amazon Linux, `sudo yum install docker-compose-plugin` or download a v2 release; the YAML is the same.
 
-    version : It represents compose yml version
+---
 
-    services: It represents containers information (image-name, port-mapping etc..)
+## 3. Spring Boot with MySQL using docker-compose
 
-    networks: Represents docker network to run our containers
-
-    volumes: Represents containers storage location
-
-## Docker Compose Setup
-
--  install docker compose
-        
-        sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-        sudo chmod +x /usr/local/bin/docker-compose
-
--   Check docker compose is installed or not
-    
-        $ docker-compose --version
-
-![alt text](image-4.png)
-
-## Spring Boot with MySQL DB using Docker-Compose
+We run **two services (containers)**: the Spring Boot **application** and **MySQL**.
 
 ```yml
 version: "3"
-services:/* two services used here*/
+services:                    # two services used here
   application:
     image: spring-boot-mysql-app
     ports:
@@ -147,81 +138,122 @@ services:/* two services used here*/
     image: mysql:5.7
     networks:
       - springboot-db-net
-    environment: /* credentails*/
+    environment:             # credentials
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=sbms
     volumes:
       - /data/mysql
-networks:
-  springboot-db-net
 
+networks:
+  springboot-db-net:
 ```
 
-we are running two services(containers) here. One is Mysql and another one is application!!
+> ⚠ Fixed two syntax issues from the original notes: YAML comments use `#` (not `/* … */`), and under `networks:` the name needs a trailing colon (`springboot-db-net:`), since it's a key, not a plain value.
 
-if 4 application then can write as 
+![Spring Boot + MySQL with compose](06-springboot-mysql-compose.svg)
 
-![alt text](image-5.png)
-## DockerFile vs DockerCompose File
+- `image: spring-boot-mysql-app`: the image we build ourselves from the Dockerfile.
+- `depends_on: mysqldb`: starts the DB container **before** the app (it doesn't wait until MySQL is *ready*; add a `healthcheck` for that).
+- Both services join `springboot-db-net`, so the app reaches the DB at **`mysqldb:3306`** (service name).
+- `environment` passes the MySQL root password and creates the `sbms` database.
+- Only the app publishes a port (`8080:8080`); the DB stays private.
 
-DockerFile is used to create image and DockerCompose for orchestration!!
+With **4 applications**, just add more entries under `services`:
 
-##  Application Execution Process
+![services: app1, app2, app3, mysqldb](image-5.png)
 
-- clone git repo
-        
-        $ git clone https://github.com/ashokitschool/spring-boot-mysql-docker-compose.git
+### Dockerfile vs docker-compose file
 
-- go inside project directory
-        
-        $ cd spring-boot-mysql-docker-compose
+![Dockerfile vs docker-compose.yml](09-dockerfile-vs-compose.svg)
 
--  build project using maven
-        
-        $ mvn clean package
+- **Dockerfile** is used to **create an image** (one app).
+- **docker-compose.yml** is used to **run and connect multiple containers** (single-machine orchestration). See Lecture 2 for a full comparison.
 
-![alt text](image-6.png)
+---
 
-- build docker image (using DockerFIle)
-        
-        $ docker build -t spring-boot-mysql-app .
+## 4. Application execution process
 
-- check docker images
-        
-        $ docker images
+```bash
+# clone the git repo
+git clone https://github.com/ashokitschool/spring-boot-mysql-docker-compose.git
 
-- create docker containers using docker-compose( see no manual creation of containers)
-        
-        $ docker-compose up -d
+# go inside the project directory
+cd spring-boot-mysql-docker-compose
 
-![alt text](image-7.png)
+# build the project using maven
+mvn clean package
+```
 
-- check docker containers running
-        
-        $ docker-compose ps
+The project's Dockerfile:
 
-- stop docker containers running
-        
-        $ docker-compose stop
+![Project Dockerfile on GitHub](image-6.png)
 
-- start docker containers running
-        
-        $ docker-compose start
+It uses `FROM openjdk:11` (deprecated image; `eclipse-temurin:11-jre` is the replacement), copies the jar and runs it with `java -jar`.
 
-- delete docker containers using docker-compose
-        
-        $ docker-compose down
+```bash
+# build the docker image (using the Dockerfile)
+docker build -t spring-boot-mysql-app .
 
-## Stateful Vs Stateless Containers
+# check docker images
+docker images
 
-Stateless Container : Data will be deleted after container deletion.
+# create the containers with docker-compose (no manual docker run!)
+docker-compose up -d
+```
 
-Statefull Container : Data will be available permanently
+![docker-compose up -d: network created, mysql pulled, both containers created](image-7.png)
 
->Note: Docker containers are stateless by default.
+Compose **created the network** `spring-boot-mysql-docker-compose_springboot-db-net`, **pulled `mysql:5.7`**, then created `mysqldb_1` and `application_1`, in that order because of `depends_on`.
 
->Note: In spring-boot-mysql app, we are using mysqldb as docker container to store application data. When we re-create containers db also got recreated hence we lost data (this is not accepted in realtime).
+![docker-compose lifecycle](07-compose-lifecycle.svg)
 
-=> To maintain data permanently, we need to make docker container as statefull.
+```bash
+docker-compose ps       # check running containers
+docker-compose stop     # stop containers (they're kept)
+docker-compose start    # start them again
+docker-compose down     # delete containers + network
+```
 
-=> To make container as statefull, we need to use Docker volumes concept.
+---
+
+## 5. Stateful vs stateless containers
+
+| Type | Meaning |
+|------|---------|
+| **Stateless** | Data is **deleted** when the container is deleted |
+| **Stateful** | Data is available **permanently** |
+
+> Docker containers are **stateless by default**.
+
+> In the spring-boot-mysql app, MySQL runs as a container and stores the application data. When we **re-create the containers, the DB is re-created too, and we lose the data**. That's not acceptable in real projects.
+
+![Stateless vs stateful](08-stateless-vs-stateful.svg)
+
+- To keep data permanently, the container must be **stateful**.
+- To make a container stateful, we use **Docker volumes** (next lecture).
+
+> Note: in the compose file above, `volumes: - /data/mysql` (only a container path) creates an **anonymous** volume. A new one is created after `down` + `up`, so data still appears lost. Also, MySQL keeps its data in **`/var/lib/mysql`**, not `/data/mysql`. The working version uses a **named volume**:
+> ```yaml
+>   mysqldb:
+>     volumes:
+>       - dbdata:/var/lib/mysql
+> volumes:
+>   dbdata:
+> ```
+> `docker-compose down` keeps named volumes; `docker-compose down -v` deletes them.
+
+---
+
+## 6. Quick revision
+
+| Topic | Key point |
+|-------|-----------|
+| Default networks | bridge (default, own IP), host (shares host network), none |
+| Other networks | overlay (Swarm, multi-host), macvlan (physical IP) |
+| Custom network | Containers talk by **name** (built-in DNS) |
+| Network commands | `ls`, `create`, `inspect`, `run --network`, `rm` |
+| Docker Compose | Manage multi-container apps with one YAML + one command |
+| Compose sections | version, services, networks, volumes |
+| Commands | `up -d`, `ps`, `stop`, `start`, `down` (`-v` deletes volumes) |
+| Stateless | Default: data dies with the container |
+| Stateful | Use **named volumes** for data that must survive |

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="500" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="960" height="140" rx="14" fill="#e7f5ff" stroke="#1971c2" stroke-width="2"/>
+<rect x="50" y="115" width="280" height="80" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="365" y="115" width="280" height="80" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="680" y="115" width="280" height="80" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="20" y="270" width="960" height="160" rx="14" fill="#f8f9fa" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="50" y="310" width="280" height="100" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M190,195 L190,310" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<path d="M184.3,298.3 L190,310 L195.7,298.3" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<rect x="365" y="310" width="280" height="100" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M505,195 L505,310" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<path d="M499.3,298.3 L505,310 L510.7,298.3" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<rect x="680" y="310" width="280" height="100" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M820,195 L820,310" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+<path d="M814.3,298.3 L820,310 L825.7,298.3" fill="none" stroke="#e8590c" stroke-width="2.5"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">3 kinds of Docker storage</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="95.0">containers (mysql writes to /var/lib/mysql)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="190.0" y="148.1">container (anonymous)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="190.0" y="164.1">-v /var/lib/mysql</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="505.0" y="148.1">container (named)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="505.0" y="164.1">-v dbdata:/var/lib/mysql</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="820.0" y="148.1">container (bind mount)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="820.0" y="164.1">-v /home/ec2-user/app:/var/lib/mysql</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="bold"><tspan x="500" y="290.0">EC2 host disk</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="190.0" y="346.2">…/volumes/3f9a1c…/</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="190.0" y="361.6">random id, no name → hard</tspan><tspan x="190.0" y="375.3">to reuse; new one after down/up</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="505.0" y="346.2">…/volumes/dbdata/</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="505.0" y="361.6">managed by Docker in</tspan><tspan x="505.0" y="375.3">/var/lib/docker; reuse by name ✓</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="820.0" y="346.2">/home/ec2-user/app/</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="820.0" y="361.6">YOUR folder; you see and</tspan><tspan x="820.0" y="375.3">edit the files directly</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold"><tspan x="500" y="465.0">all three survive `docker rm` of the container • named volumes are the usual choice for databases</tspan></text>
+</g>
+</svg>

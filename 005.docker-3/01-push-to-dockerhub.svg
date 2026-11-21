@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="90" width="210" height="110" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="48" cy="90" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="275" y="90" width="210" height="110" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="293" cy="90" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M240,145 L275,145" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M263.3,150.7 L275,145 L263.3,139.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="520" y="90" width="210" height="110" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="538" cy="90" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M485,145 L520,145" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M508.3,150.7 L520,145 L508.3,139.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="765" y="90" width="210" height="110" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="783" cy="90" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M730,145 L765,145" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M753.3,150.7 L765,145 L753.3,139.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="180.0" y="265" width="210" height="46" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="390.0" y="265" width="160" height="46" rx="6" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="550.0" y="265" width="150" height="46" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="700.0" y="265" width="120" height="46" rx="6" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Pushing an image to Docker Hub</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="135.0" y="130.0">docker login</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="135.0" y="147.9">username + password</tspan><tspan x="135.0" y="162.9">(or access token)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="48" y="90.0">1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="380.0" y="130.0">docker tag</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="380.0" y="147.9">img-1 →</tspan><tspan x="380.0" y="162.9">ashokit/img-1:v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="293" y="90.0">2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="625.0" y="130.0">docker push</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="625.0" y="147.9">ashokit/img-1:v1</tspan><tspan x="625.0" y="162.9">uploads the layers</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="538" y="90.0">3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="870.0" y="130.0">any machine</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="870.0" y="147.9">docker pull</tspan><tspan x="870.0" y="162.9">ashokit/img-1:v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="783" y="90.0">4</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#1e1e1e" font-weight="bold"><tspan x="500" y="245.0">anatomy of the tag</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="285.0" y="288.0">docker.io/</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="285.0" y="332.5">registry (default,</tspan><tspan x="285.0" y="347.5">can be omitted)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="470.0" y="288.0">ashokit</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="470.0" y="332.5">YOUR Docker Hub</tspan><tspan x="470.0" y="347.5">username</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="625.0" y="288.0">/img-1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="625.0" y="332.5">repository</tspan><tspan x="625.0" y="347.5">(image name)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="17" fill="#1e1e1e" font-weight="bold"><tspan x="760.0" y="288.0">:v1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal"><tspan x="760.0" y="332.5">tag = version</tspan><tspan x="760.0" y="347.5">(default :latest)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e03131" font-weight="bold"><tspan x="500" y="400.0">no username in the tag → push is DENIED (“requested access to the resource is denied”)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="430.0">docker tag doesn&#x27;t copy anything — it just adds a second name pointing to the same image ID</tspan></text>
+</g>
+</svg>

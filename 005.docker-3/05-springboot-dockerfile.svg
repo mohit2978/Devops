@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="450" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="80" width="440" height="260" rx="12" fill="#212529" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="100" width="470" height="30" rx="6" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="138" width="470" height="30" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="176" width="470" height="30" rx="6" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="214" width="470" height="30" rx="6" fill="#d0bfff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="252" width="470" height="30" rx="6" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="500" y="290" width="470" height="30" rx="6" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Spring Boot Dockerfile — line by line</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#ffd43b" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="114.0">FROM eclipse-temurin:17-jre</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="152.0">LABEL maintainer=&quot;Ashok&quot;</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="190.0">COPY target/app.jar /usr/app/</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="228.0">WORKDIR /usr/app/</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#e9ecef" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="266.0">EXPOSE 8080</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="14" fill="#69db7c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="46" y="304.0">ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;app.jar&quot;]</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="115.0">base image with Java 17 (openjdk:17 is deprecated)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="153.0">author (MAINTAINER is deprecated)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="191.0">jar from your target/ folder into the image</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="229.0">cd /usr/app for the next steps</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="267.0">documents port 8080 (embedded Tomcat)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#1e1e1e" font-weight="normal"><tspan x="735.0" y="305.0">runs at container start: java -jar app.jar</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="380.0">mvn clean package  →  docker build -t sb-app .  →  docker run -d -p 9080:8080 sb-app</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="410.0">open 9080 in the security group → http://&lt;ec2-public-ip&gt;:9080/</tspan></text>
+</g>
+</svg>

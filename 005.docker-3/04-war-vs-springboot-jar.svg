@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="75" width="470" height="280" rx="16" fill="#fff9db" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="50" y="125" width="410" height="170" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="100" y="175" width="310" height="90" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="510" y="75" width="470" height="280" rx="16" fill="#ebfbee" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="560" y="125" width="370" height="170" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="590" y="165" width="310" height="50" rx="12" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="590" y="225" width="310" height="50" rx="12" fill="#ffd8a8" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Traditional .war vs Spring Boot .jar</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="255" y="98.0">Java web app → app.war</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="255" y="145.0">external Tomcat (you provide it)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="255.0" y="211.2">app.war</tspan><tspan x="255.0" y="228.8">(your code only)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#e8590c" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="255" y="325.0">FROM tomcat  +  COPY war → webapps/</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#1e1e1e" font-weight="bold"><tspan x="745" y="98.0">Spring Boot → app.jar (“fat jar”)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="745" y="145.0">app.jar</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="745.0" y="190.0">your code + all libraries</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="745.0" y="250.0">EMBEDDED Tomcat on :8080</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#2f9e44" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="745" y="325.0">FROM java  +  java -jar app.jar</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1971c2" font-weight="bold"><tspan x="500" y="390.0">Spring Boot packages EVERY app (web or not) as a jar and starts its own Tomcat → no Tomcat image needed</tspan></text>
+</g>
+</svg>

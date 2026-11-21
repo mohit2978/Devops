@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="95" width="178" height="150" rx="12" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="38" cy="95" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="216" y="95" width="178" height="150" rx="12" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="234" cy="95" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M198,170 L216,170" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M204.3,175.7 L216,170 L204.3,164.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="412" y="95" width="178" height="150" rx="12" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="430" cy="95" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M394,170 L412,170" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M400.3,175.7 L412,170 L400.3,164.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="608" y="95" width="178" height="150" rx="12" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="626" cy="95" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M590,170 L608,170" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M596.3,175.7 L608,170 L596.3,164.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="804" y="95" width="178" height="150" rx="12" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<ellipse cx="822" cy="95" rx="15" ry="15" fill="#ffffff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M786,170 L804,170" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M792.3,175.7 L804,170 L792.3,164.3" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Setting up the swarm</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="109.0" y="149.4">all 3 EC2 (Ubuntu)</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="109.0" y="165.3">curl -fsSL https://get.docker.com</tspan><tspan x="109.0" y="179.1">-o get-docker.sh</tspan><tspan x="109.0" y="192.8">sudo sh get-docker.sh</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="38" y="95.0">1</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="305.0" y="149.4">security group</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="305.0" y="165.3">open TCP 2377 (cluster mgmt)</tspan><tspan x="305.0" y="179.1">+ TCP/UDP 7946, UDP 4789</tspan><tspan x="305.0" y="192.8">for node traffic</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="234" y="95.0">2</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="501.0" y="149.4">manager</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="501.0" y="165.3">sudo docker swarm init</tspan><tspan x="501.0" y="179.1">--advertise-addr</tspan><tspan x="501.0" y="192.8">&lt;manager-private-ip&gt;</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="430" y="95.0">3</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="697.0" y="149.4">manager</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="697.0" y="165.3">sudo docker swarm</tspan><tspan x="697.0" y="179.1">join-token worker</tspan><tspan x="697.0" y="192.8">→ prints join command</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="626" y="95.0">4</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="893.0" y="149.4">each worker</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="11" fill="#1e1e1e" font-weight="normal"><tspan x="893.0" y="165.3">sudo docker swarm join</tspan><tspan x="893.0" y="179.1">--token SWMTKN-1-…</tspan><tspan x="893.0" y="192.8">&lt;manager-ip&gt;:2377</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1e1e1e" font-weight="bold"><tspan x="822" y="95.0">5</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="#1971c2" font-weight="bold" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="290.0">verify on the manager:  sudo docker node ls   → 3 nodes, one marked Leader</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#495057" font-weight="normal" font-family="'Cascadia Code', Consolas, monospace"><tspan x="500" y="325.0">leave:  sudo docker swarm leave  (on a worker)  •  sudo docker swarm leave --force  (on the manager)</tspan></text>
+</g>
+</svg>

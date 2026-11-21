@@ -1,196 +1,187 @@
-# Notes-3
-we have previously seen the commands used in docker!!
+# Docker · Lecture 3: Build, Push & Dockerize Java, Spring Boot and Python Apps
 
-open Docker VM ec2 instance!!
- 
-we use DockerFile name only 
+We've already seen the main Docker commands. Open the **Docker VM** (EC2 instance) and let's build images.
 
-so first command
-- vi DockerFile
+---
 
-### DockerFile
+## 1. First Dockerfile: RUN vs CMD
 
-```text
+We name the file **`Dockerfile`** (capital D only; `DockerFile` works only if you pass `-f DockerFile`).
+
+```bash
+vi Dockerfile
+```
+
+```dockerfile
 FROM ubuntu
 
-MAINTAINER mohit<mohitkr@samsung.com>
+# old style: MAINTAINER mohit <email>
+LABEL maintainer="mohit"
 
 RUN echo 'hello from run instruction-1'
 RUN echo 'hello from run instruction-2'
 
 CMD echo 'hi from cmd-1'
 CMD echo 'hi from cmd-2'
-
 ```
 
-no logic here just basic keywords! echo is used to print message!!
+There's no logic here, just the basic keywords; `echo` prints a message.
+- **All `RUN` instructions execute, top to bottom**, while the image is **built**.
+- **Only the last `CMD` executes**, when a **container starts**.
 
-RUN all will execute from top to bottom!!
+### Build the image
+```bash
+docker build -t img-1 .
+```
+- `img-1` is the image name (anything you like); `-t` = **tag** (name[:version]).
+- `.` = the **build context**: the current folder, where the Dockerfile is.
 
-CMD last instruction will execute!!
+While the image is being created you see the **RUN instructions executing**:
 
-Now we want to create Docker Image from DockerFile
+![docker build output: RUN steps executing](image.png)
 
-so use
+The highlighted lines are steps `[2/3]` and `[3/3]`, the two `RUN echo` instructions. Step `[1/3]` pulled the `ubuntu` base image.
 
-- docker build -t img-1 .
+### Run a container
+```bash
+docker images                       # img-1 appears in the list
+docker run <image-name or image-id>
+```
 
-img-1 is the image name you can give anything , -t means tag 
+![docker images and docker run printing the last CMD](image-1.png)
 
-while creating image you see RUN instruction being executed .
+`docker images` lists `img-1` (ID `238dcbcacfc1`). We ran it **by image ID** and only the **last CMD** printed. (The message text in the screenshot is from a slightly different version of the file; the behaviour is the same.)
 
-![alt text](image.png)
-
-now we create docker container by docker run!!
-
-- docker run \<image-name\> or \<image id\>
-
-![alt text](image-1.png)
-
-on docker images you see all images we can see img-1 
-
-we run by image id 
-
-then you see last CMD is executed
-
----
-
-### How to push docker image into docker hub account
-
-Create account in DockerHub, you must have docker account to store docker images!!
-
-first login into docker hub account
-
-    $ docker login
-
-On login it will ask username and password after successful login it will say successful login!!
-
-then tag docker image
-
-    $ docker tag <image-name> <tag-name>
-
-Ex1 : docker tag img-1 ashokit/img-1:latest
-
-Ex2 : docker tag img-1 ashokit/img-1:v1
-
-v1, latest tell versions 
-
->Note: tag name must have your user name , if not tell username then docker hub deny push!
-
-now when you do docker images you see your image with tag
-
-then push docker image to docker hub
-
-    $ docker push <tag-name>
+> For the full RUN / CMD / ENTRYPOINT explanation, see Lecture 2 (`004.docker-2`).
 
 ---
 
-### Dockerizing java web app
+## 2. Pushing a Docker image to Docker Hub
 
+You need a **Docker Hub account** (hub.docker.com) to store images there.
 
-=> Java web app will be packaged as war file
+![Pushing an image to Docker Hub](01-push-to-dockerhub.svg)
 
-Note: war file will be created inside target directory
+**1. Log in**
+```bash
+docker login
+```
+It asks for your username and password (or an access token), then shows **Login Succeeded**.
 
-=> To deploy war file we need web server (Ex: tomcat)
+**2. Tag the image** with your Docker Hub username
+```bash
+docker tag <image-name> <tag-name>
 
-=> Inside tomcat server webapps directory we need to place our war file to run the application.
+docker tag img-1 ashokit/img-1:latest    # Ex 1
+docker tag img-1 ashokit/img-1:v1        # Ex 2
+```
+`v1` and `latest` are **versions** (tags).
 
-![alt text](image-2.png)
+> ⚠ The tag name **must start with your username** (`ashokit/...`). Without it, Docker Hub **denies the push**.
 
-DockerFile
+Now `docker images` shows the same image under the new name too (same IMAGE ID).
 
-```text
+**3. Push**
+```bash
+docker push <tag-name>
+docker push ashokit/img-1:v1
+```
+
+**4. Use it anywhere:** `docker pull ashokit/img-1:v1` on any machine.
+
+---
+
+## 3. Dockerizing a Java web app (.war)
+
+- A Java web app is packaged as a **`.war`** file, created inside the **`target/`** directory.
+- To deploy a war file we need a **web server**, e.g. **Tomcat**.
+- The war file must be placed inside Tomcat's **`webapps`** directory to run the application.
+
+![Java source → .class → war → Tomcat webapps (drawing)](image-2.png)
+
+![Dockerizing a Java war on Tomcat](02-java-war-tomcat.svg)
+
+### Dockerfile
+```dockerfile
 FROM tomcat:latest
 
-MAINTAINER Ashok
+LABEL maintainer="Ashok"
 
 EXPOSE 8080
 
 COPY target/app.war /usr/local/tomcat/webapps/
-``` 
-FROM tells the dependency !! from tomcat java will come automatically that can run that tomcat version!!
+```
 
-> To get tomcat images with tags you can search on dockerHUb
+| Line | Meaning |
+|------|---------|
+| `FROM tomcat:latest` | The dependency. The Tomcat image already contains a **Java** version that can run that Tomcat |
+| `LABEL` / `MAINTAINER` | Author (optional) |
+| `EXPOSE 8080` | Documents that Tomcat uses port 8080 (optional) |
+| `COPY target/app.war /usr/local/tomcat/webapps/` | Copies the war **from the host machine into the image**, into Tomcat's `webapps`. Copying the war into webapps **is the deployment** |
 
-> From last copy instruction we copied war we put in target folder in below instruction to tomcat/webapps,
-from host machine to docker image!!
+> Search Docker Hub for the `tomcat` image to see the available tags (e.g. `tomcat:9.0`, `tomcat:10-jdk17`). Pin a version rather than `latest`.
+>
+> No need to specify `ubuntu`: the Tomcat image is already built on a Linux base.
 
-> EXPOSE to tell tomcat uses port 8080
+### Hands-on
 
-> Here MAINTAINER and EXPOSE are optional
+Java web app Git repo: https://github.com/ashokitschool/maven-web-app.git
 
->No need to specify ubuntu here as by default every container is linux machine only!!
+![From Git repo to running container](03-ec2-workflow.svg)
 
+```bash
+sudo yum install git -y
+sudo yum install maven -y          # installing maven also installs a Java JDK
 
-Java Web App Git Repo : https://github.com/ashokitschool/maven-web-app.git
+git clone https://github.com/ashokitschool/maven-web-app.git
+cd maven-web-app
 
-$ sudo yum install git 
+mvn clean package                  # generates target/
+ls -l target                       # the .war file is here
 
->After installing git install maven! maven installed then java is installed with it!!
+vi Dockerfile                      # write the Dockerfile above in the project directory
 
-$ sudo yum install maven 
+docker build -t <img-name> .       # build the image
+docker images
 
-$ git clone https://github.com/ashokitschool/maven-web-app.git
+docker run -d -p <host-port>:<container-port> <img-name>
+docker run -d -p 9090:8080 <img-name>
+```
 
-$ cd maven-web-app
+- Tomcat runs on port **8080 in the container**, mapped to port **9090 on the EC2 machine** (different numbers just to show they can differ).
+- **Enable port 9090** in the EC2 security group inbound rules, then open:
 
-> now generate target
+```
+URL: http://<public-ip>:<host-port>/<war-file-name>/
+```
 
-$ mvn clean package
+> This approach is for normal Java web apps, **not Spring Boot**.
 
-$ ls -l target
-
-> Write dockerFile we have discussed above in project directory only we create dockerFile
-
-> copying war from target to webapps is called deployment 4th line of dockerFile
-
-$ vi DockerFile  
-
-> build image
-
-$ docker build -t \<img-name\> .
-
-$ docker images
-
-> To create container
-
-$ docker run -d -p \<host-port:container-port\> \<img-name\>
-
-$ docker run -d -p 9090:8080 \<img-name\>
-
-> tomcat running on port 8080 in container but on ec2 machine it is mapped to port 9090 ,just to see difference i have put this!! enable port 9090 in inbound rules in security group of ec2!!
-
-=> Enable host port number in security group inbound rules and access our application
-
-		URL : http://public-ip:host-port/war-file-name/
-
-> This not used for springboot application!! just for normal java application!
-
-
->Too see logs use docker logs command
-
-- docker logs \<container-id\> : To display container logs
+To see logs:
+```bash
+docker logs <container-id>         # add -f to follow
+```
 
 ---
 
-### Dockerizing Java Spring Boot Application
+## 4. Dockerizing a Spring Boot application (.jar)
 
+- **Every Spring Boot app is packaged as a `.jar`**, whether standalone or web. There's no war file in Spring Boot.
+- To run a Spring Boot app, execute the jar:
+  ```bash
+  java -jar <jar-file-name>
+  ```
 
-=> Every SpringBoot application will be packaged as jar file only whether standalone or web application!! No war file concept in springboot!!
+> When the jar runs, Spring Boot starts an **embedded Tomcat server on port 8080**, so there's **no need to install Tomcat**.
 
-=> To run spring boot application we need to execute jar file.
+![war vs Spring Boot jar](04-war-vs-springboot-jar.svg)
 
-	Syntax : java -jar <jar-file-name>
+### Dockerfile for Spring Boot
+```dockerfile
+# original: FROM openjdk:17 (that image is deprecated)
+FROM eclipse-temurin:17-jre
 
->Note: When we run springboot application jar file then springboot will start tomcat server with 8080 port number (embedded tomcat server) so no need to install tomcat .
-
-Dockerfile for Spring Boot Application 
-```text
-
-FROM openjdk:17
- 
-MAINTAINER Ashok
+LABEL maintainer="Ashok"
 
 COPY target/app.jar /usr/app/
 
@@ -200,70 +191,66 @@ EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
-the above dockerfile is quite understandable!!
 
->jar needs to be pasted in /usr/app and to execute  first go to /usr/app by WORKDIR
-then to execute jar you can use CMD or ENTRYPOINT (both used to run command when container is created)
+![Spring Boot Dockerfile line by line](05-springboot-dockerfile.svg)
 
-Java Spring Boot App Git Repo : https://github.com/ashokitschool/spring-boot-docker-app.git
+- The jar is copied to `/usr/app`. To run it we first go into `/usr/app` with **`WORKDIR`**.
+- Then we execute the jar with **`CMD` or `ENTRYPOINT`** (both run a command when the container starts; ENTRYPOINT can't be accidentally replaced by `docker run` arguments).
 
-$ git clone https://github.com/ashokitschool/spring-boot-docker-app.git
+### Hands-on
 
-$ cd spring-boot-docker-app
+Spring Boot app Git repo: https://github.com/ashokitschool/spring-boot-docker-app.git
 
-![alt text](image-3.png)
+```bash
+git clone https://github.com/ashokitschool/spring-boot-docker-app.git
+cd spring-boot-docker-app
+ls -l
+```
 
-> here you see src ,pom.xml and DockerFile but no target so we need to create that by using below command
+![Repo contents: Dockerfile, pom.xml, src but no target](image-3.png)
 
-$ mvn clean package
+There's `src`, `pom.xml` and a `Dockerfile`, but **no `target`**, so we create it:
 
-$ ls -l target
+```bash
+mvn clean package
+ls -l target                        # now the jar file is here
 
-> Now you will be able to see jar file in target
+docker build -t sb-app .
+docker run -d -p 9080:8080 sb-app
+```
 
-$ docker build -t sb-app .
-
-$ docker run -d -p 9080:8080 sb-app
-
-
-> on ec2 port 9080 it will run so in inbound rules open 9080 port !! in container running on port 8080
-
-
->Note: Once container created check logs of container
-
-$ docker logs \<container-id\>
-
-> Note: Access our application using host-vm public and host port for us host port no is 9080
-
-		URL : http://localhost:host-port/
+- The app runs on **port 9080 on the EC2**, so open **9080** in the inbound rules; inside the container it's on 8080.
+- Once the container is created, **check its logs**:
+  ```bash
+  docker logs <container-id>
+  ```
+- Access the app with the host VM's public IP and host port (9080 here):
+  ```
+  URL: http://<host-vm-public-ip>:9080/
+  ```
+  (`http://localhost:9080/` works only from the EC2 machine itself.)
 
 ---
 
-### Dockerize Python Flask Application
+## 5. Dockerizing a Python Flask application
 
-=> Python is a scripting language
+- Python is a **scripting (interpreted) language**.
+- We **don't need a build tool**; Python programs run directly: `python app.py`
+- **Flask** is a Python library used to develop **REST APIs**.
+- To download Flask we use **pip** (Python's package installer).
 
-=> We don't need any build tool for python app
+> Dependencies go in **`requirements.txt`**, just as `pom.xml` lists them in Java: where pom.xml says "we need Spring Boot", requirements.txt says "we need Flask".
+>
+> **Maven** both **builds** and **downloads dependencies**; Python needs no build, so **pip only downloads** dependencies.
 
-=> Directly we can run python programs
+![Python Flask app](06-python-flask.svg)
 
-	Ex : python app.py
+### Dockerfile for Python Flask
+```dockerfile
+# original: FROM python:3.6 (very old, end-of-life)
+FROM python:3.12-slim
 
-=> Flask is a python library which is to develop rest apis in python.	
-
-=> To download flask library we will use 'python pip software'
-
->Note: We will configure dependencies in "requirements.txt" like we have pom.xml in java in pom.xml
-we tell we need springboot likewise we tell flask is needed in requirements.txt
-
-> maven can build as well as download dependencies but as python is scripting language we no 
-need to build so pip just download dependencies!!
-
-Dockerfile for Python Flask App 
-```text
-FROM python:3.6
-
-MAINTAINER Ashok
+LABEL maintainer="Ashok"
 
 COPY . /usr/app/
 
@@ -276,85 +263,112 @@ EXPOSE 5000
 ENTRYPOINT ["python", "app.py"]
 ```
 
-requirements.txt
+`requirements.txt`
 ```text
 flask
 ```
-COPY . /usr/app/ Copy current directory entirely to /usr/app
 
-RUN pip install -r requirements.txt -r tells recursive
+- `COPY . /usr/app/` copies the **entire current directory** into `/usr/app`.
+- `RUN pip install -r requirements.txt`: **`-r` means "read the packages from this requirements file"** (not "recursive"). It runs at **build** time, so Flask is baked into the image.
 
-![alt text](image-4.png)
+### Hands-on
 
-Python App Git Repo : https://github.com/ashokitschool/python-flask-docker-app.git
+![python-flask-docker-app repo on GitHub](image-4.png)
 
-$ git clone https://github.com/ashokitschool/python-flask-docker-app.git
+The repo has a `Dockerfile`, `app.py` and `requirements.txt`.
 
-$ cd python-flask-docker-app
+Python app Git repo: https://github.com/ashokitschool/python-flask-docker-app.git
 
-$ docker build -t \<img-name\> .
+```bash
+git clone https://github.com/ashokitschool/python-flask-docker-app.git
+cd python-flask-docker-app
 
->Note : we can give any image-name in build command 
+docker build -t <img-name> .       # any image name
+docker run -d -p 5000:5000 <img-name>
+docker ps
+```
 
-$ docker run -d -p 5000:5000 <img-name>
+> Enable port **5000** in the security group inbound rules.
 
-$ docker ps
+```
+URL: http://<public-ip>:<host-port>/
+```
 
->Note: Enable 5000 port in security group inbound rules.
+### The three apps compared
 
-=> Access application with URL
+![Three apps side by side](07-three-apps.svg)
 
-			URL : http://public-ip:host-port/
+| | Java web app | Spring Boot | Python Flask |
+|---|---|---|---|
+| Package | `.war` | `.jar` (fat jar) | Source files |
+| Build | `mvn clean package` | `mvn clean package` | None |
+| Base image | `tomcat` | `eclipse-temurin:17` | `python:3.12-slim` |
+| Start | Tomcat starts itself | `java -jar app.jar` | `python app.py` |
+| Example run | `-p 9090:8080` | `-p 9080:8080` | `-p 5000:5000` |
 
 ---
 
-### Can we get into docker container machine ?	
+## 6. Can we get inside a container?
 
+Yes:
 
-Yes, using below commands
+![docker exec](08-docker-exec.svg)
 
--  display running docker containers info
-    
-        $ docker ps
+```bash
+docker ps                                    # running containers + IDs
+docker exec -it <container-id> /bin/bash     # open a shell inside the container
+ls -l                                        # files in the current directory
+exit                                         # back to the host VM
+```
 
--  get into container using container id
+![docker exec into the Flask container](image-5.png)
 
-        $ docker exec -it <container-id> /bin/bash
+Inside the Flask container we're `root` in `/app`, with `Dockerfile`, `README.md`, `app.py` and `requirements.txt`. (The repo's own Dockerfile uses `WORKDIR /app`, not `/usr/app` as in our version.)
 
-- check files in pwd
-        
-        $ ls -l
+- `-i` keeps input open, `-t` gives a terminal. Slim images may only have `/bin/sh`.
+- `exit` leaves the shell; the **container keeps running**.
 
--  come out from container vm to host vm
-        
-        $ exit
+> We're using a **t2.micro** (1 GB RAM), so delete previous images and containers before running new ones. In real projects, bigger machines are used.
 
-![alt text](image-5.png)
-
-> Note : here we are using t2.micro so we need to delete previous image and containers 
-so that we can run!!In real time we use large systems!!
 ---
 
-### Tasks
+## 7. Tasks
 
-Task-1: Run jenkins server using docker
+![Practice tasks](09-tasks.svg)
 
-Task-2: setup mysql db using docker
+| Task | Hint |
+|------|------|
+| **Task 1:** Run a Jenkins server using Docker | `docker run -d -p 8080:8080 --name jenkins jenkins/jenkins:lts`; get the password with `docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword` |
+| **Task 2:** Set up a MySQL DB using Docker | `docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8.0`; connect with `docker exec -it <id> mysql -uroot -proot` |
+| **Task 3:** Write a Dockerfile to run a React JS app | Multi-stage: build with `node`, serve the `build/` folder with `nginx` |
 
-Task-3: Write docker file to execute react js app
+---
 
-## Mostly used command
+## 8. Most used cleanup command
 
-docker system prune -a --> delete stopped containers + unused images + build cache
+```bash
+docker system prune -a      # delete stopped containers + unused images + unused networks + build cache
+```
 
-Now not that much imp
+### Not that important for now
+- Docker network
+- Docker volumes
+- Docker Compose (see Lecture 2: Dockerfile vs Compose)
+- Docker Swarm
 
---> Docker network
+> In real projects we use an **orchestration tool like Kubernetes**; we never create containers manually in production. We'll see these in the next classes.
 
---> Docker Volumes
+---
 
---> Docker compose
+## 9. Quick revision
 
---> Docker swarm
-
-In realtime we use orchestration tools like k8s!!although we will see them in next classes!! In real time we never create containers manually we use k8s!!
+| Topic | Key point |
+|-------|-----------|
+| RUN vs CMD | All RUNs at build time; only the last CMD at container start |
+| Push | `docker login` → `docker tag img user/img:v1` → `docker push user/img:v1` |
+| War app | `FROM tomcat` + `COPY target/app.war /usr/local/tomcat/webapps/` |
+| Spring Boot | Jar with embedded Tomcat; `ENTRYPOINT ["java","-jar","app.jar"]` |
+| Flask | `requirements.txt` + `RUN pip install -r requirements.txt` |
+| Port mapping | `-p host:container`; open the host port in the security group |
+| Inside a container | `docker exec -it <id> /bin/bash` |
+| Cleanup | `docker system prune -a` |

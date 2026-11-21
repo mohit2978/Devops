@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" width="1000" height="380">
+<defs>
+<filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+<feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<rect width="1000" height="380" fill="#ffffff"/>
+<g filter="url(#rough)" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="75" width="520" height="44" rx="8" fill="#e9ecef" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="30" y="130" width="520" height="44" rx="8" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M60,119 L60,130" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M54.3,118.3 L60,130 L65.7,118.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="30" y="185" width="520" height="44" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M60,174 L60,185" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M54.3,173.3 L60,185 L65.7,173.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="30" y="240" width="520" height="44" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M60,229 L60,240" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M54.3,228.3 L60,240 L65.7,228.3" fill="none" stroke="#495057" stroke-width="2"/>
+<rect x="30" y="295" width="520" height="44" rx="8" fill="#ffc9c9" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M60,284 L60,295" fill="none" stroke="#495057" stroke-width="2"/>
+<path d="M54.3,283.3 L60,295 L65.7,283.3" fill="none" stroke="#495057" stroke-width="2"/>
+</g>
+<g font-family="Virgil, Excalifont, 'Comic Sans MS', 'Segoe Print', cursive">
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="#1e1e1e" font-weight="bold"><tspan x="500.0" y="38.0">Docker network commands, in order</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="290.0" y="97.0">docker network ls</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="97.0">see bridge, host, none</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="290.0" y="152.0">docker network create ashokit-nw</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="152.0">new bridge network</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="290.0" y="207.0">docker run … --network ashokit-nw img</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="207.0">attach a container</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="290.0" y="262.0">docker network inspect ashokit-nw</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="262.0">subnet + attached containers</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="bold"><tspan x="290.0" y="317.0">docker rm -f &lt;id&gt;  →  docker network rm ashokit-nw</tspan></text>
+<text xml:space="preserve" text-anchor="start" dominant-baseline="middle" font-size="13" fill="#1e1e1e" font-weight="normal"><tspan x="575" y="317.0">remove containers first, then the network</tspan></text>
+<text xml:space="preserve" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#495057" font-weight="normal"><tspan x="500" y="360.0">a network can&#x27;t be removed while containers are still attached to it</tspan></text>
+</g>
+</svg>
